@@ -16,9 +16,17 @@ contract ThePoolz {
         poolsCount = 0; //Start with 0
         //investors data
         TotalInvestors = 0; // start with 0
+        FeeCollected = 0;
     }
-    //@dev allow contract to receive funds
-    //function() public payable {}
+    function WithdrawETHFee(address _to) public{
+        require(msg.sender == Admin,'Only admin can take fee');
+        _to.transfer(address(this).balance);
+    }
+    //@dev not allow contract to receive funds
+    function() public payable {
+        revert();
+    }
+    uint public FeeCollected;
     address public Admin; //only admin can change the global settings
     //Global settings
     uint256 public Fee; //the fee for the pool
@@ -45,6 +53,7 @@ contract ThePoolz {
         uint UnlockedTokens; //for locked pools
         bool TookLeftOvers; //The Creator took the left overs after the pool finished
     }
+
     mapping(uint256 => Pool) public pools; //the id of the pool with the data
     mapping(address => uint256[]) public poolsMap; //the address and all of the pools id's
     //create a new pool
@@ -133,7 +142,7 @@ contract ThePoolz {
             return PoolStatus.Created;
         }
         if (now >= pools[_id].OpenForAll && pools[_id].Lefttokens > 0 && now < pools[_id].FinishTime) { //got tokens + all investors
-            return PoolStatus.Created;
+            return PoolStatus.Open;
         }
         if (pools[_id].Lefttokens == 0 && pools[_id].IsLocked && now < pools[_id].FinishTime)  //no tokens on locked pool, got time 
         {
@@ -146,12 +155,17 @@ contract ThePoolz {
         if (pools[_id].Lefttokens > 0 && !pools[_id].IsLocked && !pools[_id].TookLeftOvers) { //Got left overs on direct pool
             return PoolStatus.Finished;
         }
-        if (now >= pools[_id].FinishTime && !pools[_id].IsLocked) {// After finish time 
+        if (now >= pools[_id].FinishTime && !pools[_id].IsLocked) {// After finish time - not locked
            if (pools[_id].TookLeftOvers)         
                return PoolStatus.Close;
             return PoolStatus.Finished;      
         }
-        
+        if (now >= pools[_id].FinishTime && pools[_id].IsLocked) {// After finish time -  locked
+           if ((pools[_id].TookLeftOvers || pools[_id].Lefttokens == 0) && pools[_id].StartAmount - pools[_id].Lefttokens == pools[_id].UnlockedTokens)         
+               return PoolStatus.Close;
+            return PoolStatus.Finished;      
+        }
+
     }
 
     address public POZ_Address;
@@ -192,7 +206,7 @@ contract ThePoolz {
                 Investors[TotalInvestors-1].TokensOwn = WithDiscount;
             else
                 ERC20(pools[_PoolId].Token).transfer(msg.sender,WithDiscount);
-            pools[_PoolId].Creator.transfer(msg.value*(100*10000-PozFee)/10000); // send money to project owner - the fee stays on contract
+            pools[_PoolId].Creator.transfer(msg.value*(100*10000-PozFee)/1000000); // send money to project owner - the fee stays on contract
             return;
         }
         if (GetPoolStatus(_PoolId) == PoolStatus.Open &&
@@ -204,13 +218,19 @@ contract ThePoolz {
                 Investors[TotalInvestors-1].TokensOwn = TokensAmount;
             else
                 ERC20(pools[_PoolId].Token).transfer(msg.sender,TokensAmount);
-            pools[_PoolId].Creator.transfer(msg.value*(100*10000-Fee)/10000); // send money to project owner - the fee stays on contract
+            pools[_PoolId].Creator.transfer(msg.value*(100*10000-Fee)/1000000); // send money to project owner - the fee stays on contract
             return;
         }
         //can't invest OutOfstock,Finished,Close // TODO - make msg
         revert('Investment not complited');
     }
-
+    function WithdrawInvestment(uint _id) public{
+    require(msg.sender == Investors[_id].InvestorAddress || msg.sender == Admin, 'Only Investor can Withdraw (Or Admin)');   
+    require(_id < TotalInvestors, 'Wrong id'); 
+    require(Investors[_id].TokensOwn > 0, 'No tokens to Withdraw');
+        ERC20(pools[Investors[_id].Poolid].Token).transfer(Investors[_id].InvestorAddress,Investors[_id].TokensOwn);
+        Investors[_id].TokensOwn = 0 ;
+    }
       //Give all the id's of the investment  by sender address
     function GetMyInvestmentIds() public view returns (uint256[]) {
         return InvestorsMap[msg.sender];
