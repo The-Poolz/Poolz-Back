@@ -369,7 +369,7 @@
         "id": 35,
         "nodeType": "ImportDirective",
         "scope": 89,
-        "sourceUnit": 1939,
+        "sourceUnit": 1956,
         "src": "28:71:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -380,7 +380,7 @@
         "id": 36,
         "nodeType": "ImportDirective",
         "scope": 89,
-        "sourceUnit": 1521,
+        "sourceUnit": 1538,
         "src": "101:63:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -394,10 +394,10 @@
               "id": 37,
               "name": "StandardToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1938,
+              "referencedDeclaration": 1955,
               "src": "242:13:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_StandardToken_$1938",
+                "typeIdentifier": "t_contract$_StandardToken_$1955",
                 "typeString": "contract StandardToken"
               }
             },
@@ -412,10 +412,10 @@
               "id": 39,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1520,
+              "referencedDeclaration": 1537,
               "src": "257:7:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$1520",
+                "typeIdentifier": "t_contract$_Ownable_$1537",
                 "typeString": "contract Ownable"
               }
             },
@@ -425,11 +425,11 @@
           }
         ],
         "contractDependencies": [
-          1520,
-          1616,
-          1659,
-          1691,
-          1938
+          1537,
+          1633,
+          1676,
+          1708,
+          1955
         ],
         "contractKind": "contract",
         "documentation": "@title TestToken is a basic ERC20 Token\r",
@@ -437,11 +437,11 @@
         "id": 88,
         "linearizedBaseContracts": [
           88,
-          1520,
-          1938,
-          1616,
-          1659,
-          1691
+          1537,
+          1955,
+          1633,
+          1676,
+          1708
         ],
         "name": "TestToken",
         "nodeType": "ContractDefinition",
@@ -776,7 +776,7 @@
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1438,
+                      "referencedDeclaration": 1455,
                       "src": "620:5:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -793,7 +793,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1953,
+                        "referencedDeclaration": 1970,
                         "src": "628:3:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -840,7 +840,7 @@
                         "name": "balances",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1533,
+                        "referencedDeclaration": 1550,
                         "src": "649:8:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
@@ -856,7 +856,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1953,
+                          "referencedDeclaration": 1970,
                           "src": "658:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -945,7 +945,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1953,
+                          "referencedDeclaration": 1970,
                           "src": "715:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1001,7 +1001,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1690,
+                      "referencedDeclaration": 1707,
                       "src": "701:8:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -1089,7 +1089,7 @@
         "id": 35,
         "nodeType": "ImportDirective",
         "scope": 89,
-        "sourceUnit": 1939,
+        "sourceUnit": 1956,
         "src": "28:71:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1100,7 +1100,7 @@
         "id": 36,
         "nodeType": "ImportDirective",
         "scope": 89,
-        "sourceUnit": 1521,
+        "sourceUnit": 1538,
         "src": "101:63:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1114,10 +1114,10 @@
               "id": 37,
               "name": "StandardToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1938,
+              "referencedDeclaration": 1955,
               "src": "242:13:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_StandardToken_$1938",
+                "typeIdentifier": "t_contract$_StandardToken_$1955",
                 "typeString": "contract StandardToken"
               }
             },
@@ -1132,10 +1132,10 @@
               "id": 39,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1520,
+              "referencedDeclaration": 1537,
               "src": "257:7:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$1520",
+                "typeIdentifier": "t_contract$_Ownable_$1537",
                 "typeString": "contract Ownable"
               }
             },
@@ -1145,11 +1145,11 @@
           }
         ],
         "contractDependencies": [
-          1520,
-          1616,
-          1659,
-          1691,
-          1938
+          1537,
+          1633,
+          1676,
+          1708,
+          1955
         ],
         "contractKind": "contract",
         "documentation": "@title TestToken is a basic ERC20 Token\r",
@@ -1157,11 +1157,11 @@
         "id": 88,
         "linearizedBaseContracts": [
           88,
-          1520,
-          1938,
-          1616,
-          1659,
-          1691
+          1537,
+          1955,
+          1633,
+          1676,
+          1708
         ],
         "name": "TestToken",
         "nodeType": "ContractDefinition",
@@ -1496,7 +1496,7 @@
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1438,
+                      "referencedDeclaration": 1455,
                       "src": "620:5:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -1513,7 +1513,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1953,
+                        "referencedDeclaration": 1970,
                         "src": "628:3:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1560,7 +1560,7 @@
                         "name": "balances",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1533,
+                        "referencedDeclaration": 1550,
                         "src": "649:8:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
@@ -1576,7 +1576,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1953,
+                          "referencedDeclaration": 1970,
                           "src": "658:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1665,7 +1665,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1953,
+                          "referencedDeclaration": 1970,
                           "src": "715:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1721,7 +1721,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1690,
+                      "referencedDeclaration": 1707,
                       "src": "701:8:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -1864,12 +1864,12 @@
         }
       },
       "links": {},
-      "address": "0x492e02F353495694F4fB207c7421621aDD15480b",
-      "transactionHash": "0x9598f6c932501a5f7df448204331d28b43ee427097d1d9a4d5f21553f17a825a"
+      "address": "0x559C1459CBf279cAB5804292477AfA66d8463E85",
+      "transactionHash": "0xa24ec067212d20f91cf5032cc0cd0948ba2221e4f56d4e42dcfe4b57e7db09fc"
     }
   },
   "schemaVersion": "3.2.5",
-  "updatedAt": "2020-09-29T09:57:17.498Z",
+  "updatedAt": "2020-09-29T13:41:15.303Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {

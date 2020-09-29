@@ -1,9 +1,11 @@
 const ThePoolz = artifacts.require("Thepoolz");
 const TestToken = artifacts.require("TestToken");
+const { assert } = require('chai');
 const truffleAssert = require('truffle-assertions');
+const timeMachine = require('ganache-time-traveler');
 const zero_address = "0x0000000000000000000000000000000000000000";
 
-
+let rate = 1;
 contract("TestToken", function () {
   it("give allownce of 121", async () => {
     const allow = 121;
@@ -35,7 +37,7 @@ it("open a day long pool, check balance", async () => {
   await Token.approve(instance.address, amount, { from: accounts[0] });
   let date = new Date();
   date.setDate(date.getDate() + 1);   // add a day
-  await instance.CreatePool(Token.address, date.getTime(), 1, amount, false, zero_address, { from: accounts[0] });
+  await instance.CreatePool(Token.address, date.getTime(),rate, rate, amount, false, zero_address, { from: accounts[0] });
   let newpools = await instance.GetMyPoolsId({ from: accounts[0] });
   assert.equal(newpools.length, 1, "Got 1 pool");
   let tokensInContract = await Token.balanceOf(instance.address);
@@ -47,7 +49,7 @@ it("open a day long pool, check balance", async () => {
     let Token = await TestToken.deployed();
     await instance.InvestETH(0, {value: invest, from: accounts[1]});
     let tokensInContract = await Token.balanceOf(instance.address);
-    assert.equal(tokensInContract.toNumber(), amount-(invest/10000)*(10000+1200), "Got the tokens");
+    assert.equal(tokensInContract.toNumber(), amount-invest* rate, "Got the tokens");
   });
 
   it("open a day long pool, invest, check creator balance", async () => {
@@ -64,14 +66,14 @@ it("check fail attemts, open pool with no allow", async () => {
   let Token = await TestToken.deployed();
   let date = new Date();
   date.setDate(date.getDate() + 1);   // add a day
-  await truffleAssert.reverts(instance.CreatePool(Token.address, date.getTime(), 1, amount, false, zero_address, { from: accounts[0] }));
+  await truffleAssert.reverts(instance.CreatePool(Token.address, date.getTime(), rate,rate, amount, false, zero_address, { from: accounts[0] }));
 });
 it("check fail attemts, send ETH to contract", async () => {
   let instance = await ThePoolz.deployed();
   let accounts = await web3.eth.getAccounts();
   await truffleAssert.reverts(instance.send(invest, { from: accounts[0] }));
 });
-it("Other Payments", async () => {
+it("Other Payments, add as admin", async () => {
   let instance = await ThePoolz.deployed();
   let accounts = await web3.eth.getAccounts();
   let Token = await TestToken.deployed();
@@ -83,6 +85,26 @@ it("Other Payments", async () => {
   instance.RemoveERC20Maincoin(Token.address,{ from: accounts[0] });
   IspayableToken = await instance.IsERC20Maincoin(Token.address);
   assert.isFalse(IspayableToken);
+});
+it("fail to take LeftOvers before time", async () => {
+  let instance = await ThePoolz.deployed();
+  let accounts = await web3.eth.getAccounts();
+  truffleAssert.reverts(instance.WithdrawLeftOvers(0,{ from: accounts[0] }));
+});
+it("Crate 0 duration pool, take leftovers", async () => {
+  let instance = await ThePoolz.new();
+  let accounts = await web3.eth.getAccounts();
+  let Token = await TestToken.new();
+  let StartBalance = await Token.balanceOf(accounts[0]);
+  await Token.approve(instance.address, amount, { from: accounts[0] });
+  let date = new Date();
+  await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime()/1000));
+  instance.CreatePool(Token.address, Math.floor(date.getTime()/1000)+60, rate,rate, amount, false, zero_address, { from: accounts[0] });
+  await timeMachine.advanceTimeAndBlock(120*60);
+  await timeMachine.advanceTimeAndBlock(120*60);
+  instance.WithdrawLeftOvers(0,{ from: accounts[0] });
+  let EndBalance = await Token.balanceOf(accounts[0]);
+  assert.equal(EndBalance.toNumber(),StartBalance.toNumber());
 });
 });
 
