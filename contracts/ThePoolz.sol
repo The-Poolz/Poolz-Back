@@ -352,53 +352,78 @@ contract ThePoolz {
         revert("Investment not complited");
     }
 
-    /*  function InvestDai(uint256 _PoolId, uint _InvestedDai) external   
-    { 
-        require(_PoolId < poolsCount, 'Wrong pool id');
-        require(!pools[_PoolId].PaymentIsETH,'Pool is not for Dia');
-        require(_InvestedDai > 0,'need invest more then 0');
-        require(ERC20(Dai_Address).allowance(msg.sender,address(this))>= _InvestedDai, 'Set allowance to invest');
+       /*function InvestERC20(uint256 _PoolId,uint _Amount) external payable {
+        require(_PoolId < poolsCount, "Wrong pool id");
+        require(pools[_PoolId].Maincoin != address(0x0), "Pool is for ETH, use InvetETH");
+        require(ERC20(pools[_PoolId].Maincoin).allowance(msg.sender,address(this)) >= _Amount, "Tokens not aproved");
         //check if Poz investor;
+        emit TransferInETH(msg.value, msg.sender);
         Investors[TotalInvestors] = Investor(
             _PoolId,
             msg.sender,
-            _InvestedDai,
+            msg.value,
             IsPozInvestor(msg.sender),
             0,
-            now
+            block.timestamp
         );
         InvestorsMap[msg.sender].push(TotalInvestors);
         TotalInvestors++;
-        uint WithDiscount = _InvestedDai/(pools[_PoolId].Rate*(100*10000-PozDiscount)/10000);
-        uint TokensAmount = _InvestedDai/pools[_PoolId].Rate;
         if (
             GetPoolStatus(_PoolId) == PoolStatus.Created &&
             IsPozInvestor(msg.sender) &&
             WithDiscount <= pools[_PoolId].Lefttokens //Got The Tokens
         ) {
+            uint256 WithDiscount = ((msg.value / pools[_PoolId].Rate) / 10000) *
+                (10000 + PozDiscount);
             //Only for Poz Investor, better price
-            pools[_PoolId].Lefttokens-= WithDiscount;
-            if (pools[_PoolId].IsLocked) // not locked, will transfer the tokens
-                Investors[TotalInvestors-1].TokensOwn = WithDiscount;
-            else
-                ERC20(pools[_PoolId].Token).transfer(msg.sender,WithDiscount);
-            ERC20(Dai_Address).transfer(pools[_PoolId].Creator,_InvestedDai*(100*10000-PozFee)/1000000); // send money to project owner - the fee stays on contract
+            pools[_PoolId].Lefttokens -= WithDiscount;
+            if (pools[_PoolId].IsLocked) {
+                // not locked, will transfer the toke
+                Investors[TotalInvestors - 1].TokensOwn = WithDiscount;
+            } else {
+                emit TransferOut(
+                    WithDiscount,
+                    msg.sender,
+                    pools[_PoolId].Token
+                );
+                ERC20(pools[_PoolId].Token).transfer(msg.sender, WithDiscount);
+            }
+            uint256 EthMinusFee = (msg.value / 10000) * (10000 - PozFee);
+            emit TransferOutETH(EthMinusFee, pools[_PoolId].Creator);
+            pools[_PoolId].Creator.transfer(EthMinusFee); // send money to project owner - the fee stays on contract
+            if (pools[_PoolId].Lefttokens == 0) emit FinishPool(_PoolId);
             return;
         }
-        if (GetPoolStatus(_PoolId) == PoolStatus.Open &&
+        if (
+            GetPoolStatus(_PoolId) == PoolStatus.Open &&
             TokensAmount <= pools[_PoolId].Lefttokens //Got The Tokens
-            )  {
+        ) {
+            uint256 TokensAmount = msg.value / pools[_PoolId].Rate;
             //all can invest, no discout price
-            pools[_PoolId].Lefttokens-= TokensAmount;
-            if (pools[_PoolId].IsLocked) // not locked, will transfer the tokens
-                Investors[TotalInvestors-1].TokensOwn = TokensAmount;
-            else
-                ERC20(pools[_PoolId].Token).transfer(msg.sender,TokensAmount);
-            ERC20(Dai_Address).transfer(pools[_PoolId].Creator,_InvestedDai*(100*10000-Fee)/1000000); // send money to project owner - the fee stays on contract
+            pools[_PoolId].Lefttokens -= TokensAmount;
+            if (pools[_PoolId].IsLocked) {
+                // not locked, will transfer the tokens
+                Investors[TotalInvestors - 1].TokensOwn = TokensAmount;
+            } else {
+                emit TransferOut(
+                    TokensAmount,
+                    msg.sender,
+                    pools[_PoolId].Token
+                );
+                ERC20(pools[_PoolId].Token).transfer(msg.sender, TokensAmount);
+            }
+            emit TransferOutETH(
+                (msg.value / 10000) * (10000 - Fee),
+                pools[_PoolId].Creator
+            );
+            pools[_PoolId].Creator.transfer(
+                (msg.value / 10000) * (10000 - Fee)
+            ); // send money to project owner - the fee stays on contract
+            if (pools[_PoolId].Lefttokens == 0) emit FinishPool(_PoolId);
             return;
         }
         //can't invest OutOfstock,Finished,Close // TODO - make msg
-        revert('Investment not complited');
+        revert("Investment not complited");
     }*/
     function WithdrawInvestment(uint256 _id) public {
         require(

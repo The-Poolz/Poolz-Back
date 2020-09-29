@@ -1,6 +1,7 @@
 //exec ./Fill-Test-Data.js
 const ThePoolz = artifacts.require("Thepoolz");
 const TestToken = artifacts.require("TestToken");
+const zero_address = "0x0000000000000000000000000000000000000000";
 
 module.exports = async function(callback) {
     console.log("Start Building Test Data ...");
@@ -15,7 +16,7 @@ module.exports = async function(callback) {
     let date = new Date();
     for (let i = 0; i < 10; i++) {
         date.setDate(date.getDate() + 1);
-        instance.CreatePool(Token.address, date.getTime(), 1, amount, false, zero_address, { from: accounts[0] });
+        instance.CreatePool(Test_Token.address, date.getTime(), 1, amount, false,zero_address,  { from: accounts[0] });
         console.log("Loop counter = "+ i );
     }
     console.log("Cheking network...");
