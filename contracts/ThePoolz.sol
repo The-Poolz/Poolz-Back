@@ -23,6 +23,7 @@ contract ThePoolz {
     event TransferInETH(uint256 Amount, address From);
     event NewPool(address token, uint256 id);
     event FinishPool(uint256 id);
+
     //event testing(uint256 amount); //will remove later
 
     function GetLastPoolId() public view returns (uint256) {
@@ -65,7 +66,7 @@ contract ThePoolz {
         address Creator; //the project owner
         uint256 FinishTime; //Until what time the pool is active
         uint256 Rate; //in Szabo for eth, in $/10000 cent/100
-        bool PaymentIsETH; // true- its ETH false - its dai
+        address Maincoin; // on adress.zero = ETH
         uint256 StartAmount; //The total amount of the tokens for sale
         bool IsLocked; // true - the investors getting the tokens after the FinishTime. false - intant deal
         uint256 Lefttokens; // the ammount of tokens left for sale
@@ -77,15 +78,30 @@ contract ThePoolz {
 
     mapping(uint256 => Pool) public pools; //the id of the pool with the data
     mapping(address => uint256[]) public poolsMap; //the address and all of the pools id's
+    mapping(address => bool) public ERC20MainCoins; //when approve new erc20 main coin - it will list here
+
+    function AddERC20Maincoin(address _token) public {
+        require(msg.sender == Admin);
+        ERC20MainCoins[_token] = true;
+    }
+
+    function RemoveERC20Maincoin(address _token) public {
+        require(msg.sender == Admin);
+        ERC20MainCoins[_token] = false;
+    }
+
+    function IsERC20Maincoin(address _token) public view returns (bool) {
+        return ERC20MainCoins[_token];
+    }
 
     //create a new pool
     function CreatePool(
         address _Token,
         uint256 _FinishTime,
         uint256 _Rate,
-        bool _PaymentIsETH,
         uint256 _StartAmount,
-        bool _IsLocked
+        bool _IsLocked,
+        address _MainCoin
     ) external {
         require(IsERC20(_Token), "Need Valid ERC20 Token"); //check if _Token is ERC20
         require(now + MinDuration <= _FinishTime, "Need more then MinDuration"); // check if the time is OK
@@ -93,6 +109,7 @@ contract ThePoolz {
             TestAllownce(_Token, msg.sender, _StartAmount),
             "Must Approve the Transaction"
         );
+        require(_MainCoin == address(0x0) || IsERC20Maincoin(_MainCoin));
         uint256 Openforall = ((_FinishTime - block.timestamp) * PozTimer) /
             10000 +
             block.timestamp;
@@ -102,7 +119,7 @@ contract ThePoolz {
             msg.sender,
             _FinishTime,
             _Rate,
-            _PaymentIsETH,
+            _MainCoin,
             _StartAmount,
             _IsLocked,
             _StartAmount,
@@ -157,27 +174,44 @@ contract ThePoolz {
         //check if owner, check if finished, check if got leftovers , transfer Tokens
     }
 
-    //give the full data of the pool, by id
+    //give the data of the pool, by id
     function GetPoolData(uint256 _id)
         public
         view
-        returns (
+        returns (       
+            PoolStatus, 
             address,
             uint256,
+            address,
             uint256,
-            bool,
-            uint256,
-            bool
+            uint256         
         )
     {
         return (
-            //check if sender POZ Invester
-            pools[_id].Creator,
-            pools[_id].FinishTime,
+            //check if sender POZ Invester?
+            GetPoolStatus(_id),
+            pools[_id].Token,
             pools[_id].Rate,
-            pools[_id].PaymentIsETH,
+            pools[_id].Maincoin, //incase of ETH will be address.zero
             pools[_id].StartAmount,
-            pools[_id].IsLocked
+            pools[_id].Lefttokens
+        );
+    }
+        function GetMorePoolData(uint256 _id)
+        public
+        view
+        returns (       
+            bool,
+            uint256,
+            uint256,
+            address
+        )
+    {
+        return (
+            pools[_id].IsLocked,
+            pools[_id].FinishTime,
+            pools[_id].OpenForAll,
+            pools[_id].Creator
         );
     }
 
@@ -235,18 +269,17 @@ contract ThePoolz {
         }
     }
 
-    address public POZ_Address;
-    address public Dai_Address;
+    address public POZ_Address= address(0x0);
 
     function IsPozInvestor(address _investor) public view returns (bool) {
-        if (POZ_Address == Dai_Address) return true; // for test
+        if (POZ_Address == address(0x0)) return true; // for test
         return (ERC20(POZ_Address).balanceOf(_investor) >= MinPoz);
     }
 
     //@dev Send in wei
     function InvestETH(uint256 _PoolId) external payable {
         require(_PoolId < poolsCount, "Wrong pool id");
-        require(pools[_PoolId].PaymentIsETH, "Pool is not for ETH");
+        require(pools[_PoolId].Maincoin == address(0x0), "Pool is not for ETH");
         require(msg.value > 0, "send ETH to invest");
         require(msg.value > 10000, "send more ETH to invest");
         //check if Poz investor;
@@ -260,15 +293,16 @@ contract ThePoolz {
             block.timestamp
         );
         InvestorsMap[msg.sender].push(TotalInvestors);
-        TotalInvestors++;                                      
+        TotalInvestors++;
         if (
             GetPoolStatus(_PoolId) == PoolStatus.Created &&
             IsPozInvestor(msg.sender) &&
             WithDiscount <= pools[_PoolId].Lefttokens //Got The Tokens
-        ) {          
-            uint WithDiscount = ((msg.value / pools[_PoolId].Rate) / 10000 ) * ( 10000 + PozDiscount);
+        ) {
+            uint256 WithDiscount = ((msg.value / pools[_PoolId].Rate) / 10000) *
+                (10000 + PozDiscount);
             //Only for Poz Investor, better price
-            pools[_PoolId].Lefttokens -= WithDiscount;         
+            pools[_PoolId].Lefttokens -= WithDiscount;
             if (pools[_PoolId].IsLocked) {
                 // not locked, will transfer the toke
                 Investors[TotalInvestors - 1].TokensOwn = WithDiscount;
@@ -280,22 +314,17 @@ contract ThePoolz {
                 );
                 ERC20(pools[_PoolId].Token).transfer(msg.sender, WithDiscount);
             }
-            uint EthMinusFee = msg.value/10000 * (10000-PozFee);
-            emit TransferOutETH(
-                EthMinusFee,
-                pools[_PoolId].Creator
-            );
-           pools[_PoolId].Creator.transfer(
-                EthMinusFee
-            ); // send money to project owner - the fee stays on contract
+            uint256 EthMinusFee = (msg.value / 10000) * (10000 - PozFee);
+            emit TransferOutETH(EthMinusFee, pools[_PoolId].Creator);
+            pools[_PoolId].Creator.transfer(EthMinusFee); // send money to project owner - the fee stays on contract
             if (pools[_PoolId].Lefttokens == 0) emit FinishPool(_PoolId);
             return;
         }
         if (
             GetPoolStatus(_PoolId) == PoolStatus.Open &&
             TokensAmount <= pools[_PoolId].Lefttokens //Got The Tokens
-        ) {    
-            uint TokensAmount = msg.value / pools[_PoolId].Rate;       
+        ) {
+            uint256 TokensAmount = msg.value / pools[_PoolId].Rate;
             //all can invest, no discout price
             pools[_PoolId].Lefttokens -= TokensAmount;
             if (pools[_PoolId].IsLocked) {
@@ -310,11 +339,11 @@ contract ThePoolz {
                 ERC20(pools[_PoolId].Token).transfer(msg.sender, TokensAmount);
             }
             emit TransferOutETH(
-                (msg.value/ 10000) * ( 10000 - Fee),
+                (msg.value / 10000) * (10000 - Fee),
                 pools[_PoolId].Creator
             );
             pools[_PoolId].Creator.transfer(
-                 (msg.value/ 10000) * ( 10000 - Fee)
+                (msg.value / 10000) * (10000 - Fee)
             ); // send money to project owner - the fee stays on contract
             if (pools[_PoolId].Lefttokens == 0) emit FinishPool(_PoolId);
             return;

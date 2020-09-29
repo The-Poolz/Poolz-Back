@@ -15,7 +15,7 @@ module.exports = async function(callback) {
     let date = new Date();
     for (let i = 0; i < 10; i++) {
         date.setDate(date.getDate() + 1);
-        instance.CreatePool(Test_Token.address, date.getTime(), 1, true, amount, false, { from: accounts[0] });
+        instance.CreatePool(Token.address, date.getTime(), 1, amount, false, zero_address, { from: accounts[0] });
         console.log("Loop counter = "+ i );
     }
     console.log("Cheking network...");
