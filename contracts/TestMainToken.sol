@@ -6,7 +6,7 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 /**
 * @title TestToken is a basic ERC20 Token
 */
-contract TestToken is StandardToken, Ownable{
+contract TestMainToken is StandardToken, Ownable{
 
     uint256 public totalSupply;
     string public name;
@@ -17,8 +17,8 @@ contract TestToken is StandardToken, Ownable{
     * @dev assign totalSupply to account creating this contract
     */
     constructor() public {
-        symbol = "TEST";
-        name = "TestToken";
+        symbol = "TESTM";
+        name = "TestMainToken";
         decimals = 5;
         totalSupply = 100000000000;
 
