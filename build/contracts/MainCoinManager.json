@@ -1,0 +1,2103 @@
+{
+  "contractName": "MainCoinManager",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "GetPozTimer",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_fee",
+          "type": "uint16"
+        }
+      ],
+      "name": "SetPOZFee",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "GetPOZFee",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "ERC20MainCoins",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "unpause",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "GetFee",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "paused",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_MinPoz",
+          "type": "uint256"
+        }
+      ],
+      "name": "SetMinPoz",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "GetIsPayble",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "pause",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_to",
+          "type": "address"
+        }
+      ],
+      "name": "WithdrawETHFee",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "GetMinPoz",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "SwitchIsPayble",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_MinETH",
+          "type": "uint256"
+        }
+      ],
+      "name": "SetMinETH",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_pozTimer",
+          "type": "uint16"
+        }
+      ],
+      "name": "SetPozTimer",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "GetMinDuration",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_minDuration",
+          "type": "uint16"
+        }
+      ],
+      "name": "SetMinDuration",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "GetMinETH",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_fee",
+          "type": "uint16"
+        }
+      ],
+      "name": "SetFee",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_Token",
+          "type": "address"
+        },
+        {
+          "name": "_to",
+          "type": "address"
+        }
+      ],
+      "name": "WithdrawERC20Fee",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "Token",
+          "type": "address"
+        }
+      ],
+      "name": "MainCoinAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "Token",
+          "type": "address"
+        }
+      ],
+      "name": "MainCoinRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "Amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "To",
+          "type": "address"
+        }
+      ],
+      "name": "TransferOutETH",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "Amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "From",
+          "type": "address"
+        }
+      ],
+      "name": "TransferInETH",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "Amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "To",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "Token",
+          "type": "address"
+        }
+      ],
+      "name": "TransferOut",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "Amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "From",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "Token",
+          "type": "address"
+        }
+      ],
+      "name": "TransferIn",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "Pause",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "Unpause",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipRenounced",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "AddERC20Maincoin",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "RemoveERC20Maincoin",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "IsERC20Maincoin",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.4.26+commit.4563c3fc\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"RemoveERC20Maincoin\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetPozTimer\",\"outputs\":[{\"name\":\"\",\"type\":\"uint16\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_fee\",\"type\":\"uint16\"}],\"name\":\"SetPOZFee\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetPOZFee\",\"outputs\":[{\"name\":\"\",\"type\":\"uint16\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"ERC20MainCoins\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"unpause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetFee\",\"outputs\":[{\"name\":\"\",\"type\":\"uint16\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_MinPoz\",\"type\":\"uint256\"}],\"name\":\"SetMinPoz\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetIsPayble\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_to\",\"type\":\"address\"}],\"name\":\"WithdrawETHFee\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetMinPoz\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"AddERC20Maincoin\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"SwitchIsPayble\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_MinETH\",\"type\":\"uint256\"}],\"name\":\"SetMinETH\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_pozTimer\",\"type\":\"uint16\"}],\"name\":\"SetPozTimer\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetMinDuration\",\"outputs\":[{\"name\":\"\",\"type\":\"uint16\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"IsERC20Maincoin\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_minDuration\",\"type\":\"uint16\"}],\"name\":\"SetMinDuration\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetMinETH\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_fee\",\"type\":\"uint16\"}],\"name\":\"SetFee\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_Token\",\"type\":\"address\"},{\"name\":\"_to\",\"type\":\"address\"}],\"name\":\"WithdrawERC20Fee\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"Token\",\"type\":\"address\"}],\"name\":\"MainCoinAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"Token\",\"type\":\"address\"}],\"name\":\"MainCoinRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"Amount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"To\",\"type\":\"address\"}],\"name\":\"TransferOutETH\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"Amount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"From\",\"type\":\"address\"}],\"name\":\"TransferInETH\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"Amount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"To\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"Token\",\"type\":\"address\"}],\"name\":\"TransferOut\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"Amount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"From\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"Token\",\"type\":\"address\"}],\"name\":\"TransferIn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"Pause\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"Unpause\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"}],\"name\":\"OwnershipRenounced\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"pause()\":{\"details\":\"called by the owner to pause, triggers stopped state\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"_newOwner\":\"The address to transfer ownership to.\"}},\"unpause()\":{\"details\":\"called by the owner to unpause, returns to normal state\"}}},\"userdoc\":{\"methods\":{\"renounceOwnership()\":{\"notice\":\"Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.\"}}}},\"settings\":{\"compilationTarget\":{\"/C/Users/Administrator/Desktop/Code/Poolz/contracts/MainCoinManager.sol\":\"MainCoinManager\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Administrator/Desktop/Code/Poolz/contracts/ERC20Helper.sol\":{\"keccak256\":\"0x494961c8c3c2935d038437bd4af2e6260a77ea4ea370b4a41548d27065f00ae7\",\"urls\":[\"bzzr://5f29709f348271dac0f00446e1cff34029e027829a764aa5328f2e08cca28202\"]},\"/C/Users/Administrator/Desktop/Code/Poolz/contracts/ETHHelper.sol\":{\"keccak256\":\"0x1cc88d9229a3e5adb262b2c23dec8b1133cb1b9f2df101a7071747a23282e948\",\"urls\":[\"bzzr://b3dc4c371423c373ba0f22cd942a15f08aefaec989434e1fc9d0101f557dd828\"]},\"/C/Users/Administrator/Desktop/Code/Poolz/contracts/IPOZBenefit.sol\":{\"keccak256\":\"0x71e74e571b21a9398237a262d0d178e25cd1933b4424bd20983c0adaf18c5155\",\"urls\":[\"bzzr://d1d21b01c4908413f010e2c77d8fef602999c89323de355084c9edb5276dee46\"]},\"/C/Users/Administrator/Desktop/Code/Poolz/contracts/MainCoinManager.sol\":{\"keccak256\":\"0xbaae53e1752d65370357e23e3a1353a4f7ad730365a1b422c3380e5a677b7686\",\"urls\":[\"bzzr://ca6bdf63f2683d65522069bf7b1d35e38184aa794ff64cd61680c4db014381e3\"]},\"/C/Users/Administrator/Desktop/Code/Poolz/contracts/Managable.sol\":{\"keccak256\":\"0xb178901223e5430e949131ca92c20e92ea9737ef21be1535e840a6bee165dcdd\",\"urls\":[\"bzzr://2e0648c92be187a7e3966c1b234f5b1972dfc90881c549c65d3bb4112f64692c\"]},\"/C/Users/Administrator/Desktop/Code/Poolz/contracts/POZBenefit.sol\":{\"keccak256\":\"0x2701407d6d411904b10970fd7ceea75bb47918490bf69d2672d84055845c78c2\",\"urls\":[\"bzzr://b5db454d46c5c8edb1118efc9750b3a8862e9643b9907cf713b3c40795cba3d6\"]},\"openzeppelin-solidity/contracts/lifecycle/Pausable.sol\":{\"keccak256\":\"0xc7e4c07a9b6ec87a56d4725c53bea9853ebdb36b50e233346da1c19a29f5fcc9\",\"urls\":[\"bzzr://00c60a2ceaeaea22950f100de0da8af10de31f66db76604b3b70c47f883eb570\"]},\"openzeppelin-solidity/contracts/ownership/Ownable.sol\":{\"keccak256\":\"0x84c7090c27cf3657b73d9e26b6b316975fa0bd233b8169f254de0c3b3acfaefc\",\"urls\":[\"bzzr://b983355647976c1daa5de581a1b6a41be9c5adc17cce257b8679649db78f8a11\"]},\"openzeppelin-solidity/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xd5feb2643c87547e65b8d6f1af02539b1dee1ad53046945e237eaa8ba649c93b\",\"urls\":[\"bzzr://69768215a261b30a376a901b83b1e6716e3916c9fd791ac67450c283e62212ad\"]},\"openzeppelin-solidity/contracts/token/ERC20/ERC20Basic.sol\":{\"keccak256\":\"0x516a17244073b518096ced7c8c94924cb29746ef0a4b6cc6cde125ac0406a419\",\"urls\":[\"bzzr://7addb1b5cad767651b9bcd688ba5b08769c1f3b70a470e34752a7717756d090d\"]}},\"version\":1}",
+  "bytecode": "0x608060405260008060146101000a81548160ff021916908315150217905550336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550600f600060156101000a81548161ffff021916908361ffff1602179055506103e8600060176101000a81548161ffff021916908361ffff16021790555060506001819055506000600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000600260146101000a81548160ff0219169083151502179055506127106003819055506014600460006101000a81548161ffff021916908361ffff1602179055506000600460026101000a81548161ffff021916908361ffff1602179055506114af806101546000396000f300608060405260043610610153576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168062ea921614610170578063014f3aff146101b357806311fad209146101e65780631ac8989f146102175780633037548a1461024a5780633f4ba83a146102a557806348d9614d146102bc5780635c975abb146102ef5780635ea84ad61461031e578063624dea1c1461034b578063715018a61461037a5780638456cb59146103915780638da5cb5b146103a8578063991e979a146103ff5780639baf390a14610442578063a38c65491461046d578063aac5da5c146104b0578063cbf476e5146104c7578063e05425e4146104f4578063e4dc37bb14610525578063e890671614610558578063ecf1a2c9146105b3578063f155e88e146105e4578063f2fde38b1461060f578063f8d5c26b14610652578063fc1a86ff14610683575b600260149054906101000a900460ff16151561016e57600080fd5b005b34801561017c57600080fd5b506101b1600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506106e6565b005b3480156101bf57600080fd5b506101c86107ff565b604051808261ffff1661ffff16815260200191505060405180910390f35b3480156101f257600080fd5b50610215600480360381019080803561ffff169060200190929190505050610816565b005b34801561022357600080fd5b5061022c6108c7565b604051808261ffff1661ffff16815260200191505060405180910390f35b34801561025657600080fd5b5061028b600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506108de565b604051808215151515815260200191505060405180910390f35b3480156102b157600080fd5b506102ba6108fe565b005b3480156102c857600080fd5b506102d16109bc565b604051808261ffff1661ffff16815260200191505060405180910390f35b3480156102fb57600080fd5b506103046109d4565b604051808215151515815260200191505060405180910390f35b34801561032a57600080fd5b50610349600480360381019080803590602001909291905050506109e7565b005b34801561035757600080fd5b50610360610a4c565b604051808215151515815260200191505060405180910390f35b34801561038657600080fd5b5061038f610a63565b005b34801561039d57600080fd5b506103a6610b65565b005b3480156103b457600080fd5b506103bd610c25565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561040b57600080fd5b50610440600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610c4a565b005b34801561044e57600080fd5b50610457610d06565b6040518082815260200191505060405180910390f35b34801561047957600080fd5b506104ae600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610d10565b005b3480156104bc57600080fd5b506104c5610e29565b005b3480156104d357600080fd5b506104f260048036038101908080359060200190929190505050610eb0565b005b34801561050057600080fd5b50610523600480360381019080803561ffff169060200190929190505050610f15565b005b34801561053157600080fd5b5061053a610fa1565b604051808261ffff1661ffff16815260200191505060405180910390f35b34801561056457600080fd5b50610599600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610fb9565b604051808215151515815260200191505060405180910390f35b3480156105bf57600080fd5b506105e2600480360381019080803561ffff16906020019092919050505061100f565b005b3480156105f057600080fd5b506105f961108a565b6040518082815260200191505060405180910390f35b34801561061b57600080fd5b50610650600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050611094565b005b34801561065e57600080fd5b50610681600480360381019080803561ffff1690602001909291905050506110fb565b005b34801561068f57600080fd5b506106e4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050611176565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561074157600080fd5b7f46e7a65ed7662dc42b119afa3a03fc8474ed27a5a48d664c0b5e8b87b04184cf81604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a16000600560008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff02191690831515021790555050565b60008060179054906101000a900461ffff16905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561087157600080fd5b806127108161ffff1610156108c35781600460009054906101000a900461ffff168061ffff168261ffff1611156108c05783600060156101000a81548161ffff021916908361ffff1602179055505b50505b5050565b60008060159054906101000a900461ffff16905090565b60056020528060005260406000206000915054906101000a900460ff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561095957600080fd5b600060149054906101000a900460ff16151561097457600080fd5b60008060146101000a81548160ff0219169083151502179055507f7805862f689e2f13df9f062ff482ad3ad112aca9e0847911ed832e158c525b3360405160405180910390a1565b6000600460009054906101000a900461ffff16905090565b600060149054906101000a900460ff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610a4257600080fd5b8060018190555050565b6000600260149054906101000a900460ff16905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610abe57600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167ff8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c6482060405160405180910390a260008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610bc057600080fd5b600060149054906101000a900460ff16151515610bdc57600080fd5b6001600060146101000a81548160ff0219169083151502179055507f6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff62560405160405180910390a1565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610ca557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f19350505050158015610d02573d6000803e3d6000fd5b5050565b6000600154905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610d6b57600080fd5b7f8b732648ec6304b6125c30b24aa7c51736b4c10b079067109e27cbb1e2e9052581604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a16001600560008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff02191690831515021790555050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610e8457600080fd5b600260149054906101000a900460ff1615600260146101000a81548160ff021916908315150217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610f0b57600080fd5b8060038190555050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610f7057600080fd5b806127108161ffff161015610f9d5781600060176101000a81548161ffff021916908361ffff1602179055505b5050565b6000600460009054906101000a900461ffff16905090565b6000600560008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff169050919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561106a57600080fd5b80600460026101000a81548161ffff021916908361ffff16021790555050565b6000600354905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156110ef57600080fd5b6110f881611389565b50565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561115657600080fd5b80600460006101000a81548161ffff021916908361ffff16021790555050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156111d157600080fd5b8173ffffffffffffffffffffffffffffffffffffffff1663a9059cbb828473ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561128957600080fd5b505af115801561129d573d6000803e3d6000fd5b505050506040513d60208110156112b357600080fd5b81019080805190602001909291905050506040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b15801561134957600080fd5b505af115801561135d573d6000803e3d6000fd5b505050506040513d602081101561137357600080fd5b8101908080519060200190929190505050505050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156113c557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820de77b64d71967b21b18143968d449c3d52911e4d41321320bcfd472e77ba68a40029",
+  "deployedBytecode": "0x608060405260043610610153576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168062ea921614610170578063014f3aff146101b357806311fad209146101e65780631ac8989f146102175780633037548a1461024a5780633f4ba83a146102a557806348d9614d146102bc5780635c975abb146102ef5780635ea84ad61461031e578063624dea1c1461034b578063715018a61461037a5780638456cb59146103915780638da5cb5b146103a8578063991e979a146103ff5780639baf390a14610442578063a38c65491461046d578063aac5da5c146104b0578063cbf476e5146104c7578063e05425e4146104f4578063e4dc37bb14610525578063e890671614610558578063ecf1a2c9146105b3578063f155e88e146105e4578063f2fde38b1461060f578063f8d5c26b14610652578063fc1a86ff14610683575b600260149054906101000a900460ff16151561016e57600080fd5b005b34801561017c57600080fd5b506101b1600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506106e6565b005b3480156101bf57600080fd5b506101c86107ff565b604051808261ffff1661ffff16815260200191505060405180910390f35b3480156101f257600080fd5b50610215600480360381019080803561ffff169060200190929190505050610816565b005b34801561022357600080fd5b5061022c6108c7565b604051808261ffff1661ffff16815260200191505060405180910390f35b34801561025657600080fd5b5061028b600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506108de565b604051808215151515815260200191505060405180910390f35b3480156102b157600080fd5b506102ba6108fe565b005b3480156102c857600080fd5b506102d16109bc565b604051808261ffff1661ffff16815260200191505060405180910390f35b3480156102fb57600080fd5b506103046109d4565b604051808215151515815260200191505060405180910390f35b34801561032a57600080fd5b50610349600480360381019080803590602001909291905050506109e7565b005b34801561035757600080fd5b50610360610a4c565b604051808215151515815260200191505060405180910390f35b34801561038657600080fd5b5061038f610a63565b005b34801561039d57600080fd5b506103a6610b65565b005b3480156103b457600080fd5b506103bd610c25565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561040b57600080fd5b50610440600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610c4a565b005b34801561044e57600080fd5b50610457610d06565b6040518082815260200191505060405180910390f35b34801561047957600080fd5b506104ae600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610d10565b005b3480156104bc57600080fd5b506104c5610e29565b005b3480156104d357600080fd5b506104f260048036038101908080359060200190929190505050610eb0565b005b34801561050057600080fd5b50610523600480360381019080803561ffff169060200190929190505050610f15565b005b34801561053157600080fd5b5061053a610fa1565b604051808261ffff1661ffff16815260200191505060405180910390f35b34801561056457600080fd5b50610599600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610fb9565b604051808215151515815260200191505060405180910390f35b3480156105bf57600080fd5b506105e2600480360381019080803561ffff16906020019092919050505061100f565b005b3480156105f057600080fd5b506105f961108a565b6040518082815260200191505060405180910390f35b34801561061b57600080fd5b50610650600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050611094565b005b34801561065e57600080fd5b50610681600480360381019080803561ffff1690602001909291905050506110fb565b005b34801561068f57600080fd5b506106e4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050611176565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561074157600080fd5b7f46e7a65ed7662dc42b119afa3a03fc8474ed27a5a48d664c0b5e8b87b04184cf81604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a16000600560008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff02191690831515021790555050565b60008060179054906101000a900461ffff16905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561087157600080fd5b806127108161ffff1610156108c35781600460009054906101000a900461ffff168061ffff168261ffff1611156108c05783600060156101000a81548161ffff021916908361ffff1602179055505b50505b5050565b60008060159054906101000a900461ffff16905090565b60056020528060005260406000206000915054906101000a900460ff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561095957600080fd5b600060149054906101000a900460ff16151561097457600080fd5b60008060146101000a81548160ff0219169083151502179055507f7805862f689e2f13df9f062ff482ad3ad112aca9e0847911ed832e158c525b3360405160405180910390a1565b6000600460009054906101000a900461ffff16905090565b600060149054906101000a900460ff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610a4257600080fd5b8060018190555050565b6000600260149054906101000a900460ff16905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610abe57600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167ff8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c6482060405160405180910390a260008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610bc057600080fd5b600060149054906101000a900460ff16151515610bdc57600080fd5b6001600060146101000a81548160ff0219169083151502179055507f6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff62560405160405180910390a1565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610ca557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f19350505050158015610d02573d6000803e3d6000fd5b5050565b6000600154905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610d6b57600080fd5b7f8b732648ec6304b6125c30b24aa7c51736b4c10b079067109e27cbb1e2e9052581604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a16001600560008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff02191690831515021790555050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610e8457600080fd5b600260149054906101000a900460ff1615600260146101000a81548160ff021916908315150217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610f0b57600080fd5b8060038190555050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610f7057600080fd5b806127108161ffff161015610f9d5781600060176101000a81548161ffff021916908361ffff1602179055505b5050565b6000600460009054906101000a900461ffff16905090565b6000600560008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff169050919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561106a57600080fd5b80600460026101000a81548161ffff021916908361ffff16021790555050565b6000600354905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156110ef57600080fd5b6110f881611389565b50565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561115657600080fd5b80600460006101000a81548161ffff021916908361ffff16021790555050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156111d157600080fd5b8173ffffffffffffffffffffffffffffffffffffffff1663a9059cbb828473ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561128957600080fd5b505af115801561129d573d6000803e3d6000fd5b505050506040513d60208110156112b357600080fd5b81019080805190602001909291905050506040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b15801561134957600080fd5b505af115801561135d573d6000803e3d6000fd5b505050506040513d602081101561137357600080fd5b8101908080519060200190929190505050505050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156113c557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820de77b64d71967b21b18143968d449c3d52911e4d41321320bcfd472e77ba68a40029",
+  "sourceMap": "94:672:7:-;;;268:5:17;247:26;;;;;;;;;;;;;;;;;;;;575:10:19;567:5;;:18;;;;;;;;;;;;;;;;;;280:2:10;271:6;;:11;;;;;;;;;;;;;;;;;;314:4;303:8;;:15;;;;;;;;;;;;;;;;;;348:2;339:6;:11;;;;402:3;380:11;;:26;;;;;;;;;;;;;;;;;;173:5:1;162:8;;:16;;;;;;;;;;;;;;;;;;198:5;189:6;:14;;;;169:2:8;163:3;;:8;;;;;;;;;;;;;;;;;;206:1;192:11;;:15;;;;;;;;;;;;;;;;;;94:672:7;;;;;;",
+  "deployedSourceMap": "94:672:7:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;530:8:1;;;;;;;;;;;529:9;525:23;;;540:8;;;525:23;94:672:7;489:150;;8:9:-1;5:2;;;30:1;27;20:12;5:2;489:150:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;902:86:10;;8:9:-1;5:2;;;30:1;27;20:12;5:2;902:86:10;;;;;;;;;;;;;;;;;;;;;;;;;;;881:167:8;;8:9:-1;5:2;;;30:1;27;20:12;5:2;881:167:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;1157:82:10;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1157:82:10;;;;;;;;;;;;;;;;;;;;;;;;;;;227:46:7;;8:9:-1;5:2;;;30:1;27;20:12;5:2;227:46:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;838:92:17;;8:9:-1;5:2;;;30:1;27;20:12;5:2;838:92:17;;;;;;714:76:8;;8:9:-1;5:2;;;30:1;27;20:12;5:2;714:76:8;;;;;;;;;;;;;;;;;;;;;;;;;;;247:26:17;;8:9:-1;5:2;;;30:1;27;20:12;5:2;247:26:17;;;;;;;;;;;;;;;;;;;;;;;;;;;1338:88:10;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1338:88:10;;;;;;;;;;;;;;;;;;;;;;;;;;739:84:1;;8:9:-1;5:2;;;30:1;27;20:12;5:2;739:84:1;;;;;;;;;;;;;;;;;;;;;;;;;;;1001:111:19;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1001:111:19;;;;;;666:90:17;;8:9:-1;5:2;;;30:1;27;20:12;5:2;666:90:17;;;;;;238:20:19;;8:9:-1;5:2;;;30:1;27;20:12;5:2;238:20:19;;;;;;;;;;;;;;;;;;;;;;;;;;;1056:178:8;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1056:178:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;1247:83:10;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1247:83:10;;;;;;;;;;;;;;;;;;;;;;;337:144:7;;8:9:-1;5:2;;;30:1;27;20:12;5:2;337:144:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;831:105:1;;8:9:-1;5:2;;;30:1;27;20:12;5:2;831:105:1;;;;;;1037:88;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1037:88:1;;;;;;;;;;;;;;;;;;;;;;;;;;996:153:10;;8:9:-1;5:2;;;30:1;27;20:12;5:2;996:153:10;;;;;;;;;;;;;;;;;;;;;;;;;;;;505:84:8;;8:9:-1;5:2;;;30:1;27;20:12;5:2;505:84:8;;;;;;;;;;;;;;;;;;;;;;;;;;;647:116:7;;8:9:-1;5:2;;;30:1;27;20:12;5:2;647:116:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;597:107:8;;8:9:-1;5:2;;;30:1;27;20:12;5:2;597:107:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;946:83:1;;8:9:-1;5:2;;;30:1;27;20:12;5:2;946:83:1;;;;;;;;;;;;;;;;;;;;;;;1274:103:19;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1274:103:19;;;;;;;;;;;;;;;;;;;;;;;;;;;;798:75:8;;8:9:-1;5:2;;;30:1;27;20:12;5:2;798:75:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;1242:158;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1242:158:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;489:150:7;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;567:23:7;583:6;567:23;;;;;;;;;;;;;;;;;;;;;;626:5;601:14;:22;616:6;601:22;;;;;;;;;;;;;;;;:30;;;;;;;;;;;;;;;;;;489:150;:::o;902:86:10:-;946:6;972:8;;;;;;;;;;;965:15;;902:86;:::o;881:167:8:-;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;972:4:8;783:5:10;772:8;:16;;;768:23;;;1000:4:8;1006:3;;;;;;;;;;;877:6:10;869:14;;:5;:14;;;866:20;;;1036:4:8;1027:6;;:13;;;;;;;;;;;;;;;;;;866:20:10;790:1;;768:23;731:1:19;881:167:8;:::o;1157:82:10:-;1199:6;1225;;;;;;;;;;;1218:13;;1157:82;:::o;227:46:7:-;;;;;;;;;;;;;;;;;;;;;;:::o;838:92:17:-;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;568:6:17;;;;;;;;;;;560:15;;;;;;;;900:5;891:6;;:14;;;;;;;;;;;;;;;;;;916:9;;;;;;;;;;838:92::o;714:76:8:-;753:6;779:3;;;;;;;;;;;772:10;;714:76;:::o;247:26:17:-;;;;;;;;;;;;;:::o;1338:88:10:-;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;1411:7:10;1402:6;:16;;;;1338:88;:::o;739:84:1:-;783:4;807:8;;;;;;;;;;;800:15;;739:84;:::o;1001:111:19:-;719:5;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;1077:5;;;;;;;;;;;1058:25;;;;;;;;;;;;1105:1;1089:5;;:18;;;;;;;;;;;;;;;;;;1001:111::o;666:90:17:-;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;416:6:17;;;;;;;;;;;415:7;407:16;;;;;;;;729:4;720:6;;:13;;;;;;;;;;;;;;;;;;744:7;;;;;;;;;;666:90::o;238:20:19:-;;;;;;;;;;;;;:::o;1056:178:8:-;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;1121:3:8;:12;;:35;1142:4;1134:21;;;1121:35;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1121:35:8;1056:178;:::o;1247:83:10:-;1289:7;1316:6;;1309:13;;1247:83;:::o;337:144:7:-;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;412:21:7;426:6;412:21;;;;;;;;;;;;;;;;;;;;;;469:4;444:14;:22;459:6;444:22;;;;;;;;;;;;;;;;:29;;;;;;;;;;;;;;;;;;337:144;:::o;831:105:1:-;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;920:8:1;;;;;;;;;;;919:9;908:8;;:20;;;;;;;;;;;;;;;;;;831:105::o;1037:88::-;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;1110:7:1;1101:6;:16;;;;1037:88;:::o;996:153:10:-;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;1094:9:10;783:5;772:8;:16;;;768:23;;;1132:9;1121:8;;:20;;;;;;;;;;;;;;;;;;768:23;731:1:19;996:153:10;:::o;505:84:8:-;552:6;578:3;;;;;;;;;;;571:10;;505:84;:::o;647:116:7:-;709:4;733:14;:22;748:6;733:22;;;;;;;;;;;;;;;;;;;;;;;;;726:29;;647:116;;;:::o;597:107:8:-;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;684:12:8;670:11;;:26;;;;;;;;;;;;;;;;;;597:107;:::o;946:83:1:-;988:7;1015:6;;1008:13;;946:83;:::o;1274:103:19:-;719:5;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;1343:29;1362:9;1343:18;:29::i;:::-;1274:103;:::o;798:75:8:-;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;861:4:8;855:3;;:10;;;;;;;;;;;;;;;;;;798:75;:::o;1242:158::-;719:5:19;;;;;;;;;;;705:19;;:10;:19;;;697:28;;;;;;;;1331:6:8;1325:22;;;1348:3;1359:6;1353:23;;;1385:4;1353:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1353:38:8;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1353:38:8;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1353:38:8;;;;;;;;;;;;;;;;1325:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1325:67:8;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1325:67:8;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1325:67:8;;;;;;;;;;;;;;;;;1242:158;;:::o;1512:171:19:-;1603:1;1582:23;;:9;:23;;;;1574:32;;;;;;;;1645:9;1617:38;;1638:5;;;;;;;;;;;1617:38;;;;;;;;;;;;1669:9;1661:5;;:17;;;;;;;;;;;;;;;;;;1512:171;:::o",
+  "source": "\r\n// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.4.24;\r\n\r\nimport \"./Managable.sol\";\r\n\r\ncontract MainCoinManager is Managable {\r\n    event MainCoinAdded (address Token);\r\n    event MainCoinRemoved (address Token);\r\n\r\n    mapping(address => bool) public ERC20MainCoins; //when approve new erc20 main coin - it will list here\r\n\r\n    function AddERC20Maincoin(address _token) public onlyOwner {\r\n        emit MainCoinAdded(_token);\r\n        ERC20MainCoins[_token] = true;\r\n    }\r\n\r\n    function RemoveERC20Maincoin(address _token) public onlyOwner {\r\n        emit MainCoinRemoved(_token);\r\n        ERC20MainCoins[_token] = false;\r\n    }\r\n\r\n    function IsERC20Maincoin(address _token) public view returns (bool) {\r\n        return ERC20MainCoins[_token];\r\n    }\r\n}",
+  "sourcePath": "C:\\Users\\Administrator\\Desktop\\Code\\Poolz\\contracts\\MainCoinManager.sol",
+  "ast": {
+    "absolutePath": "/C/Users/Administrator/Desktop/Code/Poolz/contracts/MainCoinManager.sol",
+    "exportedSymbols": {
+      "MainCoinManager": [
+        2554
+      ]
+    },
+    "id": 2555,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2490,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:24:7"
+      },
+      {
+        "absolutePath": "/C/Users/Administrator/Desktop/Code/Poolz/contracts/Managable.sol",
+        "file": "./Managable.sol",
+        "id": 2491,
+        "nodeType": "ImportDirective",
+        "scope": 2555,
+        "sourceUnit": 2688,
+        "src": "65:25:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 2492,
+              "name": "Managable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2687,
+              "src": "122:9:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Managable_$2687",
+                "typeString": "contract Managable"
+              }
+            },
+            "id": 2493,
+            "nodeType": "InheritanceSpecifier",
+            "src": "122:9:7"
+          }
+        ],
+        "contractDependencies": [
+          138,
+          262,
+          2687,
+          2864,
+          3882,
+          4062
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 2554,
+        "linearizedBaseContracts": [
+          2554,
+          2687,
+          262,
+          2864,
+          138,
+          3882,
+          4062
+        ],
+        "name": "MainCoinManager",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 2497,
+            "name": "MainCoinAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2496,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2495,
+                  "indexed": false,
+                  "name": "Token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2497,
+                  "src": "160:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2494,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "160:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "159:15:7"
+            },
+            "src": "139:36:7"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 2501,
+            "name": "MainCoinRemoved",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2500,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2499,
+                  "indexed": false,
+                  "name": "Token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2501,
+                  "src": "204:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2498,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "204:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "203:15:7"
+            },
+            "src": "181:38:7"
+          },
+          {
+            "constant": false,
+            "id": 2505,
+            "name": "ERC20MainCoins",
+            "nodeType": "VariableDeclaration",
+            "scope": 2554,
+            "src": "227:46:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+              "typeString": "mapping(address => bool)"
+            },
+            "typeName": {
+              "id": 2504,
+              "keyType": {
+                "id": 2502,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "235:7:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "227:24:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                "typeString": "mapping(address => bool)"
+              },
+              "valueType": {
+                "id": 2503,
+                "name": "bool",
+                "nodeType": "ElementaryTypeName",
+                "src": "246:4:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2522,
+              "nodeType": "Block",
+              "src": "396:85:7",
+              "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 2513,
+                        "name": "_token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2507,
+                        "src": "426:6:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 2512,
+                      "name": "MainCoinAdded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2497,
+                      "src": "412:13:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 2514,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "412:21:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2515,
+                  "nodeType": "EmitStatement",
+                  "src": "407:26:7"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 2520,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 2516,
+                        "name": "ERC20MainCoins",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2505,
+                        "src": "444:14:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                          "typeString": "mapping(address => bool)"
+                        }
+                      },
+                      "id": 2518,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 2517,
+                        "name": "_token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2507,
+                        "src": "459:6:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "444:22:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "74727565",
+                      "id": 2519,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "469:4:7",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "444:29:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 2521,
+                  "nodeType": "ExpressionStatement",
+                  "src": "444:29:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 2523,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 2510,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 2509,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 4010,
+                  "src": "386:9:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "386:9:7"
+              }
+            ],
+            "name": "AddERC20Maincoin",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2508,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2507,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2523,
+                  "src": "363:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2506,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "363:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "362:16:7"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2511,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "396:0:7"
+            },
+            "scope": 2554,
+            "src": "337:144:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2540,
+              "nodeType": "Block",
+              "src": "551:88:7",
+              "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 2531,
+                        "name": "_token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2525,
+                        "src": "583:6:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 2530,
+                      "name": "MainCoinRemoved",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2501,
+                      "src": "567:15:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 2532,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "567:23:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2533,
+                  "nodeType": "EmitStatement",
+                  "src": "562:28:7"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 2538,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 2534,
+                        "name": "ERC20MainCoins",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2505,
+                        "src": "601:14:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                          "typeString": "mapping(address => bool)"
+                        }
+                      },
+                      "id": 2536,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 2535,
+                        "name": "_token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2525,
+                        "src": "616:6:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "601:22:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "66616c7365",
+                      "id": 2537,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "626:5:7",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "false"
+                    },
+                    "src": "601:30:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 2539,
+                  "nodeType": "ExpressionStatement",
+                  "src": "601:30:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 2541,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 2528,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 2527,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 4010,
+                  "src": "541:9:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "541:9:7"
+              }
+            ],
+            "name": "RemoveERC20Maincoin",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2526,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2525,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2541,
+                  "src": "518:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2524,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "518:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "517:16:7"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2529,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "551:0:7"
+            },
+            "scope": 2554,
+            "src": "489:150:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2552,
+              "nodeType": "Block",
+              "src": "715:48:7",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 2548,
+                      "name": "ERC20MainCoins",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2505,
+                      "src": "733:14:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                        "typeString": "mapping(address => bool)"
+                      }
+                    },
+                    "id": 2550,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 2549,
+                      "name": "_token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2543,
+                      "src": "748:6:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "733:22:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 2547,
+                  "id": 2551,
+                  "nodeType": "Return",
+                  "src": "726:29:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 2553,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "IsERC20Maincoin",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2544,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2543,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2553,
+                  "src": "672:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2542,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "672:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "671:16:7"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2547,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2546,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2553,
+                  "src": "709:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2545,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "709:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "708:6:7"
+            },
+            "scope": 2554,
+            "src": "647:116:7",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 2555,
+        "src": "94:672:7"
+      }
+    ],
+    "src": "37:729:7"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Users/Administrator/Desktop/Code/Poolz/contracts/MainCoinManager.sol",
+    "exportedSymbols": {
+      "MainCoinManager": [
+        2554
+      ]
+    },
+    "id": 2555,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2490,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:24:7"
+      },
+      {
+        "absolutePath": "/C/Users/Administrator/Desktop/Code/Poolz/contracts/Managable.sol",
+        "file": "./Managable.sol",
+        "id": 2491,
+        "nodeType": "ImportDirective",
+        "scope": 2555,
+        "sourceUnit": 2688,
+        "src": "65:25:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 2492,
+              "name": "Managable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2687,
+              "src": "122:9:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Managable_$2687",
+                "typeString": "contract Managable"
+              }
+            },
+            "id": 2493,
+            "nodeType": "InheritanceSpecifier",
+            "src": "122:9:7"
+          }
+        ],
+        "contractDependencies": [
+          138,
+          262,
+          2687,
+          2864,
+          3882,
+          4062
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 2554,
+        "linearizedBaseContracts": [
+          2554,
+          2687,
+          262,
+          2864,
+          138,
+          3882,
+          4062
+        ],
+        "name": "MainCoinManager",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 2497,
+            "name": "MainCoinAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2496,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2495,
+                  "indexed": false,
+                  "name": "Token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2497,
+                  "src": "160:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2494,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "160:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "159:15:7"
+            },
+            "src": "139:36:7"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 2501,
+            "name": "MainCoinRemoved",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2500,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2499,
+                  "indexed": false,
+                  "name": "Token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2501,
+                  "src": "204:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2498,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "204:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "203:15:7"
+            },
+            "src": "181:38:7"
+          },
+          {
+            "constant": false,
+            "id": 2505,
+            "name": "ERC20MainCoins",
+            "nodeType": "VariableDeclaration",
+            "scope": 2554,
+            "src": "227:46:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+              "typeString": "mapping(address => bool)"
+            },
+            "typeName": {
+              "id": 2504,
+              "keyType": {
+                "id": 2502,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "235:7:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "227:24:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                "typeString": "mapping(address => bool)"
+              },
+              "valueType": {
+                "id": 2503,
+                "name": "bool",
+                "nodeType": "ElementaryTypeName",
+                "src": "246:4:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2522,
+              "nodeType": "Block",
+              "src": "396:85:7",
+              "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 2513,
+                        "name": "_token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2507,
+                        "src": "426:6:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 2512,
+                      "name": "MainCoinAdded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2497,
+                      "src": "412:13:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 2514,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "412:21:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2515,
+                  "nodeType": "EmitStatement",
+                  "src": "407:26:7"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 2520,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 2516,
+                        "name": "ERC20MainCoins",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2505,
+                        "src": "444:14:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                          "typeString": "mapping(address => bool)"
+                        }
+                      },
+                      "id": 2518,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 2517,
+                        "name": "_token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2507,
+                        "src": "459:6:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "444:22:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "74727565",
+                      "id": 2519,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "469:4:7",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "444:29:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 2521,
+                  "nodeType": "ExpressionStatement",
+                  "src": "444:29:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 2523,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 2510,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 2509,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 4010,
+                  "src": "386:9:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "386:9:7"
+              }
+            ],
+            "name": "AddERC20Maincoin",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2508,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2507,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2523,
+                  "src": "363:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2506,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "363:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "362:16:7"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2511,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "396:0:7"
+            },
+            "scope": 2554,
+            "src": "337:144:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2540,
+              "nodeType": "Block",
+              "src": "551:88:7",
+              "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 2531,
+                        "name": "_token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2525,
+                        "src": "583:6:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 2530,
+                      "name": "MainCoinRemoved",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2501,
+                      "src": "567:15:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 2532,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "567:23:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2533,
+                  "nodeType": "EmitStatement",
+                  "src": "562:28:7"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 2538,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 2534,
+                        "name": "ERC20MainCoins",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2505,
+                        "src": "601:14:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                          "typeString": "mapping(address => bool)"
+                        }
+                      },
+                      "id": 2536,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 2535,
+                        "name": "_token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2525,
+                        "src": "616:6:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "601:22:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "66616c7365",
+                      "id": 2537,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "626:5:7",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "false"
+                    },
+                    "src": "601:30:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 2539,
+                  "nodeType": "ExpressionStatement",
+                  "src": "601:30:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 2541,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 2528,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 2527,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 4010,
+                  "src": "541:9:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "541:9:7"
+              }
+            ],
+            "name": "RemoveERC20Maincoin",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2526,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2525,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2541,
+                  "src": "518:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2524,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "518:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "517:16:7"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2529,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "551:0:7"
+            },
+            "scope": 2554,
+            "src": "489:150:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2552,
+              "nodeType": "Block",
+              "src": "715:48:7",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 2548,
+                      "name": "ERC20MainCoins",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2505,
+                      "src": "733:14:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                        "typeString": "mapping(address => bool)"
+                      }
+                    },
+                    "id": 2550,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 2549,
+                      "name": "_token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2543,
+                      "src": "748:6:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "733:22:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 2547,
+                  "id": 2551,
+                  "nodeType": "Return",
+                  "src": "726:29:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 2553,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "IsERC20Maincoin",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2544,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2543,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2553,
+                  "src": "672:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2542,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "672:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "671:16:7"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2547,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2546,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2553,
+                  "src": "709:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2545,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "709:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "708:6:7"
+            },
+            "scope": 2554,
+            "src": "647:116:7",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 2555,
+        "src": "94:672:7"
+      }
+    ],
+    "src": "37:729:7"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.26+commit.4563c3fc.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.2.5",
+  "updatedAt": "2020-10-01T12:53:15.913Z",
+  "devdoc": {
+    "methods": {
+      "pause()": {
+        "details": "called by the owner to pause, triggers stopped state"
+      },
+      "renounceOwnership()": {
+        "details": "Allows the current owner to relinquish control of the contract."
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "_newOwner": "The address to transfer ownership to."
+        }
+      },
+      "unpause()": {
+        "details": "called by the owner to unpause, returns to normal state"
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "renounceOwnership()": {
+        "notice": "Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore."
+      }
+    }
+  }
+}

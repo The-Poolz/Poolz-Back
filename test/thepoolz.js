@@ -82,11 +82,11 @@ it("Other Payments, add as admin", async () => {
   let IspayableToken = await instance.IsERC20Maincoin(Token.address);
   assert.isFalse(IspayableToken);
   instance.AddERC20Maincoin(Token.address,{ from: accounts[0] });
-  IspayableToken = await instance.IsERC20Maincoin(Token.address);
-  assert.isTrue(IspayableToken);
+  let IspayableToken2 = await instance.IsERC20Maincoin(Token.address);
+  assert.isTrue(IspayableToken2);
   instance.RemoveERC20Maincoin(Token.address,{ from: accounts[0] });
-  IspayableToken = await instance.IsERC20Maincoin(Token.address);
-  assert.isFalse(IspayableToken);
+  let IspayableToken3 = await instance.IsERC20Maincoin(Token.address);
+  assert.isFalse(IspayableToken3);
 });
 it("fail to take LeftOvers before time", async () => {
   let instance = await ThePoolz.deployed();
@@ -104,7 +104,8 @@ it("Crate 0 duration pool, take leftovers", async () => {
   instance.CreatePool(Token.address, Math.floor(date.getTime()/1000)+60, rate,rate, amount, false, zero_address, { from: accounts[0] });
   await timeMachine.advanceTimeAndBlock(120*60);
   await timeMachine.advanceTimeAndBlock(120*60);
-  instance.WithdrawLeftOvers(0,{ from: accounts[0] });
+  await instance.WithdrawLeftOvers(0,{ from: accounts[0] });
+  //assert.isTrue(tookLeftOvers.value);
   let EndBalance = await Token.balanceOf(accounts[0]);
   assert.equal(EndBalance.toNumber(),StartBalance.toNumber());
 });
@@ -121,11 +122,11 @@ it("Other Payments, add as admin", async () => {
   let IspayableToken = await instance.IsERC20Maincoin(Maincoint.address);
   assert.isFalse(IspayableToken);
   instance.AddERC20Maincoin(Maincoint.address,{ from: accounts[0] });
-  IspayableToken = await instance.IsERC20Maincoin(Maincoint.address);
-  assert.isTrue(IspayableToken);
+  let IspayableToken2 = await instance.IsERC20Maincoin(Maincoint.address);
+  assert.isTrue(IspayableToken2);
   instance.RemoveERC20Maincoin(Maincoint.address,{ from: accounts[0] });
-  IspayableToken = await instance.IsERC20Maincoin(Maincoint.address);
-  assert.isFalse(IspayableToken);
+  let IspayableToken3 = await instance.IsERC20Maincoin(Maincoint.address);
+  assert.isFalse(IspayableToken3);
 });it("Open a pool with main coin,invest with main coin", async () => {
   let date = new Date();
   date.setDate(date.getDate() + 1);   // add a day
@@ -134,11 +135,9 @@ it("Other Payments, add as admin", async () => {
   let accounts = await web3.eth.getAccounts();
   let Token = await TestToken.deployed();
   let Maincoint = await TestMainToken.deployed();
-  instance.AddERC20Maincoin(Maincoint.address,{ from: accounts[0] });
-  await Token.approve(instance.address, amount, { from: accounts[0] });
-  IspayableToken = await instance.IsERC20Maincoin(Maincoint.address);
-  assert.isTrue(IspayableToken);
+  await instance.AddERC20Maincoin(Maincoint.address,{ from: accounts[0] });
   await Maincoint.transfer(accounts[1],amount,{from: accounts[0] });
+  await Token.approve(instance.address, amount, { from: accounts[0] });
   await instance.CreatePool(Token.address,Math.floor(date.getTime()/1000)+60,rate, rate,amount,false,Maincoint.address,{ from: accounts[0] });
   await Maincoint.approve(instance.address, amount, { from: accounts[1] });
   await instance.InvestERC20(0,amount,{ from: accounts[1] });
