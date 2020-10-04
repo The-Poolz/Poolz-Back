@@ -9,7 +9,7 @@ contract Managable is ETHHelper {
         Fee = 20; // *10000
         MinDuration = 0; //need to set
     }
-
+    mapping (address => uint256) FeeMap;
     //@dev for percent use uint16
     uint16 internal Fee; //the fee for the pool
     uint16 internal MinDuration; //the minimum duration of a pool, in seconds
@@ -46,7 +46,8 @@ contract Managable is ETHHelper {
         _to.transfer(address(this).balance); // keeps only fee eth on contract //To Do need to take 16% to burn!!!
     }
 
-    function WithdrawERC20Fee(address _Token, address _to) public onlyOwner {
-        ERC20(_Token).transfer(_to, ERC20(_Token).balanceOf(address(this)));
+    function WithdrawERC20Fee(address _Token, address _to) public onlyOwner {    
+        ERC20(_Token).transfer(_to, FeeMap[_Token]);
+        FeeMap[_Token] = 0 ;
     }
 }

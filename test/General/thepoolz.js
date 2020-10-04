@@ -93,19 +93,20 @@ it("fail to take LeftOvers before time", async () => {
   let accounts = await web3.eth.getAccounts();
   truffleAssert.reverts(instance.WithdrawLeftOvers(0,{ from: accounts[0] }));
 });
-it("Crate 0 duration pool, take leftovers", async () => {
+it("take leftovers from finish pool", async () => {
   let instance = await ThePoolz.new();
   let accounts = await web3.eth.getAccounts();
   let Token = await TestToken.new();
   let StartBalance = await Token.balanceOf(accounts[0]);
-  await Token.approve(instance.address, amount, { from: accounts[0] });
   let date = new Date();
   await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime()/1000));
-  instance.CreatePool(Token.address, Math.floor(date.getTime()/1000)+60, rate,rate, amount, false, zero_address, { from: accounts[0] });
+  console.log("pools "+await instance.GetLastPoolId());
+  await Token.approve(instance.address, amount, { from: accounts[0] });
+  await instance.CreatePool(Token.address, Math.floor(date.getTime()/1000)+60, rate,rate, amount, false, zero_address, { from: accounts[0] });
+  console.log("pools "+await instance.GetLastPoolId());
   await timeMachine.advanceTimeAndBlock(120*60);
   await timeMachine.advanceTimeAndBlock(120*60);
   await instance.WithdrawLeftOvers(0,{ from: accounts[0] });
-  //assert.isTrue(tookLeftOvers.value);
   let EndBalance = await Token.balanceOf(accounts[0]);
   assert.equal(EndBalance.toNumber(),StartBalance.toNumber());
 });
@@ -145,3 +146,4 @@ it("Other Payments, add as admin", async () => {
   assert.equal(afterBalance.toNumber(),0,  "Got the Tokens minus fee");
 });
 });
+

@@ -5,7 +5,7 @@ import "./PoolsData.sol";
 
 contract Invest is PoolsData {
      //Investorsr Data
-    uint256 TotalInvestors;
+    uint256 internal TotalInvestors;
     mapping(uint256 => Investor) Investors;
     mapping(address => uint256[]) InvestorsMap;
     struct Investor {
@@ -16,8 +16,7 @@ contract Invest is PoolsData {
         uint256 TokensOwn; //the amount of Tokens the investor needto get from the contract
         uint256 InvestTime; //the time that investment made
     }
-
-    //@dev Send in wei
+      //@dev Send in wei
     function InvestETH(uint256 _PoolId) external payable ReceivETH(msg.value,msg.sender) {
         require(_PoolId < poolsCount, "Wrong pool id");
         require(pools[_PoolId].Maincoin == address(0x0), "Pool is not for ETH");
@@ -110,16 +109,18 @@ contract Invest is PoolsData {
                 // not locked, will transfer the toke
                 TransferToken(pools[_PoolId].Token, msg.sender, WithDiscount);
             }
-            uint256 EthMinusFee = (_Amount / 10000) * (10000 - PozFee);
+            uint256 FeePay = (_Amount / 10000) * PozFee;
+            uint256 PaymentMinusFee = _Amount- FeePay;
+            FeeMap[pools[_PoolId].Maincoin] += FeePay; //save the fee amount, in case some one put main coin as pool coin
             TransferToken(
                 pools[_PoolId].Maincoin,
                 pools[_PoolId].Creator,
-                EthMinusFee
+                PaymentMinusFee
             ); // send money to project owner - the fee stays on contract
             if (pools[_PoolId].Lefttokens == 0) emit FinishPool(_PoolId);
             return;
         }
-        if (
+        else if (
             GetPoolStatus(_PoolId) == PoolStatus.Open &&
             TokensAmount <= pools[_PoolId].Lefttokens //Got The Tokens
         ) {
@@ -132,7 +133,10 @@ contract Invest is PoolsData {
                 // not locked, will transfer the tokens
                 TransferToken(pools[_PoolId].Token, msg.sender, TokensAmount);             
             }
-            TransferToken(pools[_PoolId].Maincoin,pools[_PoolId].Creator,(_Amount / 10000) * (10000 - Fee)); // send money to project owner - the fee stays on contract
+            uint256 RegularFeePay = (_Amount / 10000) * Fee;
+            uint256 RegularPaymentMinusFee = _Amount- RegularFeePay;
+            FeeMap[pools[_PoolId].Maincoin]+=RegularFeePay;
+            TransferToken(pools[_PoolId].Maincoin,pools[_PoolId].Creator,RegularPaymentMinusFee); // send money to project owner - the fee stays on contract
             if (pools[_PoolId].Lefttokens == 0) emit FinishPool(_PoolId);
             return;
         }

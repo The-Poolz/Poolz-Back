@@ -70,7 +70,7 @@ contract ThePoolz {
         uint256 StartAmount; //The total amount of the tokens for sale
         bool IsLocked; // true - the investors getting the tokens after the FinishTime. false - intant deal
         uint256 Lefttokens; // the ammount of tokens left for sale
-        uint256 StartTime; // the time the pool open
+        uint256 StartTime; // the time the pool open //TODO Maybe Delete this?
         uint256 OpenForAll; // The Time that all investors can invest
         uint256 UnlockedTokens; //for locked pools
         bool TookLeftOvers; //The Creator took the left overs after the pool finished
