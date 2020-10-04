@@ -3,7 +3,7 @@
 pragma solidity ^0.4.24;
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "./ERC20Helper.sol";
-import "./IPOZBenefit.sol";
+import "./IPozBenefit.sol";
 
 contract PozBenefit is Pausable, ERC20Helper {
     constructor() public {
