@@ -3,7 +3,7 @@ pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
-contract ThePoolz {
+contract ThePoolzOLD {
     constructor() public {
         Admin = msg.sender;
         Fee = 20; // *10000
