@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.4.24;
 
-import "./POZBenefit.sol";
+import "./PozBenefit.sol";
 
-contract ETHHelper is POZBenefit{
+contract ETHHelper is PozBenefit{
     constructor() public {
         IsPayble = false;
         MinETH = 10000;

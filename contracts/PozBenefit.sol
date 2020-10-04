@@ -5,7 +5,7 @@ import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "./ERC20Helper.sol";
 import "./IPOZBenefit.sol";
 
-contract POZBenefit is Pausable, ERC20Helper {
+contract PozBenefit is Pausable, ERC20Helper {
     constructor() public {
         PozFee = 15; // *10000
         PozTimer = 1000; // *10000
