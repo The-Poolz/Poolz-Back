@@ -1,9 +1,8 @@
 const ThePoolz = artifacts.require("Thepoolz");
 const TestToken = artifacts.require("TestToken");
-const TestMainToken = artifacts.require("TestMainToken");
 const { assert } = require('chai');
 const truffleAssert = require('truffle-assertions');
-const timeMachine = require('ganache-time-traveler');
+//const timeMachine = require('ganache-time-traveler');
 const zero_address = "0x0000000000000000000000000000000000000000";
 
 let rate = 1;
@@ -93,7 +92,7 @@ it("fail to take LeftOvers before time", async () => {
   let accounts = await web3.eth.getAccounts();
   truffleAssert.reverts(instance.WithdrawLeftOvers(0,{ from: accounts[0] }));
 });
-it("take leftovers from finish pool", async () => {
+/*it("take leftovers from finish pool", async () => {
   let instance = await ThePoolz.new();
   let accounts = await web3.eth.getAccounts();
   let Token = await TestToken.new();
@@ -109,41 +108,30 @@ it("take leftovers from finish pool", async () => {
   await instance.WithdrawLeftOvers(0,{ from: accounts[0] });
   let EndBalance = await Token.balanceOf(accounts[0]);
   assert.equal(EndBalance.toNumber(),StartBalance.toNumber());
-});
-});
-contract("Thepoolz, Main Coin Test", function () {
-  const amount = 10000000;
-  const invest = 100000;
-  beforeEach(async () => {
-});
-it("Other Payments, add as admin", async () => {
-  let instance = await ThePoolz.deployed();
-  let accounts = await web3.eth.getAccounts()
-  let Maincoint = await TestMainToken.deployed();
-  let IspayableToken = await instance.IsERC20Maincoin(Maincoint.address);
-  assert.isFalse(IspayableToken);
-  instance.AddERC20Maincoin(Maincoint.address,{ from: accounts[0] });
-  let IspayableToken2 = await instance.IsERC20Maincoin(Maincoint.address);
-  assert.isTrue(IspayableToken2);
-  instance.RemoveERC20Maincoin(Maincoint.address,{ from: accounts[0] });
-  let IspayableToken3 = await instance.IsERC20Maincoin(Maincoint.address);
-  assert.isFalse(IspayableToken3);
-});it("Open a pool with main coin,invest with main coin", async () => {
-  let date = new Date();
-  date.setDate(date.getDate() + 1);   // add a day
-  let amount = 100000;
-  let instance = await ThePoolz.deployed();
-  let accounts = await web3.eth.getAccounts();
-  let Token = await TestToken.deployed();
-  let Maincoint = await TestMainToken.deployed();
-  await instance.AddERC20Maincoin(Maincoint.address,{ from: accounts[0] });
-  await Maincoint.transfer(accounts[1],amount,{from: accounts[0] });
-  await Token.approve(instance.address, amount, { from: accounts[0] });
-  await instance.CreatePool(Token.address,Math.floor(date.getTime()/1000)+60,rate, rate,amount,false,Maincoint.address,{ from: accounts[0] });
-  await Maincoint.approve(instance.address, amount, { from: accounts[1] });
-  await instance.InvestERC20(0,amount,{ from: accounts[1] });
-  let afterBalance = await Maincoint.balanceOf(accounts[1] ) ;
-  assert.equal(afterBalance.toNumber(),0,  "Got the Tokens minus fee");
-});
-});
+});*/ //remake test
 
+});
+/*
+contract("ETHHelper", function () {
+  let instance ;
+  let amount;
+  let accounts
+
+  it("Should not allow send ETH", async () => {
+      amount = 10000;
+      instance = await ThePoolz.new();
+      accounts = await web3.eth.getAccounts();
+      truffleAssert.reverts(instance.send(amount,{from: accounts[0]}) );
+      
+  });
+  it("Should allow send ETH", async () => {
+    console.log("Start");
+      await instance.SwitchIsPayble({from: accounts[0]});
+      console.log("SwitchIsPayble");
+      await instance.send(amount,{from: accounts[0]});
+      let actualBalance = await web3.eth.getBalance(instance.address);
+      console.log("Balance" + actualBalance);
+      assert.equal(actualBalance,amount);
+  });
+});
+*/
