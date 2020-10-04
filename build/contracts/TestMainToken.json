@@ -1864,12 +1864,12 @@
         }
       },
       "links": {},
-      "address": "0xF7D4825d6Dc0230d942918af34Da9688F8A9474A",
-      "transactionHash": "0xbf19ff513e292527e151df1f37e6b1f397df816207935a72dde5b486c7c50c3b"
+      "address": "0xB607131B1e3532371F2B2Ccb5bBB21E3e2cbAea7",
+      "transactionHash": "0xd607fd8de65c823df0c5d83b16fcf7471780b74eddccaa1a604ed952660f3d0a"
     }
   },
   "schemaVersion": "3.2.5",
-  "updatedAt": "2020-10-01T10:20:27.449Z",
+  "updatedAt": "2020-10-04T14:08:22.536Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {
