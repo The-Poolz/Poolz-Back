@@ -1,5 +1,5 @@
 
-const ThePoolz = artifacts.require("Thepoolz");
+const ThePoolz = artifacts.require("ThePoolz");
 const TestToken = artifacts.require("TestToken");
 const TestMainToken = artifacts.require("TestMainToken");
 const { assert } = require('chai');
@@ -8,9 +8,8 @@ let amount,invest,rate;
 contract("Thepoolz, Main Coin Test", function () {
     amount = 10000000;
     invest  = 100000;
-    rate =1;
+    rate = 1;
     beforeEach(async () => {
-      
   });
   it("Other Payments, add as admin", async () => {
     let instance = await ThePoolz.deployed();
