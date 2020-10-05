@@ -41,7 +41,7 @@ contract PoolsData is Pools {
             uint256
         )
     {
-        require(_id <= poolsCount, "Wrong Id");
+        require(_id < poolsCount, "Wrong Id");
         return (
             //check if sender POZ Invester?
             GetPoolStatus(_id),
@@ -74,7 +74,7 @@ contract PoolsData is Pools {
 
     //calculate the status of a pool 
     function GetPoolStatus(uint256 _id) public view returns (PoolStatus) {
-        require(_id <= poolsCount, "Wrong pool id");
+        require(_id < poolsCount, "Wrong pool id");
         //Don't like the logic here - ToDo Boolean checks (truth table)
         if (now < pools[_id].OpenForAll && pools[_id].Lefttokens > 0) {
             //got tokens + only poz investors

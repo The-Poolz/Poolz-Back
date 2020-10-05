@@ -40,7 +40,7 @@ contract Invest is PoolsData {
             block.timestamp
         );
         InvestorsMap[msg.sender].push(TotalInvestors);
-        SafeMath.add(TotalInvestors,1);
+        TotalInvestors = SafeMath.add(TotalInvestors,1);
         uint256 WithDiscount = SafeMath.div(msg.value, pools[_PoolId].POZRate);
         uint256 TokensAmount = SafeMath.div(msg.value, pools[_PoolId].Rate);
         if (

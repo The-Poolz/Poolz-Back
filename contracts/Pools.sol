@@ -87,6 +87,6 @@ contract Pools is MainCoinManager {
         );
         poolsMap[msg.sender].push(poolsCount);
         emit NewPool(_Token, poolsCount);
-        SafeMath.add(poolsCount,1); //joke - overflowfrom 0 on int256 = 1.16E77
+        poolsCount = SafeMath.add(poolsCount,1); //joke - overflowfrom 0 on int256 = 1.16E77
     }
 }
