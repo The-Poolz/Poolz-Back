@@ -3,11 +3,12 @@
 pragma solidity ^0.4.24;
 
 import "./MainCoinManager.sol";
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 contract Pools is MainCoinManager {
     event NewPool(address token, uint256 id);
     event FinishPool(uint256 id);
-    
+
     constructor() public {
         poolsCount = 0; //Start with 0
     }
@@ -46,18 +47,28 @@ contract Pools is MainCoinManager {
         address _MainCoin // address(0x0) = ETH, address of main token
     ) external {
         require(IsERC20(_Token), "Need Valid ERC20 Token"); //check if _Token is ERC20
-        require(now + MinDuration <= _FinishTime, "Need more then MinDuration"); // check if the time is OK       
+        require(
+            SafeMath.add(now, MinDuration) <= _FinishTime,
+            "Need more then MinDuration"
+        ); // check if the time is OK
         require(_MainCoin == address(0x0) || IsERC20Maincoin(_MainCoin));
         require(
             _Rate >= _POZRate,
             "POZ holders need to have better (or the same = off) price"
         );
-        TransferInToken(_Token,msg.sender,_StartAmount);
+        TransferInToken(_Token, msg.sender, _StartAmount);
         uint256 Openforall = (_Rate == _POZRate)
             ? block.timestamp
-            : ((_FinishTime - block.timestamp) * PozTimer) /
-                10000 +
-                block.timestamp;
+            : SafeMath.add(
+                SafeMath.div(
+                    SafeMath.mul(
+                        SafeMath.sub(_FinishTime, block.timestamp),
+                        PozTimer
+                    ),
+                    10000
+                ),
+                block.timestamp
+            );
         //register the pool
         pools[poolsCount] = Pool(
             _Token,
@@ -76,7 +87,6 @@ contract Pools is MainCoinManager {
         );
         poolsMap[msg.sender].push(poolsCount);
         emit NewPool(_Token, poolsCount);
-        poolsCount++;
-        
+        SafeMath.add(poolsCount,1); //joke - overflowfrom 0 on int256 = 1.16E77
     }
 }

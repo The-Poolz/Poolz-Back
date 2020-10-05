@@ -20,9 +20,11 @@ contract PozBenefit is Pausable, ERC20Helper {
 
     modifier PercentCheckOk(uint16 _percent) {
         if (_percent < 10000) _;
+        else revert("Not in range");
     }
     modifier LeftIsBigger(uint16 _left, uint16 _right){
         if(_left > _right) _;
+        else revert("Not bigger");
     }
 
     function GetPozTimer() public view returns (uint16) {
