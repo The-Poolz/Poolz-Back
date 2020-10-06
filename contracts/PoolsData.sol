@@ -9,6 +9,7 @@ contract PoolsData is Pools {
     function GetMyPoolsId() public view returns (uint256[]) {
         return poolsMap[msg.sender];
     }
+
     //@dev no use of revert to make sure the loop will work
     function WithdrawLeftOvers(uint256 _PoolId) public returns (bool) {
         //pool is finished + got left overs + did not took them
@@ -27,6 +28,7 @@ contract PoolsData is Pools {
         }
         return false;
     }
+
     //give the data of the pool, by id
     function GetPoolData(uint256 _id)
         public
@@ -72,13 +74,13 @@ contract PoolsData is Pools {
         );
     }
 
-    //calculate the status of a pool 
+    //calculate the status of a pool
     function GetPoolStatus(uint256 _id) public view returns (PoolStatus) {
         require(_id < poolsCount, "Wrong pool id");
         //Don't like the logic here - ToDo Boolean checks (truth table)
         if (now < pools[_id].OpenForAll && pools[_id].Lefttokens > 0) {
             //got tokens + only poz investors
-            return PoolStatus.Created;
+            return (PoolStatus.Created);
         }
         if (
             now >= pools[_id].OpenForAll &&
@@ -86,7 +88,7 @@ contract PoolsData is Pools {
             now < pools[_id].FinishTime
         ) {
             //got tokens + all investors
-            return PoolStatus.Open;
+            return (PoolStatus.Open);
         }
         if (
             pools[_id].Lefttokens == 0 &&
@@ -94,13 +96,13 @@ contract PoolsData is Pools {
             now < pools[_id].FinishTime
         ) //no tokens on locked pool, got time
         {
-            return PoolStatus.OutOfstock;
+            return (PoolStatus.OutOfstock);
         }
         if (
             pools[_id].Lefttokens == 0 && !pools[_id].IsLocked
         ) //no tokens on direct pool
         {
-            return PoolStatus.Close;
+            return (PoolStatus.Close);
         }
         if (
             pools[_id].Lefttokens > 0 &&
@@ -108,21 +110,21 @@ contract PoolsData is Pools {
             !pools[_id].TookLeftOvers
         ) {
             //Got left overs on direct pool
-            return PoolStatus.Finished;
+            return (PoolStatus.Finished);
         }
         if (now >= pools[_id].FinishTime && !pools[_id].IsLocked) {
             // After finish time - not locked
-            if (pools[_id].TookLeftOvers) return PoolStatus.Close;
-            return PoolStatus.Finished;
+            if (pools[_id].TookLeftOvers) return (PoolStatus.Close);
+            return (PoolStatus.Finished);
         }
         if (now >= pools[_id].FinishTime && pools[_id].IsLocked) {
             // After finish time -  locked
             if (
                 (pools[_id].TookLeftOvers || pools[_id].Lefttokens == 0) &&
-                pools[_id].StartAmount - pools[_id].Lefttokens ==
-                pools[_id].UnlockedTokens
-            ) return PoolStatus.Close;
-            return PoolStatus.Finished;
+                (pools[_id].UnlockedTokens + pools[_id].Lefttokens ==
+                    pools[_id].StartAmount)
+            ) return (PoolStatus.Close);
+            return (PoolStatus.Finished);
         }
     }
 }

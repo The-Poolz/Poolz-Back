@@ -4,6 +4,9 @@ pragma solidity ^0.4.24;
 import "./InvestorData.sol";
 
 contract ThePoolz is InvestorData {
+    event InvestorsWork(uint256 NewStart, uint256 TotalDone);
+    event ProjectOwnerWork(uint256 NewStart, uint256 TotalDone);
+
     constructor() public {
         StartInvestor = 0;
         StartProjectOwner = 0;
@@ -31,6 +34,7 @@ contract ThePoolz is InvestorData {
                 StartInvestor = index - 1;
             }
         }
+        emit InvestorsWork(StartInvestor,WorkDone);
         return WorkDone;
     }
 
@@ -46,6 +50,7 @@ contract ThePoolz is InvestorData {
                 StartProjectOwner = index - 1;
             }
         }
+        emit ProjectOwnerWork(StartProjectOwner,WorkDone);
         return WorkDone;
     }
 }
