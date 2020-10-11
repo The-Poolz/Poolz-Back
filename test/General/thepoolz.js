@@ -91,8 +91,8 @@ it("fail to take LeftOvers before time", async () => {
   let instance = await ThePoolz.deployed();
   let accounts = await web3.eth.getAccounts();
   truffleAssert.reverts(instance.WithdrawLeftOvers(0,{ from: accounts[0] }));
-});
-/*it("take leftovers from finish pool", async () => {
+});/*
+it("take leftovers from finish pool", async () => {
   let instance = await ThePoolz.new();
   let accounts = await web3.eth.getAccounts();
   let Token = await TestToken.new();
@@ -111,27 +111,3 @@ it("fail to take LeftOvers before time", async () => {
 });*/ //remake test
 
 });
-/*
-contract("ETHHelper", function () {
-  let instance ;
-  let amount;
-  let accounts
-
-  it("Should not allow send ETH", async () => {
-      amount = 10000;
-      instance = await ThePoolz.new();
-      accounts = await web3.eth.getAccounts();
-      truffleAssert.reverts(instance.send(amount,{from: accounts[0]}) );
-      
-  });
-  it("Should allow send ETH", async () => {
-    console.log("Start");
-      await instance.SwitchIsPayble({from: accounts[0]});
-      console.log("SwitchIsPayble");
-      await instance.send(amount,{from: accounts[0]});
-      let actualBalance = await web3.eth.getBalance(instance.address);
-      console.log("Balance" + actualBalance);
-      assert.equal(actualBalance,amount);
-  });
-});
-*/

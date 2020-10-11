@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts\Pools.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> Pools.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>12/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/3</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>12/12</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: MIT
+&nbsp;
+pragma solidity ^0.4.24;
+&nbsp;
+import "./MainCoinManager.sol";
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+&nbsp;
+contract Pools is MainCoinManager {
+    event NewPool(address token, uint256 id);
+    event FinishPool(uint256 id);
+&nbsp;
+    constructor() public {
+        poolsCount = 0; //Start with 0
+    }
+&nbsp;
+    uint256 public poolsCount; // the ids of the pool
+    mapping(uint256 =&gt; Pool) public pools; //the id of the pool with the data
+    mapping(address =&gt; uint256[]) public poolsMap; //the address and all of the pools id's
+    struct Pool {
+        address Token; //the address of the erc20 toke for sale
+        address Creator; //the project owner
+        uint256 FinishTime; //Until what time the pool is active
+        uint256 Rate; //for eth Wei, in token, by the decemal. the cost of 1 token
+        uint256 POZRate; //the rate for the until OpenForAll, if the same as Rate , OpenForAll = StartTime .
+        address Maincoin; // on adress.zero = ETH
+        uint256 StartAmount; //The total amount of the tokens for sale
+        bool IsLocked; // true - the investors getting the tokens after the FinishTime. false - intant deal
+        uint256 Lefttokens; // the ammount of tokens left for sale
+        uint256 StartTime; // the time the pool open //TODO Maybe Delete this?
+        uint256 OpenForAll; // The Time that all investors can invest
+        uint256 UnlockedTokens; //for locked pools
+        bool TookLeftOvers; //The Creator took the left overs after the pool finished
+    }
+&nbsp;
+    function GetLastPoolId() public view returns (uint256) {
+        return poolsCount;
+    }
+&nbsp;
+    //create a new pool
+    function CreatePool(
+        address _Token, //token to sell address
+        uint256 _FinishTime, //Until what time the pool will work
+        uint256 _Rate, //the rate of the trade
+        uint256 _POZRate, //the rate for POZ Holders
+        uint256 _StartAmount, //Total amount of the tokens to sell in the pool
+        bool _IsLocked, //False = DSP or True = TLP
+        address _MainCoin // address(0x0) = ETH, address of main token
+    ) external {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(IsERC20(_Token), "Need Valid ERC20 Token"); //check if _Token is ERC20
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(
+            SafeMath.add(now, MinDuration) &lt;= _FinishTime,
+            "Need more then MinDuration"
+        ); // check if the time is OK
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_MainCoin == address(0x0) || IsERC20Maincoin(_MainCoin));
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(
+            _Rate &gt;= _POZRate,
+            "POZ holders need to have better (or the same = off) price"
+        );
+        TransferInToken(_Token, msg.sender, _StartAmount);
+        uint256 Openforall = (_Rate == _POZRate)
+            ? block.timestamp
+            : SafeMath.add(
+                SafeMath.div(
+                    SafeMath.mul(
+                        SafeMath.sub(_FinishTime, block.timestamp),
+                        PozTimer
+                    ),
+                    10000
+                ),
+                block.timestamp
+            );
+        //register the pool
+        pools[poolsCount] = Pool(
+            _Token,
+            msg.sender,
+            _FinishTime,
+            _Rate,
+            _POZRate,
+            _MainCoin,
+            _StartAmount,
+            _IsLocked,
+            _StartAmount,
+            block.timestamp,
+            Openforall,
+            0,
+            false
+        );
+        poolsMap[msg.sender].push(poolsCount);
+        emit NewPool(_Token, poolsCount);
+        poolsCount = SafeMath.add(poolsCount,1); //joke - overflowfrom 0 on int256 = 1.16E77
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 11 2020 08:27:44 GMT+0000 (Greenwich Mean Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

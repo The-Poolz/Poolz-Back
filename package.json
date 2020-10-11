@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.1.0",
+    "@truffle/compile-common": "^0.3.10",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-register": "^6.23.0",
@@ -12,7 +13,8 @@
     "chai-as-promised": "^7.1.1",
     "chai-bignumber": "^2.0.2",
     "openzeppelin-solidity": "1.12.0",
-    "truffle": "^5.1.45"
+    "solidity-coverage": "^0.7.11",
+    "truffle": "^5.1.42"
   },
   "name": "Poolz",
   "version": "1.0.0",

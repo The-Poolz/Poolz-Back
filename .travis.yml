@@ -22,3 +22,7 @@ install:
  
 script:
   - bash ./bin/test.sh
+  - npx truffle run coverage
+  - cat coverage/lcov.info | npx coveralls
+
+  

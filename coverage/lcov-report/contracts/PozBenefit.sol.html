@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts\PozBenefit.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> PozBenefit.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">37.5% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>6/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">16.67% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>1/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">22.22% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">38.46% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>5/13</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: MIT
+&nbsp;
+pragma solidity ^0.4.24;
+import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "./ERC20Helper.sol";
+import "./IPozBenefit.sol";
+&nbsp;
+contract PozBenefit is Pausable, ERC20Helper {
+    constructor() public {
+        PozFee = 15; // *10000
+        PozTimer = 1000; // *10000
+        MinPoz = 80; // ^Token.decimals
+        POZ_Address = address(0x0);
+    }
+&nbsp;
+    uint16 internal PozFee; // the fee for the first part of the pool
+    uint16 internal PozTimer; //the timer for the first part fo the pool
+    uint256 internal MinPoz; //minimum ammount ofpoz to be part of the discount
+    address internal POZ_Address; //The address of the POZ Token
+&nbsp;
+<span class="fstat-no" title="function not covered" >    modifier PercentCheckOk(uint16 _percent) {</span>
+<span class="cstat-no" title="statement not covered" >        if (_percent &lt; 10000) _;</span>
+        else <span class="cstat-no" title="statement not covered" >revert("Not in range")</span>;
+    }
+<span class="fstat-no" title="function not covered" >    modifier LeftIsBigger(uint16 _left, uint16 _right){</span>
+<span class="cstat-no" title="statement not covered" >        if(_left &gt; _right) _;</span>
+        else <span class="cstat-no" title="statement not covered" >revert("Not bigger")</span>;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function GetPozTimer() public view returns (uint16) {</span>
+<span class="cstat-no" title="statement not covered" >        return PozTimer;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function SetPozTimer(uint16 _pozTimer)</span>
+        public
+        onlyOwner
+        PercentCheckOk(_pozTimer)
+    {
+<span class="cstat-no" title="statement not covered" >        PozTimer = _pozTimer</span>;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function GetPOZFee() public view returns (uint16) {</span>
+<span class="cstat-no" title="statement not covered" >        return PozFee;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function GetMinPoz() public view returns (uint256) {</span>
+<span class="cstat-no" title="statement not covered" >        return MinPoz;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function SetMinPoz(uint256 _MinPoz) public onlyOwner {</span>
+<span class="cstat-no" title="statement not covered" >        MinPoz = _MinPoz</span>;
+    }
+    //@dev Taken from interface, To join the POZ Benefit club
+    function IsPOZInvestor(address _investor) internal view returns (bool) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (POZ_Address == address(0x0)) return true;//false; // for testing stage, until got the address
+<span class="cstat-no" title="statement not covered" >        return (CheckBalance(POZ_Address,_investor) &gt;= MinPoz || IPOZBenefit(POZ_Address).IsPOZHolder(_investor));</span>
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 11 2020 08:27:44 GMT+0000 (Greenwich Mean Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
