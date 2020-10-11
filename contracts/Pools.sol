@@ -53,8 +53,8 @@ contract Pools is MainCoinManager {
         ); // check if the time is OK
         require(_MainCoin == address(0x0) || IsERC20Maincoin(_MainCoin));
         require(
-            _Rate >= _POZRate,
-            "POZ holders need to have better (or the same = off) price"
+            _POZRate >=_Rate ,
+            "POZ holders need to have better price (or the same)"
         );
         TransferInToken(_Token, msg.sender, _StartAmount);
         uint256 Openforall = (_Rate == _POZRate)

@@ -1799,8 +1799,7 @@
             }
           ],
           "name": "OwnershipRenounced",
-          "type": "event",
-          "signature": "0xf8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c64820"
+          "type": "event"
         },
         "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
           "anonymous": false,
@@ -1817,8 +1816,7 @@
             }
           ],
           "name": "OwnershipTransferred",
-          "type": "event",
-          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+          "type": "event"
         },
         "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
           "anonymous": false,
@@ -1840,8 +1838,7 @@
             }
           ],
           "name": "Approval",
-          "type": "event",
-          "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
+          "type": "event"
         },
         "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
           "anonymous": false,
@@ -1863,13 +1860,12 @@
             }
           ],
           "name": "Transfer",
-          "type": "event",
-          "signature": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+          "type": "event"
         }
       },
       "links": {},
-      "address": "0xd3255002A6d40928DbE38a434d1e98D455AdaEAd",
-      "transactionHash": "0xc163b834374d31a712d1ecb6f9c098caa87eba8cb4ca2de94a121482c801564f"
+      "address": "0x4361F800364a3aEE95C39de02df2646D7f96f644",
+      "transactionHash": "0x4bb0da48e809859a2deffe2f503db9ba0416aecf2079507321aaf228aa32d1d1"
     },
     "1601895393000": {
       "events": {
@@ -1952,8 +1948,8 @@
       "transactionHash": "0x98bbd1502a81974352a57ce114b206bcd3d65a32aa5d2098041de7da1625f513"
     }
   },
-  "schemaVersion": "3.0.22",
-  "updatedAt": "2020-10-11T10:35:16.039Z",
+  "schemaVersion": "3.3.0",
+  "updatedAt": "2020-10-11T14:45:35.711Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {

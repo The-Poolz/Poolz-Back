@@ -14,10 +14,6 @@ contract Managable is ETHHelper {
     uint16 internal Fee; //the fee for the pool
     uint16 internal MinDuration; //the minimum duration of a pool, in seconds
 
-    function TimerCheckOk() internal view returns (bool) {
-        return PozTimer < 10000;
-    }
-
     function GetMinDuration() public view returns (uint16) {
         return MinDuration;
     }

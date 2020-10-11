@@ -50,6 +50,9 @@ contract PozBenefit is Pausable, ERC20Helper {
     function SetMinPoz(uint256 _MinPoz) public onlyOwner {
         MinPoz = _MinPoz;
     }
+    function SetPozAdress(address _POZ_Address) public onlyOwner {
+        POZ_Address = _POZ_Address;
+    }
     //@dev Taken from interface, To join the POZ Benefit club
     function IsPOZInvestor(address _investor) internal view returns (bool) {
         if (POZ_Address == address(0x0)) return true;//false; // for testing stage, until got the address
