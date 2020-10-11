@@ -8,10 +8,9 @@ let instance, Maincoint;
 contract("Thepoolz, Main Coin Test", async accounts => {
   beforeEach(async () => {
     instance = await ThePoolz.deployed();
-    Maincoint = await TestMainToken.new();
+    Maincoint = await TestMainToken.deployed();
   });
   it("Other Payments, add as admin", async () => {
-
     let IspayableToken = await instance.IsERC20Maincoin(Maincoint.address);
     assert.isFalse(IspayableToken);
     instance.AddERC20Maincoin(Maincoint.address, { from: accounts[0] });
@@ -34,6 +33,13 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     await instance.InvestERC20(0, amount, { from: accounts[1] });
     let afterBalance = await Token.balanceOf(instance.address);
     assert.equal(afterBalance.toNumber(), amount, "Got the Tokens minus fee");
+    let beforeBalance = await Maincoint.balanceOf(instance.address);
+    assert.notEqual(beforeBalance.toNumber(),0);
+  });
+  it("take erc20 fee", async () => {
+    await instance.WithdrawERC20Fee(Maincoint.address,accounts[0], { from: accounts[0] });
+    let afterBalance = await Maincoint.balanceOf(instance.address);
+    assert.equal(afterBalance.toNumber(),0);
   });
   it("can't invest more", async () => {
     let date = new Date();

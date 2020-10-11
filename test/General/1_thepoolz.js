@@ -55,12 +55,20 @@ contract("Thepoolz", async accounts => {
   });
   it("open a day long pool, invest, check creator balance", async () => {
     let instance = await ThePoolz.deployed();
-    let beforeBalance = await web3.eth.getBalance(accounts[0])
+    let beforeBalance = await web3.eth.getBalance(accounts[0]);
     await instance.InvestETH(0, { value: invest, from: accounts[1] });
-    let afterBalance = await web3.eth.getBalance(accounts[0])
+    let afterBalance = await web3.eth.getBalance(accounts[0]);
     assert.isAbove(afterBalance - beforeBalance, 0, "Got the eth minus fee");
     let myinvest = await instance.GetMyInvestmentIds({ from: accounts[1] });
     assert.isAbove(myinvest.length, 0);
+  });
+  it("take fee", async () => {
+    let instance = await ThePoolz.deployed();
+    let beforeBalance = await web3.eth.getBalance(instance.address);
+    assert.notEqual(beforeBalance,0);
+    await instance.WithdrawETHFee(accounts[0], { from: accounts[0] });
+    let afterBalance = await web3.eth.getBalance(instance.address);
+    assert.equal(afterBalance,0);
   });
   it("check fail attemts, open pool with no allow", async () => {
     let instance = await ThePoolz.deployed();
@@ -127,6 +135,25 @@ contract("Thepoolz", async accounts => {
     let instance = await ThePoolz.deployed();
     let pozfee = 40;
     truffleAssert.reverts(instance.SetPOZFee(pozfee, { from: accounts[0] }));
+  });
+  it("fail set fee", async () => {
+    let instance = await ThePoolz.deployed();
+    let fee = 10004;
+    truffleAssert.reverts(instance.SetFee(fee, { from: accounts[0] }));
+  });
+  it("set/get poz timer", async () => {
+    let instance = await ThePoolz.deployed();
+    let poztimer = 2000;
+    await instance.SetPozTimer(poztimer, { from: accounts[0] });
+    let actual = await instance.GetPozTimer();
+    assert.equal(actual.toNumber(), poztimer);
+  });
+  it("set/get minpoz ", async () => {
+    let instance = await ThePoolz.deployed();
+    let minpoz = 80000;
+    await instance.SetMinPoz(minpoz, { from: accounts[0] });
+    let actual = await instance.GetMinPoz();
+    assert.equal(actual.toNumber(), minpoz);
   });
   /*
 it("take leftovers from finish pool", async () => {

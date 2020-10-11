@@ -143,7 +143,7 @@ contract Invest is PoolsData {
                 TransferToken(pools[_PoolId].Token, msg.sender, WithDiscount);
             }
             uint256 FeePay = SafeMath.mul(
-                SafeMath.div(msg.value, 10000),
+                SafeMath.div(_Amount, 10000),
                 PozFee
             );
             uint256 PaymentMinusFee = SafeMath.sub(_Amount , FeePay);
@@ -174,7 +174,7 @@ contract Invest is PoolsData {
                 TransferToken(pools[_PoolId].Token, msg.sender, TokensAmount);
             }
             uint256 RegularFeePay = SafeMath.mul(
-                SafeMath.div(msg.value, 10000),
+                SafeMath.div(_Amount, 10000),
                 Fee
             );
             uint256 RegularPaymentMinusFee = SafeMath.sub(_Amount , RegularFeePay);

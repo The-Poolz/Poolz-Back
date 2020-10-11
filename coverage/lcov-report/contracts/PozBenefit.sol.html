@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">62.5% </span>
+        <span class="strong">93.75% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/16</span>
+        <span class='fraction'>15/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/6</span>
+        <span class='fraction'>5/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.56% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/9</span>
+        <span class='fraction'>9/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">61.54% </span>
+        <span class="strong">92.31% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>8/13</span>
+        <span class='fraction'>12/13</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -122,24 +122,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,15 +135,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -180,36 +180,36 @@ contract PozBenefit is Pausable, ERC20Helper {
     address internal POZ_Address; //The address of the POZ Token
 &nbsp;
     modifier PercentCheckOk(uint16 _percent) {
-        <span class="missing-if-branch" title="else path not taken" >E</span>if (_percent &lt; 10000) _;
-        else <span class="cstat-no" title="statement not covered" >revert("Not in range")</span>;
+        if (_percent &lt; 10000) _;
+        else revert("Not in range");
     }
     modifier LeftIsBigger(uint16 _left, uint16 _right){
         if(_left &gt; _right) _;
         else revert("Not bigger");
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function GetPozTimer() public view returns (uint16) {</span>
-<span class="cstat-no" title="statement not covered" >        return PozTimer;</span>
+    function GetPozTimer() public view returns (uint16) {
+        return PozTimer;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function SetPozTimer(uint16 _pozTimer)</span>
+    function SetPozTimer(uint16 _pozTimer)
         public
         onlyOwner
         PercentCheckOk(_pozTimer)
     {
-<span class="cstat-no" title="statement not covered" >        PozTimer = _pozTimer</span>;
+        PozTimer = _pozTimer;
     }
 &nbsp;
     function GetPOZFee() public view returns (uint16) {
         return PozFee;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function GetMinPoz() public view returns (uint256) {</span>
-<span class="cstat-no" title="statement not covered" >        return MinPoz;</span>
+    function GetMinPoz() public view returns (uint256) {
+        return MinPoz;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function SetMinPoz(uint256 _MinPoz) public onlyOwner {</span>
-<span class="cstat-no" title="statement not covered" >        MinPoz = _MinPoz</span>;
+    function SetMinPoz(uint256 _MinPoz) public onlyOwner {
+        MinPoz = _MinPoz;
     }
     //@dev Taken from interface, To join the POZ Benefit club
     function IsPOZInvestor(address _investor) internal view returns (bool) {
@@ -223,7 +223,7 @@ contract PozBenefit is Pausable, ERC20Helper {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 11 2020 12:43:40 GMT+0000 (Greenwich Mean Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 11 2020 13:43:50 GMT+0000 (Greenwich Mean Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
