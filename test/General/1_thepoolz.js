@@ -36,12 +36,22 @@ contract("Thepoolz", async accounts => {
     let tokensInContract = await Token.balanceOf(instance.address);
     assert.equal(tokensInContract, amount, "Got the tokens");
   });
-  it("open a day long pool, invest, check balance", async () => {
+    it("fail to take LeftOvers before time", async () => {
+    let instance = await ThePoolz.deployed();
+    let took = await instance.WithdrawLeftOvers.call(0, { from: accounts[0] });
+    assert.isFalse(took);
+  });
+  it("invest, check balance", async () => {
     let instance = await ThePoolz.deployed();
     let Token = await TestToken.deployed();
     await instance.InvestETH(0, { value: invest, from: accounts[1] });
     let tokensInContract = await Token.balanceOf(instance.address);
     assert.equal(tokensInContract.toNumber(), amount - invest * rate, "Got the tokens");
+  });
+  it("Fail, withdraw invesmt", async () => {
+    let instance = await ThePoolz.deployed();
+    let took = await instance.WithdrawInvestment.call(0, { from: accounts[1] });
+    assert.isFalse(took);
   });
   it("open a day long pool, invest, check creator balance", async () => {
     let instance = await ThePoolz.deployed();
@@ -85,14 +95,8 @@ contract("Thepoolz", async accounts => {
     let IspayableToken3 = await instance.IsERC20Maincoin(Token.address);
     assert.isFalse(IspayableToken3);
   });
-  
-  /*it("fail to take LeftOvers before time", async () => {
-    let instance = await ThePoolz.deployed();
-    truffleAssert.reverts(instance.WithdrawLeftOvers(0, { from: accounts[0] }));
-  });*/
-
   it("set/get MinDuration", async () => {
-    let instance = await ThePoolz.deployed();
+    let instance = await ThePoolz.new();
     let min = 500;
     await instance.SetMinDuration(min, { from: accounts[0] });
     let actual = await instance.GetMinDuration();

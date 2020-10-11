@@ -16,7 +16,10 @@ contract ThePoolz is InvestorData {
     uint256 internal StartProjectOwner;
 
     function Work() external returns (uint256, uint256) {
-        return (WorkForInvestors(), WorkForProjectOwner());
+        uint256 inv = WorkForInvestors();
+        uint256 pro = WorkForProjectOwner();
+        if (inv == 0 && pro ==0) revert("No work to be done");
+        return (inv,pro);
     }
 
     function WorkForInvestors() internal returns (uint256) {
