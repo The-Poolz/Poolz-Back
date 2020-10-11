@@ -15,8 +15,16 @@ contract("ETHHelper", function () {
     });
     it("Should allow send ETH", async () => {    
         await instance.SwitchIsPayble({from: accounts[0]});
+        let IsPayble = await instance.GetIsPayble();
+        assert.isTrue(IsPayble);
         await instance.send(amount,{from: accounts[0]});
         let actualBalance = await web3.eth.getBalance(instance.address);
         assert.equal(actualBalance,amount);
     });
+    it("Set the min ETH investment", async () => {   
+        let min = web3.utils.toWei('1', 'ether');
+        await instance.SetMinETH(min);
+        let actual = await instance.GetMinETH();
+        assert.equal(actual,min);
+    }); 
   });

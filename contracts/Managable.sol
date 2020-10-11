@@ -19,7 +19,7 @@ contract Managable is ETHHelper {
     }
 
     function GetMinDuration() public view returns (uint16) {
-        return Fee;
+        return MinDuration;
     }
 
     function SetMinDuration(uint16 _minDuration) public onlyOwner {

@@ -19,10 +19,10 @@ matrix:
  
 install:
   - bash ./bin/travis-install.sh
- 
 script:
   - bash ./bin/test.sh
-  - npx truffle run coverage
-  - cat coverage/lcov.info | npx coveralls
+after_script:
+  - npm run coverage && cat coverage/lcov.info | coveralls
+
 
   

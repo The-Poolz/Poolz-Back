@@ -20,9 +20,9 @@ contract("Thepoolz, Main Coin Test", function () {
     instance.AddERC20Maincoin(Maincoint.address,{ from: accounts[0] });
     let IspayableToken2 = await instance.IsERC20Maincoin(Maincoint.address);
     assert.isTrue(IspayableToken2);
-    instance.RemoveERC20Maincoin(Maincoint.address,{ from: accounts[0] });
+    /*instance.RemoveERC20Maincoin(Maincoint.address,{ from: accounts[0] });
     let IspayableToken3 = await instance.IsERC20Maincoin(Maincoint.address);
-    assert.isFalse(IspayableToken3);
+    assert.isFalse(IspayableToken3);*/
   });it("Open a pool with main coin,invest with main coin", async () => {
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day

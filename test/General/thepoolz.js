@@ -60,6 +60,8 @@ it("open a day long pool, check balance", async () => {
     await instance.InvestETH(0, {value: invest, from: accounts[1]});
     let afterBalance = await web3.eth.getBalance(accounts[0] )
     assert.isAbove(afterBalance-beforeBalance,0,  "Got the eth minus fee");
+    let myinvest = await instance.GetMyInvestmentIds({from: accounts[1]});
+    assert.isAbove(myinvest.length,0);
   });
 it("check fail attemts, open pool with no allow", async () => {
   let instance = await ThePoolz.deployed();
