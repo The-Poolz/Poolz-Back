@@ -243,14 +243,14 @@
     "absolutePath": "/C/Users/Administrator/Desktop/Code/Poolz/contracts/PozBenefit.sol",
     "exportedSymbols": {
       "PozBenefit": [
-        2225
+        2102
       ]
     },
-    "id": 2226,
+    "id": 2103,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2075,
+        "id": 1952,
         "literals": [
           "solidity",
           "^",
@@ -263,10 +263,10 @@
       {
         "absolutePath": "openzeppelin-solidity/contracts/lifecycle/Pausable.sol",
         "file": "openzeppelin-solidity/contracts/lifecycle/Pausable.sol",
-        "id": 2076,
+        "id": 1953,
         "nodeType": "ImportDirective",
-        "scope": 2226,
-        "sourceUnit": 2571,
+        "scope": 2103,
+        "sourceUnit": 2448,
         "src": "61:64:10",
         "symbolAliases": [],
         "unitAlias": ""
@@ -274,9 +274,9 @@
       {
         "absolutePath": "/C/Users/Administrator/Desktop/Code/Poolz/contracts/ERC20Helper.sol",
         "file": "./ERC20Helper.sol",
-        "id": 2077,
+        "id": 1954,
         "nodeType": "ImportDirective",
-        "scope": 2226,
+        "scope": 2103,
         "sourceUnit": 139,
         "src": "127:27:10",
         "symbolAliases": [],
@@ -285,9 +285,9 @@
       {
         "absolutePath": "/C/Users/Administrator/Desktop/Code/Poolz/contracts/IPozBenefit.sol",
         "file": "./IPozBenefit.sol",
-        "id": 2078,
+        "id": 1955,
         "nodeType": "ImportDirective",
-        "scope": 2226,
+        "scope": 2103,
         "sourceUnit": 273,
         "src": "156:27:10",
         "symbolAliases": [],
@@ -299,17 +299,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2079,
+              "id": 1956,
               "name": "Pausable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2570,
+              "referencedDeclaration": 2447,
               "src": "210:8:10",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Pausable_$2570",
+                "typeIdentifier": "t_contract$_Pausable_$2447",
                 "typeString": "contract Pausable"
               }
             },
-            "id": 2080,
+            "id": 1957,
             "nodeType": "InheritanceSpecifier",
             "src": "210:8:10"
           },
@@ -317,7 +317,7 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2081,
+              "id": 1958,
               "name": "ERC20Helper",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 138,
@@ -327,50 +327,50 @@
                 "typeString": "contract ERC20Helper"
               }
             },
-            "id": 2082,
+            "id": 1959,
             "nodeType": "InheritanceSpecifier",
             "src": "220:11:10"
           }
         ],
         "contractDependencies": [
           138,
-          2570,
-          2750
+          2447,
+          2627
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2225,
+        "id": 2102,
         "linearizedBaseContracts": [
-          2225,
+          2102,
           138,
-          2570,
-          2750
+          2447,
+          2627
         ],
         "name": "PozBenefit",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 2103,
+              "id": 1980,
               "nodeType": "Block",
               "src": "260:154:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2087,
+                    "id": 1964,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2085,
+                      "id": 1962,
                       "name": "PozFee",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2106,
+                      "referencedDeclaration": 1983,
                       "src": "271:6:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -382,7 +382,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "3135",
-                      "id": 2086,
+                      "id": 1963,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -403,25 +403,25 @@
                       "typeString": "uint16"
                     }
                   },
-                  "id": 2088,
+                  "id": 1965,
                   "nodeType": "ExpressionStatement",
                   "src": "271:11:10"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2091,
+                    "id": 1968,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2089,
+                      "id": 1966,
                       "name": "PozTimer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2108,
+                      "referencedDeclaration": 1985,
                       "src": "303:8:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -433,7 +433,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "31303030",
-                      "id": 2090,
+                      "id": 1967,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -454,25 +454,25 @@
                       "typeString": "uint16"
                     }
                   },
-                  "id": 2092,
+                  "id": 1969,
                   "nodeType": "ExpressionStatement",
                   "src": "303:15:10"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2095,
+                    "id": 1972,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2093,
+                      "id": 1970,
                       "name": "MinPoz",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2110,
+                      "referencedDeclaration": 1987,
                       "src": "339:6:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -484,7 +484,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "3830",
-                      "id": 2094,
+                      "id": 1971,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -505,25 +505,25 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2096,
+                  "id": 1973,
                   "nodeType": "ExpressionStatement",
                   "src": "339:11:10"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2101,
+                    "id": 1978,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2097,
+                      "id": 1974,
                       "name": "POZ_Address",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2112,
+                      "referencedDeclaration": 1989,
                       "src": "380:11:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -538,7 +538,7 @@
                         {
                           "argumentTypes": null,
                           "hexValue": "307830",
-                          "id": 2099,
+                          "id": 1976,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -561,7 +561,7 @@
                             "typeString": "int_const 0"
                           }
                         ],
-                        "id": 2098,
+                        "id": 1975,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -574,7 +574,7 @@
                         },
                         "typeName": "address"
                       },
-                      "id": 2100,
+                      "id": 1977,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -594,14 +594,14 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 2102,
+                  "id": 1979,
                   "nodeType": "ExpressionStatement",
                   "src": "380:26:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2104,
+            "id": 1981,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -609,19 +609,19 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2083,
+              "id": 1960,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "250:2:10"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2084,
+              "id": 1961,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "260:0:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "239:175:10",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -629,10 +629,10 @@
           },
           {
             "constant": false,
-            "id": 2106,
+            "id": 1983,
             "name": "PozFee",
             "nodeType": "VariableDeclaration",
-            "scope": 2225,
+            "scope": 2102,
             "src": "422:22:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -641,7 +641,7 @@
               "typeString": "uint16"
             },
             "typeName": {
-              "id": 2105,
+              "id": 1982,
               "name": "uint16",
               "nodeType": "ElementaryTypeName",
               "src": "422:6:10",
@@ -655,10 +655,10 @@
           },
           {
             "constant": false,
-            "id": 2108,
+            "id": 1985,
             "name": "PozTimer",
             "nodeType": "VariableDeclaration",
-            "scope": 2225,
+            "scope": 2102,
             "src": "493:24:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -667,7 +667,7 @@
               "typeString": "uint16"
             },
             "typeName": {
-              "id": 2107,
+              "id": 1984,
               "name": "uint16",
               "nodeType": "ElementaryTypeName",
               "src": "493:6:10",
@@ -681,10 +681,10 @@
           },
           {
             "constant": false,
-            "id": 2110,
+            "id": 1987,
             "name": "MinPoz",
             "nodeType": "VariableDeclaration",
-            "scope": 2225,
+            "scope": 2102,
             "src": "567:23:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -693,7 +693,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2109,
+              "id": 1986,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
               "src": "567:7:10",
@@ -707,10 +707,10 @@
           },
           {
             "constant": false,
-            "id": 2112,
+            "id": 1989,
             "name": "POZ_Address",
             "nodeType": "VariableDeclaration",
-            "scope": 2225,
+            "scope": 2102,
             "src": "648:28:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -719,7 +719,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 2111,
+              "id": 1988,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "648:7:10",
@@ -733,7 +733,7 @@
           },
           {
             "body": {
-              "id": 2125,
+              "id": 2002,
               "nodeType": "Block",
               "src": "757:80:10",
               "statements": [
@@ -744,18 +744,18 @@
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     },
-                    "id": 2118,
+                    "id": 1995,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 2116,
+                      "id": 1993,
                       "name": "_percent",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2114,
+                      "referencedDeclaration": 1991,
                       "src": "772:8:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -767,7 +767,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "hexValue": "3130303030",
-                      "id": 2117,
+                      "id": 1994,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -795,7 +795,7 @@
                         {
                           "argumentTypes": null,
                           "hexValue": "4e6f7420696e2072616e6765",
-                          "id": 2121,
+                          "id": 1998,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -818,21 +818,21 @@
                             "typeString": "literal_string \"Not in range\""
                           }
                         ],
-                        "id": 2120,
+                        "id": 1997,
                         "name": "revert",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [
-                          3188,
-                          3189
+                          3065,
+                          3066
                         ],
-                        "referencedDeclaration": 3189,
+                        "referencedDeclaration": 3066,
                         "src": "807:6:10",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
                           "typeString": "function (string memory) pure"
                         }
                       },
-                      "id": 2122,
+                      "id": 1999,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -846,15 +846,15 @@
                         "typeString": "tuple()"
                       }
                     },
-                    "id": 2123,
+                    "id": 2000,
                     "nodeType": "ExpressionStatement",
                     "src": "807:22:10"
                   },
-                  "id": 2124,
+                  "id": 2001,
                   "nodeType": "IfStatement",
                   "src": "768:61:10",
                   "trueBody": {
-                    "id": 2119,
+                    "id": 1996,
                     "nodeType": "PlaceholderStatement",
                     "src": "790:1:10"
                   }
@@ -862,19 +862,19 @@
               ]
             },
             "documentation": null,
-            "id": 2126,
+            "id": 2003,
             "name": "PercentCheckOk",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 2115,
+              "id": 1992,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2114,
+                  "id": 1991,
                   "name": "_percent",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2126,
+                  "scope": 2003,
                   "src": "740:15:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -883,7 +883,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 2113,
+                    "id": 1990,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "740:6:10",
@@ -903,7 +903,7 @@
           },
           {
             "body": {
-              "id": 2141,
+              "id": 2018,
               "nodeType": "Block",
               "src": "893:75:10",
               "statements": [
@@ -914,18 +914,18 @@
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     },
-                    "id": 2134,
+                    "id": 2011,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 2132,
+                      "id": 2009,
                       "name": "_left",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2128,
+                      "referencedDeclaration": 2005,
                       "src": "907:5:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -936,11 +936,11 @@
                     "operator": ">",
                     "rightExpression": {
                       "argumentTypes": null,
-                      "id": 2133,
+                      "id": 2010,
                       "name": "_right",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2130,
+                      "referencedDeclaration": 2007,
                       "src": "915:6:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -960,7 +960,7 @@
                         {
                           "argumentTypes": null,
                           "hexValue": "4e6f7420626967676572",
-                          "id": 2137,
+                          "id": 2014,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -983,21 +983,21 @@
                             "typeString": "literal_string \"Not bigger\""
                           }
                         ],
-                        "id": 2136,
+                        "id": 2013,
                         "name": "revert",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [
-                          3188,
-                          3189
+                          3065,
+                          3066
                         ],
-                        "referencedDeclaration": 3189,
+                        "referencedDeclaration": 3066,
                         "src": "940:6:10",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
                           "typeString": "function (string memory) pure"
                         }
                       },
-                      "id": 2138,
+                      "id": 2015,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1011,15 +1011,15 @@
                         "typeString": "tuple()"
                       }
                     },
-                    "id": 2139,
+                    "id": 2016,
                     "nodeType": "ExpressionStatement",
                     "src": "940:20:10"
                   },
-                  "id": 2140,
+                  "id": 2017,
                   "nodeType": "IfStatement",
                   "src": "904:56:10",
                   "trueBody": {
-                    "id": 2135,
+                    "id": 2012,
                     "nodeType": "PlaceholderStatement",
                     "src": "923:1:10"
                   }
@@ -1027,19 +1027,19 @@
               ]
             },
             "documentation": null,
-            "id": 2142,
+            "id": 2019,
             "name": "LeftIsBigger",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 2131,
+              "id": 2008,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2128,
+                  "id": 2005,
                   "name": "_left",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2142,
+                  "scope": 2019,
                   "src": "865:12:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1048,7 +1048,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 2127,
+                    "id": 2004,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "865:6:10",
@@ -1062,10 +1062,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2130,
+                  "id": 2007,
                   "name": "_right",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2142,
+                  "scope": 2019,
                   "src": "879:13:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1074,7 +1074,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 2129,
+                    "id": 2006,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "879:6:10",
@@ -1094,33 +1094,33 @@
           },
           {
             "body": {
-              "id": 2149,
+              "id": 2026,
               "nodeType": "Block",
               "src": "1028:34:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2147,
+                    "id": 2024,
                     "name": "PozTimer",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2108,
+                    "referencedDeclaration": 1985,
                     "src": "1046:8:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     }
                   },
-                  "functionReturnParameters": 2146,
-                  "id": 2148,
+                  "functionReturnParameters": 2023,
+                  "id": 2025,
                   "nodeType": "Return",
                   "src": "1039:15:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2150,
+            "id": 2027,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1128,22 +1128,22 @@
             "name": "GetPozTimer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2143,
+              "id": 2020,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "996:2:10"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2146,
+              "id": 2023,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2145,
+                  "id": 2022,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2150,
+                  "scope": 2027,
                   "src": "1020:6:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1152,7 +1152,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 2144,
+                    "id": 2021,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "1020:6:10",
@@ -1167,7 +1167,7 @@
               ],
               "src": "1019:8:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "976:86:10",
             "stateMutability": "view",
             "superFunction": null,
@@ -1175,25 +1175,25 @@
           },
           {
             "body": {
-              "id": 2164,
+              "id": 2041,
               "nodeType": "Block",
               "src": "1184:39:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2162,
+                    "id": 2039,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2160,
+                      "id": 2037,
                       "name": "PozTimer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2108,
+                      "referencedDeclaration": 1985,
                       "src": "1195:8:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -1204,11 +1204,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2161,
+                      "id": 2038,
                       "name": "_pozTimer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2152,
+                      "referencedDeclaration": 2029,
                       "src": "1206:9:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -1221,28 +1221,28 @@
                       "typeString": "uint16"
                     }
                   },
-                  "id": 2163,
+                  "id": 2040,
                   "nodeType": "ExpressionStatement",
                   "src": "1195:20:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2165,
+            "id": 2042,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 2155,
+                "id": 2032,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 2154,
+                  "id": 2031,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2698,
+                  "referencedDeclaration": 2575,
                   "src": "1134:9:10",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1256,11 +1256,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 2157,
+                    "id": 2034,
                     "name": "_pozTimer",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2152,
+                    "referencedDeclaration": 2029,
                     "src": "1168:9:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
@@ -1268,14 +1268,14 @@
                     }
                   }
                 ],
-                "id": 2158,
+                "id": 2035,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 2156,
+                  "id": 2033,
                   "name": "PercentCheckOk",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2126,
+                  "referencedDeclaration": 2003,
                   "src": "1153:14:10",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$_t_uint16_$",
@@ -1289,15 +1289,15 @@
             "name": "SetPozTimer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2153,
+              "id": 2030,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2152,
+                  "id": 2029,
                   "name": "_pozTimer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2165,
+                  "scope": 2042,
                   "src": "1091:16:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1306,7 +1306,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 2151,
+                    "id": 2028,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "1091:6:10",
@@ -1323,12 +1323,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2159,
+              "id": 2036,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1184:0:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "1070:153:10",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1336,33 +1336,33 @@
           },
           {
             "body": {
-              "id": 2172,
+              "id": 2049,
               "nodeType": "Block",
               "src": "1281:32:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2170,
+                    "id": 2047,
                     "name": "PozFee",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2106,
+                    "referencedDeclaration": 1983,
                     "src": "1299:6:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     }
                   },
-                  "functionReturnParameters": 2169,
-                  "id": 2171,
+                  "functionReturnParameters": 2046,
+                  "id": 2048,
                   "nodeType": "Return",
                   "src": "1292:13:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2173,
+            "id": 2050,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1370,22 +1370,22 @@
             "name": "GetPOZFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2166,
+              "id": 2043,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1249:2:10"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2169,
+              "id": 2046,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2168,
+                  "id": 2045,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2173,
+                  "scope": 2050,
                   "src": "1273:6:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1394,7 +1394,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 2167,
+                    "id": 2044,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "1273:6:10",
@@ -1409,7 +1409,7 @@
               ],
               "src": "1272:8:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "1231:82:10",
             "stateMutability": "view",
             "superFunction": null,
@@ -1417,33 +1417,33 @@
           },
           {
             "body": {
-              "id": 2180,
+              "id": 2057,
               "nodeType": "Block",
               "src": "1372:32:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2178,
+                    "id": 2055,
                     "name": "MinPoz",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2110,
+                    "referencedDeclaration": 1987,
                     "src": "1390:6:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 2177,
-                  "id": 2179,
+                  "functionReturnParameters": 2054,
+                  "id": 2056,
                   "nodeType": "Return",
                   "src": "1383:13:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2181,
+            "id": 2058,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1451,22 +1451,22 @@
             "name": "GetMinPoz",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2174,
+              "id": 2051,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1339:2:10"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2177,
+              "id": 2054,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2176,
+                  "id": 2053,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2181,
+                  "scope": 2058,
                   "src": "1363:7:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1475,7 +1475,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2175,
+                    "id": 2052,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1363:7:10",
@@ -1490,7 +1490,7 @@
               ],
               "src": "1362:9:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "1321:83:10",
             "stateMutability": "view",
             "superFunction": null,
@@ -1498,25 +1498,25 @@
           },
           {
             "body": {
-              "id": 2192,
+              "id": 2069,
               "nodeType": "Block",
               "src": "1465:35:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2190,
+                    "id": 2067,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2188,
+                      "id": 2065,
                       "name": "MinPoz",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2110,
+                      "referencedDeclaration": 1987,
                       "src": "1476:6:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1527,11 +1527,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2189,
+                      "id": 2066,
                       "name": "_MinPoz",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2183,
+                      "referencedDeclaration": 2060,
                       "src": "1485:7:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1544,28 +1544,28 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2191,
+                  "id": 2068,
                   "nodeType": "ExpressionStatement",
                   "src": "1476:16:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2193,
+            "id": 2070,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 2186,
+                "id": 2063,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 2185,
+                  "id": 2062,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2698,
+                  "referencedDeclaration": 2575,
                   "src": "1455:9:10",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1579,15 +1579,15 @@
             "name": "SetMinPoz",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2184,
+              "id": 2061,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2183,
+                  "id": 2060,
                   "name": "_MinPoz",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2193,
+                  "scope": 2070,
                   "src": "1431:15:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1596,7 +1596,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2182,
+                    "id": 2059,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1431:7:10",
@@ -1613,12 +1613,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2187,
+              "id": 2064,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1465:0:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "1412:88:10",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1626,7 +1626,7 @@
           },
           {
             "body": {
-              "id": 2223,
+              "id": 2100,
               "nodeType": "Block",
               "src": "1640:231:10",
               "statements": [
@@ -1637,18 +1637,18 @@
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     },
-                    "id": 2204,
+                    "id": 2081,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 2200,
+                      "id": 2077,
                       "name": "POZ_Address",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2112,
+                      "referencedDeclaration": 1989,
                       "src": "1655:11:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -1663,7 +1663,7 @@
                         {
                           "argumentTypes": null,
                           "hexValue": "307830",
-                          "id": 2202,
+                          "id": 2079,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -1686,7 +1686,7 @@
                             "typeString": "int_const 0"
                           }
                         ],
-                        "id": 2201,
+                        "id": 2078,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1699,7 +1699,7 @@
                         },
                         "typeName": "address"
                       },
-                      "id": 2203,
+                      "id": 2080,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -1720,14 +1720,14 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 2207,
+                  "id": 2084,
                   "nodeType": "IfStatement",
                   "src": "1651:44:10",
                   "trueBody": {
                     "expression": {
                       "argumentTypes": null,
                       "hexValue": "74727565",
-                      "id": 2205,
+                      "id": 2082,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -1742,8 +1742,8 @@
                       },
                       "value": "true"
                     },
-                    "functionReturnParameters": 2199,
-                    "id": 2206,
+                    "functionReturnParameters": 2076,
+                    "id": 2083,
                     "nodeType": "Return",
                     "src": "1684:11:10"
                   }
@@ -1758,7 +1758,7 @@
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
                         },
-                        "id": 2220,
+                        "id": 2097,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1769,7 +1769,7 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 2213,
+                          "id": 2090,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1779,11 +1779,11 @@
                             "arguments": [
                               {
                                 "argumentTypes": null,
-                                "id": 2209,
+                                "id": 2086,
                                 "name": "POZ_Address",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 2112,
+                                "referencedDeclaration": 1989,
                                 "src": "1779:11:10",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_address",
@@ -1792,11 +1792,11 @@
                               },
                               {
                                 "argumentTypes": null,
-                                "id": 2210,
+                                "id": 2087,
                                 "name": "_investor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 2195,
+                                "referencedDeclaration": 2072,
                                 "src": "1791:9:10",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_address",
@@ -1815,7 +1815,7 @@
                                   "typeString": "address"
                                 }
                               ],
-                              "id": 2208,
+                              "id": 2085,
                               "name": "CheckBalance",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
@@ -1826,7 +1826,7 @@
                                 "typeString": "function (address,address) view returns (uint256)"
                               }
                             },
-                            "id": 2211,
+                            "id": 2088,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -1844,11 +1844,11 @@
                           "operator": ">=",
                           "rightExpression": {
                             "argumentTypes": null,
-                            "id": 2212,
+                            "id": 2089,
                             "name": "MinPoz",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2110,
+                            "referencedDeclaration": 1987,
                             "src": "1805:6:10",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -1868,11 +1868,11 @@
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 2218,
+                              "id": 2095,
                               "name": "_investor",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2195,
+                              "referencedDeclaration": 2072,
                               "src": "1852:9:10",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
@@ -1892,11 +1892,11 @@
                               "arguments": [
                                 {
                                   "argumentTypes": null,
-                                  "id": 2215,
+                                  "id": 2092,
                                   "name": "POZ_Address",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 2112,
+                                  "referencedDeclaration": 1989,
                                   "src": "1827:11:10",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -1911,7 +1911,7 @@
                                     "typeString": "address"
                                   }
                                 ],
-                                "id": 2214,
+                                "id": 2091,
                                 "name": "IPOZBenefit",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
@@ -1922,7 +1922,7 @@
                                   "typeString": "type(contract IPOZBenefit)"
                                 }
                               },
-                              "id": 2216,
+                              "id": 2093,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
@@ -1936,7 +1936,7 @@
                                 "typeString": "contract IPOZBenefit"
                               }
                             },
-                            "id": 2217,
+                            "id": 2094,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -1950,7 +1950,7 @@
                               "typeString": "function (address) view external returns (bool)"
                             }
                           },
-                          "id": 2219,
+                          "id": 2096,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1971,7 +1971,7 @@
                         }
                       }
                     ],
-                    "id": 2221,
+                    "id": 2098,
                     "isConstant": false,
                     "isInlineArray": false,
                     "isLValue": false,
@@ -1984,15 +1984,15 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 2199,
-                  "id": 2222,
+                  "functionReturnParameters": 2076,
+                  "id": 2099,
                   "nodeType": "Return",
                   "src": "1758:105:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2224,
+            "id": 2101,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -2000,15 +2000,15 @@
             "name": "IsPOZInvestor",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2196,
+              "id": 2073,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2195,
+                  "id": 2072,
                   "name": "_investor",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2224,
+                  "scope": 2101,
                   "src": "1592:17:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2017,7 +2017,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2194,
+                    "id": 2071,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1592:7:10",
@@ -2034,15 +2034,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2199,
+              "id": 2076,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2198,
+                  "id": 2075,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2224,
+                  "scope": 2101,
                   "src": "1634:4:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2051,7 +2051,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2197,
+                    "id": 2074,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1634:4:10",
@@ -2066,14 +2066,14 @@
               ],
               "src": "1633:6:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "1569:302:10",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
-        "scope": 2226,
+        "scope": 2103,
         "src": "187:1687:10"
       }
     ],
@@ -2083,14 +2083,14 @@
     "absolutePath": "/C/Users/Administrator/Desktop/Code/Poolz/contracts/PozBenefit.sol",
     "exportedSymbols": {
       "PozBenefit": [
-        2225
+        2102
       ]
     },
-    "id": 2226,
+    "id": 2103,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2075,
+        "id": 1952,
         "literals": [
           "solidity",
           "^",
@@ -2103,10 +2103,10 @@
       {
         "absolutePath": "openzeppelin-solidity/contracts/lifecycle/Pausable.sol",
         "file": "openzeppelin-solidity/contracts/lifecycle/Pausable.sol",
-        "id": 2076,
+        "id": 1953,
         "nodeType": "ImportDirective",
-        "scope": 2226,
-        "sourceUnit": 2571,
+        "scope": 2103,
+        "sourceUnit": 2448,
         "src": "61:64:10",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2114,9 +2114,9 @@
       {
         "absolutePath": "/C/Users/Administrator/Desktop/Code/Poolz/contracts/ERC20Helper.sol",
         "file": "./ERC20Helper.sol",
-        "id": 2077,
+        "id": 1954,
         "nodeType": "ImportDirective",
-        "scope": 2226,
+        "scope": 2103,
         "sourceUnit": 139,
         "src": "127:27:10",
         "symbolAliases": [],
@@ -2125,9 +2125,9 @@
       {
         "absolutePath": "/C/Users/Administrator/Desktop/Code/Poolz/contracts/IPozBenefit.sol",
         "file": "./IPozBenefit.sol",
-        "id": 2078,
+        "id": 1955,
         "nodeType": "ImportDirective",
-        "scope": 2226,
+        "scope": 2103,
         "sourceUnit": 273,
         "src": "156:27:10",
         "symbolAliases": [],
@@ -2139,17 +2139,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2079,
+              "id": 1956,
               "name": "Pausable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2570,
+              "referencedDeclaration": 2447,
               "src": "210:8:10",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Pausable_$2570",
+                "typeIdentifier": "t_contract$_Pausable_$2447",
                 "typeString": "contract Pausable"
               }
             },
-            "id": 2080,
+            "id": 1957,
             "nodeType": "InheritanceSpecifier",
             "src": "210:8:10"
           },
@@ -2157,7 +2157,7 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2081,
+              "id": 1958,
               "name": "ERC20Helper",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 138,
@@ -2167,50 +2167,50 @@
                 "typeString": "contract ERC20Helper"
               }
             },
-            "id": 2082,
+            "id": 1959,
             "nodeType": "InheritanceSpecifier",
             "src": "220:11:10"
           }
         ],
         "contractDependencies": [
           138,
-          2570,
-          2750
+          2447,
+          2627
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2225,
+        "id": 2102,
         "linearizedBaseContracts": [
-          2225,
+          2102,
           138,
-          2570,
-          2750
+          2447,
+          2627
         ],
         "name": "PozBenefit",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 2103,
+              "id": 1980,
               "nodeType": "Block",
               "src": "260:154:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2087,
+                    "id": 1964,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2085,
+                      "id": 1962,
                       "name": "PozFee",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2106,
+                      "referencedDeclaration": 1983,
                       "src": "271:6:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -2222,7 +2222,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "3135",
-                      "id": 2086,
+                      "id": 1963,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -2243,25 +2243,25 @@
                       "typeString": "uint16"
                     }
                   },
-                  "id": 2088,
+                  "id": 1965,
                   "nodeType": "ExpressionStatement",
                   "src": "271:11:10"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2091,
+                    "id": 1968,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2089,
+                      "id": 1966,
                       "name": "PozTimer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2108,
+                      "referencedDeclaration": 1985,
                       "src": "303:8:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -2273,7 +2273,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "31303030",
-                      "id": 2090,
+                      "id": 1967,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -2294,25 +2294,25 @@
                       "typeString": "uint16"
                     }
                   },
-                  "id": 2092,
+                  "id": 1969,
                   "nodeType": "ExpressionStatement",
                   "src": "303:15:10"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2095,
+                    "id": 1972,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2093,
+                      "id": 1970,
                       "name": "MinPoz",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2110,
+                      "referencedDeclaration": 1987,
                       "src": "339:6:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -2324,7 +2324,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "3830",
-                      "id": 2094,
+                      "id": 1971,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -2345,25 +2345,25 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2096,
+                  "id": 1973,
                   "nodeType": "ExpressionStatement",
                   "src": "339:11:10"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2101,
+                    "id": 1978,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2097,
+                      "id": 1974,
                       "name": "POZ_Address",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2112,
+                      "referencedDeclaration": 1989,
                       "src": "380:11:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -2378,7 +2378,7 @@
                         {
                           "argumentTypes": null,
                           "hexValue": "307830",
-                          "id": 2099,
+                          "id": 1976,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -2401,7 +2401,7 @@
                             "typeString": "int_const 0"
                           }
                         ],
-                        "id": 2098,
+                        "id": 1975,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -2414,7 +2414,7 @@
                         },
                         "typeName": "address"
                       },
-                      "id": 2100,
+                      "id": 1977,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -2434,14 +2434,14 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 2102,
+                  "id": 1979,
                   "nodeType": "ExpressionStatement",
                   "src": "380:26:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2104,
+            "id": 1981,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -2449,19 +2449,19 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2083,
+              "id": 1960,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "250:2:10"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2084,
+              "id": 1961,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "260:0:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "239:175:10",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -2469,10 +2469,10 @@
           },
           {
             "constant": false,
-            "id": 2106,
+            "id": 1983,
             "name": "PozFee",
             "nodeType": "VariableDeclaration",
-            "scope": 2225,
+            "scope": 2102,
             "src": "422:22:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2481,7 +2481,7 @@
               "typeString": "uint16"
             },
             "typeName": {
-              "id": 2105,
+              "id": 1982,
               "name": "uint16",
               "nodeType": "ElementaryTypeName",
               "src": "422:6:10",
@@ -2495,10 +2495,10 @@
           },
           {
             "constant": false,
-            "id": 2108,
+            "id": 1985,
             "name": "PozTimer",
             "nodeType": "VariableDeclaration",
-            "scope": 2225,
+            "scope": 2102,
             "src": "493:24:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2507,7 +2507,7 @@
               "typeString": "uint16"
             },
             "typeName": {
-              "id": 2107,
+              "id": 1984,
               "name": "uint16",
               "nodeType": "ElementaryTypeName",
               "src": "493:6:10",
@@ -2521,10 +2521,10 @@
           },
           {
             "constant": false,
-            "id": 2110,
+            "id": 1987,
             "name": "MinPoz",
             "nodeType": "VariableDeclaration",
-            "scope": 2225,
+            "scope": 2102,
             "src": "567:23:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2533,7 +2533,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2109,
+              "id": 1986,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
               "src": "567:7:10",
@@ -2547,10 +2547,10 @@
           },
           {
             "constant": false,
-            "id": 2112,
+            "id": 1989,
             "name": "POZ_Address",
             "nodeType": "VariableDeclaration",
-            "scope": 2225,
+            "scope": 2102,
             "src": "648:28:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2559,7 +2559,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 2111,
+              "id": 1988,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "648:7:10",
@@ -2573,7 +2573,7 @@
           },
           {
             "body": {
-              "id": 2125,
+              "id": 2002,
               "nodeType": "Block",
               "src": "757:80:10",
               "statements": [
@@ -2584,18 +2584,18 @@
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     },
-                    "id": 2118,
+                    "id": 1995,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 2116,
+                      "id": 1993,
                       "name": "_percent",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2114,
+                      "referencedDeclaration": 1991,
                       "src": "772:8:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -2607,7 +2607,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "hexValue": "3130303030",
-                      "id": 2117,
+                      "id": 1994,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -2635,7 +2635,7 @@
                         {
                           "argumentTypes": null,
                           "hexValue": "4e6f7420696e2072616e6765",
-                          "id": 2121,
+                          "id": 1998,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -2658,21 +2658,21 @@
                             "typeString": "literal_string \"Not in range\""
                           }
                         ],
-                        "id": 2120,
+                        "id": 1997,
                         "name": "revert",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [
-                          3188,
-                          3189
+                          3065,
+                          3066
                         ],
-                        "referencedDeclaration": 3189,
+                        "referencedDeclaration": 3066,
                         "src": "807:6:10",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
                           "typeString": "function (string memory) pure"
                         }
                       },
-                      "id": 2122,
+                      "id": 1999,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -2686,15 +2686,15 @@
                         "typeString": "tuple()"
                       }
                     },
-                    "id": 2123,
+                    "id": 2000,
                     "nodeType": "ExpressionStatement",
                     "src": "807:22:10"
                   },
-                  "id": 2124,
+                  "id": 2001,
                   "nodeType": "IfStatement",
                   "src": "768:61:10",
                   "trueBody": {
-                    "id": 2119,
+                    "id": 1996,
                     "nodeType": "PlaceholderStatement",
                     "src": "790:1:10"
                   }
@@ -2702,19 +2702,19 @@
               ]
             },
             "documentation": null,
-            "id": 2126,
+            "id": 2003,
             "name": "PercentCheckOk",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 2115,
+              "id": 1992,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2114,
+                  "id": 1991,
                   "name": "_percent",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2126,
+                  "scope": 2003,
                   "src": "740:15:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2723,7 +2723,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 2113,
+                    "id": 1990,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "740:6:10",
@@ -2743,7 +2743,7 @@
           },
           {
             "body": {
-              "id": 2141,
+              "id": 2018,
               "nodeType": "Block",
               "src": "893:75:10",
               "statements": [
@@ -2754,18 +2754,18 @@
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     },
-                    "id": 2134,
+                    "id": 2011,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 2132,
+                      "id": 2009,
                       "name": "_left",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2128,
+                      "referencedDeclaration": 2005,
                       "src": "907:5:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -2776,11 +2776,11 @@
                     "operator": ">",
                     "rightExpression": {
                       "argumentTypes": null,
-                      "id": 2133,
+                      "id": 2010,
                       "name": "_right",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2130,
+                      "referencedDeclaration": 2007,
                       "src": "915:6:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -2800,7 +2800,7 @@
                         {
                           "argumentTypes": null,
                           "hexValue": "4e6f7420626967676572",
-                          "id": 2137,
+                          "id": 2014,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -2823,21 +2823,21 @@
                             "typeString": "literal_string \"Not bigger\""
                           }
                         ],
-                        "id": 2136,
+                        "id": 2013,
                         "name": "revert",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [
-                          3188,
-                          3189
+                          3065,
+                          3066
                         ],
-                        "referencedDeclaration": 3189,
+                        "referencedDeclaration": 3066,
                         "src": "940:6:10",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
                           "typeString": "function (string memory) pure"
                         }
                       },
-                      "id": 2138,
+                      "id": 2015,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -2851,15 +2851,15 @@
                         "typeString": "tuple()"
                       }
                     },
-                    "id": 2139,
+                    "id": 2016,
                     "nodeType": "ExpressionStatement",
                     "src": "940:20:10"
                   },
-                  "id": 2140,
+                  "id": 2017,
                   "nodeType": "IfStatement",
                   "src": "904:56:10",
                   "trueBody": {
-                    "id": 2135,
+                    "id": 2012,
                     "nodeType": "PlaceholderStatement",
                     "src": "923:1:10"
                   }
@@ -2867,19 +2867,19 @@
               ]
             },
             "documentation": null,
-            "id": 2142,
+            "id": 2019,
             "name": "LeftIsBigger",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 2131,
+              "id": 2008,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2128,
+                  "id": 2005,
                   "name": "_left",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2142,
+                  "scope": 2019,
                   "src": "865:12:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2888,7 +2888,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 2127,
+                    "id": 2004,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "865:6:10",
@@ -2902,10 +2902,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2130,
+                  "id": 2007,
                   "name": "_right",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2142,
+                  "scope": 2019,
                   "src": "879:13:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2914,7 +2914,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 2129,
+                    "id": 2006,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "879:6:10",
@@ -2934,33 +2934,33 @@
           },
           {
             "body": {
-              "id": 2149,
+              "id": 2026,
               "nodeType": "Block",
               "src": "1028:34:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2147,
+                    "id": 2024,
                     "name": "PozTimer",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2108,
+                    "referencedDeclaration": 1985,
                     "src": "1046:8:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     }
                   },
-                  "functionReturnParameters": 2146,
-                  "id": 2148,
+                  "functionReturnParameters": 2023,
+                  "id": 2025,
                   "nodeType": "Return",
                   "src": "1039:15:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2150,
+            "id": 2027,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -2968,22 +2968,22 @@
             "name": "GetPozTimer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2143,
+              "id": 2020,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "996:2:10"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2146,
+              "id": 2023,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2145,
+                  "id": 2022,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2150,
+                  "scope": 2027,
                   "src": "1020:6:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2992,7 +2992,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 2144,
+                    "id": 2021,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "1020:6:10",
@@ -3007,7 +3007,7 @@
               ],
               "src": "1019:8:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "976:86:10",
             "stateMutability": "view",
             "superFunction": null,
@@ -3015,25 +3015,25 @@
           },
           {
             "body": {
-              "id": 2164,
+              "id": 2041,
               "nodeType": "Block",
               "src": "1184:39:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2162,
+                    "id": 2039,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2160,
+                      "id": 2037,
                       "name": "PozTimer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2108,
+                      "referencedDeclaration": 1985,
                       "src": "1195:8:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -3044,11 +3044,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2161,
+                      "id": 2038,
                       "name": "_pozTimer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2152,
+                      "referencedDeclaration": 2029,
                       "src": "1206:9:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -3061,28 +3061,28 @@
                       "typeString": "uint16"
                     }
                   },
-                  "id": 2163,
+                  "id": 2040,
                   "nodeType": "ExpressionStatement",
                   "src": "1195:20:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2165,
+            "id": 2042,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 2155,
+                "id": 2032,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 2154,
+                  "id": 2031,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2698,
+                  "referencedDeclaration": 2575,
                   "src": "1134:9:10",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3096,11 +3096,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 2157,
+                    "id": 2034,
                     "name": "_pozTimer",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2152,
+                    "referencedDeclaration": 2029,
                     "src": "1168:9:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
@@ -3108,14 +3108,14 @@
                     }
                   }
                 ],
-                "id": 2158,
+                "id": 2035,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 2156,
+                  "id": 2033,
                   "name": "PercentCheckOk",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2126,
+                  "referencedDeclaration": 2003,
                   "src": "1153:14:10",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$_t_uint16_$",
@@ -3129,15 +3129,15 @@
             "name": "SetPozTimer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2153,
+              "id": 2030,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2152,
+                  "id": 2029,
                   "name": "_pozTimer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2165,
+                  "scope": 2042,
                   "src": "1091:16:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3146,7 +3146,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 2151,
+                    "id": 2028,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "1091:6:10",
@@ -3163,12 +3163,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2159,
+              "id": 2036,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1184:0:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "1070:153:10",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -3176,33 +3176,33 @@
           },
           {
             "body": {
-              "id": 2172,
+              "id": 2049,
               "nodeType": "Block",
               "src": "1281:32:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2170,
+                    "id": 2047,
                     "name": "PozFee",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2106,
+                    "referencedDeclaration": 1983,
                     "src": "1299:6:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     }
                   },
-                  "functionReturnParameters": 2169,
-                  "id": 2171,
+                  "functionReturnParameters": 2046,
+                  "id": 2048,
                   "nodeType": "Return",
                   "src": "1292:13:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2173,
+            "id": 2050,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -3210,22 +3210,22 @@
             "name": "GetPOZFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2166,
+              "id": 2043,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1249:2:10"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2169,
+              "id": 2046,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2168,
+                  "id": 2045,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2173,
+                  "scope": 2050,
                   "src": "1273:6:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3234,7 +3234,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 2167,
+                    "id": 2044,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "1273:6:10",
@@ -3249,7 +3249,7 @@
               ],
               "src": "1272:8:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "1231:82:10",
             "stateMutability": "view",
             "superFunction": null,
@@ -3257,33 +3257,33 @@
           },
           {
             "body": {
-              "id": 2180,
+              "id": 2057,
               "nodeType": "Block",
               "src": "1372:32:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2178,
+                    "id": 2055,
                     "name": "MinPoz",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2110,
+                    "referencedDeclaration": 1987,
                     "src": "1390:6:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 2177,
-                  "id": 2179,
+                  "functionReturnParameters": 2054,
+                  "id": 2056,
                   "nodeType": "Return",
                   "src": "1383:13:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2181,
+            "id": 2058,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -3291,22 +3291,22 @@
             "name": "GetMinPoz",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2174,
+              "id": 2051,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1339:2:10"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2177,
+              "id": 2054,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2176,
+                  "id": 2053,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2181,
+                  "scope": 2058,
                   "src": "1363:7:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3315,7 +3315,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2175,
+                    "id": 2052,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1363:7:10",
@@ -3330,7 +3330,7 @@
               ],
               "src": "1362:9:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "1321:83:10",
             "stateMutability": "view",
             "superFunction": null,
@@ -3338,25 +3338,25 @@
           },
           {
             "body": {
-              "id": 2192,
+              "id": 2069,
               "nodeType": "Block",
               "src": "1465:35:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2190,
+                    "id": 2067,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2188,
+                      "id": 2065,
                       "name": "MinPoz",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2110,
+                      "referencedDeclaration": 1987,
                       "src": "1476:6:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -3367,11 +3367,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2189,
+                      "id": 2066,
                       "name": "_MinPoz",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2183,
+                      "referencedDeclaration": 2060,
                       "src": "1485:7:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -3384,28 +3384,28 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2191,
+                  "id": 2068,
                   "nodeType": "ExpressionStatement",
                   "src": "1476:16:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2193,
+            "id": 2070,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 2186,
+                "id": 2063,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 2185,
+                  "id": 2062,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2698,
+                  "referencedDeclaration": 2575,
                   "src": "1455:9:10",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3419,15 +3419,15 @@
             "name": "SetMinPoz",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2184,
+              "id": 2061,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2183,
+                  "id": 2060,
                   "name": "_MinPoz",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2193,
+                  "scope": 2070,
                   "src": "1431:15:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3436,7 +3436,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2182,
+                    "id": 2059,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1431:7:10",
@@ -3453,12 +3453,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2187,
+              "id": 2064,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1465:0:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "1412:88:10",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -3466,7 +3466,7 @@
           },
           {
             "body": {
-              "id": 2223,
+              "id": 2100,
               "nodeType": "Block",
               "src": "1640:231:10",
               "statements": [
@@ -3477,18 +3477,18 @@
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     },
-                    "id": 2204,
+                    "id": 2081,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 2200,
+                      "id": 2077,
                       "name": "POZ_Address",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2112,
+                      "referencedDeclaration": 1989,
                       "src": "1655:11:10",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -3503,7 +3503,7 @@
                         {
                           "argumentTypes": null,
                           "hexValue": "307830",
-                          "id": 2202,
+                          "id": 2079,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -3526,7 +3526,7 @@
                             "typeString": "int_const 0"
                           }
                         ],
-                        "id": 2201,
+                        "id": 2078,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -3539,7 +3539,7 @@
                         },
                         "typeName": "address"
                       },
-                      "id": 2203,
+                      "id": 2080,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -3560,14 +3560,14 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 2207,
+                  "id": 2084,
                   "nodeType": "IfStatement",
                   "src": "1651:44:10",
                   "trueBody": {
                     "expression": {
                       "argumentTypes": null,
                       "hexValue": "74727565",
-                      "id": 2205,
+                      "id": 2082,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -3582,8 +3582,8 @@
                       },
                       "value": "true"
                     },
-                    "functionReturnParameters": 2199,
-                    "id": 2206,
+                    "functionReturnParameters": 2076,
+                    "id": 2083,
                     "nodeType": "Return",
                     "src": "1684:11:10"
                   }
@@ -3598,7 +3598,7 @@
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
                         },
-                        "id": 2220,
+                        "id": 2097,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -3609,7 +3609,7 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 2213,
+                          "id": 2090,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -3619,11 +3619,11 @@
                             "arguments": [
                               {
                                 "argumentTypes": null,
-                                "id": 2209,
+                                "id": 2086,
                                 "name": "POZ_Address",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 2112,
+                                "referencedDeclaration": 1989,
                                 "src": "1779:11:10",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_address",
@@ -3632,11 +3632,11 @@
                               },
                               {
                                 "argumentTypes": null,
-                                "id": 2210,
+                                "id": 2087,
                                 "name": "_investor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 2195,
+                                "referencedDeclaration": 2072,
                                 "src": "1791:9:10",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_address",
@@ -3655,7 +3655,7 @@
                                   "typeString": "address"
                                 }
                               ],
-                              "id": 2208,
+                              "id": 2085,
                               "name": "CheckBalance",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
@@ -3666,7 +3666,7 @@
                                 "typeString": "function (address,address) view returns (uint256)"
                               }
                             },
-                            "id": 2211,
+                            "id": 2088,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -3684,11 +3684,11 @@
                           "operator": ">=",
                           "rightExpression": {
                             "argumentTypes": null,
-                            "id": 2212,
+                            "id": 2089,
                             "name": "MinPoz",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2110,
+                            "referencedDeclaration": 1987,
                             "src": "1805:6:10",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -3708,11 +3708,11 @@
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 2218,
+                              "id": 2095,
                               "name": "_investor",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2195,
+                              "referencedDeclaration": 2072,
                               "src": "1852:9:10",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
@@ -3732,11 +3732,11 @@
                               "arguments": [
                                 {
                                   "argumentTypes": null,
-                                  "id": 2215,
+                                  "id": 2092,
                                   "name": "POZ_Address",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 2112,
+                                  "referencedDeclaration": 1989,
                                   "src": "1827:11:10",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -3751,7 +3751,7 @@
                                     "typeString": "address"
                                   }
                                 ],
-                                "id": 2214,
+                                "id": 2091,
                                 "name": "IPOZBenefit",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
@@ -3762,7 +3762,7 @@
                                   "typeString": "type(contract IPOZBenefit)"
                                 }
                               },
-                              "id": 2216,
+                              "id": 2093,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
@@ -3776,7 +3776,7 @@
                                 "typeString": "contract IPOZBenefit"
                               }
                             },
-                            "id": 2217,
+                            "id": 2094,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -3790,7 +3790,7 @@
                               "typeString": "function (address) view external returns (bool)"
                             }
                           },
-                          "id": 2219,
+                          "id": 2096,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -3811,7 +3811,7 @@
                         }
                       }
                     ],
-                    "id": 2221,
+                    "id": 2098,
                     "isConstant": false,
                     "isInlineArray": false,
                     "isLValue": false,
@@ -3824,15 +3824,15 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 2199,
-                  "id": 2222,
+                  "functionReturnParameters": 2076,
+                  "id": 2099,
                   "nodeType": "Return",
                   "src": "1758:105:10"
                 }
               ]
             },
             "documentation": null,
-            "id": 2224,
+            "id": 2101,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -3840,15 +3840,15 @@
             "name": "IsPOZInvestor",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2196,
+              "id": 2073,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2195,
+                  "id": 2072,
                   "name": "_investor",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2224,
+                  "scope": 2101,
                   "src": "1592:17:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3857,7 +3857,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2194,
+                    "id": 2071,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1592:7:10",
@@ -3874,15 +3874,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2199,
+              "id": 2076,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2198,
+                  "id": 2075,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2224,
+                  "scope": 2101,
                   "src": "1634:4:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3891,7 +3891,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2197,
+                    "id": 2074,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1634:4:10",
@@ -3906,14 +3906,14 @@
               ],
               "src": "1633:6:10"
             },
-            "scope": 2225,
+            "scope": 2102,
             "src": "1569:302:10",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
-        "scope": 2226,
+        "scope": 2103,
         "src": "187:1687:10"
       }
     ],
@@ -3924,8 +3924,8 @@
     "version": "0.4.26+commit.4563c3fc.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.2.5",
-  "updatedAt": "2020-10-06T15:00:04.701Z",
+  "schemaVersion": "3.0.22",
+  "updatedAt": "2020-10-11T10:34:55.295Z",
   "devdoc": {
     "methods": {
       "pause()": {

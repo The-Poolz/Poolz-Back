@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">36.36% </span>
+        <span class="strong">63.64% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/11</span>
+        <span class='fraction'>7/11</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/9</span>
+        <span class='fraction'>6/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">36.36% </span>
+        <span class="strong">63.64% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/11</span>
+        <span class='fraction'>7/11</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -96,7 +96,9 @@
 51
 52
 53
-54</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+54
+55
+56</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,8 +106,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,20 +126,22 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,21 +180,23 @@ contract Managable is ETHHelper {
     function SetMinDuration(uint16 _minDuration) public onlyOwner {
         MinDuration = _minDuration;
     }
-<span class="fstat-no" title="function not covered" >        function GetFee() public view returns (uint16) {</span>
-<span class="cstat-no" title="statement not covered" >        return Fee;</span>
+        function GetFee() public view returns (uint16) {
+        return Fee;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function SetFee(uint16 _fee) public onlyOwner {</span>
-<span class="cstat-no" title="statement not covered" >        Fee = _fee</span>;
+    function SetFee(uint16 _fee) public onlyOwner
+            PercentCheckOk(_fee)
+        LeftIsBigger( _fee, PozFee) {
+        Fee = _fee;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function SetPOZFee(uint16 _fee)</span>
+    function SetPOZFee(uint16 _fee)
         public
         onlyOwner
         PercentCheckOk(_fee)
-        LeftIsBigger(_fee, Fee)
+        LeftIsBigger( Fee,_fee)
     {
-<span class="cstat-no" title="statement not covered" >        PozFee = _fee</span>;
+        PozFee = _fee;
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    function WithdrawETHFee(address _to) public onlyOwner {</span>
@@ -208,7 +214,7 @@ contract Managable is ETHHelper {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 11 2020 09:32:12 GMT+0000 (Greenwich Mean Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 11 2020 10:50:37 GMT+0000 (Greenwich Mean Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

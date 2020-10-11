@@ -29,7 +29,9 @@ contract Managable is ETHHelper {
         return Fee;
     }
 
-    function SetFee(uint16 _fee) public onlyOwner {
+    function SetFee(uint16 _fee) public onlyOwner
+            PercentCheckOk(_fee)
+        LeftIsBigger( _fee, PozFee) {
         Fee = _fee;
     }
 
@@ -37,7 +39,7 @@ contract Managable is ETHHelper {
         public
         onlyOwner
         PercentCheckOk(_fee)
-        LeftIsBigger(_fee, Fee)
+        LeftIsBigger( Fee,_fee)
     {
         PozFee = _fee;
     }

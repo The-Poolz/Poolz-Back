@@ -22,7 +22,7 @@ install:
 script:
   - bash ./bin/test.sh
 after_script:
-  - npm run coverage && cat coverage/lcov.info | coveralls
+ - bash <(curl -s https://codecov.io/bash)
 
 
   

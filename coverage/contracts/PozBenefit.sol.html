@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">37.5% </span>
+        <span class="strong">56.25% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/16</span>
+        <span class='fraction'>9/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.67% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>1/6</span>
+        <span class='fraction'>3/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">22.22% </span>
+        <span class="strong">55.56% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/9</span>
+        <span class='fraction'>5/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">38.46% </span>
+        <span class="strong">61.54% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/13</span>
+        <span class='fraction'>8/13</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -110,11 +110,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,16 +143,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,15 +155,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -179,12 +179,12 @@ contract PozBenefit is Pausable, ERC20Helper {
     uint256 internal MinPoz; //minimum ammount ofpoz to be part of the discount
     address internal POZ_Address; //The address of the POZ Token
 &nbsp;
-<span class="fstat-no" title="function not covered" >    modifier PercentCheckOk(uint16 _percent) {</span>
-<span class="cstat-no" title="statement not covered" >        if (_percent &lt; 10000) _;</span>
+    modifier PercentCheckOk(uint16 _percent) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (_percent &lt; 10000) _;
         else <span class="cstat-no" title="statement not covered" >revert("Not in range")</span>;
     }
-<span class="fstat-no" title="function not covered" >    modifier LeftIsBigger(uint16 _left, uint16 _right){</span>
-<span class="cstat-no" title="statement not covered" >        if(_left &gt; _right) _;</span>
+    modifier LeftIsBigger(uint16 _left, uint16 _right){
+        <span class="missing-if-branch" title="else path not taken" >E</span>if(_left &gt; _right) _;
         else <span class="cstat-no" title="statement not covered" >revert("Not bigger")</span>;
     }
 &nbsp;
@@ -200,8 +200,8 @@ contract PozBenefit is Pausable, ERC20Helper {
 <span class="cstat-no" title="statement not covered" >        PozTimer = _pozTimer</span>;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function GetPOZFee() public view returns (uint16) {</span>
-<span class="cstat-no" title="statement not covered" >        return PozFee;</span>
+    function GetPOZFee() public view returns (uint16) {
+        return PozFee;
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    function GetMinPoz() public view returns (uint256) {</span>
@@ -223,7 +223,7 @@ contract PozBenefit is Pausable, ERC20Helper {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 11 2020 09:32:12 GMT+0000 (Greenwich Mean Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 11 2020 10:50:37 GMT+0000 (Greenwich Mean Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

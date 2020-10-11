@@ -356,7 +356,7 @@
         "id": 141,
         "nodeType": "ImportDirective",
         "scope": 263,
-        "sourceUnit": 2226,
+        "sourceUnit": 2103,
         "src": "61:26:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -370,10 +370,10 @@
               "id": 142,
               "name": "PozBenefit",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2225,
+              "referencedDeclaration": 2102,
               "src": "113:10:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PozBenefit_$2225",
+                "typeIdentifier": "t_contract$_PozBenefit_$2102",
                 "typeString": "contract PozBenefit"
               }
             },
@@ -384,9 +384,9 @@
         ],
         "contractDependencies": [
           138,
-          2225,
-          2570,
-          2750
+          2102,
+          2447,
+          2627
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -394,10 +394,10 @@
         "id": 262,
         "linearizedBaseContracts": [
           262,
-          2225,
+          2102,
           138,
-          2570,
-          2750
+          2447,
+          2627
         ],
         "name": "ETHHelper",
         "nodeType": "ContractDefinition",
@@ -625,10 +625,10 @@
                         "name": "revert",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [
-                          3188,
-                          3189
+                          3065,
+                          3066
                         ],
-                        "referencedDeclaration": 3189,
+                        "referencedDeclaration": 3066,
                         "src": "398:6:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
@@ -858,10 +858,10 @@
                         "name": "revert",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [
-                          3188,
-                          3189
+                          3065,
+                          3066
                         ],
-                        "referencedDeclaration": 3188,
+                        "referencedDeclaration": 3065,
                         "src": "540:6:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_revert_pure$__$returns$__$",
@@ -1272,7 +1272,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2698,
+                  "referencedDeclaration": 2575,
                   "src": "882:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1454,7 +1454,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2698,
+                  "referencedDeclaration": 2575,
                   "src": "1080:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1776,7 +1776,7 @@
         "id": 141,
         "nodeType": "ImportDirective",
         "scope": 263,
-        "sourceUnit": 2226,
+        "sourceUnit": 2103,
         "src": "61:26:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1790,10 +1790,10 @@
               "id": 142,
               "name": "PozBenefit",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2225,
+              "referencedDeclaration": 2102,
               "src": "113:10:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PozBenefit_$2225",
+                "typeIdentifier": "t_contract$_PozBenefit_$2102",
                 "typeString": "contract PozBenefit"
               }
             },
@@ -1804,9 +1804,9 @@
         ],
         "contractDependencies": [
           138,
-          2225,
-          2570,
-          2750
+          2102,
+          2447,
+          2627
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -1814,10 +1814,10 @@
         "id": 262,
         "linearizedBaseContracts": [
           262,
-          2225,
+          2102,
           138,
-          2570,
-          2750
+          2447,
+          2627
         ],
         "name": "ETHHelper",
         "nodeType": "ContractDefinition",
@@ -2045,10 +2045,10 @@
                         "name": "revert",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [
-                          3188,
-                          3189
+                          3065,
+                          3066
                         ],
-                        "referencedDeclaration": 3189,
+                        "referencedDeclaration": 3066,
                         "src": "398:6:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
@@ -2278,10 +2278,10 @@
                         "name": "revert",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [
-                          3188,
-                          3189
+                          3065,
+                          3066
                         ],
-                        "referencedDeclaration": 3188,
+                        "referencedDeclaration": 3065,
                         "src": "540:6:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_revert_pure$__$returns$__$",
@@ -2692,7 +2692,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2698,
+                  "referencedDeclaration": 2575,
                   "src": "882:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2874,7 +2874,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2698,
+                  "referencedDeclaration": 2575,
                   "src": "1080:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3174,8 +3174,8 @@
     "version": "0.4.26+commit.4563c3fc.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.2.5",
-  "updatedAt": "2020-10-06T15:00:04.163Z",
+  "schemaVersion": "3.0.22",
+  "updatedAt": "2020-10-11T10:34:54.011Z",
   "devdoc": {
     "methods": {
       "pause()": {
