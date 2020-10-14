@@ -4,7 +4,7 @@ pragma solidity ^0.4.24;
 
 import "./ETHHelper.sol";
 
-contract Managable is ETHHelper {
+contract Manageable is ETHHelper {
     constructor() public {
         Fee = 20; // *10000
         MinDuration = 0; //need to set

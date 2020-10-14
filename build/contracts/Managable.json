@@ -501,9 +501,9 @@
         "contractDependencies": [
           138,
           262,
-          2102,
-          2467,
-          2647
+          2103,
+          2468,
+          2648
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -512,10 +512,10 @@
         "linearizedBaseContracts": [
           1330,
           262,
-          2102,
+          2103,
           138,
-          2467,
-          2647
+          2468,
+          2648
         ],
         "name": "Managable",
         "nodeType": "ContractDefinition",
@@ -904,7 +904,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "594:9:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1113,7 +1113,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "779:9:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1146,7 +1146,7 @@
                   "name": "PercentCheckOk",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 1991,
+                  "referencedDeclaration": 1992,
                   "src": "802:14:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$_t_uint16_$",
@@ -1177,7 +1177,7 @@
                     "name": "PozFee",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1971,
+                    "referencedDeclaration": 1972,
                     "src": "852:6:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
@@ -1192,7 +1192,7 @@
                   "name": "LeftIsBigger",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2007,
+                  "referencedDeclaration": 2008,
                   "src": "832:12:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$_t_uint16_$_t_uint16_$",
@@ -1271,7 +1271,7 @@
                       "name": "PozFee",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1971,
+                      "referencedDeclaration": 1972,
                       "src": "1043:6:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -1320,7 +1320,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "954:9:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1353,7 +1353,7 @@
                   "name": "PercentCheckOk",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 1991,
+                  "referencedDeclaration": 1992,
                   "src": "973:14:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$_t_uint16_$",
@@ -1399,7 +1399,7 @@
                   "name": "LeftIsBigger",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2007,
+                  "referencedDeclaration": 2008,
                   "src": "1003:12:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$_t_uint16_$_t_uint16_$",
@@ -1479,7 +1479,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 3109,
+                              "referencedDeclaration": 3110,
                               "src": "1158:4:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_Managable_$1330",
@@ -1605,7 +1605,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "1116:9:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1767,10 +1767,10 @@
                           "name": "ERC20",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2786,
+                          "referencedDeclaration": 2787,
                           "src": "1345:5:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_ERC20_$2786_$",
+                            "typeIdentifier": "t_type$_t_contract$_ERC20_$2787_$",
                             "typeString": "type(contract ERC20)"
                           }
                         },
@@ -1784,7 +1784,7 @@
                         "nodeType": "FunctionCall",
                         "src": "1345:13:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ERC20_$2786",
+                          "typeIdentifier": "t_contract$_ERC20_$2787",
                           "typeString": "contract ERC20"
                         }
                       },
@@ -1795,7 +1795,7 @@
                       "lValueRequested": false,
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2809,
+                      "referencedDeclaration": 2810,
                       "src": "1345:22:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -1915,7 +1915,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "1320:9:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2063,9 +2063,9 @@
         "contractDependencies": [
           138,
           262,
-          2102,
-          2467,
-          2647
+          2103,
+          2468,
+          2648
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -2074,10 +2074,10 @@
         "linearizedBaseContracts": [
           1330,
           262,
-          2102,
+          2103,
           138,
-          2467,
-          2647
+          2468,
+          2648
         ],
         "name": "Managable",
         "nodeType": "ContractDefinition",
@@ -2466,7 +2466,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "594:9:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2675,7 +2675,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "779:9:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2708,7 +2708,7 @@
                   "name": "PercentCheckOk",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 1991,
+                  "referencedDeclaration": 1992,
                   "src": "802:14:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$_t_uint16_$",
@@ -2739,7 +2739,7 @@
                     "name": "PozFee",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1971,
+                    "referencedDeclaration": 1972,
                     "src": "852:6:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
@@ -2754,7 +2754,7 @@
                   "name": "LeftIsBigger",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2007,
+                  "referencedDeclaration": 2008,
                   "src": "832:12:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$_t_uint16_$_t_uint16_$",
@@ -2833,7 +2833,7 @@
                       "name": "PozFee",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1971,
+                      "referencedDeclaration": 1972,
                       "src": "1043:6:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -2882,7 +2882,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "954:9:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2915,7 +2915,7 @@
                   "name": "PercentCheckOk",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 1991,
+                  "referencedDeclaration": 1992,
                   "src": "973:14:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$_t_uint16_$",
@@ -2961,7 +2961,7 @@
                   "name": "LeftIsBigger",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2007,
+                  "referencedDeclaration": 2008,
                   "src": "1003:12:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$_t_uint16_$_t_uint16_$",
@@ -3041,7 +3041,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 3109,
+                              "referencedDeclaration": 3110,
                               "src": "1158:4:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_Managable_$1330",
@@ -3167,7 +3167,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "1116:9:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3329,10 +3329,10 @@
                           "name": "ERC20",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2786,
+                          "referencedDeclaration": 2787,
                           "src": "1345:5:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_ERC20_$2786_$",
+                            "typeIdentifier": "t_type$_t_contract$_ERC20_$2787_$",
                             "typeString": "type(contract ERC20)"
                           }
                         },
@@ -3346,7 +3346,7 @@
                         "nodeType": "FunctionCall",
                         "src": "1345:13:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ERC20_$2786",
+                          "typeIdentifier": "t_contract$_ERC20_$2787",
                           "typeString": "contract ERC20"
                         }
                       },
@@ -3357,7 +3357,7 @@
                       "lValueRequested": false,
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2809,
+                      "referencedDeclaration": 2810,
                       "src": "1345:22:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -3477,7 +3477,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "1320:9:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3575,7 +3575,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.0",
-  "updatedAt": "2020-10-11T14:45:15.181Z",
+  "updatedAt": "2020-10-12T09:56:40.158Z",
   "devdoc": {
     "methods": {
       "pause()": {

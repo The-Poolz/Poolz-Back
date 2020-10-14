@@ -3,9 +3,9 @@
 
 pragma solidity ^0.4.24;
 
-import "./Managable.sol";
+import "./Manageable.sol";
 
-contract MainCoinManager is Managable {
+contract MainCoinManager is Manageable {
     event MainCoinAdded (address Token);
     event MainCoinRemoved (address Token);
 

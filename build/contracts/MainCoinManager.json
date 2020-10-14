@@ -586,9 +586,9 @@
           138,
           262,
           1330,
-          2102,
-          2467,
-          2647
+          2103,
+          2468,
+          2648
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -598,10 +598,10 @@
           1195,
           1330,
           262,
-          2102,
+          2103,
           138,
-          2467,
-          2647
+          2468,
+          2648
         ],
         "name": "MainCoinManager",
         "nodeType": "ContractDefinition",
@@ -890,7 +890,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "386:9:5",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1104,7 +1104,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "541:9:5",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1362,9 +1362,9 @@
           138,
           262,
           1330,
-          2102,
-          2467,
-          2647
+          2103,
+          2468,
+          2648
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -1374,10 +1374,10 @@
           1195,
           1330,
           262,
-          2102,
+          2103,
           138,
-          2467,
-          2647
+          2468,
+          2648
         ],
         "name": "MainCoinManager",
         "nodeType": "ContractDefinition",
@@ -1666,7 +1666,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "386:9:5",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1880,7 +1880,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2595,
+                  "referencedDeclaration": 2596,
                   "src": "541:9:5",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2087,7 +2087,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.0",
-  "updatedAt": "2020-10-11T14:45:15.025Z",
+  "updatedAt": "2020-10-12T09:56:39.860Z",
   "devdoc": {
     "methods": {
       "pause()": {

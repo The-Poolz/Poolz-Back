@@ -51,9 +51,12 @@ contract Pools is MainCoinManager {
             SafeMath.add(now, MinDuration) <= _FinishTime,
             "Need more then MinDuration"
         ); // check if the time is OK
-        require(_MainCoin == address(0x0) || IsERC20Maincoin(_MainCoin));
         require(
-            _POZRate >=_Rate ,
+            _MainCoin == address(0x0) || IsERC20Maincoin(_MainCoin),
+            "Main coin not in list"
+        );
+        require(
+            _POZRate >= _Rate,
             "POZ holders need to have better price (or the same)"
         );
         TransferInToken(_Token, msg.sender, _StartAmount);
@@ -87,6 +90,6 @@ contract Pools is MainCoinManager {
         );
         poolsMap[msg.sender].push(poolsCount);
         emit NewPool(_Token, poolsCount);
-        poolsCount = SafeMath.add(poolsCount,1); //joke - overflowfrom 0 on int256 = 1.16E77
+        poolsCount = SafeMath.add(poolsCount, 1); //joke - overflowfrom 0 on int256 = 1.16E77
     }
 }
