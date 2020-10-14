@@ -53,6 +53,9 @@ contract PozBenefit is Pausable, ERC20Helper {
     function SetPozAdress(address _POZ_Address) public onlyOwner {
         POZ_Address = _POZ_Address;
     }
+     function AmIPOZInvestor() public view returns (bool) {
+        return IsPOZInvestor(msg.sender);
+    }
     //@dev Taken from interface, To join the POZ Benefit club
     function IsPOZInvestor(address _investor) internal view returns (bool) {
         if (POZ_Address == address(0x0)) return true;//false; // for testing stage, until got the address
