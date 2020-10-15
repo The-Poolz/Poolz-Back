@@ -63,11 +63,13 @@ contract PoolsData is Pools {
             bool,
             uint256,
             uint256,
+            uint256,
             address
         )
     {
         return (
             pools[_id].IsLocked,
+            pools[_id].StartTime,
             pools[_id].FinishTime,
             pools[_id].OpenForAll,
             pools[_id].Creator
