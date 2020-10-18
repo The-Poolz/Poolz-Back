@@ -2,6 +2,7 @@ pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 /**
 * @title TestToken is a basic ERC20 Token
@@ -20,12 +21,19 @@ contract TestToken is StandardToken, Ownable{
         symbol = "TEST";
         name = "TestToken";
         decimals = 5;
-        totalSupply = 100000000000;
+        totalSupply = 5000000;
 
         owner = msg.sender;
         balances[msg.sender] = totalSupply;
 
         emit Transfer(0x0, msg.sender, totalSupply);
+    }
+    //for test net
+    function FreeTest () public {
+        totalSupply = SafeMath.add(totalSupply,5000000);
+        balances[msg.sender] = SafeMath.add(balances[msg.sender],5000000);
+
+        emit Transfer(0x0, msg.sender, 5000000);
     }
 }
 
