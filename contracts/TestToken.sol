@@ -21,7 +21,7 @@ contract TestToken is StandardToken, Ownable{
         symbol = "TEST";
         name = "TestToken";
         decimals = 5;
-        totalSupply = 5000000;
+        totalSupply = 5000000000000;
 
         owner = msg.sender;
         balances[msg.sender] = totalSupply;
