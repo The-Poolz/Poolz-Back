@@ -59,6 +59,7 @@ contract Pools is MainCoinManager {
             _POZRate >= _Rate,
             "POZ holders need to have better price (or the same)"
         );
+        require(_POZRate > 0, "It will not work");
         TransferInToken(_Token, msg.sender, _StartAmount);
         uint256 Openforall = (_Rate == _POZRate)
             ? block.timestamp
