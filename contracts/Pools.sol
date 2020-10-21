@@ -30,13 +30,13 @@ contract Pools is MainCoinManager {
         uint256 OpenForAll; // The Time that all investors can invest
         uint256 UnlockedTokens; //for locked pools
         bool TookLeftOvers; //The Creator took the left overs after the pool finished
+        bool Is21DecimalRate; //If true, the rate will be rate*10^-21
     }
 
     function GetLastPoolId() public view returns (uint256) {
         return poolsCount;
     }
-
-    //create a new pool
+     //create a new pool
     function CreatePool(
         address _Token, //token to sell address
         uint256 _FinishTime, //Until what time the pool will work
@@ -44,8 +44,9 @@ contract Pools is MainCoinManager {
         uint256 _POZRate, //the rate for POZ Holders
         uint256 _StartAmount, //Total amount of the tokens to sell in the pool
         bool _IsLocked, //False = DSP or True = TLP
-        address _MainCoin // address(0x0) = ETH, address of main token
-    ) external {
+        address _MainCoin, // address(0x0) = ETH, address of main token
+        bool _Is21Decimal
+    ) public {
         require(IsERC20(_Token), "Need Valid ERC20 Token"); //check if _Token is ERC20
         require(
             SafeMath.add(now, MinDuration) <= _FinishTime,
@@ -87,7 +88,8 @@ contract Pools is MainCoinManager {
             block.timestamp,
             Openforall,
             0,
-            false
+            false,
+            _Is21Decimal
         );
         poolsMap[msg.sender].push(poolsCount);
         emit NewPool(_Token, poolsCount);

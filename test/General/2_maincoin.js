@@ -26,7 +26,7 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     await instance.AddERC20Maincoin(Maincoint.address, { from: accounts[0] });
     await Maincoint.transfer(accounts[1], amount, { from: accounts[0] });
     await Token.approve(instance.address, amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, Maincoint.address, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, Maincoint.address,false, { from: accounts[0] });
     let poolid = await instance.GetLastPoolId();
     assert.equal(poolid.toNumber(), 1);
     await Maincoint.approve(instance.address, amount, { from: accounts[1] });
