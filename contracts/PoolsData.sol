@@ -64,7 +64,8 @@ contract PoolsData is Pools {
             uint256,
             uint256,
             uint256,
-            address
+            address,
+            bool
         )
     {
         return (
@@ -72,7 +73,8 @@ contract PoolsData is Pools {
             pools[_id].StartTime,
             pools[_id].FinishTime,
             pools[_id].OpenForAll,
-            pools[_id].Creator
+            pools[_id].Creator,
+            pools[_id].Is21DecimalRate
         );
     }
 
