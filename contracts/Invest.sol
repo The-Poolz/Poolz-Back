@@ -153,6 +153,7 @@ contract Invest is PoolsData {
         if (GetPoolStatus(_Pid) == PoolStatus.Open) {
             return Fee;
         }
-        revert("Wrong pool status to CalcFee");
+        //will not get here, will fail on CalcTokens
+        //revert("Wrong pool status to CalcFee");
     }
 }
