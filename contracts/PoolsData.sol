@@ -68,6 +68,7 @@ contract PoolsData is Pools {
             bool
         )
     {
+        require(_id < poolsCount, "Wrong Id");
         return (
             pools[_id].IsLocked,
             pools[_id].StartTime,
@@ -108,20 +109,21 @@ contract PoolsData is Pools {
         {
             return (PoolStatus.Close);
         }
-        if (
+        //will check the same in the next if
+        /*if (
             pools[_id].Lefttokens > 0 &&
             !pools[_id].IsLocked &&
             !pools[_id].TookLeftOvers
         ) {
             //Got left overs on direct pool
             return (PoolStatus.Finished);
-        }
+        }*/
         if (now >= pools[_id].FinishTime && !pools[_id].IsLocked) {
             // After finish time - not locked
             if (pools[_id].TookLeftOvers) return (PoolStatus.Close);
             return (PoolStatus.Finished);
         }
-        if (now >= pools[_id].FinishTime && pools[_id].IsLocked) {
+        //if (now >= pools[_id].FinishTime && pools[_id].IsLocked) {
             // After finish time -  locked
             if (
                 (pools[_id].TookLeftOvers || pools[_id].Lefttokens == 0) &&
@@ -129,6 +131,6 @@ contract PoolsData is Pools {
                     pools[_id].StartAmount)
             ) return (PoolStatus.Close);
             return (PoolStatus.Finished);
-        }
+        //}
     }
 }

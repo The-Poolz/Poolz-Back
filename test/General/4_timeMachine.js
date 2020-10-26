@@ -1,9 +1,7 @@
-
-
 const ThePoolz = artifacts.require("ThePoolz");
 const TestToken = artifacts.require("TestToken");
 const { assert } = require('chai');
-//const truffleAssert = require('truffle-assertions');
+const truffleAssert = require('truffle-assertions');
 const timeMachine = require('ganache-time-traveler');
 const zero_address = "0x0000000000000000000000000000000000000000";
 
@@ -58,5 +56,48 @@ contract("Thepoolz, with timeMachine", async accounts => {
     //await instance.WithdrawInvestment(0);
     let EndBalance = await Token.balanceOf(accounts[1]);
     assert.isAbove(EndBalance.toNumber(), 0);
+  });
+  it("Can't invest in finish pool", async () => {
+    let instance = await ThePoolz.new();
+    let accounts = await web3.eth.getAccounts();
+    let Token = await TestToken.new();
+    let date = new Date();
+    await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
+    await Token.approve(instance.address, amount, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, zero_address,false, { from: accounts[0] });
+    await timeMachine.advanceTimeAndBlock(120 * 60);
+    await timeMachine.advanceTimeAndBlock(120 * 60);
+    let status = await instance.GetPoolStatus(0);
+    assert.equal(status.toNumber(),3);
+    await truffleAssert.reverts( instance.InvestETH(0, { value: amount / 2, from: accounts[1] }));
+  });
+  it("Can't invest in close pool", async () => {
+    let instance = await ThePoolz.new();
+    let accounts = await web3.eth.getAccounts();
+    let Token = await TestToken.new();
+    let date = new Date();
+    await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
+    await Token.approve(instance.address, amount, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, zero_address,false, { from: accounts[0] });
+    await instance.InvestETH(0, { value: amount , from: accounts[1] });
+    await timeMachine.advanceTimeAndBlock(120 * 60);
+    await timeMachine.advanceTimeAndBlock(120 * 60);
+    await instance.Work();
+    let status = await instance.GetPoolStatus(0);
+    assert.equal(status.toNumber(),4);
+    await truffleAssert.reverts( instance.InvestETH(0, { value: amount / 2, from: accounts[1] }));
+  });
+  it("Finish Status", async () => {
+    let instance = await ThePoolz.new();
+    let accounts = await web3.eth.getAccounts();
+    let Token = await TestToken.new();
+    let date = new Date();
+    await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
+    await Token.approve(instance.address, amount, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,false, { from: accounts[0] });
+    await timeMachine.advanceTimeAndBlock(120 * 60);
+    await timeMachine.advanceTimeAndBlock(120 * 60);
+    let status = await instance.GetPoolStatus(0);
+    assert.equal(status.toNumber(),3);
   });
 });

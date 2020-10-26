@@ -81,5 +81,16 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     let amount = 100000;
     await truffleAssert.reverts(instance.CreatePool(accounts[7], Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, Maincoint.address, false, { from: accounts[0] }));
   });
+  it("Fail Open a pool No main Coin", async () => {
+    let instance = await ThePoolz.deployed();
+    let amount = 100000;
+    let rate = 1;
+    let Token = await TestToken.deployed()
+    await Token.approve(instance.address, amount, { from: accounts[0] });
+    let date = new Date();
+    date.setDate(date.getDate() + 1);   // add a day
+    await instance.RemoveERC20Maincoin(Maincoint.address, {from : accounts[0]});
+    await truffleAssert.reverts(instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, Maincoint.address,false, { from: accounts[0] }));
+  });
 });
 
