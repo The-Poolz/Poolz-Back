@@ -25,7 +25,7 @@ contract ThePoolz is InvestorData {
     function WorkForInvestors() internal returns (uint256) {
         uint256 WorkDone = 0;
         bool FixStart = true;
-        for (uint256 index = StartInvestor; index <= TotalInvestors; index++) {
+        for (uint256 index = StartInvestor; index < TotalInvestors; index++) {
             if (WithdrawInvestment(index)) WorkDone++;
             if (
                 FixStart &&
@@ -34,7 +34,7 @@ contract ThePoolz is InvestorData {
                 //do nothing - no need De Morgan law here
             } else {
                 FixStart = false;
-                StartInvestor = index - 1;
+                StartInvestor = index;
             }
         }
         emit InvestorsWork(StartInvestor,WorkDone);
@@ -44,13 +44,13 @@ contract ThePoolz is InvestorData {
     function WorkForProjectOwner() internal returns (uint256) {
         uint256 WorkDone = 0;
         bool FixStart = true;
-        for (uint256 index = StartProjectOwner; index <= poolsCount; index++) {
+        for (uint256 index = StartProjectOwner; index < poolsCount; index++) {
             if (WithdrawLeftOvers(index)) WorkDone++;
             if (FixStart && GetPoolStatus(index) == PoolStatus.Close) {
                 //do nothing - no need De Morgan law here
             } else {
                 FixStart = false;
-                StartProjectOwner = index - 1;
+                StartProjectOwner = index;
             }
         }
         emit ProjectOwnerWork(StartProjectOwner,WorkDone);

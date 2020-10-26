@@ -28,8 +28,9 @@ contract Invest is PoolsData {
         external
         payable
         ReceivETH(msg.value, msg.sender)
+        whenNotPaused
     {
-        require(_PoolId < poolsCount, "Wrong pool id");
+        require(_PoolId < poolsCount, "Wrong pool id, InvestETH fail");
         require(pools[_PoolId].Maincoin == address(0x0), "Pool is not for ETH");
         Investors[TotalInvestors] = Investor(
             _PoolId,
@@ -103,8 +104,8 @@ contract Invest is PoolsData {
         revert("Investment not complited");
     }
 
-    function InvestERC20(uint256 _PoolId, uint256 _Amount) external payable {
-        require(_PoolId < poolsCount, "Wrong pool id");
+    function InvestERC20(uint256 _PoolId, uint256 _Amount) external whenNotPaused {
+        require(_PoolId < poolsCount, "Wrong pool id, InvestERC20 fail");
         require(
             pools[_PoolId].Maincoin != address(0x0),
             "Pool is for ETH, use InvetETH"

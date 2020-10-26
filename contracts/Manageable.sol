@@ -8,11 +8,13 @@ contract Manageable is ETHHelper {
     constructor() public {
         Fee = 20; // *10000
         MinDuration = 0; //need to set
+        PoolPrice = 0; // Price for create a pool
     }
     mapping (address => uint256) FeeMap;
     //@dev for percent use uint16
     uint16 internal Fee; //the fee for the pool
     uint16 internal MinDuration; //the minimum duration of a pool, in seconds
+    uint256 internal PoolPrice;
 
     function GetMinDuration() public view returns (uint16) {
         return MinDuration;

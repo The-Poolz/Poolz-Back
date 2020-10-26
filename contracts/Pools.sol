@@ -46,7 +46,8 @@ contract Pools is MainCoinManager {
         bool _IsLocked, //False = DSP or True = TLP
         address _MainCoin, // address(0x0) = ETH, address of main token
         bool _Is21Decimal
-    ) public {
+    ) public whenNotPaused payable {
+        require(msg.value >= PoolPrice, "Need to pay for the pool");
         require(IsERC20(_Token), "Need Valid ERC20 Token"); //check if _Token is ERC20
         require(
             SafeMath.add(now, MinDuration) <= _FinishTime,

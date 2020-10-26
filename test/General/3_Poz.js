@@ -9,6 +9,11 @@ contract("Thepoolz, POZ Test", async accounts => {
         instance = await ThePoolz.deployed();
         Maincoint = await TestMainToken.deployed();
     });
+    it("IsPoz Investort", async () => {
+        instance = await ThePoolz.new();
+        let isPoz = await instance.AmIPOZInvestor();
+        assert.isTrue(isPoz);
+    });
     it("Open a pool with main coin,invest with main coin", async () => {
         instance = await ThePoolz.new();
         instance.AddERC20Maincoin(Maincoint.address, { from: accounts[0] });

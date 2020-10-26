@@ -17,6 +17,14 @@ contract("Thepoolz", async accounts => {
     let allownce = await Token.allowance(accounts[8], accounts[0]);
     assert.equal(allownce, allow);
   });
+  it("mint test token", async () => {
+    let Token = await TestToken.deployed();
+    let oldBalance = await Token.balanceOf(accounts[8]);
+    assert.equal(oldBalance,0)
+    await Token.FreeTest({from: accounts[8]});
+    let newBalance = await Token.balanceOf(accounts[8]);
+    assert.isAbove(newBalance.toNumber(),0);
+  });
   it("show no pools", async () => {
     let instance = await ThePoolz.deployed();
     let mypools = await instance.GetMyPoolsId({ from: accounts[7] });
@@ -35,6 +43,10 @@ contract("Thepoolz", async accounts => {
     assert.equal(newpools.length, 1, "Got 1 pool");
     let tokensInContract = await Token.balanceOf(instance.address);
     assert.equal(tokensInContract, amount, "Got the tokens");
+  });
+  it("Fail invest 0 eth", async () => {
+    let instance = await ThePoolz.deployed();
+    await truffleAssert.reverts(instance.InvestETH(0, { value: 0, from: accounts[1] }));
   });
     it("fail to take LeftOvers before time", async () => {
     let instance = await ThePoolz.deployed();
@@ -155,23 +167,5 @@ contract("Thepoolz", async accounts => {
     let actual = await instance.GetMinPoz();
     assert.equal(actual.toNumber(), minpoz);
   });
-  /*
-it("take leftovers from finish pool", async () => {
-  let instance = await ThePoolz.new();
-  let accounts = await web3.eth.getAccounts();
-  let Token = await TestToken.new();
-  let StartBalance = await Token.balanceOf(accounts[0]);
-  let date = new Date();
-  await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime()/1000));
-  console.log("pools "+await instance.GetLastPoolId());
-  await Token.approve(instance.address, amount, { from: accounts[0] });
-  await instance.CreatePool(Token.address, Math.floor(date.getTime()/1000)+60, rate,rate, amount, false, zero_address, { from: accounts[0] });
-  console.log("pools "+await instance.GetLastPoolId());
-  await timeMachine.advanceTimeAndBlock(120*60);
-  await timeMachine.advanceTimeAndBlock(120*60);
-  await instance.WithdrawLeftOvers(0,{ from: accounts[0] });
-  let EndBalance = await Token.balanceOf(accounts[0]);
-  assert.equal(EndBalance.toNumber(),StartBalance.toNumber());
-});*/ //remake test
 
 });
