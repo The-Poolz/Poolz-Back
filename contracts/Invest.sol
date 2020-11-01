@@ -101,6 +101,7 @@ contract Invest is PoolsData {
             _Tokens
         );
         if (pools[_PoolId].Lefttokens == 0) emit FinishPool(_PoolId);
+        else emit PoolUpdate(_PoolId);
     }
 
     function NewInvestor(

@@ -18,13 +18,6 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     let newBalance = await Token.balanceOf(accounts[8]);
     assert.isAbove(newBalance.toNumber(),0);
   });
-  it("Other Payments, add as admin", async () => {
-    let IspayableToken = await instance.IsERC20Maincoin(Maincoint.address);
-    assert.isFalse(IspayableToken);
-    instance.AddERC20Maincoin(Maincoint.address, { from: accounts[0] });
-    let IspayableToken2 = await instance.IsERC20Maincoin(Maincoint.address);
-    assert.isTrue(IspayableToken2);
-  });
   it("Open a pool with main coin,invest with main coin", async () => {
     let rate = 1;
     let date = new Date();

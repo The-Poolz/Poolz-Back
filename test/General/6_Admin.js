@@ -9,7 +9,7 @@ const rate = 1;
 const amount = 10000000;
 const invest = 100000;
 
-contract("Thepoolz", async accounts => {
+contract("Thepoolz Admin", async accounts => {
 it("Other Payments, add as admin", async () => {
     let instance = await ThePoolz.deployed();
     let Token = await TestToken.deployed();

@@ -8,6 +8,7 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 contract Pools is MainCoinManager {
     event NewPool(address token, uint256 id);
     event FinishPool(uint256 id);
+    event PoolUpdate(uint256 id);
 
     constructor() public {
         poolsCount = 0; //Start with 0

@@ -14,9 +14,10 @@
     "chai-as-promised": "^7.1.1",
     "chai-bignumber": "^2.0.2",
     "coveralls": "^3.1.0",
+    "node-fetch": ">=2.6.1",
     "openzeppelin-solidity": "1.12.0",
-    "solidity-coverage": "^0.7.11",
-    "node-fetch": ">=2.6.1"
+    "sol-merger": "^3.1.0",
+    "solidity-coverage": "^0.7.11"
   },
   "name": "Poolz",
   "version": "1.0.0",
@@ -25,7 +26,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build-contracts": "sol-merger \"./contracts/*.sol\" ./build"
   },
   "keywords": [],
   "author": "",

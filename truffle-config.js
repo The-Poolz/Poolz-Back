@@ -12,7 +12,7 @@
  *   },
  */
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-const teamsMnemonic = "enhance scan dose rib lab jelly damage box museum leaf tail retreat";
+//const teamsMnemonic = "enhance scan dose rib lab jelly damage box museum leaf tail retreat";
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
@@ -23,16 +23,27 @@ module.exports = {
       port: 8545,
       network_id: "*" // Match any network id
     },
-    sandbox: {
-      provider: function () {
-        return new HDWalletProvider(teamsMnemonic, "https://sandbox.truffleteams.com/eba6142f-5458-471a-853a-93df3149f12c", 0, 10, false);
-      },
-      network_id: 1601895393000
+    tomotestnet: {
+      provider: () =>
+        new HDWalletProvider(
+          mnemonic,
+          "https://testnet.tomochain.com",
+          0,
+          1,
+          true,
+          "m/44'/60'/0'/0/"
+        ),
+      network_id: "89",
+      gas: 8000000,
+      gasPrice: 10000000000000
     }
   },
   plugins: ["solidity-coverage"],
   compilers: {
     solc: {
+      settings: {
+        evmVersion: "byzantium"
+      },
       version: "^0.4.24",
       docker: false,
       parser: "solcjs",
