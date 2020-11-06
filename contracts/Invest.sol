@@ -95,7 +95,7 @@ contract Invest is PoolsData {
     }
 
     function RegisterInvest(uint256 _PoolId, uint256 _Tokens) internal {
-        require(_Tokens <= pools[_PoolId].Lefttokens);
+        require(_Tokens <= pools[_PoolId].Lefttokens,"Not enough tokens in the pool");
         pools[_PoolId].Lefttokens = SafeMath.sub(
             pools[_PoolId].Lefttokens,
             _Tokens

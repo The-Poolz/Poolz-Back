@@ -31,10 +31,9 @@ contract ThePoolz is InvestorData {
                 FixStart &&
                 GetPoolStatus(Investors[index].Poolid) == PoolStatus.Close
             ) {
-                //do nothing - no need De Morgan law here
-            } else {
-                FixStart = false;
                 StartInvestor = index;
+            } else {
+                FixStart = false;               
             }
         }
         emit InvestorsWork(StartInvestor,WorkDone);
@@ -47,10 +46,9 @@ contract ThePoolz is InvestorData {
         for (uint256 index = StartProjectOwner; index < poolsCount; index++) {
             if (WithdrawLeftOvers(index)) WorkDone++;
             if (FixStart && GetPoolStatus(index) == PoolStatus.Close) {
-                //do nothing - no need De Morgan law here
-            } else {
-                FixStart = false;
                 StartProjectOwner = index;
+            } else {
+                FixStart = false;               
             }
         }
         emit ProjectOwnerWork(StartProjectOwner,WorkDone);
