@@ -42,7 +42,7 @@ contract Pools is MainCoinManager {
         address _Token, //token to sell address
         uint256 _FinishTime, //Until what time the pool will work
         uint256 _Rate, //the rate of the trade
-        uint256 _POZRate, //the rate for POZ Holders
+        uint256 _POZRate, //the rate for POZ Holders, how much each token = main coin
         uint256 _StartAmount, //Total amount of the tokens to sell in the pool
         bool _IsLocked, //False = DSP or True = TLP
         address _MainCoin, // address(0x0) = ETH, address of main token

@@ -15,10 +15,10 @@ it("Other Payments, add as admin", async () => {
     let Token = await TestToken.deployed();
     let IspayableToken = await instance.IsERC20Maincoin(Token.address);
     assert.isFalse(IspayableToken);
-    instance.AddERC20Maincoin(Token.address, { from: accounts[0] });
+    await instance.AddERC20Maincoin(Token.address, { from: accounts[0] });
     let IspayableToken2 = await instance.IsERC20Maincoin(Token.address);
     assert.isTrue(IspayableToken2);
-    instance.RemoveERC20Maincoin(Token.address, { from: accounts[0] });
+    await instance.RemoveERC20Maincoin(Token.address, { from: accounts[0] });
     let IspayableToken3 = await instance.IsERC20Maincoin(Token.address);
     assert.isFalse(IspayableToken3);
   });
