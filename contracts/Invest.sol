@@ -129,19 +129,19 @@ contract Invest is PoolsData {
     ) internal view returns (uint256) {
         uint256 msgValue = _Amount;
         uint256 result = 0;
-        if (pools[_Pid].Is21DecimalRate) {
-            msgValue = SafeMath.mul(_Amount, 10**21);
-        }
         if (GetPoolStatus(_Pid) == PoolStatus.Created) {
             if (!IsPOZInvestor(_Sender)) {
                 revert("Need to be POZ Holder to invest");
             }
-            result = SafeMath.div(msgValue, pools[_Pid].POZRate);
+            result = SafeMath.mul(msgValue, pools[_Pid].POZRate);
         }
         if (GetPoolStatus(_Pid) == PoolStatus.Open) {
-            result = SafeMath.div(msgValue, pools[_Pid].Rate);
+            result = SafeMath.mul(msgValue, pools[_Pid].Rate);
         }
-        if (result > 0) {
+        if (result > 10**21) {
+        if (pools[_Pid].Is21DecimalRate) {
+            result = SafeMath.div(result, 10**21);
+        }
             return result;
         }
         revert("Wrong pool status to CalcTokens");

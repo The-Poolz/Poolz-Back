@@ -59,7 +59,7 @@ contract Pools is MainCoinManager {
             "Main coin not in list"
         );
         require(
-            _Rate >= _POZRate,
+            _Rate <= _POZRate,
             "POZ holders need to have better price (or the same)"
         );
         require(_POZRate > 0, "It will not work");

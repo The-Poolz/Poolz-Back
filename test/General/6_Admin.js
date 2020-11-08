@@ -43,6 +43,18 @@ it("Other Payments, add as admin", async () => {
     let actual = await instance.GetFee();
     assert.equal(actual.toNumber(), fee);
   });
+  it("set/get Worker params", async () => {
+    let instance = await ThePoolz.deployed();
+    await instance.SetMinWorkInvestor(5, { from: accounts[0] });
+    let actualInv = await instance.GetMinWorkInvestor();
+    assert.equal(actualInv.toNumber(), 5);
+    await instance.SetMinWorkProjectOwner(5, { from: accounts[0] });
+    let actualPO = await instance.GetMinWorkProjectOwner();
+    assert.equal(actualPO.toNumber(), 5);
+    await instance.SetMinWorkInvestor(0, { from: accounts[0] });
+    await instance.SetMinWorkProjectOwner(0, { from: accounts[0] });
+    assert.equal((await instance.GetMinWorkProjectOwner()).toString(), (await instance.GetMinWorkInvestor()).toString());
+  });
   it("set/get poz fee", async () => {
     let instance = await ThePoolz.deployed();
     let pozfee = 10;

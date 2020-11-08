@@ -10,8 +10,8 @@ contract ThePoolz is InvestorData {
     constructor() public {
         StartInvestor = 0;
         StartProjectOwner = 0;
-        MinWorkInvestor = 1;
-        MinWorkProjectOwner = 1;
+        MinWorkInvestor = 0;
+        MinWorkProjectOwner = 0;
     }
 
     uint256 internal MinWorkInvestor;
@@ -38,22 +38,20 @@ contract ThePoolz is InvestorData {
 //will revert if less parameters
     function SafeWork() external returns (uint256, uint256) {
         require(CanWork(),"Need more then minimal work count");
-        uint256 inv;
-        uint256 pro;
-        (inv,pro) = DoWork();
-        return (inv,pro);
+        return DoWork();
     }
 
     function CanWork() public view returns(bool) {
         uint256 inv;
         uint256 pro;
         (inv,pro) = CountWork();
-        return (inv >= MinWorkInvestor || pro >= MinWorkProjectOwner);
+        return (inv > MinWorkInvestor || pro > MinWorkProjectOwner);
     }
     
     function DoWork() public returns (uint256, uint256) {
         uint256 inv = WorkForInvestors();
         uint256 pro = WorkForProjectOwner();
+        inv = inv + WorkForInvestors(); //to update the start + will add 0
         return (inv,pro);
     }
 
@@ -67,6 +65,7 @@ contract ThePoolz is InvestorData {
          for (uint256 POindex = StartProjectOwner; POindex < poolsCount; POindex++) {
             if ( IsReadyWithdrawLeftOvers(POindex) ) temp_projectowner_count++;
          }
+        return (temp_investor_count,temp_projectowner_count);
     }
 
     function WorkForInvestors() internal returns (uint256) {

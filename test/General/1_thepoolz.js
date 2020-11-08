@@ -4,10 +4,11 @@ const { assert } = require('chai');
 const truffleAssert = require('truffle-assertions');
 //const timeMachine = require('ganache-time-traveler');
 const zero_address = "0x0000000000000000000000000000000000000000";
+var BN = web3.utils.BN;
 
-const rate = 1;
-const amount = 10000000;
-const invest = 100000;
+const rate = new BN('1000000000'); // with decimal21 (shifter) 1 eth^18 = 1 token^6
+const amount = new BN('3000000'); //3 tokens for sale
+const invest = web3.utils.toWei('1', 'ether'); //1eth;
 
 contract("Thepoolz", async accounts => {
   it("give allownce of 121", async () => {
@@ -38,11 +39,11 @@ contract("Thepoolz", async accounts => {
     await Token.approve(instance.address, amount, { from: accounts[0] });
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,false, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true, { from: accounts[0] });
     let newpools = await instance.GetMyPoolsId({ from: accounts[0] });
     assert.equal(newpools.length, 1, "Got 1 pool");
     let tokensInContract = await Token.balanceOf(instance.address);
-    assert.equal(tokensInContract, amount, "Got the tokens");
+    assert.equal(tokensInContract.toString(), amount.toString(), "Got the tokens");
   });
   it("Fail invest 0 eth", async () => {
     let instance = await ThePoolz.deployed();
@@ -56,9 +57,9 @@ contract("Thepoolz", async accounts => {
   it("invest, check balance", async () => {
     let instance = await ThePoolz.deployed();
     let Token = await TestToken.deployed();
-    await instance.InvestETH(0, { value: invest, from: accounts[1] });
+    await instance.InvestETH(0, { value: invest, from: accounts[1] }); //3-1
     let tokensInContract = await Token.balanceOf(instance.address);
-    assert.equal(tokensInContract.toNumber(), amount - invest * rate, "Got the tokens");
+    assert.equal(tokensInContract.toString(),'2000000'  , "Got the tokens"); //2 left
   });
   it("Fail, withdraw invesmt", async () => {
     let instance = await ThePoolz.deployed();
@@ -68,7 +69,7 @@ contract("Thepoolz", async accounts => {
   it("open a day long pool, invest, check creator balance", async () => {
     let instance = await ThePoolz.deployed();
     let beforeBalance = await web3.eth.getBalance(accounts[0]);
-    await instance.InvestETH(0, { value: invest, from: accounts[1] });
+    await instance.InvestETH(0, { value: invest, from: accounts[1] }); //2-1
     let afterBalance = await web3.eth.getBalance(accounts[0]);
     assert.isAbove(afterBalance - beforeBalance, 0, "Got the eth minus fee");
     let myinvest = await instance.GetMyInvestmentIds({ from: accounts[1] });
@@ -76,8 +77,7 @@ contract("Thepoolz", async accounts => {
   });
   it("Buy all - check status", async () => {
     let instance = await ThePoolz.deployed();
-    let Token = await TestToken.deployed();
-    await instance.InvestETH(0, { value: amount - 2*invest, from: accounts[1] });
+    await instance.InvestETH(0, { value: invest, from: accounts[1] }); //1-1
     let status = await instance.GetPoolStatus(0);
     assert.equal(status.toNumber(),4);
   });

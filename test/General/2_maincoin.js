@@ -3,6 +3,10 @@ const TestToken = artifacts.require("TestToken");
 const TestMainToken = artifacts.require("TestMainToken");
 const { assert } = require('chai');
 const truffleAssert = require('truffle-assertions');
+var BN = web3.utils.BN;
+const rate = new BN('1000000000000000000000'); // with decimal21 (shifter) 1 maintoken^6 = 1 token^6
+const amount = new BN('3000000'); //3 tokens for sale
+const invest = new BN('3000000'); //1maintoken;
 
 let instance, Maincoint;
 contract("Thepoolz, Main Coin Test", async accounts => {
@@ -18,24 +22,24 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     let newBalance = await Token.balanceOf(accounts[8]);
     assert.isAbove(newBalance.toNumber(),0);
   });
-  it("Open a pool with main coin,invest with main coin", async () => {
-    let rate = 1;
+  it("Open a locked pool with main coin,invest with main coin", async () => {
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
-    let amount = 100000;
     let Token = await TestToken.new();
     await instance.AddERC20Maincoin(Maincoint.address, { from: accounts[0] });
-    await Maincoint.transfer(accounts[1], amount, { from: accounts[0] });
+    await Maincoint.transfer(accounts[1], invest, { from: accounts[0] });
     await Token.approve(instance.address, amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, Maincoint.address, false, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, Maincoint.address, true, { from: accounts[0] });
     let poolid = await instance.GetLastPoolId();
     assert.equal(poolid.toNumber(), 1);
-    await Maincoint.approve(instance.address, amount, { from: accounts[1] });
-    await instance.InvestERC20(0, amount, { from: accounts[1] });
+    await Maincoint.approve(instance.address, invest, { from: accounts[1] });
+    await instance.InvestERC20(0, invest, { from: accounts[1] });
     let afterBalance = await Token.balanceOf(instance.address);
-    assert.equal(afterBalance.toNumber(), amount, "Got the Tokens minus fee");
+    assert.equal(afterBalance.toString(), amount.toString(), "Got the Tokens minus fee");
     let beforeBalance = await Maincoint.balanceOf(instance.address);
     assert.notEqual(beforeBalance.toNumber(), 0);
+    let status = await instance.GetPoolStatus(0);
+    assert.equal(status.toNumber(),2);
   });
   it("take erc20 fee", async () => {
     await instance.WithdrawERC20Fee(Maincoint.address, accounts[0], { from: accounts[0] });
@@ -45,7 +49,6 @@ contract("Thepoolz, Main Coin Test", async accounts => {
   it("can't invest more", async () => {
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
-    let amount = 100000;
     await Maincoint.transfer(accounts[1], amount, { from: accounts[0] });
     await Maincoint.approve(instance.address, amount, { from: accounts[1] });
     await truffleAssert.reverts(instance.InvestERC20(0, amount, { from: accounts[1] }));
@@ -68,7 +71,6 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     assert.isObject(moredata);
   });
   it("Fail Open a pool with false coin", async () => {
-    let rate = 1;
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
     let amount = 100000;
@@ -76,8 +78,6 @@ contract("Thepoolz, Main Coin Test", async accounts => {
   });
   it("Fail Open a pool No main Coin", async () => {
     let instance = await ThePoolz.deployed();
-    let amount = 100000;
-    let rate = 1;
     let Token = await TestToken.deployed()
     await Token.approve(instance.address, amount, { from: accounts[0] });
     let date = new Date();
