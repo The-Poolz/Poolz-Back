@@ -5,12 +5,15 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./Invest.sol";
 
 contract InvestorData is Invest {
-    function WithdrawInvestment(uint256 _id) public returns (bool) {
-        if (
+    function IsReadyWithdrawInvestment(uint256 _id) public view returns (bool) {
+        return
             _id <= TotalInvestors &&
             Investors[_id].TokensOwn > 0 &&
-            GetPoolStatus(Investors[_id].Poolid) == PoolStatus.Finished
-        ) {
+            GetPoolStatus(Investors[_id].Poolid) == PoolStatus.Finished;
+    }
+
+    function WithdrawInvestment(uint256 _id) public returns (bool) {
+        if (IsReadyWithdrawInvestment(_id)) {
             TransferToken(
                 pools[Investors[_id].Poolid].Token,
                 Investors[_id].InvestorAddress,

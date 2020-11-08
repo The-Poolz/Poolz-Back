@@ -59,7 +59,7 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     await truffleAssert.reverts(instance.GetInvestmentData(0, { from: accounts[2] }));
   });
   it("No work yet", async () => {
-    await truffleAssert.reverts(instance.Work());
+    await truffleAssert.reverts(instance.SafeWork());
   });
   it("Get pool data", async () => {
     let data = await instance.GetPoolData(0);

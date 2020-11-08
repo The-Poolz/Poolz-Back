@@ -10,14 +10,21 @@ contract PoolsData is Pools {
         return poolsMap[msg.sender];
     }
 
+    function IsReadyWithdrawLeftOvers(uint256 _PoolId)
+        public
+        view
+        returns (bool)
+    {
+        return
+            pools[_PoolId].FinishTime <= now && 
+            pools[_PoolId].Lefttokens > 0 &&
+            !pools[_PoolId].TookLeftOvers;
+    }
+
     //@dev no use of revert to make sure the loop will work
     function WithdrawLeftOvers(uint256 _PoolId) public returns (bool) {
         //pool is finished + got left overs + did not took them
-        if (
-            pools[_PoolId].FinishTime <= now &&
-            pools[_PoolId].Lefttokens > 0 &&
-            !pools[_PoolId].TookLeftOvers
-        ) {
+        if (IsReadyWithdrawLeftOvers(_PoolId)) {
             pools[_PoolId].TookLeftOvers = true;
             TransferToken(
                 pools[_PoolId].Token,
@@ -109,28 +116,16 @@ contract PoolsData is Pools {
         {
             return (PoolStatus.Close);
         }
-        //will check the same in the next if
-        /*if (
-            pools[_id].Lefttokens > 0 &&
-            !pools[_id].IsLocked &&
-            !pools[_id].TookLeftOvers
-        ) {
-            //Got left overs on direct pool
-            return (PoolStatus.Finished);
-        }*/
         if (now >= pools[_id].FinishTime && !pools[_id].IsLocked) {
             // After finish time - not locked
             if (pools[_id].TookLeftOvers) return (PoolStatus.Close);
             return (PoolStatus.Finished);
         }
-        //if (now >= pools[_id].FinishTime && pools[_id].IsLocked) {
-            // After finish time -  locked
-            if (
-                (pools[_id].TookLeftOvers || pools[_id].Lefttokens == 0) &&
-                (pools[_id].UnlockedTokens + pools[_id].Lefttokens ==
-                    pools[_id].StartAmount)
-            ) return (PoolStatus.Close);
-            return (PoolStatus.Finished);
-        //}
+        if (
+            (pools[_id].TookLeftOvers || pools[_id].Lefttokens == 0) &&
+            (pools[_id].UnlockedTokens + pools[_id].Lefttokens ==
+                pools[_id].StartAmount)
+        ) return (PoolStatus.Close);
+        return (PoolStatus.Finished);
     }
 }

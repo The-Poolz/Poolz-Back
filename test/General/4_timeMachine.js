@@ -13,16 +13,17 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let instance = await ThePoolz.new();
     let accounts = await web3.eth.getAccounts();
     let Token = await TestToken.new();
-    let StartBalance = await Token.balanceOf(accounts[0]);
+    
     let date = new Date();
     await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
     await Token.approve(instance.address, amount, { from: accounts[0] });
     await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,false, { from: accounts[0] });
+    let StartBalance = await Token.balanceOf(accounts[0]);
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await instance.WithdrawLeftOvers(0, { from: accounts[0] });
     let EndBalance = await Token.balanceOf(accounts[0]);
-    assert.equal(EndBalance.toNumber(), StartBalance.toNumber());
+    assert.isAbove(EndBalance.toNumber(), StartBalance.toNumber());
   });
   it("Work for take leftovers on finish pool", async () => {
     let instance = await ThePoolz.new();
@@ -35,7 +36,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,false, { from: accounts[0] });
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
-    await instance.Work();
+    await instance.DoWork();
     let EndBalance = await Token.balanceOf(accounts[0]);
     assert.equal(EndBalance.toNumber(), StartBalance.toNumber());
   });
@@ -52,7 +53,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     await instance.InvestETH(0, { value: amount / 2, from: accounts[1] });
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
-    await instance.Work();
+    await instance.DoWork();
     //await instance.WithdrawInvestment(0);
     let EndBalance = await Token.balanceOf(accounts[1]);
     assert.isAbove(EndBalance.toNumber(), 0);
@@ -82,7 +83,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     await instance.InvestETH(0, { value: amount , from: accounts[1] });
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
-    await instance.Work();
+    await instance.DoWork();
     let status = await instance.GetPoolStatus(0);
     assert.equal(status.toNumber(),4);
     await truffleAssert.reverts( instance.InvestETH(0, { value: amount / 2, from: accounts[1] }));
