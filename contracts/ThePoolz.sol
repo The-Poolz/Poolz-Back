@@ -49,9 +49,8 @@ contract ThePoolz is InvestorData {
     }
     
     function DoWork() public returns (uint256, uint256) {
-        uint256 inv = WorkForInvestors();
         uint256 pro = WorkForProjectOwner();
-        inv = inv + WorkForInvestors(); //to update the start + will add 0
+        uint256 inv = WorkForInvestors();     
         return (inv,pro);
     }
 
@@ -63,27 +62,27 @@ contract ThePoolz is InvestorData {
             if(IsReadyWithdrawInvestment(Investorindex)) temp_investor_count++;
         }
          for (uint256 POindex = StartProjectOwner; POindex < poolsCount; POindex++) {
-            if ( IsReadyWithdrawLeftOvers(POindex) ) temp_projectowner_count++;
+            if (IsReadyWithdrawLeftOvers(POindex) ) temp_projectowner_count++;
          }
         return (temp_investor_count,temp_projectowner_count);
     }
 
     function WorkForInvestors() internal returns (uint256) {
         uint256 WorkDone = 0;
-        bool FixStart = true;
         for (uint256 index = StartInvestor; index < TotalInvestors; index++) {
             if (WithdrawInvestment(index)) WorkDone++;
-            if (
-                FixStart &&
-                GetPoolStatus(Investors[index].Poolid) == PoolStatus.Close
-            ) {
-                StartInvestor = index;
-            } else {
-                FixStart = false;               
-            }
         }
+        SetInvestorStart();
         emit InvestorsWork(StartInvestor,WorkDone);
         return WorkDone;
+    }
+
+    function SetInvestorStart() internal {
+        for (uint256 index = StartInvestor; index < TotalInvestors; index++) {
+            if (GetPoolStatus(Investors[index].Poolid) == PoolStatus.Close)
+            StartInvestor = index;
+            else return;
+        }
     }
 
     function WorkForProjectOwner() internal returns (uint256) {
@@ -91,7 +90,7 @@ contract ThePoolz is InvestorData {
         bool FixStart = true;
         for (uint256 index = StartProjectOwner; index < poolsCount; index++) {
             if (WithdrawLeftOvers(index)) WorkDone++;
-            if (FixStart && GetPoolStatus(index) == PoolStatus.Close) {
+            if (FixStart && (pools[index].TookLeftOvers || pools[index].Lefttokens == 0)) {
                 StartProjectOwner = index;
             } else {
                 FixStart = false;               
