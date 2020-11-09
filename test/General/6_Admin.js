@@ -79,6 +79,21 @@ it("Other Payments, add as admin", async () => {
     let actual = await instance.GetPozTimer();
     assert.equal(actual.toNumber(), poztimer);
   });
+  it("Token List", async () => {
+    let instance = await ThePoolz.deployed();
+    let address = TestToken.address;
+    await instance.AddToken(address, { from: accounts[0] });
+     await truffleAssert.reverts(instance.AddToken(address, { from: accounts[0] }))
+    let actual = await instance.IsValidToken(address);
+    assert.isTrue(actual);
+    await instance.SwapTokenFilter({ from: accounts[0] });
+    let ison = await instance.IsTokenFilterOn();
+    assert.isTrue(ison)
+    await instance.RemoveToken(address, { from: accounts[0] });
+    actual = await instance.IsValidToken(address);
+    assert.isFalse(actual);
+    await truffleAssert.reverts(instance.RemoveToken(address, { from: accounts[0] }))
+  });
   it("set/get minpoz ", async () => {
     let instance = await ThePoolz.deployed();
     let minpoz = 80000;

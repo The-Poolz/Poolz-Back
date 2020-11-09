@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.4.24;
-import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
+
 import "./ERC20Helper.sol";
 import "./IPozBenefit.sol";
 
-contract PozBenefit is Pausable, ERC20Helper {
+contract PozBenefit is ERC20Helper {
     constructor() public {
         PozFee = 15; // *10000
         PozTimer = 1000; // *10000

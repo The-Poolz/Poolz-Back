@@ -49,7 +49,7 @@ contract Pools is MainCoinManager {
         bool _Is21Decimal
     ) public whenNotPaused payable {
         require(msg.value >= PoolPrice, "Need to pay for the pool");
-        require(IsERC20(_Token), "Need Valid ERC20 Token"); //check if _Token is ERC20
+        require(IsValidToken(_Token), "Need Valid ERC20 Token"); //check if _Token is ERC20
         require(
             SafeMath.add(now, MinDuration) <= _FinishTime,
             "Need more then MinDuration"

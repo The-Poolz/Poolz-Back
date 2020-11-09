@@ -17,6 +17,15 @@ contract("Create Pool Fails", async accounts => {
         date.setDate(date.getDate() - 1);   // sub a day
         await truffleAssert.reverts(instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) - 2000, rate, rate, amount, false, zero_address,true, { from: accounts[0] }));
       });
+      it("Fail Open pool, Token Filter ", async () => {
+        let instance = await ThePoolz.new();
+        let Token = await TestToken.deployed()
+        await Token.approve(instance.address, amount, { from: accounts[0] });
+        let date = new Date();
+        date.setDate(date.getDate() + 1);   // add a day
+        await instance.SwapTokenFilter({ from: accounts[0] });
+        await truffleAssert.reverts(instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) - 2000, rate, rate, amount, false, zero_address,true, { from: accounts[0] }));
+      });
       it("No price", async () => {
         let instance = await ThePoolz.new();
         let Token = await TestToken.deployed()

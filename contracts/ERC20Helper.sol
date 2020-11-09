@@ -3,8 +3,9 @@
 pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+import "./TokenList.sol";
 
-contract ERC20Helper {
+contract ERC20Helper is TokenList {
     event TransferOut(uint256 Amount, address To, address Token);
     event TransferIn(uint256 Amount, address From, address Token);
     modifier TestAllownce(
@@ -29,9 +30,5 @@ contract ERC20Helper {
     function TransferInToken(address _Token,address _Subject,uint256 _Amount) internal TestAllownce(_Token,_Subject,_Amount) {
         ERC20(_Token).transferFrom(_Subject, address(this), _Amount);
         emit TransferIn(_Amount, _Subject, _Token);
-    }
-    function IsERC20(address _contractAddress) internal view returns (bool) {
-        if (ERC20(_contractAddress).totalSupply() > 0) return true;
-        //return false; // will revert on false
     }
 }
