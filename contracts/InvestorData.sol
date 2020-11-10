@@ -9,7 +9,7 @@ contract InvestorData is Invest {
         return
             _id <= TotalInvestors &&
             Investors[_id].TokensOwn > 0 &&
-            GetPoolStatus(Investors[_id].Poolid) == PoolStatus.Finished;
+            pools[Investors[_id].Poolid].FinishTime <= now;
     }
 
     function WithdrawInvestment(uint256 _id) public returns (bool) {

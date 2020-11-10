@@ -5,6 +5,8 @@ import "./PoolsData.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 contract Invest is PoolsData {
+    event NewInvestorEvent(uint256 Investor_ID);
+
     //using SafeMath for uint256;
     constructor() public {
         TotalInvestors = 0;
@@ -118,6 +120,7 @@ contract Invest is PoolsData {
             block.timestamp
         );
         InvestorsMap[msg.sender].push(TotalInvestors);
+        emit NewInvestorEvent(TotalInvestors);
         TotalInvestors = SafeMath.add(TotalInvestors, 1);
         return SafeMath.sub(TotalInvestors, 1);
     }
