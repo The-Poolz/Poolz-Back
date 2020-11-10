@@ -35,7 +35,7 @@ contract ThePoolz is InvestorData {
         MinWorkProjectOwner = _MinWorkProjectOwner;
     }
 
-//will revert if less parameters
+    //will revert if less then parameters
     function SafeWork() external returns (uint256, uint256) {
         require(CanWork(),"Need more then minimal work count");
         return DoWork();
