@@ -7,6 +7,11 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 contract Invest is PoolsData {
     event NewInvestorEvent(uint256 Investor_ID);
 
+    modifier CheckTime(uint256 _Time) {
+        require(now >= _Time, "Pool not open yet");
+        _;
+    }
+
     //using SafeMath for uint256;
     constructor() public {
         TotalInvestors = 0;
@@ -31,6 +36,7 @@ contract Invest is PoolsData {
         payable
         ReceivETH(msg.value, msg.sender)
         whenNotPaused
+        CheckTime(pools[_PoolId].StartTime)
     {
         require(_PoolId < poolsCount, "Wrong pool id, InvestETH fail");
         require(pools[_PoolId].Maincoin == address(0x0), "Pool is not for ETH");
@@ -46,9 +52,9 @@ contract Invest is PoolsData {
             TransferToken(pools[_PoolId].Token, msg.sender, Tokens);
         }
 
-        uint256 EthMinusFee = SafeMath.mul(
-            SafeMath.div(msg.value, 10000),
-            SafeMath.sub(10000, CalcFee(_PoolId))
+        uint256 EthMinusFee = SafeMath.div(
+            SafeMath.mul(msg.value, SafeMath.sub(10000, CalcFee(_PoolId))),
+            10000
         );
 
         TransferETH(pools[_PoolId].Creator, EthMinusFee); // send money to project owner - the fee stays on contract
@@ -58,6 +64,7 @@ contract Invest is PoolsData {
     function InvestERC20(uint256 _PoolId, uint256 _Amount)
         external
         whenNotPaused
+        CheckTime(pools[_PoolId].StartTime)
     {
         require(_PoolId < poolsCount, "Wrong pool id, InvestERC20 fail");
         require(
@@ -79,10 +86,11 @@ contract Invest is PoolsData {
             TransferToken(pools[_PoolId].Token, msg.sender, Tokens);
         }
 
-        uint256 RegularFeePay = SafeMath.mul(
-            SafeMath.div(_Amount, 10000),
-            CalcFee(_PoolId)
+        uint256 RegularFeePay = SafeMath.div(
+            SafeMath.mul(_Amount, CalcFee(_PoolId)),
+            10000
         );
+
         uint256 RegularPaymentMinusFee = SafeMath.sub(_Amount, RegularFeePay);
         FeeMap[pools[_PoolId].Maincoin] = SafeMath.add(
             FeeMap[pools[_PoolId].Maincoin],
@@ -97,7 +105,10 @@ contract Invest is PoolsData {
     }
 
     function RegisterInvest(uint256 _PoolId, uint256 _Tokens) internal {
-        require(_Tokens <= pools[_PoolId].Lefttokens,"Not enough tokens in the pool");
+        require(
+            _Tokens <= pools[_PoolId].Lefttokens,
+            "Not enough tokens in the pool"
+        );
         pools[_PoolId].Lefttokens = SafeMath.sub(
             pools[_PoolId].Lefttokens,
             _Tokens
@@ -142,9 +153,9 @@ contract Invest is PoolsData {
             result = SafeMath.mul(msgValue, pools[_Pid].Rate);
         }
         if (result > 10**21) {
-        if (pools[_Pid].Is21DecimalRate) {
-            result = SafeMath.div(result, 10**21);
-        }
+            if (pools[_Pid].Is21DecimalRate) {
+                result = SafeMath.div(result, 10**21);
+            }
             return result;
         }
         revert("Wrong pool status to CalcTokens");

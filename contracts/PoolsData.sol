@@ -17,7 +17,7 @@ contract PoolsData is Pools {
     {
         return
             pools[_PoolId].FinishTime <= now && 
-            pools[_PoolId].Lefttokens > 0 &&
+           pools[_PoolId].Lefttokens > 0 && 
             !pools[_PoolId].TookLeftOvers;
     }
 

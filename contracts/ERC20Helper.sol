@@ -3,6 +3,7 @@
 pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./TokenList.sol";
 
 contract ERC20Helper is TokenList {
@@ -13,14 +14,14 @@ contract ERC20Helper is TokenList {
         address _owner,
         uint256 _amount
     ) {
-        if (ERC20(_token).allowance(_owner, address(this)) >= _amount) _;
-        else revert("No allownce");
+        require(ERC20(_token).allowance(_owner, address(this)) >= _amount, "no allowance"); 
+        _;
     }   
     function TransferToken(
         address _Token,
         address _Reciver,
         uint256 _ammount
-    ) internal {
+    ) internal{
         emit TransferOut(_ammount, _Reciver, _Token);
         ERC20(_Token).transfer(_Reciver, _ammount);
     } 
@@ -28,7 +29,9 @@ contract ERC20Helper is TokenList {
           return ERC20(_Token).balanceOf(_Subject);
     }
     function TransferInToken(address _Token,address _Subject,uint256 _Amount) internal TestAllownce(_Token,_Subject,_Amount) {
+        uint256 OldBalance = CheckBalance(_Token, address(this));
         ERC20(_Token).transferFrom(_Subject, address(this), _Amount);
         emit TransferIn(_Amount, _Subject, _Token);
+        require((SafeMath.add(OldBalance , _Amount)) == CheckBalance(_Token,address(this)), "recive wrong amount of tokens");
     }
 }

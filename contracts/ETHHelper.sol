@@ -3,18 +3,18 @@ pragma solidity ^0.4.24;
 
 import "./PozBenefit.sol";
 
-contract ETHHelper is PozBenefit{
+contract ETHHelper is PozBenefit {
     constructor() public {
         IsPayble = false;
         MinETH = 10000;
     }
-    modifier ReceivETH(uint msgValue, address msgSender) {
-        if (msgValue >=  MinETH){
-             emit TransferInETH(msgValue,msgSender);
+
+    modifier ReceivETH(uint256 msgValue, address msgSender) {
+        require(msgValue >= MinETH, "Send ETH to invest");
+        emit TransferInETH(msgValue, msgSender);
         _;
-        }
-        else revert("Send ETH to invest");
     }
+
     //@dev not/allow contract to receive funds
     function() public payable {
         if (!IsPayble) revert();
@@ -26,17 +26,15 @@ contract ETHHelper is PozBenefit{
     bool internal IsPayble;
     uint256 internal MinETH;
 
-     function GetIsPayble() public view returns (bool) {
+    function GetIsPayble() public view returns (bool) {
         return IsPayble;
     }
 
-    function SwitchIsPayble()
-        public
-        onlyOwner
-    {
+    function SwitchIsPayble() public onlyOwner {
         IsPayble = !IsPayble;
     }
-        function GetMinETH() public view returns (uint256) {
+
+    function GetMinETH() public view returns (uint256) {
         return MinETH;
     }
 
