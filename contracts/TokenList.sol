@@ -13,7 +13,7 @@ mapping (uint256 => address) private _Tokens;
 
 constructor () public {
     NumberOfTokens=0;
-    IsTokenFilterOn = true;
+    IsTokenFilterOn = false; //true on prod
 }
 function SwapTokenFilter() public onlyOwner {
     IsTokenFilterOn=!IsTokenFilterOn;
