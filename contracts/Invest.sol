@@ -7,6 +7,11 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 contract Invest is PoolsData {
     event NewInvestorEvent(uint256 Investor_ID);
 
+    modifier CheckTime(uint256 _Time) {
+        require(now > _Time, "Pool not open yet");
+        _;
+    }
+
     //using SafeMath for uint256;
     constructor() public {
         TotalInvestors = 0;
@@ -31,6 +36,7 @@ contract Invest is PoolsData {
         payable
         ReceivETH(msg.value, msg.sender)
         whenNotPaused
+        CheckTime(pools[_PoolId].StartTime)
     {
         require(_PoolId < poolsCount, "Wrong pool id, InvestETH fail");
         require(pools[_PoolId].Maincoin == address(0x0), "Pool is not for ETH");
@@ -58,6 +64,7 @@ contract Invest is PoolsData {
     function InvestERC20(uint256 _PoolId, uint256 _Amount)
         external
         whenNotPaused
+        CheckTime(pools[_PoolId].StartTime)
     {
         require(_PoolId < poolsCount, "Wrong pool id, InvestERC20 fail");
         require(
@@ -79,8 +86,11 @@ contract Invest is PoolsData {
             TransferToken(pools[_PoolId].Token, msg.sender, Tokens);
         }
 
-        uint256 RegularFeePay = SafeMath.div(SafeMath.mul(_Amount,CalcFee(_PoolId)),10000);
-        
+        uint256 RegularFeePay = SafeMath.div(
+            SafeMath.mul(_Amount, CalcFee(_PoolId)),
+            10000
+        );
+
         uint256 RegularPaymentMinusFee = SafeMath.sub(_Amount, RegularFeePay);
         FeeMap[pools[_PoolId].Maincoin] = SafeMath.add(
             FeeMap[pools[_PoolId].Maincoin],
