@@ -20,7 +20,7 @@ contract ERC20Helper is TokenList {
         address _Token,
         address _Reciver,
         uint256 _ammount
-    ) internal {
+    ) internal{
         emit TransferOut(_ammount, _Reciver, _Token);
         ERC20(_Token).transfer(_Reciver, _ammount);
     } 
