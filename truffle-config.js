@@ -1,58 +1,43 @@
-/*
- * NB: since truffle-hdwallet-provider 0.0.5 you must wrap HDWallet providers in a 
- * function when declaring them. Failure to do so will cause commands to hang. ex:
- * ```
- * mainnet: {
- *     provider: function() { 
- *       return new HDWalletProvider(mnemonic, 'https://mainnet.infura.io/<infura-key>') 
- *     },
- *     network_id: '1',
- *     gas: 4500000,
- *     gasPrice: 10000000000,
- *   },
- */
-const HDWalletProvider = require("@truffle/hdwallet-provider");
-//const teamsMnemonic = "enhance scan dose rib lab jelly damage box museum leaf tail retreat";
-const mnemonic = "peace destroy flock enact stay exotic shop random strike hobby mistake unfold";
+const PrivateKeyProvider = require('./private-provider');
+// Standalone Development Node Private Key
+const privateKeyDev =
+   '99B3C12287537E38C90A9219D4CB074A89A16E9CDB20BF85728EBD97C343E342';
+// Moonbase Alpha Private Key --> Please change this to your own Private Key with funds
+const privateKeyMoonbase =  'e58e3edc4810de1fff2839884cb23e9604504a5849bb1686467e689547474dbe';
 
 module.exports = {
-  // See <http://truffleframework.com/docs/advanced/configuration>
-  // to customize your Truffle configuration!
-  networks: {
-    development: {
-      host: "127.0.0.1",
-      port: 8545,
-      network_id: "*" // Match any network id
-    },
-    rinkeby: {
-      host: "localhost", // Connect to geth on the specified
-      port: 8545,
-      from: "0xeBCE75948DF6Fe95c5B964c3cDeb71808b615670", // default address to use for any transaction Truffle makes during migrations
-      network_id: 4,
-      gas: 4612388 // Gas limit used for deploys
-    },
-    tomotestnet: {
-      provider: () =>
-        new HDWalletProvider(
-          mnemonic,
-          "https://testnet.tomochain.com",
-          0,
-          1,
-          true,
-          "m/44'/60'/0'/0/"
-        ),
-      network_id: "89",
-      gas: 8000000,
-      gasPrice: 10000000000000
-    }
-  },
-  plugins: ["solidity-coverage"],
-  compilers: {
+   networks: {
+      dev: {
+         provider: () => {
+            if (!privateKeyDev.trim()) {
+               throw new Error('Please enter a private key with funds, you can use the default one');
+            }
+            return new PrivateKeyProvider(privateKeyDev, 'http://localhost:9933/', 43)
+         },
+         network_id: 43,
+      },
+      moonbase: {
+        networkCheckTimeout: 30000,
+         provider: () => {
+            if (!privateKeyMoonbase.trim()) {
+               throw new Error('Please enter a private key with funds to send transactions to TestNet');
+            }
+            if (privateKeyDev == privateKeyMoonbase) {
+               throw new Error('Please change the private key used for Moonbase to your own with funds');
+            }
+            return new PrivateKeyProvider(privateKeyMoonbase, 'https://rpc.testnet.moonbeam.network', 1287)
+         },
+         network_id: 1287,
+      },
+   },
+
+   plugins: ['moonbeam-truffle-plugin'],
+   compilers: {
     solc: {
       settings: {
         evmVersion: "byzantium"
       },
-      version: "^0.4.24",
+      version: "^0.4.26",
       docker: false,
       parser: "solcjs",
     }
