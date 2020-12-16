@@ -13,8 +13,8 @@ contract ERC20Helper is TokenList {
         address _owner,
         uint256 _amount
     ) {
-        if (ERC20(_token).allowance(_owner, address(this)) >= _amount) _;
-        else revert("No allownce");
+        require(ERC20(_token).allowance(_owner, address(this)) >= _amount, "no allowance"); 
+        _;
     }   
     function TransferToken(
         address _Token,
