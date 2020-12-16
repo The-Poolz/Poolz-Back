@@ -79,10 +79,8 @@ contract Invest is PoolsData {
             TransferToken(pools[_PoolId].Token, msg.sender, Tokens);
         }
 
-        uint256 RegularFeePay = SafeMath.mul(
-            SafeMath.div(_Amount, 10000),
-            CalcFee(_PoolId)
-        );
+        uint256 RegularFeePay = SafeMath.div(SafeMath.mul(_Amount,CalcFee(_PoolId)),10000);
+        
         uint256 RegularPaymentMinusFee = SafeMath.sub(_Amount, RegularFeePay);
         FeeMap[pools[_PoolId].Maincoin] = SafeMath.add(
             FeeMap[pools[_PoolId].Maincoin],
