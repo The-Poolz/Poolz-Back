@@ -120,6 +120,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     await Token.approve(instance.address, 2*amount, { from: accounts[0] });
     await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, zero_address,true, { from: accounts[0] });
     await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 500*60, rate, rate, amount, true, zero_address,true, { from: accounts[0] });
+    
     await instance.InvestETH(0, { value: invest, from: accounts[1] });
     await instance.InvestETH(0, { value: invest, from: accounts[1] });
     await instance.InvestETH(1, { value: invest, from: accounts[1] });

@@ -8,7 +8,7 @@ contract Invest is PoolsData {
     event NewInvestorEvent(uint256 Investor_ID);
 
     modifier CheckTime(uint256 _Time) {
-        require(now > _Time, "Pool not open yet");
+        require(now >= _Time, "Pool not open yet");
         _;
     }
 
