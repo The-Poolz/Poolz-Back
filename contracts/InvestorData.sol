@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.4.24;
-pragma experimental "v0.5.0";
 
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./Invest.sol";
@@ -15,17 +14,18 @@ contract InvestorData is Invest {
 
     function WithdrawInvestment(uint256 _id) public returns (bool) {
         if (IsReadyWithdrawInvestment(_id)) {
-            require(Investors[_id].TokensOwn > 0, "TokensOwn changed");
+            uint256 temp = Investors[_id].TokensOwn;
+            Investors[_id].TokensOwn = 0;
             TransferToken(
                 pools[Investors[_id].Poolid].Token,
                 Investors[_id].InvestorAddress,
-                Investors[_id].TokensOwn
+                temp
             );
             pools[Investors[_id].Poolid].UnlockedTokens = SafeMath.add(
                 pools[Investors[_id].Poolid].UnlockedTokens,
-                Investors[_id].TokensOwn
+                temp
             );
-            Investors[_id].TokensOwn = 0;
+
             return true;
         }
         return false;
