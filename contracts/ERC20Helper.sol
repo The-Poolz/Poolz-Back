@@ -20,10 +20,12 @@ contract ERC20Helper is TokenList {
     function TransferToken(
         address _Token,
         address _Reciver,
-        uint256 _ammount
+        uint256 _Amount
     ) internal{
-        emit TransferOut(_ammount, _Reciver, _Token);
-        ERC20(_Token).transfer(_Reciver, _ammount);
+        uint256 OldBalance = CheckBalance(_Token, address(this));
+        emit TransferOut(_Amount, _Reciver, _Token);
+        ERC20(_Token).transfer(_Reciver, _Amount);
+        require((SafeMath.add(OldBalance , _Amount)) == CheckBalance(_Token,address(this)), "recive wrong amount of tokens");
     } 
     function CheckBalance(address _Token,address _Subject) internal view returns(uint256) {
           return ERC20(_Token).balanceOf(_Subject);
