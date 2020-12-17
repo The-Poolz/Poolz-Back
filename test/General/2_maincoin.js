@@ -29,7 +29,7 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     await instance.AddERC20Maincoin(Maincoint.address, { from: accounts[0] });
     await Maincoint.transfer(accounts[1], invest, { from: accounts[0] });
     await Token.approve(instance.address, amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, Maincoint.address, true, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, Maincoint.address, true,0, { from: accounts[0] });
     let poolid = await instance.GetLastPoolId();
     assert.equal(poolid.toNumber(), 1);
     await Maincoint.approve(instance.address, invest, { from: accounts[1] });
@@ -39,7 +39,7 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     let beforeBalance = await Maincoint.balanceOf(instance.address);
     assert.notEqual(beforeBalance.toNumber(), 0);
     let status = await instance.GetPoolStatus(0);
-    assert.equal(status.toNumber(),2);
+    assert.equal(status.toNumber(),3);
   });
   it("take erc20 fee", async () => {
     await instance.WithdrawERC20Fee(Maincoint.address, accounts[0], { from: accounts[0] });
@@ -74,7 +74,7 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
     let amount = 100000;
-    await truffleAssert.reverts(instance.CreatePool(accounts[7], Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, Maincoint.address, false, { from: accounts[0] }));
+    await truffleAssert.reverts(instance.CreatePool(accounts[7], Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, Maincoint.address, false,0, { from: accounts[0] }));
   });
   it("Fail Open a pool No main Coin", async () => {
     let instance = await ThePoolz.deployed();
@@ -83,7 +83,7 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
     await instance.RemoveERC20Maincoin(Maincoint.address, {from : accounts[0]});
-    await truffleAssert.reverts(instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, Maincoint.address,false, { from: accounts[0] }));
+    await truffleAssert.reverts(instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, Maincoint.address,false,0, { from: accounts[0] }));
   });
 });
 

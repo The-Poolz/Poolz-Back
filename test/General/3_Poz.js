@@ -49,7 +49,7 @@ contract("Thepoolz, POZ Test", async accounts => {
         await instance.AddERC20Maincoin(Maincoint.address, { from: accounts[0] });
         await Maincoint.transfer(accounts[1], amount, { from: accounts[0] });
         await Token.approve(instance.address, amount, { from: accounts[0] });
-        await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate , pozrate, amount, false, Maincoint.address,true, { from: accounts[0] });
+        await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate , pozrate, amount, false, Maincoint.address,true,0, { from: accounts[0] });
         let poolid = await instance.GetLastPoolId();
         assert.equal(poolid.toNumber(), 1);
         await Maincoint.approve(instance.address, invest, { from: accounts[1] });

@@ -4,7 +4,7 @@ pragma solidity ^0.4.24;
 import "./Pools.sol";
 
 contract PoolsData is Pools {
-    enum PoolStatus {Created, Open, OutOfstock, Finished, Close} //the status of the pools
+    enum PoolStatus {Created, Open,PreMade , OutOfstock, Finished, Close} //the status of the pools
 
     function GetMyPoolsId() public view returns (uint256[]) {
         return poolsMap[msg.sender];
@@ -90,6 +90,7 @@ contract PoolsData is Pools {
     function GetPoolStatus(uint256 _id) public view returns (PoolStatus) {
         require(_id < poolsCount, "Wrong pool id, Can't get Status");
         //Don't like the logic here - ToDo Boolean checks (truth table)
+        if (now < pools[_id].StartTime) return PoolStatus.PreMade;
         if (now < pools[_id].OpenForAll && pools[_id].Lefttokens > 0) {
             //got tokens + only poz investors
             return (PoolStatus.Created);

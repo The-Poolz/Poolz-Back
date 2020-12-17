@@ -39,7 +39,7 @@ contract("Thepoolz", async accounts => {
     await Token.approve(instance.address, amount, { from: accounts[0] });
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true,0, { from: accounts[0] });
     let newpools = await instance.GetMyPoolsId({ from: accounts[0] });
     assert.equal(newpools.length, 1, "Got 1 pool");
     let tokensInContract = await Token.balanceOf(instance.address);
@@ -79,7 +79,7 @@ contract("Thepoolz", async accounts => {
     let instance = await ThePoolz.deployed();
     await instance.InvestETH(0, { value: invest, from: accounts[1] }); //1-1
     let status = await instance.GetPoolStatus(0);
-    assert.equal(status.toNumber(),4);
+    assert.equal(status.toNumber(),5);
   });
   it("take fee", async () => {
     let instance = await ThePoolz.deployed();
@@ -94,7 +94,7 @@ contract("Thepoolz", async accounts => {
     let Token = await TestToken.deployed();
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
-    await truffleAssert.reverts(instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address, { from: accounts[0] }));
+    await truffleAssert.reverts(instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,false,0, { from: accounts[0] }));
   });
   it("check fail attemts, send ETH to contract", async () => {
     let instance = await ThePoolz.deployed();

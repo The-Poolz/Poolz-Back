@@ -37,6 +37,7 @@ contract Pools is MainCoinManager {
     function GetLastPoolId() public view returns (uint256) {
         return poolsCount;
     }
+    
      //create a new pool
     function CreatePool(
         address _Token, //token to sell address
@@ -46,7 +47,8 @@ contract Pools is MainCoinManager {
         uint256 _StartAmount, //Total amount of the tokens to sell in the pool
         bool _IsLocked, //False = DSP or True = TLP
         address _MainCoin, // address(0x0) = ETH, address of main token
-        bool _Is21Decimal
+        bool _Is21Decimal, //focus the for smaller tokens.
+        uint256 _Now //Start Time - can be 0 to not change current flow
     ) public whenNotPaused payable {
         require(msg.value >= PoolPrice, "Need to pay for the pool");
         require(IsValidToken(_Token), "Need Valid ERC20 Token"); //check if _Token is ERC20
@@ -63,18 +65,20 @@ contract Pools is MainCoinManager {
             "POZ holders need to have better price (or the same)"
         );
         require(_POZRate > 0, "It will not work");
+        if (_Now == 0)
+            _Now = now;
         TransferInToken(_Token, msg.sender, _StartAmount);
         uint256 Openforall = (_Rate == _POZRate)
-            ? block.timestamp
+            ? _Now
             : SafeMath.add(
                 SafeMath.div(
                     SafeMath.mul(
-                        SafeMath.sub(_FinishTime, block.timestamp),
+                        SafeMath.sub(_FinishTime, _Now),
                         PozTimer
                     ),
                     10000
                 ),
-                block.timestamp
+                _Now
             );
         //register the pool
         pools[poolsCount] = Pool(
@@ -87,7 +91,7 @@ contract Pools is MainCoinManager {
             _StartAmount,
             _IsLocked,
             _StartAmount,
-            block.timestamp,
+            _Now,
             Openforall,
             0,
             false,
