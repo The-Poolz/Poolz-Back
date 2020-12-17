@@ -19,7 +19,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let date = new Date();
     await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
     await Token.approve(instance.address, amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true,0, { from: accounts[0] });
     let StartBalance = await Token.balanceOf(accounts[0]);
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
@@ -35,7 +35,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let date = new Date();
     await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
     await Token.approve(instance.address, amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true,0, { from: accounts[0] });
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await instance.SafeWork();
@@ -53,7 +53,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let date = new Date();
     await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
     await Token.approve(instance.address, amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, zero_address,true, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, zero_address,true,0, { from: accounts[0] });
     await instance.InvestETH(0, { value: invest, from: accounts[1] });
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
@@ -69,7 +69,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let date = new Date();
     await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
     await Token.approve(instance.address, amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, zero_address,true, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, zero_address,true,0, { from: accounts[0] });
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
     let status = await instance.GetPoolStatus(0);
@@ -83,7 +83,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let date = new Date();
     await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
     await Token.approve(instance.address, amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, zero_address,true, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, zero_address,true,0, { from: accounts[0] });
     await instance.InvestETH(0, { value: invest , from: accounts[1] });
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
@@ -103,7 +103,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let date = new Date();
     await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
     await Token.approve(instance.address, amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true,0, { from: accounts[0] });
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
     let status = await instance.GetPoolStatus(0);
@@ -118,8 +118,8 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let date = new Date();
     await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
     await Token.approve(instance.address, 2*amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, zero_address,true, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 500*60, rate, rate, amount, true, zero_address,true, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, zero_address,true,0, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 500*60, rate, rate, amount, true, zero_address,true,0, { from: accounts[0] });
     
     await instance.InvestETH(0, { value: invest, from: accounts[1] });
     await instance.InvestETH(0, { value: invest, from: accounts[1] });
