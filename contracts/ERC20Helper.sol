@@ -14,26 +14,48 @@ contract ERC20Helper is TokenList {
         address _owner,
         uint256 _amount
     ) {
-        require(ERC20(_token).allowance(_owner, address(this)) >= _amount, "no allowance"); 
+        require(
+            ERC20(_token).allowance(_owner, address(this)) >= _amount,
+            "no allowance"
+        );
         _;
-    }   
+    }
+
     function TransferToken(
         address _Token,
         address _Reciver,
         uint256 _Amount
-    ) internal{
+    ) internal {
         uint256 OldBalance = CheckBalance(_Token, address(this));
         emit TransferOut(_Amount, _Reciver, _Token);
         ERC20(_Token).transfer(_Reciver, _Amount);
-        require((SafeMath.add(OldBalance , _Amount)) == CheckBalance(_Token,address(this)), "recive wrong amount of tokens");
-    } 
-    function CheckBalance(address _Token,address _Subject) internal view returns(uint256) {
-          return ERC20(_Token).balanceOf(_Subject);
+        require(
+            (SafeMath.add(CheckBalance(_Token, address(this)), _Amount)) == OldBalance
+                ,
+            "recive wrong amount of tokens"
+        );
     }
-    function TransferInToken(address _Token,address _Subject,uint256 _Amount) internal TestAllownce(_Token,_Subject,_Amount) {
+
+    function CheckBalance(address _Token, address _Subject)
+        internal
+        view
+        returns (uint256)
+    {
+        return ERC20(_Token).balanceOf(_Subject);
+    }
+
+    function TransferInToken(
+        address _Token,
+        address _Subject,
+        uint256 _Amount
+    ) internal TestAllownce(_Token, _Subject, _Amount) {
         uint256 OldBalance = CheckBalance(_Token, address(this));
         ERC20(_Token).transferFrom(_Subject, address(this), _Amount);
         emit TransferIn(_Amount, _Subject, _Token);
-        require((SafeMath.add(OldBalance , _Amount)) == CheckBalance(_Token,address(this)), "recive wrong amount of tokens");
+        require(
+            (SafeMath.add(OldBalance, _Amount)) ==
+                CheckBalance(_Token, address(this)),
+            "recive wrong amount of tokens"
+        );
     }
 }

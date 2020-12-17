@@ -39,7 +39,7 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     let beforeBalance = await Maincoint.balanceOf(instance.address);
     assert.notEqual(beforeBalance.toNumber(), 0);
     let status = await instance.GetPoolStatus(0);
-    assert.equal(status.toNumber(),2);
+    assert.equal(status.toNumber(),3);
   });
   it("take erc20 fee", async () => {
     await instance.WithdrawERC20Fee(Maincoint.address, accounts[0], { from: accounts[0] });

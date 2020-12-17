@@ -79,7 +79,7 @@ contract("Thepoolz", async accounts => {
     let instance = await ThePoolz.deployed();
     await instance.InvestETH(0, { value: invest, from: accounts[1] }); //1-1
     let status = await instance.GetPoolStatus(0);
-    assert.equal(status.toNumber(),4);
+    assert.equal(status.toNumber(),5);
   });
   it("take fee", async () => {
     let instance = await ThePoolz.deployed();

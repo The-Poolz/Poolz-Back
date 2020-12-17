@@ -42,7 +42,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let EndBalance = await Token.balanceOf(accounts[0]);
     assert.equal(EndBalance.toNumber(), StartBalance.toNumber());
     let status = await instance.GetPoolStatus(0);
-    assert.equal(status.toNumber(),4);
+    assert.equal(status.toNumber(),5);
   });
   it("Work for take leftovers and investor on finish pool", async () => {
     let instance = await ThePoolz.new();
@@ -73,7 +73,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
     let status = await instance.GetPoolStatus(0);
-    assert.equal(status.toNumber(),3);
+    assert.equal(status.toNumber(),4);
     await truffleAssert.reverts( instance.InvestETH(0, { value: amount / 2, from: accounts[1] }));
   });
   it("Can't invest in close pool", async () => {
@@ -90,8 +90,8 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let canWork = await instance.CanWork();
     assert.isTrue(canWork);
     await instance.SafeWork();
-    let status = await instance.GetPoolStatus(0);
-    assert.equal(status.toNumber(),4);
+    //let status = await instance.GetPoolStatus(0);
+    //assert.equal(status.toNumber(),5);
     await truffleAssert.reverts( instance.InvestETH(0, { value: invest, from: accounts[1] }));
     let cantWork = await instance.CanWork();
     assert.isFalse(cantWork);
@@ -107,7 +107,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
     let status = await instance.GetPoolStatus(0);
-    assert.equal(status.toNumber(),3);
+    assert.equal(status.toNumber(),4);
   });
   it("Work for take leftovers and investor on finish pool, when 2 pools", async () => {
     let instance = await ThePoolz.new();
