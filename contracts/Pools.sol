@@ -53,20 +53,21 @@ contract Pools is MainCoinManager {
         require(msg.value >= PoolPrice, "Need to pay for the pool");
         require(IsValidToken(_Token), "Need Valid ERC20 Token"); //check if _Token is ERC20
         require(
-            SafeMath.add(now, MinDuration) <= _FinishTime,
-            "Need more then MinDuration"
-        ); // check if the time is OK
-        require(
             _MainCoin == address(0x0) || IsERC20Maincoin(_MainCoin),
             "Main coin not in list"
         );
+        require(_FinishTime - now < MaxDuration, "Can't be that long pool");
         require(
             _Rate <= _POZRate,
             "POZ holders need to have better price (or the same)"
         );
         require(_POZRate > 0, "It will not work");
-        if (_Now == 0)
+        if (_Now < now)
             _Now = now;
+        require(
+            SafeMath.add(now, MinDuration) <= _FinishTime,
+            "Need more then MinDuration"
+        ); // check if the time is OK
         TransferInToken(_Token, msg.sender, _StartAmount);
         uint256 Openforall = (_Rate == _POZRate)
             ? _Now
