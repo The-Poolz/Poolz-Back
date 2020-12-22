@@ -29,6 +29,13 @@ it("Other Payments, add as admin", async () => {
     let actual = await instance.GetMinDuration();
     assert.equal(actual.toNumber(), min);
   });
+  it("set/get MaxDuration", async () => {
+    let instance = await ThePoolz.deployed();
+    let max = 500;
+    await instance.SetMaxDuration(max, { from: accounts[0] });
+    let actual = await instance.GetMaxDuration();
+    assert.equal(actual.toNumber(), max);
+  });
   it("Set the min ETH investment", async () => {
     let instance = await ThePoolz.deployed();
     let min = web3.utils.toWei('1', 'ether');
