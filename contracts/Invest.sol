@@ -40,6 +40,7 @@ contract Invest is PoolsData {
     {
         require(_PoolId < poolsCount, "Wrong pool id, InvestETH fail");
         require(pools[_PoolId].Maincoin == address(0x0), "Pool is not for ETH");
+        require(msg.value >= MinETHInvest && msg.value <= MaxETHInvest, "Investment amount not valid");
         uint256 ThisInvestor = NewInvestor(msg.sender, msg.value, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, msg.value, msg.sender);
         if (pools[_PoolId].IsLocked) {

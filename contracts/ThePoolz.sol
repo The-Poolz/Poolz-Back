@@ -19,7 +19,13 @@ contract ThePoolz is InvestorData {
     uint256 internal StartInvestor;
     uint256 internal StartProjectOwner;
 
-    
+    function SetStartInvestor(uint256 _StartInvestor) public onlyOwner {
+        StartInvestor = _StartInvestor;
+    }
+    function SetStartProjectOwner(uint256 _StartProjectOwner) public onlyOwner {
+        StartProjectOwner = _StartProjectOwner;
+    }
+
     function GetMinWorkInvestor() public view returns (uint256) {
         return MinWorkInvestor;
     }
