@@ -21,27 +21,24 @@ it("Other Payments, add as admin", async () => {
     await instance.RemoveERC20Maincoin(Token.address, { from: accounts[0] });
     let IspayableToken3 = await instance.IsERC20Maincoin(Token.address);
     assert.isFalse(IspayableToken3);
-  });
-  it("set/get MinDuration", async () => {
+  });//
+  it("set/get MinMaxETHInvest", async () => {
     let instance = await ThePoolz.new();
-    let min = 500;
-    await instance.SetMinDuration(min, { from: accounts[0] });
-    let actual = await instance.GetMinDuration();
-    assert.equal(actual.toNumber(), min);
+    let min = 15;
+    let max = 200;
+    await instance.SetMinMaxETHInvest(min,max, { from: accounts[0] });
+    let actual = await instance.GetMinMaxETHInvest();
+    assert.equal(actual[0].toNumber(), min);
+    assert.equal(actual[1].toNumber(), max);
   });
-  it("set/get MaxDuration", async () => {
-    let instance = await ThePoolz.deployed();
-    let max = 500;
-    await instance.SetMaxDuration(max, { from: accounts[0] });
-    let actual = await instance.GetMaxDuration();
-    assert.equal(actual.toNumber(), max);
-  });
-  it("Set the min ETH investment", async () => {
-    let instance = await ThePoolz.deployed();
-    let min = web3.utils.toWei('1', 'ether');
-    await instance.SetMinETH(min);
-    let actual = await instance.GetMinETH();
-    assert.equal(actual, min);
+  it("set/get MinMaxDuration", async () => {
+    let instance = await ThePoolz.new();
+    let min = 400;
+    let max = 600;
+    await instance.SetMinMaxDuration(min,max, { from: accounts[0] });
+    let actual = await instance.GetMinMaxDuration();
+    assert.equal(actual[0].toNumber(), min);
+    assert.equal(actual[1].toNumber(), max);
   });
   it("set/get fee", async () => {
     let instance = await ThePoolz.deployed();
@@ -68,6 +65,10 @@ it("Other Payments, add as admin", async () => {
     await instance.SetPOZFee(pozfee, { from: accounts[0] });
     let actual = await instance.GetPOZFee();
     assert.equal(actual.toNumber(), pozfee);
+  });
+  it("set SetStartForWork", async () => {
+    let instance = await ThePoolz.deployed();
+    await instance.SetStartForWork(0,0, { from: accounts[0] });    
   });
   it("fail set poz fee", async () => {
     let instance = await ThePoolz.deployed();
