@@ -34,13 +34,14 @@ contract Invest is PoolsData {
     function InvestETH(uint256 _PoolId)
         external
         payable
-        ReceivETH(msg.value, msg.sender)
+        ReceivETH(msg.value, msg.sender,MinETHInvest)
         whenNotPaused
         CheckTime(pools[_PoolId].StartTime)
     {
         require(_PoolId < poolsCount, "Wrong pool id, InvestETH fail");
         require(pools[_PoolId].Maincoin == address(0x0), "Pool is not for ETH");
         require(msg.value >= MinETHInvest && msg.value <= MaxETHInvest, "Investment amount not valid");
+        require(msg.sender == tx.origin && !isContract(msg.sender), "Some tihng wrong with the msgSender");
         uint256 ThisInvestor = NewInvestor(msg.sender, msg.value, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, msg.value, msg.sender);
         if (pools[_PoolId].IsLocked) {
@@ -73,6 +74,7 @@ contract Invest is PoolsData {
             "Pool is for ETH, use InvetETH"
         );
         require(_Amount > 10000, "Need invest more then 10000");
+        require(msg.sender == tx.origin && !isContract(msg.sender), "Some tihng wrong with the msgSender");
         TransferInToken(pools[_PoolId].Maincoin, msg.sender, _Amount);
         uint256 ThisInvestor = NewInvestor(msg.sender, _Amount, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, _Amount, msg.sender);
@@ -171,5 +173,14 @@ contract Invest is PoolsData {
         }
         //will not get here, will fail on CalcTokens
         //revert("Wrong pool status to CalcFee");
+    }
+
+       //@dev use it with  require(msg.sender == tx.origin)
+    function isContract(address _addr) internal view returns (bool) {      
+        uint32 size;
+        assembly {
+            size := extcodesize(_addr)
+        }
+        return (size > 0);
     }
 }

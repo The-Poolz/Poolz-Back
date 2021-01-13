@@ -49,6 +49,7 @@ contract ERC20Helper is TokenList {
         address _Subject,
         uint256 _Amount
     ) internal TestAllownce(_Token, _Subject, _Amount) {
+        require(_Amount > 0);
         uint256 OldBalance = CheckBalance(_Token, address(this));
         ERC20(_Token).transferFrom(_Subject, address(this), _Amount);
         emit TransferIn(_Amount, _Subject, _Token);

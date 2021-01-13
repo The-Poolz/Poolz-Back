@@ -23,27 +23,27 @@ contract Manageable is ETHHelper {
     uint256 internal MinETHInvest;
     uint256 internal MaxETHInvest;
 
-    function SetMinETHInvest(uint256 _MinETHInvest) public onlyOwner {
+    function SetMinMaxETHInvest(uint256 _MinETHInvest, uint256 _MaxETHInvest)
+        public
+        onlyOwner
+    {
         MinETHInvest = _MinETHInvest;
-    }
-
-    function SetMaxETHInvest(uint256 _MaxETHInvest) public onlyOwner {
         MaxETHInvest = _MaxETHInvest;
     }
-
-    function GetMinDuration() public view returns (uint256) {
-        return MinDuration;
+    function GetMinMaxETHInvest() public view returns (uint256 _MinETHInvest, uint256 _MaxETHInvest)
+    {
+       return (MinETHInvest,MaxETHInvest);
     }
 
-    function SetMinDuration(uint256 _minDuration) public onlyOwner {
+    function GetMinMaxDuration() public view returns (uint256, uint256) {
+        return (MinDuration, MaxDuration);
+    }
+
+    function SetMinMaxDuration(uint256 _minDuration, uint256 _maxDuration)
+        public
+        onlyOwner
+    {
         MinDuration = _minDuration;
-    }
-
-    function GetMaxDuration() public view returns (uint256) {
-        return MaxDuration;
-    }
-
-    function SetMaxDuration(uint256 _maxDuration) public onlyOwner {
         MaxDuration = _maxDuration;
     }
 
@@ -82,7 +82,8 @@ contract Manageable is ETHHelper {
     }
 
     function WithdrawERC20Fee(address _Token, address _to) public onlyOwner {
-        ERC20(_Token).transfer(_to, FeeMap[_Token]);
+        uint256 temp = FeeMap[_Token];
         FeeMap[_Token] = 0;
+        TransferToken(_Token, _to, temp);
     }
 }
