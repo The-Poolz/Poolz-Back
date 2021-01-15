@@ -5,7 +5,7 @@ import "./PoolsData.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 contract Invest is PoolsData {
-    event NewInvestorEvent(uint256 Investor_ID);
+    event NewInvestorEvent(uint256 Investor_ID, address Investor_Address);
 
     modifier CheckTime(uint256 _Time) {
         require(now >= _Time, "Pool not open yet");
@@ -41,7 +41,7 @@ contract Invest is PoolsData {
         require(_PoolId < poolsCount, "Wrong pool id, InvestETH fail");
         require(pools[_PoolId].Maincoin == address(0x0), "Pool is not for ETH");
         require(msg.value >= MinETHInvest && msg.value <= MaxETHInvest, "Investment amount not valid");
-        require(msg.sender == tx.origin && !isContract(msg.sender), "Some tihng wrong with the msgSender");
+        require(msg.sender == tx.origin && !isContract(msg.sender), "Some thing wrong with the msgSender");
         uint256 ThisInvestor = NewInvestor(msg.sender, msg.value, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, msg.value, msg.sender);
         if (pools[_PoolId].IsLocked) {
@@ -74,7 +74,7 @@ contract Invest is PoolsData {
             "Pool is for ETH, use InvetETH"
         );
         require(_Amount > 10000, "Need invest more then 10000");
-        require(msg.sender == tx.origin && !isContract(msg.sender), "Some tihng wrong with the msgSender");
+        require(msg.sender == tx.origin && !isContract(msg.sender), "Some thing wrong with the msgSender");
         TransferInToken(pools[_PoolId].Maincoin, msg.sender, _Amount);
         uint256 ThisInvestor = NewInvestor(msg.sender, _Amount, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, _Amount, msg.sender);
@@ -134,7 +134,7 @@ contract Invest is PoolsData {
             block.timestamp
         );
         InvestorsMap[msg.sender].push(TotalInvestors);
-        emit NewInvestorEvent(TotalInvestors);
+        emit NewInvestorEvent(TotalInvestors,_Sender);
         TotalInvestors = SafeMath.add(TotalInvestors, 1);
         return SafeMath.sub(TotalInvestors, 1);
     }
