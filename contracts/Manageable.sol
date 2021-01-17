@@ -12,16 +12,22 @@ contract Manageable is ETHHelper {
         MaxDuration = 60 * 60 * 24 * 30 * 6; // half year
         MinETHInvest = 10000; // for percent calc
         MaxETHInvest = 100 * 10**18; // 100 eth per wallet
+        WhiteList_Address = address(0x0);
     }
 
     mapping(address => uint256) FeeMap;
     //@dev for percent use uint16
-    uint256 internal Fee; //the fee for the pool
-    uint256 internal MinDuration; //the minimum duration of a pool, in seconds
-    uint256 internal MaxDuration; //the maximum duration of a pool from the creation, in seconds
-    uint256 internal PoolPrice;
-    uint256 internal MinETHInvest;
-    uint256 internal MaxETHInvest;
+    uint256 public Fee; //the fee for the pool
+    uint256 public MinDuration; //the minimum duration of a pool, in seconds
+    uint256 public MaxDuration; //the maximum duration of a pool from the creation, in seconds
+    uint256 public PoolPrice;
+    uint256 public MinETHInvest;
+    uint256 public MaxETHInvest;
+    address public WhiteList_Address; //The address of the Whitelist contract
+
+    function SetWhiteList_Address(address _WhiteList_Address) public onlyOwner {
+        WhiteList_Address = _WhiteList_Address;
+    }
 
     function SetMinMaxETHInvest(uint256 _MinETHInvest, uint256 _MaxETHInvest)
         public
@@ -29,14 +35,6 @@ contract Manageable is ETHHelper {
     {
         MinETHInvest = _MinETHInvest;
         MaxETHInvest = _MaxETHInvest;
-    }
-    function GetMinMaxETHInvest() public view returns (uint256 _MinETHInvest, uint256 _MaxETHInvest)
-    {
-       return (MinETHInvest,MaxETHInvest);
-    }
-
-    function GetMinMaxDuration() public view returns (uint256, uint256) {
-        return (MinDuration, MaxDuration);
     }
 
     function SetMinMaxDuration(uint256 _minDuration, uint256 _maxDuration)
@@ -47,16 +45,8 @@ contract Manageable is ETHHelper {
         MaxDuration = _maxDuration;
     }
 
-    function GetPoolPrice() public view returns (uint256) {
-        return PoolPrice;
-    }
-
     function SetPoolPrice(uint256 _PoolPrice) public onlyOwner {
         PoolPrice = _PoolPrice;
-    }
-
-    function GetFee() public view returns (uint256) {
-        return Fee;
     }
 
     function SetFee(uint256 _fee)

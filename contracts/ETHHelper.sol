@@ -23,12 +23,8 @@ contract ETHHelper is PozBenefit {
     event TransferOutETH(uint256 Amount, address To);
     event TransferInETH(uint256 Amount, address From);
 
-    bool internal IsPayble;
+    bool public IsPayble;
  
-    function GetIsPayble() public view returns (bool) {
-        return IsPayble;
-    }
-
     function SwitchIsPayble() public onlyOwner {
         IsPayble = !IsPayble;
     }

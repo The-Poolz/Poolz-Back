@@ -14,9 +14,9 @@ contract PozBenefit is ERC20Helper {
         POZBenefit_Address = address(0x0);
     }
 
-    uint256 internal PozFee; // the fee for the first part of the pool
-    uint256 internal PozTimer; //the timer for the first part fo the pool
-    uint256 internal MinPoz; //minimum ammount ofpoz to be part of the discount
+    uint256 public PozFee; // the fee for the first part of the pool
+    uint256 public PozTimer; //the timer for the first part fo the pool
+    uint256 public MinPoz; //minimum ammount ofpoz to be part of the discount
     address public POZ_Address; //The address of the POZ Token
     address public POZBenefit_Address; //the address for implementation of IPozBenefit - to get POZ benefit status from other contracts
 
@@ -29,24 +29,12 @@ contract PozBenefit is ERC20Helper {
         else revert("Not bigger");
     }
 
-    function GetPozTimer() public view returns (uint256) {
-        return PozTimer;
-    }
-
     function SetPozTimer(uint256 _pozTimer)
         public
         onlyOwner
         PercentCheckOk(_pozTimer)
     {
         PozTimer = _pozTimer;
-    }
-
-    function GetPOZFee() public view returns (uint256) {
-        return PozFee;
-    }
-
-    function GetMinPoz() public view returns (uint256) {
-        return MinPoz;
     }
 
     function SetMinPoz(uint256 _MinPoz) public onlyOwner {

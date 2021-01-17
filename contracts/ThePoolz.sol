@@ -110,7 +110,7 @@ contract ThePoolz is InvestorData {
             if (WithdrawLeftOvers(index)) WorkDone++;
             if (
                 FixStart &&
-                (pools[index].TookLeftOvers || pools[index].Lefttokens == 0)
+                (pools[index].MoreData.TookLeftOvers || pools[index].MoreData.Lefttokens == 0)
             ) {
                 StartProjectOwner = index;
             } else {

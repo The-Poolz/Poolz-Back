@@ -27,24 +27,26 @@ it("Other Payments, add as admin", async () => {
     let min = 15;
     let max = 200;
     await instance.SetMinMaxETHInvest(min,max, { from: accounts[0] });
-    let actual = await instance.GetMinMaxETHInvest();
-    assert.equal(actual[0].toNumber(), min);
-    assert.equal(actual[1].toNumber(), max);
+    let actual_min = await instance.MinETHInvest.call();
+    let actual_max = await instance.MaxETHInvest.call();
+    assert.equal(actual_min.toNumber(), min);
+    assert.equal(actual_max.toNumber(), max);
   });
   it("set/get MinMaxDuration", async () => {
     let instance = await ThePoolz.new();
     let min = 400;
     let max = 600;
     await instance.SetMinMaxDuration(min,max, { from: accounts[0] });
-    let actual = await instance.GetMinMaxDuration();
-    assert.equal(actual[0].toNumber(), min);
-    assert.equal(actual[1].toNumber(), max);
+    let actual_min = await instance.MinDuration.call();
+    let actual_max = await instance.MaxDuration.call();
+    assert.equal(actual_min.toNumber(), min);
+    assert.equal(actual_max.toNumber(), max);
   });
   it("set/get fee", async () => {
     let instance = await ThePoolz.deployed();
     let fee = 35;
     await instance.SetFee(fee, { from: accounts[0] });
-    let actual = await instance.GetFee();
+    let actual = await instance.Fee.call();
     assert.equal(actual.toNumber(), fee);
   });
   it("set/get Worker params", async () => {
@@ -63,7 +65,7 @@ it("Other Payments, add as admin", async () => {
     let instance = await ThePoolz.deployed();
     let pozfee = 10;
     await instance.SetPOZFee(pozfee, { from: accounts[0] });
-    let actual = await instance.GetPOZFee();
+    let actual = await instance.PozFee.call();
     assert.equal(actual.toNumber(), pozfee);
   });
   it("set SetStartForWork", async () => {
@@ -84,7 +86,7 @@ it("Other Payments, add as admin", async () => {
     let instance = await ThePoolz.deployed();
     let poztimer = 2000;
     await instance.SetPozTimer(poztimer, { from: accounts[0] });
-    let actual = await instance.GetPozTimer();
+    let actual = await instance.PozTimer.call();
     assert.equal(actual.toNumber(), poztimer);
   });
   it("Token List", async () => {
@@ -106,12 +108,12 @@ it("Other Payments, add as admin", async () => {
     let instance = await ThePoolz.deployed();
     let minpoz = 80000;
     await instance.SetMinPoz(minpoz, { from: accounts[0] });
-    let actual = await instance.GetMinPoz();
+    let actual = await instance.MinPoz.call();
     assert.equal(actual.toNumber(), minpoz);
   });
   it("get PoolPrice ", async () => {
     let instance = await ThePoolz.deployed();
-    let actual = await instance.GetPoolPrice();
+    let actual = await instance.PoolPrice.call();
     assert.equal(actual.toNumber(), 0);
   });
 });

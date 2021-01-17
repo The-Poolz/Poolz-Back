@@ -18,6 +18,10 @@ contract Pools is MainCoinManager {
     mapping(uint256 => Pool) public pools; //the id of the pool with the data
     mapping(address => uint256[]) public poolsMap; //the address and all of the pools id's
     struct Pool {
+        PoolBaseData BaseData;
+        PoolMoreData MoreData;
+    }
+    struct PoolBaseData {
         address Token; //the address of the erc20 toke for sale
         address Creator; //the project owner
         uint256 FinishTime; //Until what time the pool is active
@@ -25,6 +29,8 @@ contract Pools is MainCoinManager {
         uint256 POZRate; //the rate for the until OpenForAll, if the same as Rate , OpenForAll = StartTime .
         address Maincoin; // on adress.zero = ETH
         uint256 StartAmount; //The total amount of the tokens for sale
+    }
+    struct PoolMoreData {
         bool IsLocked; // true - the investors getting the tokens after the FinishTime. false - intant deal
         uint256 Lefttokens; // the ammount of tokens left for sale
         uint256 StartTime; // the time the pool open //TODO Maybe Delete this?
@@ -32,13 +38,10 @@ contract Pools is MainCoinManager {
         uint256 UnlockedTokens; //for locked pools
         bool TookLeftOvers; //The Creator took the left overs after the pool finished
         bool Is21DecimalRate; //If true, the rate will be rate*10^-21
-    }
-
-    function GetLastPoolId() public view returns (uint256) {
-        return poolsCount;
+        uint256 WhiteListId; // 0 is turn off, the Id of the whitelist from the contract.
     }
     
-     //create a new pool
+    //create a new pool
     function CreatePool(
         address _Token, //token to sell address
         uint256 _FinishTime, //Until what time the pool will work
@@ -48,8 +51,9 @@ contract Pools is MainCoinManager {
         bool _IsLocked, //False = DSP or True = TLP
         address _MainCoin, // address(0x0) = ETH, address of main token
         bool _Is21Decimal, //focus the for smaller tokens.
-        uint256 _Now //Start Time - can be 0 to not change current flow
-    ) public whenNotPaused payable {
+        uint256 _Now, //Start Time - can be 0 to not change current flow
+        uint256 _WhiteListId // the Id of the Whitelist contract, 0 For turn-off
+    ) public payable whenNotPaused {
         require(msg.value >= PoolPrice, "Need to pay for the pool");
         require(IsValidToken(_Token), "Need Valid ERC20 Token"); //check if _Token is ERC20
         require(
@@ -62,42 +66,41 @@ contract Pools is MainCoinManager {
             "POZ holders need to have better price (or the same)"
         );
         require(_POZRate > 0, "It will not work");
-        if (_Now < now)
-            _Now = now;
+        if (_Now < now) _Now = now;
         require(
             SafeMath.add(now, MinDuration) <= _FinishTime,
             "Need more then MinDuration"
         ); // check if the time is OK
         TransferInToken(_Token, msg.sender, _StartAmount);
-        uint256 Openforall = (_Rate == _POZRate)
-            ? _Now
-            : SafeMath.add(
-                SafeMath.div(
-                    SafeMath.mul(
-                        SafeMath.sub(_FinishTime, _Now),
-                        PozTimer
+        uint256 Openforall =
+            (_Rate == _POZRate)
+                ? _Now
+                : SafeMath.add(
+                    SafeMath.div(
+                        SafeMath.mul(SafeMath.sub(_FinishTime, _Now), PozTimer),
+                        10000
                     ),
-                    10000
-                ),
-                _Now
-            );
+                    _Now
+                );
         //register the pool
         pools[poolsCount] = Pool(
+            PoolBaseData(
             _Token,
             msg.sender,
             _FinishTime,
             _Rate,
             _POZRate,
             _MainCoin,
-            _StartAmount,
+            _StartAmount
+            ) ,PoolMoreData(
             _IsLocked,
             _StartAmount,
             _Now,
             Openforall,
             0,
             false,
-            _Is21Decimal
-        );
+            _Is21Decimal,
+            _WhiteListId) );
         poolsMap[msg.sender].push(poolsCount);
         emit NewPool(_Token, poolsCount);
         poolsCount = SafeMath.add(poolsCount, 1); //joke - overflowfrom 0 on int256 = 1.16E77
