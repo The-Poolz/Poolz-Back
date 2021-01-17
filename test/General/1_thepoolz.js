@@ -108,16 +108,16 @@ contract("Thepoolz", async accounts => {
     let actualBalance = await web3.eth.getBalance(instance.address);
     assert.equal(actualBalance-startBalance, amount);
   });
-  it("open pool in a day sec, check balance", async () => {
+  it("open pool in a day , check balance", async () => {
     let instance = await ThePoolz.deployed();
     let Token = await TestToken.deployed()
     await Token.approve(instance.address, amount, { from: accounts[0] });
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 600, rate, rate, amount, false, zero_address,true,0,0, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 600, rate, rate, amount, false, zero_address,true,Math.floor(date.getTime() / 1000) + 30,0, { from: accounts[0] });
     let newpools = await instance.poolsCount.call();
     assert.equal(newpools.toNumber(), 2, "Got 2 pools");
     let status = await instance.GetPoolStatus(1);
-    assert.equal(status.toNumber(),1);
+    assert.equal(status.toNumber(),2);
   });
 });

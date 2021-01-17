@@ -72,6 +72,11 @@ it("Other Payments, add as admin", async () => {
     let instance = await ThePoolz.deployed();
     await instance.SetStartForWork(0,0, { from: accounts[0] });    
   });
+  it("set WhiteList Address", async () => {
+    let instance = await ThePoolz.deployed();
+    await instance.SetWhiteList_Address(accounts[4], { from: accounts[0] });    
+    assert.equal(accounts[4],await instance.WhiteList_Address.call());
+  });
   it("fail set poz fee", async () => {
     let instance = await ThePoolz.deployed();
     let pozfee = 40;
