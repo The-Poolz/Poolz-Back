@@ -15,7 +15,7 @@ contract Invest is PoolsData {
 
     //using SafeMath for uint256;
     constructor() public {
-        TotalInvestors = 0;
+        //TotalInvestors = 0;
     }
 
     //Investorsr Data

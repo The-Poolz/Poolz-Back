@@ -23,7 +23,6 @@ module.exports = {
       host: "127.0.0.1",
       port: 8545,
       network_id: "*", // Match any network id
-     // gas: 17721974
     },
     rinkeby: {
       host: "localhost", // Connect to geth on the specified
@@ -51,8 +50,9 @@ module.exports = {
   compilers: {
     solc: {
       settings: {
-        evmVersion: "byzantium"
-      },
+        evmVersion: "byzantium",
+        optimizer: { enabled: true, runs: 200 },
+      },     
       version: "^0.4.24",
       docker: false,
       parser: "solcjs",

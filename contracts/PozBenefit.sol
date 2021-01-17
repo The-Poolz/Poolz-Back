@@ -10,8 +10,8 @@ contract PozBenefit is ERC20Helper {
         PozFee = 15; // *10000
         PozTimer = 1000; // *10000
         MinPoz = 80; // ^Token.decimals
-        POZ_Address = address(0x0);
-        POZBenefit_Address = address(0x0);
+       // POZ_Address = address(0x0);
+       // POZBenefit_Address = address(0x0);
     }
 
     uint256 public PozFee; // the fee for the first part of the pool

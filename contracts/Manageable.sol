@@ -7,12 +7,12 @@ import "./ETHHelper.sol";
 contract Manageable is ETHHelper {
     constructor() public {
         Fee = 20; // *10000
-        MinDuration = 0; //need to set
-        PoolPrice = 0; // Price for create a pool
+        //MinDuration = 0; //need to set
+        //PoolPrice = 0; // Price for create a pool
         MaxDuration = 60 * 60 * 24 * 30 * 6; // half year
         MinETHInvest = 10000; // for percent calc
         MaxETHInvest = 100 * 10**18; // 100 eth per wallet
-        WhiteList_Address = address(0x0);
+        //WhiteList_Address = address(0x0);
     }
 
     mapping(address => uint256) FeeMap;

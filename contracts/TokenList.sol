@@ -11,8 +11,8 @@ contract TokenList is Pausable {
     mapping(uint256 => address) private _Tokens;
 
     constructor() public {
-        NumberOfTokens = 0;
-        IsTokenFilterOn = false; //true on prod
+       // NumberOfTokens = 0;
+       // IsTokenFilterOn = false; //true on prod
     }
 
     function SwapTokenFilter() public onlyOwner {

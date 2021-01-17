@@ -11,7 +11,7 @@ contract Pools is MainCoinManager {
     event PoolUpdate(uint256 id);
 
     constructor() public {
-        poolsCount = 0; //Start with 0
+      //  poolsCount = 0; //Start with 0
     }
 
     uint256 public poolsCount; // the ids of the pool
@@ -40,7 +40,7 @@ contract Pools is MainCoinManager {
         bool Is21DecimalRate; //If true, the rate will be rate*10^-21
         uint256 WhiteListId; // 0 is turn off, the Id of the whitelist from the contract.
     }
-    
+
     //create a new pool
     function CreatePool(
         address _Token, //token to sell address
