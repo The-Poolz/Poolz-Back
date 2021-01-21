@@ -73,8 +73,8 @@ contract Pools is MainCoinManager {
         ); // check if the time is OK
         TransferInToken(_Token, msg.sender, _StartAmount);
         uint256 Openforall =
-            (_Rate == _POZRate)
-                ? _Now
+            (!MustPozBenefit &&_Rate == _POZRate) //maybe remove this?
+                ? _Now         //and this
                 : SafeMath.add(
                     SafeMath.div(
                         SafeMath.mul(SafeMath.sub(_FinishTime, _Now), PozTimer),
