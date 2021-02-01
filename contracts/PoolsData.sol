@@ -6,6 +6,10 @@ import "./Pools.sol";
 contract PoolsData is Pools {
     enum PoolStatus {Created, Open,PreMade , OutOfstock, Finished, Close} //the status of the pools
 
+    function GetMyPoolsId() public view returns (uint256[]) {
+        return poolsMap[msg.sender];
+    }
+
     function IsReadyWithdrawLeftOvers(uint256 _PoolId)
         public
         view
