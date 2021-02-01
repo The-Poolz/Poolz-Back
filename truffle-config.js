@@ -31,6 +31,18 @@ module.exports = {
       network_id: 4,
       gas: 4612388 // Gas limit used for deploys
     },
+    Huobi: {
+      provider: () =>
+        new HDWalletProvider(
+          mnemonic,
+          "https://http-testnet.hecochain.com",
+          0,
+          1,
+          true,
+          "m/44'/60'/0'/0/"
+        ),
+      network_id: "256",
+    },
     tomotestnet: {
       provider: () =>
         new HDWalletProvider(
