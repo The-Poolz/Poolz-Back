@@ -11,7 +11,7 @@ contract Pools is MainCoinManager {
     event PoolUpdate(uint256 id);
 
     constructor() public {
-      //  poolsCount = 0; //Start with 0
+        //  poolsCount = 0; //Start with 0
     }
 
     uint256 public poolsCount; // the ids of the pool
@@ -41,7 +41,7 @@ contract Pools is MainCoinManager {
         uint256 WhiteListId; // 0 is turn off, the Id of the whitelist from the contract.
     }
 
-    //create a new pool
+      //create a new pool
     function CreatePool(
         address _Token, //token to sell address
         uint256 _FinishTime, //Until what time the pool will work
@@ -73,8 +73,8 @@ contract Pools is MainCoinManager {
         ); // check if the time is OK
         TransferInToken(_Token, msg.sender, _StartAmount);
         uint256 Openforall =
-            (!MustPozBenefit &&_Rate == _POZRate) //maybe remove this?
-                ? _Now         //and this
+            (!MustPozBenefit && _Rate == _POZRate) //maybe remove this?
+                ? _Now //and this
                 : SafeMath.add(
                     SafeMath.div(
                         SafeMath.mul(SafeMath.sub(_FinishTime, _Now), PozTimer),
@@ -85,22 +85,25 @@ contract Pools is MainCoinManager {
         //register the pool
         pools[poolsCount] = Pool(
             PoolBaseData(
-            _Token,
-            msg.sender,
-            _FinishTime,
-            _Rate,
-            _POZRate,
-            _MainCoin,
-            _StartAmount
-            ) ,PoolMoreData(
-            _IsLocked,
-            _StartAmount,
-            _Now,
-            Openforall,
-            0,
-            false,
-            _Is21Decimal,
-            _WhiteListId) );
+                _Token,
+                msg.sender,
+                _FinishTime,
+                _Rate,
+                _POZRate,
+                _MainCoin,
+                _StartAmount
+            ),
+            PoolMoreData(
+                _IsLocked,
+                _StartAmount,
+                _Now,
+                Openforall,
+                0,
+                false,
+                _Is21Decimal,
+                _WhiteListId
+            )
+        );
         poolsMap[msg.sender].push(poolsCount);
         emit NewPool(_Token, poolsCount);
         poolsCount = SafeMath.add(poolsCount, 1); //joke - overflowfrom 0 on int256 = 1.16E77
