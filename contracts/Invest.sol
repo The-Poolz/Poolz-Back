@@ -31,6 +31,22 @@ contract Invest is PoolsData {
         uint256 InvestTime; //the time that investment made
     }
 
+    function getTotalInvestor() external view returns(uint256){
+        return TotalInvestors;
+    }
+
+    function getInvestors(uint256 _Id) external view returns(uint256, address, uint256, bool, uint256, uint256){
+        Investor storage investor = Investors[_Id];
+        return (
+            investor.Poolid,
+            investor.InvestorAddress,
+            investor.MainCoin,
+            investor.IsPozInvestor,
+            investor.TokensOwn,
+            investor.InvestTime
+        );
+    }
+
     //@dev Send in wei
     function InvestETH(uint256 _PoolId)
         external
@@ -210,7 +226,7 @@ contract Invest is PoolsData {
             IWhiteList(WhiteList_Address).Register(_Investor, _Id, _Amount); //will revert if fail
             return true;
         } else
-            return IWhiteList(WhiteList_Address).Check(_Investor, _Id, _Amount);
+            return IWhiteList(WhiteList_Address).Check(_Investor, _Id) > 0;
         revert("WhiteList error");
         //return false - will not get here.
     }

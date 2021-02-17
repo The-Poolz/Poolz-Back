@@ -41,6 +41,22 @@ contract Pools is MainCoinManager {
         uint256 WhiteListId; // 0 is turn off, the Id of the whitelist from the contract.
     }
 
+    function getPoolsMoreData(uint256 _Id) external view returns(bool, uint256, uint256, uint256, uint256, bool, bool, uint256){
+        PoolMoreData storage moreData = pools[_Id].MoreData;
+        return(
+            moreData.IsLocked,
+            moreData.Lefttokens,
+            moreData.StartTime,
+            moreData.OpenForAll,
+            moreData.UnlockedTokens,
+            moreData.TookLeftOvers,
+            moreData.Is21DecimalRate,
+            moreData.WhiteListId
+        );
+    }
+
+    
+
       //create a new pool
     function CreatePool(
         address _Token, //token to sell address

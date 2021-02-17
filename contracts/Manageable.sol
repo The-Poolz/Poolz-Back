@@ -25,6 +25,11 @@ contract Manageable is ETHHelper {
     uint256 public MaxETHInvest;
     address public WhiteList_Address; //The address of the Whitelist contract
     bool public MustPozBenefit;
+    address public ClaimerAdderss;
+
+    function setClaimerAddress(address _Address) public onlyOwner {
+        ClaimerAdderss = _Address;
+    }
 
     function SwitchMustPozBenefit() public onlyOwner {
         MustPozBenefit = !MustPozBenefit;
