@@ -48,7 +48,7 @@ contract Pools is MainCoinManager {
         uint256 _Rate, //the rate of the trade
         uint256 _POZRate, //the rate for POZ Holders, how much each token = main coin
         uint256 _StartAmount, //Total amount of the tokens to sell in the pool
-        bool _IsLocked, //False = DSP or True = TLP
+        bool _IsLocked, //False = DSP or True = TLP, [TODO: make timestamp]
         address _MainCoin, // address(0x0) = ETH, address of main token
         bool _Is21Decimal, //focus the for smaller tokens.
         uint256 _Now, //Start Time - can be 0 to not change current flow
@@ -73,7 +73,7 @@ contract Pools is MainCoinManager {
         ); // check if the time is OK
         TransferInToken(_Token, msg.sender, _StartAmount);
         uint256 Openforall =
-            (!MustPozBenefit && _Rate == _POZRate) //maybe remove this?
+            (_WhiteListId == 0) 
                 ? _Now //and this
                 : SafeMath.add(
                     SafeMath.div(
