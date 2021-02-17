@@ -16,7 +16,7 @@ contract("Thepoolz, Invest", async accounts => {
         await Token.approve(instance.address, amount, { from: accounts[0] });
         let date = new Date();
         date.setDate(date.getDate() + 1);   // add a day
-        await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true,0,0, { from: accounts[0] });
+        await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, zero_address,true,0,0, { from: accounts[0] });
       });
       it("open a day long pool decimal21, invest", async () => {
         let instance = await ThePoolz.new();
@@ -24,7 +24,7 @@ contract("Thepoolz, Invest", async accounts => {
         await Token.approve(instance.address, amount, { from: accounts[0] });
         let date = new Date();
         date.setDate(date.getDate() + 1);   // add a day
-        await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true,0,0, { from: accounts[0] });
+        await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, zero_address,true,0,0, { from: accounts[0] });
         await instance.InvestETH(0,{ value: invest, from: accounts[0] });
         let tokensInContract = await Token.balanceOf(instance.address);
         assert.equal(tokensInContract.toString(), "149580000000", "Got the tokens");

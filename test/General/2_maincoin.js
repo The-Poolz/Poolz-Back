@@ -43,7 +43,8 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
     let amount = 100000;
-    await truffleAssert.reverts(instance.CreatePool(accounts[7], Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, Maincoint.address, false,0,0, { from: accounts[0] }));
+    const futureTimestamp = Math.floor(date.getTime() / 1000) + 60
+    await truffleAssert.reverts(instance.CreatePool(accounts[7], futureTimestamp, rate, rate, amount, futureTimestamp, Maincoint.address, false,0,0, { from: accounts[0] }));
   });
 
 });

@@ -67,7 +67,7 @@ contract Invest is PoolsData {
         );
         uint256 ThisInvestor = NewInvestor(msg.sender, msg.value, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, msg.value, msg.sender);
-        if (pools[_PoolId].MoreData.IsLocked) {
+        if (isPoolLocked(_PoolId)) {
             Investors[ThisInvestor].TokensOwn = SafeMath.add(
                 Investors[ThisInvestor].TokensOwn,
                 Tokens
@@ -106,7 +106,7 @@ contract Invest is PoolsData {
         uint256 ThisInvestor = NewInvestor(msg.sender, _Amount, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, _Amount, msg.sender);
 
-        if (pools[_PoolId].MoreData.IsLocked) {
+        if (isPoolLocked(_PoolId)) {
             Investors[ThisInvestor].TokensOwn = SafeMath.add(
                 Investors[ThisInvestor].TokensOwn,
                 Tokens

@@ -31,20 +31,20 @@ contract Pools is MainCoinManager {
         uint256 StartAmount; //The total amount of the tokens for sale
     }
     struct PoolMoreData {
-        bool IsLocked; // true - the investors getting the tokens after the FinishTime. false - intant deal
+        uint64 LockedUntil; // true - the investors getting the tokens after the FinishTime. false - intant deal
         uint256 Lefttokens; // the ammount of tokens left for sale
         uint256 StartTime; // the time the pool open //TODO Maybe Delete this?
         uint256 OpenForAll; // The Time that all investors can invest
         uint256 UnlockedTokens; //for locked pools
+        uint256 WhiteListId; // 0 is turn off, the Id of the whitelist from the contract.
         bool TookLeftOvers; //The Creator took the left overs after the pool finished
         bool Is21DecimalRate; //If true, the rate will be rate*10^-21
-        uint256 WhiteListId; // 0 is turn off, the Id of the whitelist from the contract.
     }
 
-    function getPoolsMoreData(uint256 _Id) external view returns(bool, uint256, uint256, uint256, uint256, bool, bool, uint256){
+    function getPoolsMoreData(uint256 _Id) external view returns(uint64, uint256, uint256, uint256, uint256, bool, bool, uint256){
         PoolMoreData storage moreData = pools[_Id].MoreData;
         return(
-            moreData.IsLocked,
+            moreData.LockedUntil,
             moreData.Lefttokens,
             moreData.StartTime,
             moreData.OpenForAll,
@@ -55,16 +55,18 @@ contract Pools is MainCoinManager {
         );
     }
 
-    
+    function isPoolLocked(uint256 _id) public view returns(bool){
+        return pools[_id].MoreData.LockedUntil > now;
+    }
 
-      //create a new pool
+    //create a new pool
     function CreatePool(
         address _Token, //token to sell address
         uint256 _FinishTime, //Until what time the pool will work
         uint256 _Rate, //the rate of the trade
         uint256 _POZRate, //the rate for POZ Holders, how much each token = main coin
         uint256 _StartAmount, //Total amount of the tokens to sell in the pool
-        bool _IsLocked, //False = DSP or True = TLP
+        uint64 _LockedUntil, //False = DSP or True = TLP
         address _MainCoin, // address(0x0) = ETH, address of main token
         bool _Is21Decimal, //focus the for smaller tokens.
         uint256 _Now, //Start Time - can be 0 to not change current flow
@@ -77,6 +79,7 @@ contract Pools is MainCoinManager {
             "Main coin not in list"
         );
         require(_FinishTime - now < MaxDuration, "Can't be that long pool");
+        require(_LockedUntil < MaxDuration + now , "Locked value can't be that long");
         require(
             _Rate <= _POZRate,
             "POZ holders need to have better price (or the same)"
@@ -110,14 +113,14 @@ contract Pools is MainCoinManager {
                 _StartAmount
             ),
             PoolMoreData(
-                _IsLocked,
+                _LockedUntil,
                 _StartAmount,
                 _Now,
                 Openforall,
                 0,
+                _WhiteListId,
                 false,
-                _Is21Decimal,
-                _WhiteListId
+                _Is21Decimal
             )
         );
         poolsMap[msg.sender].push(poolsCount);

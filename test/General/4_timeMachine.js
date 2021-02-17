@@ -19,7 +19,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let date = new Date();
     await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
     await Token.approve(instance.address, amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true,0,0, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, zero_address,true,0,0, { from: accounts[0] });
     let StartBalance = await Token.balanceOf(accounts[0]);
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
@@ -32,9 +32,10 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let accounts = await web3.eth.getAccounts();
     let Token = await TestToken.new();
     let date = new Date();
+    const futureTimestamp = Math.floor(date.getTime() / 1000) + 60
     await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
     await Token.approve(instance.address, amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, true, zero_address,true,0,0, { from: accounts[0] });
+    await instance.CreatePool(Token.address, futureTimestamp, rate, rate, amount, futureTimestamp, zero_address,true,0,0, { from: accounts[0] });
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
     let status = await instance.GetPoolStatus(0);
@@ -48,7 +49,7 @@ contract("Thepoolz, with timeMachine", async accounts => {
     let date = new Date();
     await timeMachine.advanceBlockAndSetTime(Math.floor(date.getTime() / 1000));
     await Token.approve(instance.address, amount, { from: accounts[0] });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true,0,0, { from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, zero_address,true,0,0, { from: accounts[0] });
     await timeMachine.advanceTimeAndBlock(120 * 60);
     await timeMachine.advanceTimeAndBlock(120 * 60);
     let status = await instance.GetPoolStatus(0);
