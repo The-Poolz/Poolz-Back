@@ -11,11 +11,16 @@ contract TokenList is Pausable {
     //mapping(address => bool) private _IsAllowed;
     //mapping(uint256 => address) private _Tokens;
     address public WhitelistContract;
-    uint256 public WhitelistID;
+    uint256 public TokenWhitelistId;
 
+    
     constructor() public {
        // NumberOfTokens = 0;
        // IsTokenFilterOn = false; //true on prod
+    }
+
+    function setTokenWhitelistId(uint256 _whiteListId) external onlyOwner{
+        TokenWhitelistId = _whiteListId;
     }
 
     function SwapTokenFilter() public onlyOwner {
@@ -23,7 +28,7 @@ contract TokenList is Pausable {
     }
 
     function IsValidToken(address _address) public view returns (bool) {
-        return !IsTokenFilterOn || (IWhiteList(WhitelistContract).Check(_address, WhitelistID) > 0);
+        return !IsTokenFilterOn || (IWhiteList(WhitelistContract).Check(_address, TokenWhitelistId) > 0);
     }
 }
 

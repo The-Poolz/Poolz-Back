@@ -78,7 +78,7 @@ contract Pools is MainCoinManager {
             _MainCoin == address(0x0) || IsERC20Maincoin(_MainCoin),
             "Main coin not in list"
         );
-        require(_FinishTime - now < MaxDuration, "Can't be that long pool");
+        require(_FinishTime  < MaxDuration + now, "Pool duration can't be that long");
         require(_LockedUntil < MaxDuration + now , "Locked value can't be that long");
         require(
             _Rate <= _POZRate,

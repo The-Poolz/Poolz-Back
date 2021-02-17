@@ -67,15 +67,17 @@ contract Invest is PoolsData {
         );
         uint256 ThisInvestor = NewInvestor(msg.sender, msg.value, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, msg.value, msg.sender);
-        if (isPoolLocked(_PoolId)) {
-            Investors[ThisInvestor].TokensOwn = SafeMath.add(
-                Investors[ThisInvestor].TokensOwn,
-                Tokens
-            );
-        } else {
-            // not locked, will transfer the toke
-            TransferToken(pools[_PoolId].BaseData.Token, msg.sender, Tokens);
-        }
+        // if (isPoolLocked(_PoolId)) {
+        //     Investors[ThisInvestor].TokensOwn = SafeMath.add(
+        //         Investors[ThisInvestor].TokensOwn,
+        //         Tokens
+        //     );
+        // } else {
+        //     // not locked, will transfer the toke
+        //     TransferToken(pools[_PoolId].BaseData.Token, msg.sender, Tokens);
+        // }
+
+        TokenAllocate(_PoolId, ThisInvestor, Tokens);
 
         uint256 EthMinusFee =
             SafeMath.div(
@@ -106,15 +108,17 @@ contract Invest is PoolsData {
         uint256 ThisInvestor = NewInvestor(msg.sender, _Amount, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, _Amount, msg.sender);
 
-        if (isPoolLocked(_PoolId)) {
-            Investors[ThisInvestor].TokensOwn = SafeMath.add(
-                Investors[ThisInvestor].TokensOwn,
-                Tokens
-            );
-        } else {
-            // not locked, will transfer the tokens
-            TransferToken(pools[_PoolId].BaseData.Token, msg.sender, Tokens);
-        }
+        // if (isPoolLocked(_PoolId)) {
+        //     Investors[ThisInvestor].TokensOwn = SafeMath.add(
+        //         Investors[ThisInvestor].TokensOwn,
+        //         Tokens
+        //     );
+        // } else {
+        //     // not locked, will transfer the tokens
+        //     TransferToken(pools[_PoolId].BaseData.Token, msg.sender, Tokens);
+        // }
+
+        TokenAllocate(_PoolId, ThisInvestor, Tokens);
 
         uint256 RegularFeePay =
             SafeMath.div(SafeMath.mul(_Amount, CalcFee(_PoolId)), 10000);
@@ -130,6 +134,18 @@ contract Invest is PoolsData {
             RegularPaymentMinusFee
         ); // send money to project owner - the fee stays on contract
         RegisterInvest(_PoolId, Tokens);
+    }
+
+    function TokenAllocate(uint256 _PoolId, uint256 _ThisInvestor, uint256 _Tokens) internal {
+        if (isPoolLocked(_PoolId)) {
+            Investors[_ThisInvestor].TokensOwn = SafeMath.add(
+                Investors[_ThisInvestor].TokensOwn,
+                _Tokens
+            );
+        } else {
+            // not locked, will transfer the tokens
+            TransferToken(pools[_PoolId].BaseData.Token, msg.sender, _Tokens);
+        }
     }
 
     function RegisterInvest(uint256 _PoolId, uint256 _Tokens) internal {
