@@ -28,6 +28,7 @@ module.exports = {
             return new PrivateKeyProvider(privateKeyMoonbase, 'https://rpc.testnet.moonbeam.network', 1287)
          },
          network_id: 1287,
+         gas: 5100000
       },
    },
 

@@ -67,16 +67,7 @@ contract Invest is PoolsData {
         );
         uint256 ThisInvestor = NewInvestor(msg.sender, msg.value, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, msg.value, msg.sender);
-        // if (isPoolLocked(_PoolId)) {
-        //     Investors[ThisInvestor].TokensOwn = SafeMath.add(
-        //         Investors[ThisInvestor].TokensOwn,
-        //         Tokens
-        //     );
-        // } else {
-        //     // not locked, will transfer the toke
-        //     TransferToken(pools[_PoolId].BaseData.Token, msg.sender, Tokens);
-        // }
-
+        
         TokenAllocate(_PoolId, ThisInvestor, Tokens);
 
         uint256 EthMinusFee =
@@ -84,8 +75,8 @@ contract Invest is PoolsData {
                 SafeMath.mul(msg.value, SafeMath.sub(10000, CalcFee(_PoolId))),
                 10000
             );
-
-        TransferETH(pools[_PoolId].BaseData.Creator, EthMinusFee); // send money to project owner - the fee stays on contract
+        // send money to project owner - the fee stays on contract
+        TransferETH(pools[_PoolId].BaseData.Creator, EthMinusFee); 
         RegisterInvest(_PoolId, Tokens);
     }
 
@@ -107,16 +98,6 @@ contract Invest is PoolsData {
         TransferInToken(pools[_PoolId].BaseData.Maincoin, msg.sender, _Amount);
         uint256 ThisInvestor = NewInvestor(msg.sender, _Amount, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, _Amount, msg.sender);
-
-        // if (isPoolLocked(_PoolId)) {
-        //     Investors[ThisInvestor].TokensOwn = SafeMath.add(
-        //         Investors[ThisInvestor].TokensOwn,
-        //         Tokens
-        //     );
-        // } else {
-        //     // not locked, will transfer the tokens
-        //     TransferToken(pools[_PoolId].BaseData.Token, msg.sender, Tokens);
-        // }
 
         TokenAllocate(_PoolId, ThisInvestor, Tokens);
 
@@ -187,14 +168,8 @@ contract Invest is PoolsData {
     ) internal returns (uint256) {
         uint256 msgValue = _Amount;
         uint256 result = 0;
-        require(
-            IsWhiteList(_Sender, pools[_Pid].MoreData.WhiteListId, _Amount),
-            "Address not in WhiteList"
-        ); //whitelist check
         if (GetPoolStatus(_Pid) == PoolStatus.Created) {
-            if (!IsPOZInvestor(_Sender)) {
-                revert("Need to be POZ Holder to invest");
-            }
+            IsWhiteList(_Sender, pools[_Pid].MoreData.WhiteListId, _Amount);
             result = SafeMath.mul(msgValue, pools[_Pid].BaseData.POZRate);
         }
         if (GetPoolStatus(_Pid) == PoolStatus.Open) {
@@ -217,7 +192,6 @@ contract Invest is PoolsData {
             return Fee;
         }
         //will not get here, will fail on CalcTokens
-        //revert("Wrong pool status to CalcFee");
     }
 
     //@dev use it with  require(msg.sender == tx.origin)
@@ -237,13 +211,7 @@ contract Invest is PoolsData {
         uint256 _Amount
     ) internal returns (bool) {
         if (_Id == 0) return true; //turn-off
-        if (IWhiteList(WhiteList_Address).IsNeedRegister(_Id)) {
-            //the types of the whitelist
-            IWhiteList(WhiteList_Address).Register(_Investor, _Id, _Amount); //will revert if fail
-            return true;
-        } else
-            return IWhiteList(WhiteList_Address).Check(_Investor, _Id) > 0;
-        revert("WhiteList error");
-        //return false - will not get here.
+        IWhiteList(WhiteList_Address).Register(_Investor, _Id, _Amount); //will revert if fail
+        return true;
     }
 }
