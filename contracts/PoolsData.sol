@@ -64,6 +64,7 @@ contract PoolsData is Pools {
     function GetPoolExtraData(uint256 _Id)
         public
         view
+        PoolId(_Id)
         returns (
             bool,
             uint256,
@@ -80,6 +81,7 @@ contract PoolsData is Pools {
     function IsReadyWithdrawLeftOvers(uint256 _PoolId)
         public
         view
+        PoolId(_PoolId)
         returns (bool)
     {
         return
@@ -89,7 +91,7 @@ contract PoolsData is Pools {
     }
 
     //@dev no use of revert to make sure the loop will work
-    function WithdrawLeftOvers(uint256 _PoolId) public returns (bool) {
+    function WithdrawLeftOvers(uint256 _PoolId) public PoolId(_PoolId) returns (bool) {
         //pool is finished + got left overs + did not took them
         if (IsReadyWithdrawLeftOvers(_PoolId)) {
             pools[_PoolId].MoreData.TookLeftOvers = true;
