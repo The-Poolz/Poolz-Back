@@ -9,7 +9,7 @@ contract InvestorData is Invest {
         return
             _id <= TotalInvestors &&
             Investors[_id].TokensOwn > 0 &&
-            pools[Investors[_id].Poolid].FinishTime <= now;
+            pools[Investors[_id].Poolid].BaseData.FinishTime <= now;
     }
 
     function WithdrawInvestment(uint256 _id) public returns (bool) {
@@ -17,12 +17,12 @@ contract InvestorData is Invest {
             uint256 temp = Investors[_id].TokensOwn;
             Investors[_id].TokensOwn = 0;
             TransferToken(
-                pools[Investors[_id].Poolid].Token,
+                pools[Investors[_id].Poolid].BaseData.Token,
                 Investors[_id].InvestorAddress,
                 temp
             );
-            pools[Investors[_id].Poolid].UnlockedTokens = SafeMath.add(
-                pools[Investors[_id].Poolid].UnlockedTokens,
+            pools[Investors[_id].Poolid].MoreData.UnlockedTokens = SafeMath.add(
+                pools[Investors[_id].Poolid].MoreData.UnlockedTokens,
                 temp
             );
 
@@ -43,7 +43,6 @@ contract InvestorData is Invest {
             uint256,
             address,
             uint256,
-            bool,
             uint256,
             uint256
         )
@@ -56,7 +55,6 @@ contract InvestorData is Invest {
             Investors[_id].Poolid,
             Investors[_id].InvestorAddress,
             Investors[_id].MainCoin,
-            Investors[_id].IsPozInvestor,
             Investors[_id].TokensOwn,
             Investors[_id].InvestTime
         );

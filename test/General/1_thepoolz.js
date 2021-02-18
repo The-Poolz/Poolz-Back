@@ -28,9 +28,7 @@ contract("Thepoolz", async accounts => {
   });
   it("show no pools", async () => {
     let instance = await ThePoolz.deployed();
-    let mypools = await instance.GetMyPoolsId({ from: accounts[7] });
-    assert.equal(mypools, 0);
-    mypools = await instance.GetLastPoolId();
+    let mypools = await instance.poolsCount.call();
     assert.equal(mypools, 0);
   });
   it("open a day long pool, check balance", async () => {
@@ -39,8 +37,8 @@ contract("Thepoolz", async accounts => {
     await Token.approve(instance.address, amount, { from: accounts[0] });
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,true,0, { from: accounts[0] });
-    let newpools = await instance.GetMyPoolsId({ from: accounts[0] });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, zero_address,true,0,0, { from: accounts[0] });
+    let newpools = await instance.poolsCount.call();
     assert.equal(newpools.length, 1, "Got 1 pool");
     let tokensInContract = await Token.balanceOf(instance.address);
     assert.equal(tokensInContract.toString(), amount.toString(), "Got the tokens");
@@ -94,7 +92,7 @@ contract("Thepoolz", async accounts => {
     let Token = await TestToken.deployed();
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
-    await truffleAssert.reverts(instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, false, zero_address,false,0, { from: accounts[0] }));
+    await truffleAssert.reverts(instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, zero_address,false,0,0, { from: accounts[0] }));
   });
   it("check fail attemts, send ETH to contract", async () => {
     let instance = await ThePoolz.deployed();
@@ -103,22 +101,22 @@ contract("Thepoolz", async accounts => {
   it("Should allow send ETH", async () => {
     let instance = await ThePoolz.deployed();
     await instance.SwitchIsPayble({ from: accounts[0] });
-    let IsPayble = await instance.GetIsPayble();
+    let IsPayble = await instance.IsPayble.call();
     assert.isTrue(IsPayble);
     let startBalance = await web3.eth.getBalance(instance.address);
     await instance.send(amount, { from: accounts[0] });
     let actualBalance = await web3.eth.getBalance(instance.address);
     assert.equal(actualBalance-startBalance, amount);
   });
-  it("open pool in a day sec, check balance", async () => {
+  it("open pool in a day , check balance", async () => {
     let instance = await ThePoolz.deployed();
     let Token = await TestToken.deployed()
     await Token.approve(instance.address, amount, { from: accounts[0] });
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 600, rate, rate, amount, false, zero_address,true,Math.floor(date.getTime() / 1000) + 30, { from: accounts[0] });
-    let newpools = await instance.GetMyPoolsId({ from: accounts[0] });
-    assert.equal(newpools.length, 2, "Got 2 pools");
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 600, rate, rate, amount, 0, zero_address,true,Math.floor(date.getTime() / 1000) + 30,0, { from: accounts[0] });
+    let newpools = await instance.poolsCount.call();
+    assert.equal(newpools.toNumber(), 2, "Got 2 pools");
     let status = await instance.GetPoolStatus(1);
     assert.equal(status.toNumber(),2);
   });

@@ -23,7 +23,6 @@ module.exports = {
       host: "127.0.0.1",
       port: 8545,
       network_id: "*", // Match any network id
-      //gas: 7721974
     },
     rinkeby: {
       host: "localhost", // Connect to geth on the specified
@@ -31,6 +30,18 @@ module.exports = {
       from: "0xeBCE75948DF6Fe95c5B964c3cDeb71808b615670", // default address to use for any transaction Truffle makes during migrations
       network_id: 4,
       gas: 4612388 // Gas limit used for deploys
+    },
+    Huobi: {
+      provider: () =>
+        new HDWalletProvider(
+          mnemonic,
+          "https://http-testnet.hecochain.com",
+          0,
+          1,
+          true,
+          "m/44'/60'/0'/0/"
+        ),
+      network_id: "256",
     },
     tomotestnet: {
       provider: () =>
@@ -51,8 +62,9 @@ module.exports = {
   compilers: {
     solc: {
       settings: {
-        evmVersion: "byzantium"
-      },
+        evmVersion: "byzantium",
+        optimizer: { enabled: true, runs: 200 },
+      },     
       version: "^0.4.24",
       docker: false,
       parser: "solcjs",

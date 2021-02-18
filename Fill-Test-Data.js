@@ -10,7 +10,7 @@ module.exports = async function(callback) {
     let Test_Token = await TestToken.deployed();
     const amount = 1150;
     console.log("Cheking network...");
-    let pools = await instance.GetLastPoolId();
+    let pools = await instance.poolsCount.call();
     console.log("Got " + pools + " POOLZ Now");
     Test_Token.approve(instance.address, amount * 10, { from: accounts[0] });
     let date = new Date();
@@ -20,7 +20,7 @@ module.exports = async function(callback) {
         console.log("Loop counter = "+ i );
     }
     console.log("Cheking network...");
-    pools = await instance.GetLastPoolId();
+    pools = await instance.poolsCount.call();
     console.log("Got " + pools + " POOLZ Now");
     process.exit();
 }
