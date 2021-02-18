@@ -10,23 +10,20 @@ const amount = 10000000;
 const invest = 100000;
 
 contract("Thepoolz Admin", async accounts => {
-it("Other Payments, add as admin", async () => {
-    let instance = await ThePoolz.deployed();
-    let Token = await TestToken.deployed();
-    let IspayableToken = await instance.IsERC20Maincoin(Token.address);
-    assert.isFalse(IspayableToken);
-    await instance.AddERC20Maincoin(Token.address, { from: accounts[0] });
-    let IspayableToken2 = await instance.IsERC20Maincoin(Token.address);
-    assert.isTrue(IspayableToken2);
-    await instance.RemoveERC20Maincoin(Token.address, { from: accounts[0] });
-    let IspayableToken3 = await instance.IsERC20Maincoin(Token.address);
-    assert.isFalse(IspayableToken3);
-  });//
+  let ownerAddress = accounts[0], govAddress = accounts[9];
+
+  it('set/get the Governer Contract Address', async () => {
+    const instance = await ThePoolz.deployed();
+    await instance.setGovernerContract(govAddress, {from: ownerAddress});
+    const result = await instance.GovernerContract();
+    assert.equal(govAddress, result);
+  })
+
   it("set/get MinMaxETHInvest", async () => {
-    let instance = await ThePoolz.new();
+    let instance = await ThePoolz.deployed();
     let min = 15;
     let max = 200;
-    await instance.SetMinMaxETHInvest(min,max, { from: accounts[0] });
+    await instance.SetMinMaxETHInvest(min,max, { from: govAddress });
     let actual_min = await instance.MinETHInvest.call();
     let actual_max = await instance.MaxETHInvest.call();
     assert.equal(actual_min.toNumber(), min);
@@ -36,7 +33,7 @@ it("Other Payments, add as admin", async () => {
     let instance = await ThePoolz.new();
     let min = 400;
     let max = 600;
-    await instance.SetMinMaxDuration(min,max, { from: accounts[0] });
+    await instance.SetMinMaxDuration(min,max, { from: ownerAddress });
     let actual_min = await instance.MinDuration.call();
     let actual_max = await instance.MaxDuration.call();
     assert.equal(actual_min.toNumber(), min);
@@ -45,76 +42,40 @@ it("Other Payments, add as admin", async () => {
   it("set/get fee", async () => {
     let instance = await ThePoolz.deployed();
     let fee = 35;
-    await instance.SetFee(fee, { from: accounts[0] });
+    await instance.SetFee(fee, { from: ownerAddress });
     let actual = await instance.Fee.call();
     assert.equal(actual.toNumber(), fee);
   });
-  it("set/get Worker params", async () => {
-    let instance = await ThePoolz.deployed();
-    await instance.SetMinWorkInvestor(5, { from: accounts[0] });
-    let actualInv = await instance.GetMinWorkInvestor();
-    assert.equal(actualInv.toNumber(), 5);
-    await instance.SetMinWorkProjectOwner(5, { from: accounts[0] });
-    let actualPO = await instance.GetMinWorkProjectOwner();
-    assert.equal(actualPO.toNumber(), 5);
-    await instance.SetMinWorkInvestor(0, { from: accounts[0] });
-    await instance.SetMinWorkProjectOwner(0, { from: accounts[0] });
-    assert.equal((await instance.GetMinWorkProjectOwner()).toString(), (await instance.GetMinWorkInvestor()).toString());
-  });
+  
   it("set/get poz fee", async () => {
     let instance = await ThePoolz.deployed();
     let pozfee = 10;
-    await instance.SetPOZFee(pozfee, { from: accounts[0] });
+    await instance.SetPOZFee(pozfee, { from: ownerAddress });
     let actual = await instance.PozFee.call();
     assert.equal(actual.toNumber(), pozfee);
   });
-  it("set SetStartForWork", async () => {
-    let instance = await ThePoolz.deployed();
-    await instance.SetStartForWork(0,0, { from: accounts[0] });    
-  });
+  
   it("set WhiteList Address", async () => {
     let instance = await ThePoolz.deployed();
-    await instance.SetWhiteList_Address(accounts[4], { from: accounts[0] });    
+    await instance.SetWhiteList_Address(accounts[4], { from: ownerAddress });    
     assert.equal(accounts[4],await instance.WhiteList_Address.call());
   });
   it("fail set poz fee", async () => {
     let instance = await ThePoolz.deployed();
     let pozfee = 40;
-    truffleAssert.reverts(instance.SetPOZFee(pozfee, { from: accounts[0] }));
+    truffleAssert.reverts(instance.SetPOZFee(pozfee, { from: ownerAddress }));
   });
   it("fail set fee", async () => {
     let instance = await ThePoolz.deployed();
     let fee = 10004;
-    truffleAssert.reverts(instance.SetFee(fee, { from: accounts[0] }));
+    truffleAssert.reverts(instance.SetFee(fee, { from: ownerAddress }));
   });
   it("set/get poz timer", async () => {
     let instance = await ThePoolz.deployed();
     let poztimer = 2000;
-    await instance.SetPozTimer(poztimer, { from: accounts[0] });
+    await instance.SetPozTimer(poztimer, { from: ownerAddress });
     let actual = await instance.PozTimer.call();
     assert.equal(actual.toNumber(), poztimer);
-  });
-  it("Token List", async () => {
-    let instance = await ThePoolz.deployed();
-    let address = TestToken.address;
-    await instance.AddToken(address, { from: accounts[0] });
-     await truffleAssert.reverts(instance.AddToken(address, { from: accounts[0] }))
-    let actual = await instance.IsValidToken(address);
-    assert.isTrue(actual);
-    await instance.SwapTokenFilter({ from: accounts[0] });
-    let ison = await instance.IsTokenFilterOn();
-    assert.isTrue(ison)
-    await instance.RemoveToken(address, { from: accounts[0] });
-    actual = await instance.IsValidToken(address);
-    assert.isFalse(actual);
-    await truffleAssert.reverts(instance.RemoveToken(address, { from: accounts[0] }))
-  });
-  it("set/get minpoz ", async () => {
-    let instance = await ThePoolz.deployed();
-    let minpoz = 80000;
-    await instance.SetMinPoz(minpoz, { from: accounts[0] });
-    let actual = await instance.MinPoz.call();
-    assert.equal(actual.toNumber(), minpoz);
   });
   it("get PoolPrice ", async () => {
     let instance = await ThePoolz.deployed();

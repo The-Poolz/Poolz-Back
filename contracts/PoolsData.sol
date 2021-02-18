@@ -43,7 +43,7 @@ contract PoolsData is Pools {
         view
         PoolId(_Id)
         returns (
-            bool,
+            uint64,
             uint256,
             uint256,
             uint256,
@@ -52,7 +52,7 @@ contract PoolsData is Pools {
         )
     {
         return (
-            pools[_Id].MoreData.IsLocked,
+            pools[_Id].MoreData.LockedUntil,
             pools[_Id].MoreData.Lefttokens,
             pools[_Id].MoreData.StartTime,
             pools[_Id].MoreData.OpenForAll,
@@ -129,21 +129,21 @@ contract PoolsData is Pools {
         }
         if (
             pools[_id].MoreData.Lefttokens == 0 &&
-            pools[_id].MoreData.IsLocked &&
+            isPoolLocked(_id) &&
             now < pools[_id].BaseData.FinishTime
         ) //no tokens on locked pool, got time
         {
             return (PoolStatus.OutOfstock);
         }
         if (
-            pools[_id].MoreData.Lefttokens == 0 && !pools[_id].MoreData.IsLocked
+            pools[_id].MoreData.Lefttokens == 0 && !isPoolLocked(_id)
         ) //no tokens on direct pool
         {
             return (PoolStatus.Close);
         }
         if (
             now >= pools[_id].BaseData.FinishTime &&
-            !pools[_id].MoreData.IsLocked
+            !isPoolLocked(_id)
         ) {
             // After finish time - not locked
             if (pools[_id].MoreData.TookLeftOvers) return (PoolStatus.Close);

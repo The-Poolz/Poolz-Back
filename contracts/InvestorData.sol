@@ -43,7 +43,6 @@ contract InvestorData is Invest {
             uint256,
             address,
             uint256,
-            bool,
             uint256,
             uint256
         )
@@ -56,7 +55,6 @@ contract InvestorData is Invest {
             Investors[_id].Poolid,
             Investors[_id].InvestorAddress,
             Investors[_id].MainCoin,
-            Investors[_id].IsPozInvestor,
             Investors[_id].TokensOwn,
             Investors[_id].InvestTime
         );
