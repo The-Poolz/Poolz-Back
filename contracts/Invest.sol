@@ -26,7 +26,6 @@ contract Invest is PoolsData {
         uint256 Poolid; //the id of the pool, he got the rate info and the token, check if looked pool
         address InvestorAddress; //
         uint256 MainCoin; //the amount of the main coin invested (eth/dai), calc with rate
-        bool IsPozInvestor; //If the blance of the address got > MinPoz, can get discout if got early
         uint256 TokensOwn; //the amount of Tokens the investor needto get from the contract
         uint256 InvestTime; //the time that investment made
     }
@@ -35,18 +34,7 @@ contract Invest is PoolsData {
         return TotalInvestors;
     }
 
-    function getInvestors(uint256 _Id) external view returns(uint256, address, uint256, bool, uint256, uint256){
-        Investor storage investor = Investors[_Id];
-        return (
-            investor.Poolid,
-            investor.InvestorAddress,
-            investor.MainCoin,
-            investor.IsPozInvestor,
-            investor.TokensOwn,
-            investor.InvestTime
-        );
-    }
-
+    
     //@dev Send in wei
     function InvestETH(uint256 _PoolId)
         external
@@ -125,7 +113,7 @@ contract Invest is PoolsData {
             );
         } else {
             // not locked, will transfer the tokens
-            TransferToken(pools[_PoolId].BaseData.Token, msg.sender, _Tokens);
+            TransferToken(pools[_PoolId].BaseData.Token, Investors[_ThisInvestor].InvestorAddress, _Tokens);
         }
     }
 
@@ -151,7 +139,6 @@ contract Invest is PoolsData {
             _Pid,
             _Sender,
             _Amount,
-            IsPOZInvestor(_Sender),
             0,
             block.timestamp
         );

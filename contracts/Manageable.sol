@@ -24,19 +24,14 @@ contract Manageable is ETHHelper {
     uint256 public MinETHInvest;
     uint256 public MaxETHInvest;
     address public WhiteList_Address; //The address of the Whitelist contract
-    bool public MustPozBenefit;
     
-    function SwitchMustPozBenefit() public onlyOwner {
-        MustPozBenefit = !MustPozBenefit;
-    }
-
-    function SetWhiteList_Address(address _WhiteList_Address) public onlyOwner {
+    function SetWhiteList_Address(address _WhiteList_Address) public onlyOwnerOrGov {
         WhiteList_Address = _WhiteList_Address;
     }
 
     function SetMinMaxETHInvest(uint256 _MinETHInvest, uint256 _MaxETHInvest)
         public
-        onlyOwner
+        onlyOwnerOrGov
     {
         MinETHInvest = _MinETHInvest;
         MaxETHInvest = _MaxETHInvest;
@@ -44,19 +39,19 @@ contract Manageable is ETHHelper {
 
     function SetMinMaxDuration(uint256 _minDuration, uint256 _maxDuration)
         public
-        onlyOwner
+        onlyOwnerOrGov
     {
         MinDuration = _minDuration;
         MaxDuration = _maxDuration;
     }
 
-    function SetPoolPrice(uint256 _PoolPrice) public onlyOwner {
+    function SetPoolPrice(uint256 _PoolPrice) public onlyOwnerOrGov {
         PoolPrice = _PoolPrice;
     }
 
     function SetFee(uint256 _fee)
         public
-        onlyOwner
+        onlyOwnerOrGov
         PercentCheckOk(_fee)
         LeftIsBigger(_fee, PozFee)
     {
@@ -65,20 +60,12 @@ contract Manageable is ETHHelper {
 
     function SetPOZFee(uint256 _fee)
         public
-        onlyOwner
+        onlyOwnerOrGov
         PercentCheckOk(_fee)
         LeftIsBigger(Fee, _fee)
     {
         PozFee = _fee;
     }
 
-    function WithdrawETHFee(address _to) public onlyOwner {
-        _to.transfer(address(this).balance); // keeps only fee eth on contract //To Do need to take 16% to burn!!!
-    }
-
-    function WithdrawERC20Fee(address _Token, address _to) public onlyOwner {
-        uint256 temp = FeeMap[_Token];
-        FeeMap[_Token] = 0;
-        TransferToken(_Token, _to, temp);
-    }
+    
 }

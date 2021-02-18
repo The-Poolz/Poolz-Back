@@ -13,13 +13,23 @@ contract TokenList is Pausable {
     address public WhitelistContract;
     uint256 public TokenWhitelistId;
 
-    
+    address public GovernerContract;
+
+    modifier onlyOwnerOrGov() {
+        require(msg.sender == owner || msg.sender == GovernerContract, "Authorization Error");
+        _;
+    }
+
+    function setGovernerContract(address _address) external onlyOwnerOrGov{
+        GovernerContract = _address;
+    }
+
     constructor() public {
        // NumberOfTokens = 0;
        // IsTokenFilterOn = false; //true on prod
     }
 
-    function setTokenWhitelistId(uint256 _whiteListId) external onlyOwner{
+    function setTokenWhitelistId(uint256 _whiteListId) external onlyOwnerOrGov{
         TokenWhitelistId = _whiteListId;
     }
 

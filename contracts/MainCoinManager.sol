@@ -12,11 +12,9 @@ contract MainCoinManager is Manageable {
 
     uint256 public MCWhitelistId;
 
-    function setMCWhitelistId(uint256 _whiteListId) external onlyOwner{
+    function setMCWhitelistId(uint256 _whiteListId) external onlyOwnerOrGov{
         MCWhitelistId = _whiteListId;
-    }
-
-    
+    }    
 
     function IsERC20Maincoin(address _token) public view returns (bool) {
         return IWhiteList(WhitelistContract).Check(_token, MCWhitelistId) > 0;
