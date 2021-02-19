@@ -2,10 +2,10 @@
 
 pragma solidity ^0.4.24;
 
-import "./MainCoinManager.sol";
+import "./Manageable.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
-contract Pools is MainCoinManager {
+contract Pools is Manageable {
     event NewPool(address token, uint256 id);
     event FinishPool(uint256 id);
     event PoolUpdate(uint256 id);
@@ -78,8 +78,8 @@ contract Pools is MainCoinManager {
             _MainCoin == address(0x0) || IsERC20Maincoin(_MainCoin),
             "Main coin not in list"
         );
-        require(_FinishTime  < MaxDuration + now, "Pool duration can't be that long");
-        require(_LockedUntil < MaxDuration + now , "Locked value can't be that long");
+        require(_FinishTime  < SafeMath.add(MaxDuration, now), "Pool duration can't be that long");
+        require(_LockedUntil < SafeMath.add(MaxDuration, now) , "Locked value can't be that long");
         require(
             _Rate <= _POZRate,
             "POZ holders need to have better price (or the same)"

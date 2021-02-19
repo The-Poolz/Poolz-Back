@@ -34,11 +34,6 @@ contract("Thepoolz, Main Coin Test", async accounts => {
     await Maincoint.approve(instance.address, amount, { from: accounts[1] });
     await truffleAssert.reverts(instance.InvestERC20(0, amount*10, { from: accounts[1] }));
   });
- 
-  it("Fail Get investors data", async () => {
-    await truffleAssert.reverts(instance.GetInvestmentData(0, { from: accounts[2] }));
-  });
-
   it("Fail Open a pool with false coin", async () => {
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day

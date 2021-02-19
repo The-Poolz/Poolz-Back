@@ -47,10 +47,6 @@ contract InvestorData is Invest {
             uint256
         )
     {
-        require(
-            Investors[_id].InvestorAddress == msg.sender || msg.sender == owner,
-            "Only for the investor (or Admin)"
-        );
         return (
             Investors[_id].Poolid,
             Investors[_id].InvestorAddress,

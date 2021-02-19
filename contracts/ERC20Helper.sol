@@ -4,9 +4,9 @@ pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "./TokenList.sol";
+import "./GovManager.sol";
 
-contract ERC20Helper is TokenList {
+contract ERC20Helper is GovManager {
     event TransferOut(uint256 Amount, address To, address Token);
     event TransferIn(uint256 Amount, address From, address Token);
     modifier TestAllownce(
