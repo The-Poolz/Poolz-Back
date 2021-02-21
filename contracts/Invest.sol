@@ -3,7 +3,6 @@ pragma solidity ^0.4.24;
 
 import "./PoolsData.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "./IWhiteList.sol";
 
 contract Invest is PoolsData {
     event NewInvestorEvent(uint256 Investor_ID, address Investor_Address);

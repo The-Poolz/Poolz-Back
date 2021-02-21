@@ -22,7 +22,6 @@ contract("Get the Poolz Data", accounts => {
         await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, zero_address,true,0,0, { from: fromAddress });
     })
 
-
     it('Get Pools IDs of msg.sender', async () => {
         const result = await instance.GetMyPoolsId({from: fromAddress})
         const value = await instance.poolsCount()
