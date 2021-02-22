@@ -42,38 +42,4 @@ contract("Thepoolz, Invest", accounts => {
     const result = await instance.GetInvestmentData(0);
     assert.equal(result[1], fromAddress);
   })
-  it('withdraw investment successfully', async () => {
-    let date = new Date();
-    date.setDate(date.getDate() + 1);
-    let d = Math.floor(date.getTime() / 1000) + 60;
-    await timeMachine.advanceBlockAndSetTime(d)
-    const before = await instance.GetInvestmentData(0)
-    console.log(before[3].toNumber())
-    await instance.WithdrawInvestment(0)
-    const after = await instance.GetInvestmentData(0)
-    console.log(after[3].toNumber())
-    const now = Date.now()
-    await timeMachine.advanceBlockAndSetTime(Math.floor(now / 1000))
-  })
 });
-
-// xcontract("InvestERC20 Tests", accounts => {
-//   let instance, Token, mainCoin
-
-//   before(async () => {
-//     instance = await ThePoolz.new()
-//     Token = await TestToken.new()
-//     mainCoin = await TestMainToken.new()
-//   })
-
-//   it('creating a ERC20 pool', async () => {
-//     Token = await TestToken.deployed()
-//     await Token.approve(instance.address, amount, { from: accounts[0] })
-//     let date = new Date();
-//     date.setDate(date.getDate() + 1);   // add a day
-//     await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, zero_address,true,0,0, { from: accounts[0] });
-//     const value = await instance.poolsCount()
-//     assert.equal(value.toNumber(), 1)
-//   })
-
-// })
