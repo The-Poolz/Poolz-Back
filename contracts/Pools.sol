@@ -41,20 +41,6 @@ contract Pools is Manageable {
         bool Is21DecimalRate; //If true, the rate will be rate*10^-21
     }
 
-    function getPoolsMoreData(uint256 _Id) external view returns(uint64, uint256, uint256, uint256, uint256, bool, bool, uint256){
-        PoolMoreData storage moreData = pools[_Id].MoreData;
-        return(
-            moreData.LockedUntil,
-            moreData.Lefttokens,
-            moreData.StartTime,
-            moreData.OpenForAll,
-            moreData.UnlockedTokens,
-            moreData.TookLeftOvers,
-            moreData.Is21DecimalRate,
-            moreData.WhiteListId
-        );
-    }
-
     function isPoolLocked(uint256 _id) public view returns(bool){
         return pools[_id].MoreData.LockedUntil > now;
     }

@@ -10,13 +10,15 @@ const amount = 10000000;
 const invest = 100000;
 
 contract("Thepoolz Admin", async accounts => {
-  let ownerAddress = accounts[0], govAddress = accounts[9];
+  let ownerAddress = accounts[0], govAddress = accounts[9], whiteListAddress
+  whiteListAddress = accounts[8]; // random address
+  // whiteListAddress = '0xcb9950789e3673BeA38dC362aFbE02379639b21C'; // address from migrated whiteList, always update before running
+
   let instance
 
   beforeEach(async () => {
     instance = await ThePoolz.deployed();
   })
-
 
   it('set/get the Governer Contract Address', async () => {
     await instance.setGovernerContract(govAddress, {from: ownerAddress});
@@ -55,8 +57,8 @@ contract("Thepoolz Admin", async accounts => {
     assert.equal(actual.toNumber(), pozfee);
   });
   it("set WhiteList Address", async () => {
-    await instance.SetWhiteList_Address(accounts[4], { from: ownerAddress });    
-    assert.equal(accounts[4],await instance.WhiteList_Address.call());
+    await instance.SetWhiteList_Address(whiteListAddress, { from: ownerAddress });    
+    assert.equal(whiteListAddress, await instance.WhiteList_Address.call());
   });
   it("fail set poz fee", async () => {
     let pozfee = 40;
