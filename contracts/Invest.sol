@@ -32,7 +32,6 @@ contract Invest is PoolsData {
     function getTotalInvestor() external view returns(uint256){
         return TotalInvestors;
     }
-
     
     //@dev Send in wei
     function InvestETH(uint256 _PoolId)
