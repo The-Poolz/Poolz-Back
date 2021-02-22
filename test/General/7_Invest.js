@@ -1,6 +1,7 @@
 const ThePoolz = artifacts.require("ThePoolz");
 const TestToken = artifacts.require("TestToken");
 const TestMainToken = artifacts.require("TestMainToken");
+const truffleAssert = require('truffle-assertions');
 const { assert } = require('chai');
 var BN = web3.utils.BN;
 const timeMachine = require('ganache-time-traveler');
@@ -41,5 +42,20 @@ contract("Thepoolz, Invest", accounts => {
   it('get Investment Data', async () => {
     const result = await instance.GetInvestmentData(0);
     assert.equal(result[1], fromAddress);
+  })
+  it('Fail InvestETH when invalid Pool ID is passed', async () => {
+    await truffleAssert.reverts(instance.InvestETH(45,{ value: invest, from: fromAddress }));
+  })
+  it('InvestERC20', async () => {
+    instance = await ThePoolz.new()
+    let mainCoin = await TestMainToken.new()
+    await Token.approve(instance.address, amount, { from: fromAddress });
+    let date = new Date();
+    date.setDate(date.getDate() + 1);   // add a day
+    await mainCoin.approve(instance.address, amount, { from: fromAddress });
+    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, mainCoin.address,true,0,0, { from: fromAddress });
+    await instance.InvestERC20(0, 10000000000, {from: fromAddress})
+    const result = await instance.GetInvestmentData(0)
+    assert.equal(result[1], fromAddress)
   })
 });
