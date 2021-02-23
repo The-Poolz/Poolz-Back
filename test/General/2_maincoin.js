@@ -8,8 +8,8 @@ const rate = new BN('1000000000000000000000'); // with decimal21 (shifter) 1 mai
 const amount = new BN('3000000'); //3 tokens for sale
 const invest = new BN('3000000'); //1maintoken;
 
-let instance, Maincoint;
 contract("Thepoolz, Main Coin Test", async accounts => {
+  let instance, Maincoint;
   beforeEach(async () => {
     instance = await ThePoolz.deployed();
     Maincoint = await TestMainToken.deployed();

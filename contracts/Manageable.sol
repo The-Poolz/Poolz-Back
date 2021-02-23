@@ -47,7 +47,7 @@ contract Manageable is ETHHelper {
     }
 
     function IsERC20Maincoin(address _address) public view returns (bool) {
-        return IWhiteList(WhiteList_Address).Check(_address, MCWhitelistId) > 0;
+        return !IsTokenFilterOn || IWhiteList(WhiteList_Address).Check(_address, MCWhitelistId) > 0;
     }
     
     function SetWhiteList_Address(address _WhiteList_Address) public onlyOwnerOrGov {
