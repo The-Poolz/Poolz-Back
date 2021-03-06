@@ -160,7 +160,7 @@ contract Invest is PoolsData {
         if (GetPoolStatus(_Pid) == PoolStatus.Open) {
             result = SafeMath.mul(msgValue, pools[_Pid].BaseData.Rate);
         }
-        if (result > 10**21) {
+        if (result >= 10**21) {
             if (pools[_Pid].MoreData.Is21DecimalRate) {
                 result = SafeMath.div(result, 10**21);
             }
