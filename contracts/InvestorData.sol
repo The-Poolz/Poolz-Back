@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.4.24;
+pragma solidity >=0.4.24 <0.7.0;
 
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./Invest.sol";
@@ -32,7 +32,7 @@ contract InvestorData is Invest {
     }
 
     //Give all the id's of the investment  by sender address
-    function GetMyInvestmentIds() public view returns (uint256[]) {
+    function GetMyInvestmentIds() public view returns (uint256[] memory) {
         return InvestorsMap[msg.sender];
     }
 

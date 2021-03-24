@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.4.24;
+pragma solidity >=0.4.24 <0.7.0;
 
 import "./InvestorData.sol";
 
 contract ThePoolz is InvestorData {
     constructor() public {    }
 
-    function WithdrawETHFee(address _to) public onlyOwner {
+    function WithdrawETHFee(address payable _to) public onlyOwner {
         _to.transfer(address(this).balance); // keeps only fee eth on contract //To Do need to take 16% to burn!!!
     }
 
