@@ -12,8 +12,7 @@
  *   },
  */
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-//const teamsMnemonic = "enhance scan dose rib lab jelly damage box museum leaf tail retreat";
-const mnemonic = "peace destroy flock enact stay exotic shop random strike hobby mistake unfold";
+const { mnemonic } = require("./secret");
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
