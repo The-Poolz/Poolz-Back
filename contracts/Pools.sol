@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.4.24;
+pragma solidity >=0.4.24 <0.7.0;
 
 import "./Manageable.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
@@ -15,8 +15,8 @@ contract Pools is Manageable {
     }
 
     uint256 public poolsCount; // the ids of the pool
-    mapping(uint256 => Pool) public pools; //the id of the pool with the data
-    mapping(address => uint256[]) public poolsMap; //the address and all of the pools id's
+    mapping(uint256 => Pool) pools; //the id of the pool with the data
+    mapping(address => uint256[]) poolsMap; //the address and all of the pools id's
     struct Pool {
         PoolBaseData BaseData;
         PoolMoreData MoreData;

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.4.24;
+pragma solidity >=0.4.24 <0.7.0;
 
 import "./PozBenefit.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
@@ -16,7 +16,7 @@ contract ETHHelper is PozBenefit {
     }
 
     //@dev not/allow contract to receive funds
-    function() public payable {
+    receive() external payable {
         if (!IsPayble) revert();
     }
 
@@ -29,7 +29,7 @@ contract ETHHelper is PozBenefit {
         IsPayble = !IsPayble;
     }
 
-    function TransferETH(address _Reciver, uint256 _ammount) internal {
+    function TransferETH(address payable _Reciver, uint256 _ammount) internal {
         emit TransferOutETH(_ammount, _Reciver);
         uint256 beforeBalance = address(_Reciver).balance;
         _Reciver.transfer(_ammount);

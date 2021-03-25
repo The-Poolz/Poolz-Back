@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.4.24;
+pragma solidity >=0.4.24 <0.7.0;
 
 import "./PoolsData.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
@@ -62,7 +62,7 @@ contract Invest is PoolsData {
                 10000
             );
         // send money to project owner - the fee stays on contract
-        TransferETH(pools[_PoolId].BaseData.Creator, EthMinusFee); 
+        TransferETH(payable(pools[_PoolId].BaseData.Creator), EthMinusFee); 
         RegisterInvest(_PoolId, Tokens);
     }
 

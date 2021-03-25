@@ -1,5 +1,5 @@
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-const mnemonic = "peace destroy flock enact stay exotic shop random strike hobby mistake unfold";
+const { mnemonic } = require("./secret");
 
 module.exports = {
   networks: {
@@ -35,7 +35,7 @@ module.exports = {
       settings: {
         evmVersion: "byzantium"
       },
-      version: "^0.4.24",
+      version: "^0.6.0",
       docker: false,
       parser: "solcjs",
     }

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.4.24;
+pragma solidity >=0.4.24 <0.7.0;
 
 import "./Pools.sol";
 
@@ -11,7 +11,7 @@ contract PoolsData is Pools {
         _;
     }
 
-    function GetMyPoolsId() public view returns (uint256[]) {
+    function GetMyPoolsId() public view returns (uint256[] memory) {
         return poolsMap[msg.sender];
     }
 

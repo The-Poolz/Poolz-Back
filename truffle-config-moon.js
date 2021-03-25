@@ -1,9 +1,8 @@
 const PrivateKeyProvider = require('./private-provider');
 // Standalone Development Node Private Key
-const privateKeyDev =
-   '99B3C12287537E38C90A9219D4CB074A89A16E9CDB20BF85728EBD97C343E342';
+const { privateKeyDev } = require("./secret");
 // Moonbase Alpha Private Key --> Please change this to your own Private Key with funds
-const privateKeyMoonbase =  'e58e3edc4810de1fff2839884cb23e9604504a5849bb1686467e689547474dbe';
+const { privateKeyMoonbase } =  require("./secret");
 
 module.exports = {
    networks: {
@@ -38,7 +37,7 @@ module.exports = {
       settings: {
         evmVersion: "byzantium"
       },
-      version: "^0.4.26",
+      version: "^0.6.0",
       docker: false,
       parser: "solcjs",
     }
