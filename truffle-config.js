@@ -13,7 +13,6 @@
  */
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 const { mnemonic, rinkebyInfuraEndpoint, etherscanKey } = require("./secret");
-// console.log(mnemonic)
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>

@@ -1,8 +1,8 @@
-const TestToken = artifacts.require("./TestToken");
+const TestToken = artifacts.require("Token");
 
 module.exports = function (deployer) {
   // if(deployer.network_id === 5777){
-  deployer.deploy(TestToken);
+  deployer.deploy(TestToken, 'TestToken', 'TEST');
   // }
   // return;
 };

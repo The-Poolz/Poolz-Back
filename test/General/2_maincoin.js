@@ -1,6 +1,6 @@
 const ThePoolz = artifacts.require("ThePoolz");
 const TestToken = artifacts.require("TestToken");
-const TestMainToken = artifacts.require("TestMainToken");
+const TestMainToken = artifacts.require("Token");
 const { assert } = require('chai');
 const truffleAssert = require('truffle-assertions');
 var BN = web3.utils.BN;
@@ -10,16 +10,16 @@ const invest = new BN('3000000'); //1maintoken;
 
 contract("Thepoolz, Main Coin Test", async accounts => {
   let instance, Maincoint;
-  beforeEach(async () => {
+  before(async () => {
     instance = await ThePoolz.deployed();
-    Maincoint = await TestMainToken.deployed();
+    Maincoint = await TestMainToken.new('TestMainToken', 'TESTM');
   });
   it("mint main test token", async () => {
-    let Token = await TestMainToken.deployed();
-    let oldBalance = await Token.balanceOf(accounts[8]);
+    // let Token = await TestMainToken.deployed();
+    let oldBalance = await Maincoint.balanceOf(accounts[8]);
     assert.equal(oldBalance,0)
-    await Token.FreeTest({from: accounts[8]});
-    let newBalance = await Token.balanceOf(accounts[8]);
+    await Maincoint.FreeTest({from: accounts[8]});
+    let newBalance = await Maincoint.balanceOf(accounts[8]);
     assert.isAbove(newBalance.toNumber(),0);
   });
     it("take erc20 fee", async () => {

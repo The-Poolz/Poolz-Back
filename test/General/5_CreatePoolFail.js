@@ -1,5 +1,5 @@
 const ThePoolz = artifacts.require("ThePoolz");
-const TestToken = artifacts.require("TestToken");
+const TestToken = artifacts.require("Token");
 const truffleAssert = require('truffle-assertions');
 const zero_address = "0x0000000000000000000000000000000000000000";
 var BN = web3.utils.BN;
@@ -13,7 +13,7 @@ contract("Create Pool Fails", async accounts => {
 
 	beforeEach(async () => {
 		instance = await ThePoolz.new();
-		Token = await TestToken.deployed()
+		Token = await TestToken.new('TestToken', 'TEST')
 	})
 
 	it("Fail Open finshed pool", async () => {

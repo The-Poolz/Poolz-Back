@@ -1,6 +1,6 @@
 const ThePoolz = artifacts.require("ThePoolz");
-const TestToken = artifacts.require("TestToken");
-const TestMainToken = artifacts.require("TestMainToken");
+const TestToken = artifacts.require("Token");
+const TestMainToken = artifacts.require("Token");
 const truffleAssert = require('truffle-assertions');
 const { assert } = require('chai');
 var BN = web3.utils.BN;
@@ -16,8 +16,8 @@ contract('Fail Invest', accounts => {
   
     before(async () => {
       instance = await ThePoolz.new()
-      Token = await TestToken.new()
-      mainCoin = await TestMainToken.new()
+      Token = await TestToken.new('TestToken', 'TEST')
+      mainCoin = await TestMainToken.new('TestMainToken', 'TESTM')
       await Token.approve(instance.address, amount, { from: fromAddress });
       let date = new Date();
       date.setDate(date.getDate() + 1);   // add a day
