@@ -2,10 +2,21 @@
 
 pragma solidity ^0.6.0;
 
-import "./ETHHelper.sol";
-import "./IWhiteList.sol";
+// import "./ETHHelper.sol";
+// import "./IWhiteList.sol";
 
-contract Manageable is ETHHelper {
+// import "./PozBenefit.sol";
+// import "./ERC20Helper.sol";
+
+import "poolz-helper/contracts/ERC20Helper.sol";
+import "poolz-helper/contracts/PozBenefit.sol";
+import "poolz-helper/contracts/ETHHelper.sol";
+// import "poolz-helper/contracts/GovManager.sol";
+import "poolz-helper/contracts/IWhiteList.sol";
+
+import "openzeppelin-solidity/contracts/utils/Pausable.sol";
+
+contract Manageable is ETHHelper, ERC20Helper, PozBenefit, Pausable  {
     constructor() public {
         Fee = 20; // *10000
         //MinDuration = 0; //need to set
