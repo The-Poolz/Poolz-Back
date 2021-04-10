@@ -1,5 +1,4 @@
 const ThePoolz = artifacts.require("ThePoolz");
-const TestToken = artifacts.require("TestToken");
 const TestMainToken = artifacts.require("Token");
 const { assert } = require('chai');
 const truffleAssert = require('truffle-assertions');
