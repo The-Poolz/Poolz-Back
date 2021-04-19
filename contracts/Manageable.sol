@@ -2,12 +2,6 @@
 
 pragma solidity ^0.6.0;
 
-// import "./ETHHelper.sol";
-// import "./IWhiteList.sol";
-
-// import "./PozBenefit.sol";
-// import "./ERC20Helper.sol";
-
 import "poolz-helper/contracts/ERC20Helper.sol";
 import "poolz-helper/contracts/PozBenefit.sol";
 import "poolz-helper/contracts/ETHHelper.sol";
@@ -36,6 +30,7 @@ contract Manageable is ETHHelper, ERC20Helper, PozBenefit, Pausable  {
     uint256 public MinETHInvest;
     uint256 public MaxETHInvest;
     address public WhiteList_Address; //The address of the Whitelist contract
+    address public Benefit_Address;
 
     bool public IsTokenFilterOn;
     uint256 public TokenWhitelistId;
@@ -63,6 +58,10 @@ contract Manageable is ETHHelper, ERC20Helper, PozBenefit, Pausable  {
     
     function SetWhiteList_Address(address _WhiteList_Address) public onlyOwnerOrGov {
         WhiteList_Address = _WhiteList_Address;
+    }
+
+    function SetBenefit_Address(address _benefitAddress) public onlyOwnerOrGov {
+        Benefit_Address = _benefitAddress;
     }
 
     function SetMinMaxETHInvest(uint256 _MinETHInvest, uint256 _MaxETHInvest)

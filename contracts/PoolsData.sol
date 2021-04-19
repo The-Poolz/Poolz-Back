@@ -6,8 +6,8 @@ import "./Pools.sol";
 contract PoolsData is Pools {
     enum PoolStatus {Created, Open, PreMade, OutOfstock, Finished, Close} //the status of the pools
 
-    modifier PoolId(uint256 _id) {
-        require(_id < poolsCount, "Wrong pool id, Can't get Status");
+    modifier isPoolId(uint256 _id) {
+        require(_id < poolsCount, "Invalid Pool ID");
         _;
     }
 
@@ -18,7 +18,7 @@ contract PoolsData is Pools {
     function GetPoolBaseData(uint256 _Id)
         public
         view
-        PoolId(_Id)
+        isPoolId(_Id)
         returns (
             address,
             address,
@@ -41,7 +41,7 @@ contract PoolsData is Pools {
     function GetPoolMoreData(uint256 _Id)
         public
         view
-        PoolId(_Id)
+        isPoolId(_Id)
         returns (
             uint64,
             uint256,
@@ -64,7 +64,7 @@ contract PoolsData is Pools {
     function GetPoolExtraData(uint256 _Id)
         public
         view
-        PoolId(_Id)
+        isPoolId(_Id)
         returns (
             bool,
             uint256,
@@ -81,7 +81,7 @@ contract PoolsData is Pools {
     function IsReadyWithdrawLeftOvers(uint256 _PoolId)
         public
         view
-        PoolId(_PoolId)
+        isPoolId(_PoolId)
         returns (bool)
     {
         return
@@ -91,7 +91,7 @@ contract PoolsData is Pools {
     }
 
     //@dev no use of revert to make sure the loop will work
-    function WithdrawLeftOvers(uint256 _PoolId) public PoolId(_PoolId) returns (bool) {
+    function WithdrawLeftOvers(uint256 _PoolId) public isPoolId(_PoolId) returns (bool) {
         //pool is finished + got left overs + did not took them
         if (IsReadyWithdrawLeftOvers(_PoolId)) {
             pools[_PoolId].MoreData.TookLeftOvers = true;
@@ -109,7 +109,7 @@ contract PoolsData is Pools {
     function GetPoolStatus(uint256 _id)
         public
         view
-        PoolId(_id)
+        isPoolId(_id)
         returns (PoolStatus)
     {
         //Don't like the logic here - ToDo Boolean checks (truth table)

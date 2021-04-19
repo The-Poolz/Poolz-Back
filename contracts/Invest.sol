@@ -3,12 +3,21 @@ pragma solidity ^0.6.0;
 
 import "./PoolsData.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "poolz-helper/contracts/IPOZBenefit.sol";
 
 contract Invest is PoolsData {
     event NewInvestorEvent(uint256 Investor_ID, address Investor_Address);
 
     modifier CheckTime(uint256 _Time) {
         require(now >= _Time, "Pool not open yet");
+        _;
+    }
+
+    modifier validateSender(){
+        require(
+            msg.sender == tx.origin && !isContract(msg.sender),
+            "Some thing wrong with the msgSender"
+        );
         _;
     }
 
@@ -40,16 +49,13 @@ contract Invest is PoolsData {
         ReceivETH(msg.value, msg.sender, MinETHInvest)
         whenNotPaused
         CheckTime(pools[_PoolId].MoreData.StartTime)
+        isPoolId(_PoolId)
+        validateSender()
     {
-        require(_PoolId < poolsCount, "Wrong pool id, InvestETH fail");
-        require(pools[_PoolId].BaseData.Maincoin == address(0x0), "Pool is not for ETH");
+        require(pools[_PoolId].BaseData.Maincoin == address(0x0), "Pool is only for ETH");
         require(
             msg.value >= MinETHInvest && msg.value <= MaxETHInvest,
             "Investment amount not valid"
-        );
-        require(
-            msg.sender == tx.origin && !isContract(msg.sender),
-            "Some thing wrong with the msgSender"
         );
         uint256 ThisInvestor = NewInvestor(msg.sender, msg.value, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, msg.value, msg.sender);
@@ -70,17 +76,14 @@ contract Invest is PoolsData {
         external
         whenNotPaused
         CheckTime(pools[_PoolId].MoreData.StartTime)
+        isPoolId(_PoolId)
+        validateSender()
     {
-        require(_PoolId < poolsCount, "Wrong pool id, InvestERC20 fail");
         require(
             pools[_PoolId].BaseData.Maincoin != address(0x0),
-            "Pool is for ETH, use InvetETH"
+            "Pool is for ETH, use InvestETH"
         );
         require(_Amount > 10000, "Need invest more then 10000");
-        require(
-            msg.sender == tx.origin && !isContract(msg.sender),
-            "Some thing wrong with the msgSender"
-        );
         TransferInToken(pools[_PoolId].BaseData.Maincoin, msg.sender, _Amount);
         uint256 ThisInvestor = NewInvestor(msg.sender, _Amount, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, _Amount, msg.sender);
@@ -116,10 +119,6 @@ contract Invest is PoolsData {
     }
 
     function RegisterInvest(uint256 _PoolId, uint256 _Tokens) internal {
-        // require(
-        //     _Tokens <= pools[_PoolId].MoreData.Lefttokens,
-        //     "Not enough tokens in the pool"
-        // );
         pools[_PoolId].MoreData.Lefttokens = SafeMath.sub(
             pools[_PoolId].MoreData.Lefttokens,
             _Tokens
@@ -158,6 +157,8 @@ contract Invest is PoolsData {
             result = SafeMath.mul(msgValue, pools[_Pid].BaseData.POZRate);
         }
         if (GetPoolStatus(_Pid) == PoolStatus.Open) {
+            require(IPOZBenefit(Benefit_Address).IsPOZHolder(WhiteList_Address), "Only POZ holder can invest");
+            IWhiteList(WhiteList_Address).LastRoundRegister(_Sender, pools[_Pid].MoreData.WhiteListId);
             result = SafeMath.mul(msgValue, pools[_Pid].BaseData.Rate);
         }
         if (result >= 10**21) {

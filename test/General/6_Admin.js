@@ -89,4 +89,11 @@ contract("Thepoolz Admin", async accounts => {
     const result = await instance.MCWhitelistId()
     assert.equal(result, randomId)
   })
+  it('set/get Benefit contract address', async () => {
+    const randomAddress = accounts[7]
+    await instance.SetBenefit_Address(randomAddress, {from: ownerAddress})
+    const result = await instance.Benefit_Address()
+    assert.equal(result, randomId)
+  })
+
 }); 
