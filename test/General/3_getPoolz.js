@@ -1,5 +1,5 @@
 const ThePoolz = artifacts.require("ThePoolz");
-const TestToken = artifacts.require("TestToken");
+const TestToken = artifacts.require("Token");
 const { assert } = require('chai');
 const truffleAssert = require('truffle-assertions');
 const zero_address = "0x0000000000000000000000000000000000000000";
@@ -15,7 +15,7 @@ contract("Get the Poolz Data", accounts => {
     
     before(async () => {
         instance = await ThePoolz.new()
-        Token = await TestToken.new()
+        Token = await TestToken.new('TestToken', 'TEST')
         let date = new Date();
         date.setDate(date.getDate() + 1);
         await Token.approve(instance.address, amount, { from: fromAddress });
@@ -54,7 +54,7 @@ contract("Get the Poolz Data", accounts => {
 
     it('Get Pools Status as created', async () => {
         instance = await ThePoolz.new()
-        Token = await TestToken.new()
+        // Token = await TestToken.new()
         let date = new Date();
         date.setDate(date.getDate() + 1);
         await Token.approve(instance.address, amount, { from: fromAddress });
@@ -65,7 +65,7 @@ contract("Get the Poolz Data", accounts => {
 
     it('Get Pools Status as Out Of Stock', async () => {
         instance = await ThePoolz.new()
-        Token = await TestToken.new()
+        // Token = await TestToken.new()
         let date = new Date();
         date.setDate(date.getDate() + 1);
         const futureTimestamp = Math.floor(date.getTime() / 1000) + 60

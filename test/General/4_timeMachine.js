@@ -1,5 +1,5 @@
 const ThePoolz = artifacts.require("ThePoolz");
-const TestToken = artifacts.require("TestToken");
+const TestToken = artifacts.require("Token");
 const { assert } = require('chai');
 const truffleAssert = require('truffle-assertions');
 const timeMachine = require('ganache-time-traveler');
@@ -15,7 +15,7 @@ contract("Thepoolz, with timeMachine", accounts => {
 
   beforeEach(async () => {
     instance = await ThePoolz.new();
-    Token = await TestToken.new();
+    Token = await TestToken.new('TestToken', 'TEST');
   })
 
   it("take leftovers from finish pool", async () => {

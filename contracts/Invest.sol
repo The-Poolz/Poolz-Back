@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.24 <0.7.0;
+pragma solidity ^0.6.0;
 
 import "./PoolsData.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
@@ -116,10 +116,10 @@ contract Invest is PoolsData {
     }
 
     function RegisterInvest(uint256 _PoolId, uint256 _Tokens) internal {
-        require(
-            _Tokens <= pools[_PoolId].MoreData.Lefttokens,
-            "Not enough tokens in the pool"
-        );
+        // require(
+        //     _Tokens <= pools[_PoolId].MoreData.Lefttokens,
+        //     "Not enough tokens in the pool"
+        // );
         pools[_PoolId].MoreData.Lefttokens = SafeMath.sub(
             pools[_PoolId].MoreData.Lefttokens,
             _Tokens
@@ -164,6 +164,10 @@ contract Invest is PoolsData {
             if (pools[_Pid].MoreData.Is21DecimalRate) {
                 result = SafeMath.div(result, 10**21);
             }
+            require(
+                result <= pools[_Pid].MoreData.Lefttokens,
+                "Not enough tokens in the pool"
+            );
             return result;
         }
         revert("Wrong pool status to CalcTokens");

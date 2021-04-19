@@ -12,7 +12,7 @@
  *   },
  */
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-const { mnemonic } = require("./secret");
+const { mnemonic, rinkebyInfuraEndpoint, etherscanKey } = require("./secret");
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
@@ -24,9 +24,10 @@ module.exports = {
       network_id: "*", // Match any network id
     },
     rinkeby: {
-      host: "localhost", // Connect to geth on the specified
-      port: 8545,
-      from: "0xeBCE75948DF6Fe95c5B964c3cDeb71808b615670", // default address to use for any transaction Truffle makes during migrations
+      provider: () => {
+        return new HDWalletProvider(mnemonic, rinkebyInfuraEndpoint)
+      },
+      // from: "0xeBCE75948DF6Fe95c5B964c3cDeb71808b615670", // default address to use for any transaction Truffle makes during migrations
       network_id: 4,
       gas: 4612388 // Gas limit used for deploys
     },
@@ -57,7 +58,10 @@ module.exports = {
       gasPrice: 10000000000000
     }
   },
-  plugins: ["solidity-coverage"],
+  plugins: ["solidity-coverage", "truffle-plugin-verify"],
+  api_keys: {
+    etherscan: etherscanKey
+  },
   compilers: {
     solc: {
       settings: {
