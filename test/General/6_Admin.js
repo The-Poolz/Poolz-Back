@@ -8,7 +8,7 @@ const rate = 1;
 const amount = 10000000;
 const invest = 100000;
 
-contract("Thepoolz Admin", async accounts => {
+contract("Thepoolz Admin",  accounts => {
   let ownerAddress = accounts[0], govAddress = accounts[9], whiteListAddress
   whiteListAddress = accounts[8]; // random address
   // whiteListAddress = '0xcb9950789e3673BeA38dC362aFbE02379639b21C'; // address from migrated whiteList, always update before running
@@ -93,7 +93,7 @@ contract("Thepoolz Admin", async accounts => {
     const randomAddress = accounts[7]
     await instance.SetBenefit_Address(randomAddress, {from: ownerAddress})
     const result = await instance.Benefit_Address()
-    assert.equal(result, randomId)
+    assert.equal(result, randomAddress)
   })
 
 }); 

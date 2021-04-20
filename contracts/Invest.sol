@@ -53,10 +53,6 @@ contract Invest is PoolsData {
         validateSender()
     {
         require(pools[_PoolId].BaseData.Maincoin == address(0x0), "Pool is only for ETH");
-        require(
-            msg.value >= MinETHInvest && msg.value <= MaxETHInvest,
-            "Investment amount not valid"
-        );
         uint256 ThisInvestor = NewInvestor(msg.sender, msg.value, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, msg.value, msg.sender);
         
@@ -83,7 +79,6 @@ contract Invest is PoolsData {
             pools[_PoolId].BaseData.Maincoin != address(0x0),
             "Pool is for ETH, use InvestETH"
         );
-        require(_Amount > 10000, "Need invest more then 10000");
         TransferInToken(pools[_PoolId].BaseData.Maincoin, msg.sender, _Amount);
         uint256 ThisInvestor = NewInvestor(msg.sender, _Amount, _PoolId);
         uint256 Tokens = CalcTokens(_PoolId, _Amount, msg.sender);
@@ -157,8 +152,12 @@ contract Invest is PoolsData {
             result = SafeMath.mul(msgValue, pools[_Pid].BaseData.POZRate);
         }
         if (GetPoolStatus(_Pid) == PoolStatus.Open) {
-            require(IPOZBenefit(Benefit_Address).IsPOZHolder(WhiteList_Address), "Only POZ holder can invest");
-            IWhiteList(WhiteList_Address).LastRoundRegister(_Sender, pools[_Pid].MoreData.WhiteListId);
+            require(
+                msgValue >= MinETHInvest && msgValue <= MaxETHInvest,
+                "Investment amount not valid"
+            );
+            require(VerifyPozHolding(_Sender), "Only POZ holder can invest");
+            LastRegisterWhitelist(_Sender, pools[_Pid].MoreData.WhiteListId);
             result = SafeMath.mul(msgValue, pools[_Pid].BaseData.Rate);
         }
         if (result >= 10**21) {
@@ -172,6 +171,17 @@ contract Invest is PoolsData {
             return result;
         }
         revert("Wrong pool status to CalcTokens");
+    }
+
+    function VerifyPozHolding(address _Sender) internal view returns(bool){
+        if(Benefit_Address == address(0)) return true;
+        return IPOZBenefit(Benefit_Address).IsPOZHolder(_Sender);
+    }
+
+    function LastRegisterWhitelist(address _Sender,uint256 _Id) internal returns(bool) {
+        if (_Id == 0) return true; //turn-off
+        IWhiteList(WhiteList_Address).LastRoundRegister(_Sender, _Id);
+        return true;
     }
 
     function CalcFee(uint256 _Pid) internal view returns (uint256) {
