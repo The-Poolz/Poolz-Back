@@ -36,6 +36,9 @@ contract Manageable is ETHHelper, ERC20Helper, PozBenefit, Pausable  {
     uint256 public TokenWhitelistId;
     uint256 public MCWhitelistId; // Main Coin WhiteList ID
 
+    address public LockedDealAddress;
+    bool public UseLockedDealForTlp;
+
     function SwapTokenFilter() public onlyOwner {
         IsTokenFilterOn = !IsTokenFilterOn;
     }
@@ -102,5 +105,16 @@ contract Manageable is ETHHelper, ERC20Helper, PozBenefit, Pausable  {
         PozFee = _fee;
     }
 
+    function SetLockedDealAddress(address lockedDeal) public onlyOwnerOrGov {
+        LockedDealAddress = lockedDeal;
+    }
+
+    function SwitchLockedDealForTlp() public onlyOwnerOrGov {
+        UseLockedDealForTlp = !UseLockedDealForTlp;
+    }
+
+    function isUsingLockedDeal() public view returns(bool) {
+        return UseLockedDealForTlp && LockedDealAddress != address(0x0);
+    }
     
 }

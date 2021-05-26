@@ -95,5 +95,17 @@ contract("Thepoolz Admin",  accounts => {
     const result = await instance.Benefit_Address()
     assert.equal(result, randomAddress)
   })
+  it('set/get Locked Deal contract Address', async () => {
+    const randomAddress = accounts[7]
+    await instance.SetLockedDealAddress(randomAddress, {from: ownerAddress})
+    const result = await instance.LockedDealAddress()
+    assert.equal(result, randomAddress)
+  })
+  it('should switch using LockedDeal for TLP', async () => {
+    const before = await instance.UseLockedDealForTlp()
+    await instance.SwitchLockedDealForTlp({from: ownerAddress})
+    const after = await instance.UseLockedDealForTlp()
+    assert.equal(before, !after)
+  })
 
 }); 

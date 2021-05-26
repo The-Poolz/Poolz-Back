@@ -4,6 +4,7 @@ pragma solidity ^0.6.0;
 import "./PoolsData.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "poolz-helper/contracts/IPozBenefit.sol";
+import "./ILockedDeal.sol";
 
 contract Invest is PoolsData {
     event NewInvestorEvent(uint256 Investor_ID, address Investor_Address);
@@ -36,6 +37,7 @@ contract Invest is PoolsData {
         uint256 MainCoin; //the amount of the main coin invested (eth/dai), calc with rate
         uint256 TokensOwn; //the amount of Tokens the investor needto get from the contract
         uint256 InvestTime; //the time that investment made
+        uint256 LockedDealId; // the Pool ID of LockedDeal contract
     }
 
     function getTotalInvestor() external view returns(uint256){
@@ -103,10 +105,17 @@ contract Invest is PoolsData {
 
     function TokenAllocate(uint256 _PoolId, uint256 _ThisInvestor, uint256 _Tokens) internal {
         if (isPoolLocked(_PoolId)) {
-            Investors[_ThisInvestor].TokensOwn = SafeMath.add(
-                Investors[_ThisInvestor].TokensOwn,
-                _Tokens
-            );
+            if(isUsingLockedDeal()){
+                (address tokenAddress,,,,,) = GetPoolBaseData(_PoolId);
+                (uint64 lockedUntil,,,,,) = GetPoolMoreData(_PoolId);
+                uint256 id = ILockedDeal(LockedDealAddress).CreateNewPool(tokenAddress, lockedUntil, _Tokens, msg.sender);
+                Investors[_ThisInvestor].LockedDealId = id;
+            } else {
+                Investors[_ThisInvestor].TokensOwn = SafeMath.add(
+                    Investors[_ThisInvestor].TokensOwn,
+                    _Tokens
+                );
+            }
         } else {
             // not locked, will transfer the tokens
             TransferToken(pools[_PoolId].BaseData.Token, Investors[_ThisInvestor].InvestorAddress, _Tokens);
@@ -132,7 +141,8 @@ contract Invest is PoolsData {
             _Sender,
             _Amount,
             0,
-            block.timestamp
+            block.timestamp,
+            0
         );
         InvestorsMap[msg.sender].push(TotalInvestors);
         emit NewInvestorEvent(TotalInvestors, _Sender);

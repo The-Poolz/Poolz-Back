@@ -14,19 +14,22 @@ contract InvestorData is Invest {
 
     function WithdrawInvestment(uint256 _id) public returns (bool) {
         if (IsReadyWithdrawInvestment(_id)) {
-            uint256 temp = Investors[_id].TokensOwn;
-            Investors[_id].TokensOwn = 0;
-            TransferToken(
-                pools[Investors[_id].Poolid].BaseData.Token,
-                Investors[_id].InvestorAddress,
-                temp
-            );
-            pools[Investors[_id].Poolid].MoreData.UnlockedTokens = SafeMath.add(
-                pools[Investors[_id].Poolid].MoreData.UnlockedTokens,
-                temp
-            );
-
-            return true;
+            if(isUsingLockedDeal()){
+                return ILockedDeal(LockedDealAddress).WithdrawToken(Investors[_id].LockedDealId);
+            } else {
+                uint256 temp = Investors[_id].TokensOwn;
+                Investors[_id].TokensOwn = 0;
+                TransferToken(
+                    pools[Investors[_id].Poolid].BaseData.Token,
+                    Investors[_id].InvestorAddress,
+                    temp
+                );
+                pools[Investors[_id].Poolid].MoreData.UnlockedTokens = SafeMath.add(
+                    pools[Investors[_id].Poolid].MoreData.UnlockedTokens,
+                    temp
+                );
+                return true;
+            }
         }
         return false;
     }
