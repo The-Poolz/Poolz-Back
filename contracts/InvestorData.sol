@@ -47,6 +47,7 @@ contract InvestorData is Invest {
             address,
             uint256,
             uint256,
+            uint256,
             uint256
         )
     {
@@ -55,7 +56,8 @@ contract InvestorData is Invest {
             Investors[_id].InvestorAddress,
             Investors[_id].MainCoin,
             Investors[_id].TokensOwn,
-            Investors[_id].InvestTime
+            Investors[_id].InvestTime,
+            Investors[_id].LockedDealId,
         );
     }
 }
