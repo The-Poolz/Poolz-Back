@@ -108,6 +108,7 @@ contract Invest is PoolsData {
             if(isUsingLockedDeal()){
                 (address tokenAddress,,,,,) = GetPoolBaseData(_PoolId);
                 (uint64 lockedUntil,,,,,) = GetPoolMoreData(_PoolId);
+                ApproveAllowanceERC20(tokenAddress, LockedDealAddress, _Tokens);
                 uint256 id = ILockedDeal(LockedDealAddress).CreateNewPool(tokenAddress, lockedUntil, _Tokens, msg.sender);
                 Investors[_ThisInvestor].LockedDealId = id;
             } else {
