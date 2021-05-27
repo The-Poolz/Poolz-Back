@@ -28,7 +28,7 @@
     "truffle-plugin-verify": "^0.5.7"
   },
   "name": "poolz-back",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "truffle-config.js",
   "directories": {
     "test": "test"

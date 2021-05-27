@@ -57,7 +57,7 @@ contract InvestorData is Invest {
             Investors[_id].MainCoin,
             Investors[_id].TokensOwn,
             Investors[_id].InvestTime,
-            Investors[_id].LockedDealId,
+            Investors[_id].LockedDealId
         );
     }
 }
