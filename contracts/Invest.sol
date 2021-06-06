@@ -161,10 +161,18 @@ contract Invest is PoolsData {
             result = SafeMath.mul(msgValue, pools[_Pid].BaseData.POZRate);
         }
         if (GetPoolStatus(_Pid) == PoolStatus.Open) {
-            require(
-                msgValue >= MinETHInvest && msgValue <= MaxETHInvest,
-                "Investment amount not valid"
-            );
+            (,,address _mainCoin) = GetPoolExtraData(_Pid);
+            if(_mainCoin == address(0x0)){
+                require(
+                    msgValue >= MinETHInvest && msgValue <= MaxETHInvest,
+                    "Investment amount not valid"
+                );
+            } else {
+                require(
+                    msgValue >= MinERC20Invest && msgValue <= MaxERC20Invest,
+                    "Investment amount not valid"
+                );
+            }
             require(VerifyPozHolding(_Sender), "Only POZ holder can invest");
             LastRegisterWhitelist(_Sender, pools[_Pid].MoreData.WhiteListId);
             result = SafeMath.mul(msgValue, pools[_Pid].BaseData.Rate);

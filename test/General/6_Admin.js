@@ -34,6 +34,15 @@ contract("Thepoolz Admin",  accounts => {
     assert.equal(actual_min.toNumber(), min);
     assert.equal(actual_max.toNumber(), max);
   });
+  it("set/get MinMaxERC20Invest", async () => {
+    let min = 100000;
+    let max = 1000000000000;
+    await instance.SetMinMaxERC20Invest(min,max, { from: govAddress });
+    let actual_min = await instance.MinERC20Invest.call();
+    let actual_max = await instance.MaxERC20Invest.call();
+    assert.equal(actual_min.toNumber(), min);
+    assert.equal(actual_max.toNumber(), max);
+  });
   it("set/get MinMaxDuration", async () => {
     let min = 400;
     let max = 600;

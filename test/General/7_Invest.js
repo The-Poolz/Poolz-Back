@@ -47,16 +47,33 @@ contract("Thepoolz, Invest", accounts => {
   it('Fail InvestETH when invalid Pool ID is passed', async () => {
     await truffleAssert.reverts(instance.InvestETH(45,{ value: invest, from: fromAddress }));
   })
-  it('InvestERC20', async () => {
-    instance = await ThePoolz.new()
-    let mainCoin = await TestMainToken.new('TestMainToken', 'TESTM')
-    await Token.approve(instance.address, amount, { from: fromAddress });
-    let date = new Date();
-    date.setDate(date.getDate() + 1);   // add a day
-    await mainCoin.approve(instance.address, amount, { from: fromAddress });
-    await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, mainCoin.address,true,0,0, { from: fromAddress });
-    await instance.InvestERC20(0, 10000000000, {from: fromAddress})
-    const result = await instance.GetInvestmentData(0)
-    assert.equal(result[1], fromAddress)
+  describe('Investing ERC20', () => {
+    let mainCoin
+
+    before(async () => {
+      instance = await ThePoolz.new()
+      mainCoin = await TestMainToken.new('TestMainToken', 'TESTM')
+    })
+
+    it('set min/max for ERC20 Invest', async () => {
+      let min = 100000;
+      let max = 1000000000000;
+      await instance.SetMinMaxERC20Invest(min,max, { from: fromAddress });
+      let actual_min = await instance.MinERC20Invest.call();
+      let actual_max = await instance.MaxERC20Invest.call();
+      assert.equal(actual_min.toNumber(), min);
+      assert.equal(actual_max.toNumber(), max);
+    })
+
+    it('InvestERC20', async () => {
+      await Token.approve(instance.address, amount, { from: fromAddress });
+      let date = new Date();
+      date.setDate(date.getDate() + 1);   // add a day
+      await mainCoin.approve(instance.address, amount, { from: fromAddress });
+      await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, mainCoin.address,true,0,0, { from: fromAddress });
+      await instance.InvestERC20(0, 10000000000, {from: fromAddress})
+      const result = await instance.GetInvestmentData(0)
+      assert.equal(result[1], fromAddress)
+    })
   })
 });

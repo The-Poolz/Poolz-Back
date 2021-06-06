@@ -29,6 +29,8 @@ contract Manageable is ETHHelper, ERC20Helper, PozBenefit, Pausable  {
     uint256 public PoolPrice;
     uint256 public MinETHInvest;
     uint256 public MaxETHInvest;
+    uint256 public MinERC20Invest;
+    uint256 public MaxERC20Invest;
     address public WhiteList_Address; //The address of the Whitelist contract
     address public Benefit_Address;
 
@@ -73,6 +75,13 @@ contract Manageable is ETHHelper, ERC20Helper, PozBenefit, Pausable  {
     {
         MinETHInvest = _MinETHInvest;
         MaxETHInvest = _MaxETHInvest;
+    }
+    function SetMinMaxERC20Invest(uint256 _MinERC20Invest, uint256 _MaxERC20Invest)
+        public
+        onlyOwnerOrGov
+    {
+        MinERC20Invest = _MinERC20Invest;
+        MaxERC20Invest = _MaxERC20Invest;
     }
 
     function SetMinMaxDuration(uint256 _minDuration, uint256 _maxDuration)
