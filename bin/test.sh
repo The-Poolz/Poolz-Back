@@ -8,4 +8,5 @@ rm -rf build
 truffle compile
 truffle migrate --reset --network development
 truffle test
+truffle run coverage
 kill -9 $(lsof -t -i:8545)

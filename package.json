@@ -27,7 +27,7 @@
     "solidity-coverage": "^0.7.11",
     "truffle-plugin-verify": "^0.5.7"
   },
-  "name": "Poolz",
+  "name": "poolz-back",
   "version": "1.0.0",
   "main": "truffle-config.js",
   "directories": {
