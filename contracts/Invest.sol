@@ -7,7 +7,7 @@ import "poolz-helper/contracts/IPozBenefit.sol";
 import "./ILockedDeal.sol";
 
 contract Invest is PoolsData {
-    event NewInvestorEvent(uint256 Investor_ID, address Investor_Address);
+    event NewInvestorEvent(uint256 Investor_ID, address Investor_Address, uint256 LockedDeal_ID);
 
     modifier CheckTime(uint256 _Time) {
         require(now >= _Time, "Pool not open yet");
@@ -37,7 +37,6 @@ contract Invest is PoolsData {
         uint256 MainCoin; //the amount of the main coin invested (eth/dai), calc with rate
         uint256 TokensOwn; //the amount of Tokens the investor needto get from the contract
         uint256 InvestTime; //the time that investment made
-        uint256 LockedDealId; // the Pool ID of LockedDeal contract
     }
 
     function getTotalInvestor() external view returns(uint256){
@@ -104,13 +103,13 @@ contract Invest is PoolsData {
     }
 
     function TokenAllocate(uint256 _PoolId, uint256 _ThisInvestor, uint256 _Tokens) internal {
+        uint256 lockedDealId;
         if (isPoolLocked(_PoolId)) {
             if(isUsingLockedDeal()){
                 (address tokenAddress,,,,,) = GetPoolBaseData(_PoolId);
                 (uint64 lockedUntil,,,,,) = GetPoolMoreData(_PoolId);
                 ApproveAllowanceERC20(tokenAddress, LockedDealAddress, _Tokens);
-                uint256 id = ILockedDeal(LockedDealAddress).CreateNewPool(tokenAddress, lockedUntil, _Tokens, msg.sender);
-                Investors[_ThisInvestor].LockedDealId = id;
+                lockedDealId = ILockedDeal(LockedDealAddress).CreateNewPool(tokenAddress, lockedUntil, _Tokens, msg.sender);
             } else {
                 Investors[_ThisInvestor].TokensOwn = SafeMath.add(
                     Investors[_ThisInvestor].TokensOwn,
@@ -121,6 +120,7 @@ contract Invest is PoolsData {
             // not locked, will transfer the tokens
             TransferToken(pools[_PoolId].BaseData.Token, Investors[_ThisInvestor].InvestorAddress, _Tokens);
         }
+        emit NewInvestorEvent(_ThisInvestor, Investors[_ThisInvestor].InvestorAddress, lockedDealId);
     }
 
     function RegisterInvest(uint256 _PoolId, uint256 _Tokens) internal {
@@ -142,11 +142,9 @@ contract Invest is PoolsData {
             _Sender,
             _Amount,
             0,
-            block.timestamp,
-            0
+            block.timestamp
         );
         InvestorsMap[msg.sender].push(TotalInvestors);
-        emit NewInvestorEvent(TotalInvestors, _Sender);
         TotalInvestors = SafeMath.add(TotalInvestors, 1);
         return SafeMath.sub(TotalInvestors, 1);
     }

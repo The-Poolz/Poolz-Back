@@ -57,10 +57,6 @@ contract("Thepoolz", async accounts => {
     let tokensInContract = await Token.balanceOf(instance.address);
     assert.equal(tokensInContract.toString(),'2000000'  , "Got the tokens"); //2 left
   });
-  it("Fail, withdraw invesmt", async () => {
-    let took = await instance.WithdrawInvestment.call(0, { from: accounts[1] });
-    assert.isFalse(took);
-  });
   it("open a day long pool, invest, check creator balance", async () => {
     let beforeBalance = await web3.eth.getBalance(accounts[0]);
     await instance.InvestETH(0, { value: invest, from: accounts[1] }); //2-1

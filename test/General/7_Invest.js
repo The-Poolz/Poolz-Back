@@ -31,8 +31,9 @@ contract("Thepoolz, Invest", accounts => {
     let date = new Date();
     date.setDate(date.getDate() + 1);   // add a day
     await instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, zero_address,true,0,0, { from: fromAddress });
-    await instance.InvestETH(0,{ value: invest, from: fromAddress });
+    const tx = await instance.InvestETH(0,{ value: invest, from: fromAddress });
     let tokensInContract = await Token.balanceOf(instance.address);
+    assert.equal(fromAddress, tx.logs[2].args[1].toString())
     assert.equal(tokensInContract.toString(), "149580000000", "Got the tokens");
   });
   it('get Total Investors', async () => {

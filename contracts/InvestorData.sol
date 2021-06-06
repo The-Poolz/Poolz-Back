@@ -12,28 +12,6 @@ contract InvestorData is Invest {
             pools[Investors[_id].Poolid].MoreData.LockedUntil <= now;
     }
 
-    function WithdrawInvestment(uint256 _id) public returns (bool) {
-        if (IsReadyWithdrawInvestment(_id)) {
-            if(isUsingLockedDeal()){
-                return ILockedDeal(LockedDealAddress).WithdrawToken(Investors[_id].LockedDealId);
-            } else {
-                uint256 temp = Investors[_id].TokensOwn;
-                Investors[_id].TokensOwn = 0;
-                TransferToken(
-                    pools[Investors[_id].Poolid].BaseData.Token,
-                    Investors[_id].InvestorAddress,
-                    temp
-                );
-                pools[Investors[_id].Poolid].MoreData.UnlockedTokens = SafeMath.add(
-                    pools[Investors[_id].Poolid].MoreData.UnlockedTokens,
-                    temp
-                );
-                return true;
-            }
-        }
-        return false;
-    }
-
     //Give all the id's of the investment  by sender address
     function GetMyInvestmentIds() public view returns (uint256[] memory) {
         return InvestorsMap[msg.sender];
@@ -47,7 +25,6 @@ contract InvestorData is Invest {
             address,
             uint256,
             uint256,
-            uint256,
             uint256
         )
     {
@@ -56,8 +33,7 @@ contract InvestorData is Invest {
             Investors[_id].InvestorAddress,
             Investors[_id].MainCoin,
             Investors[_id].TokensOwn,
-            Investors[_id].InvestTime,
-            Investors[_id].LockedDealId
+            Investors[_id].InvestTime
         );
     }
 }
