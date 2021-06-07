@@ -105,17 +105,12 @@ contract Invest is PoolsData {
     function TokenAllocate(uint256 _PoolId, uint256 _ThisInvestor, uint256 _Tokens) internal {
         uint256 lockedDealId;
         if (isPoolLocked(_PoolId)) {
-            if(isUsingLockedDeal()){
-                (address tokenAddress,,,,,) = GetPoolBaseData(_PoolId);
-                (uint64 lockedUntil,,,,,) = GetPoolMoreData(_PoolId);
-                ApproveAllowanceERC20(tokenAddress, LockedDealAddress, _Tokens);
-                lockedDealId = ILockedDeal(LockedDealAddress).CreateNewPool(tokenAddress, lockedUntil, _Tokens, msg.sender);
-            } else {
-                Investors[_ThisInvestor].TokensOwn = SafeMath.add(
-                    Investors[_ThisInvestor].TokensOwn,
-                    _Tokens
-                );
-            }
+            require(isUsingLockedDeal(), "Cannot invest in TLP without LockedDeal");
+            (address tokenAddress,,,,,) = GetPoolBaseData(_PoolId);
+            (uint64 lockedUntil,,,,,) = GetPoolMoreData(_PoolId);
+            ApproveAllowanceERC20(tokenAddress, LockedDealAddress, _Tokens);
+            lockedDealId = ILockedDeal(LockedDealAddress).CreateNewPool(tokenAddress, lockedUntil, _Tokens, msg.sender);
+            
         } else {
             // not locked, will transfer the tokens
             TransferToken(pools[_PoolId].BaseData.Token, Investors[_ThisInvestor].InvestorAddress, _Tokens);
