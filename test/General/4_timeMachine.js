@@ -62,21 +62,4 @@ contract("Thepoolz, with timeMachine", accounts => {
     let status = await instance.GetPoolStatus(0);
     assert.equal(status.toNumber(),4);
   });
-  it('withdraw investment successfully', async () => {
-    let date = new Date();
-    date.setDate(date.getDate() + 1);
-    const futureTimestamp = Math.floor(date.getTime() / 1000) + 60
-    await Token.approve(instance.address, amount, { from: fromAddress });
-    await instance.CreatePool(Token.address, futureTimestamp, rate, rate, amount, futureTimestamp, zero_address,true,0,0, { from: fromAddress });
-    await instance.InvestETH(0,{ value: invest, from: fromAddress });
-    let d = Math.floor(date.getTime() / 1000) + 60;
-    await timeMachine.advanceBlockAndSetTime(futureTimestamp)
-    const beforeWithdraw = await instance.GetInvestmentData(0)
-    assert.isAbove(beforeWithdraw[3].toNumber(), 0)
-    await instance.WithdrawInvestment(0, {from: fromAddress})
-    const afterWithdraw = await instance.GetInvestmentData(0)
-    assert.equal(afterWithdraw[3].toNumber(), 0) // tokenOwn should be equal to zero after withdrawing
-    const now = Date.now()
-    await timeMachine.advanceBlockAndSetTime(Math.floor(now / 1000))
-  })
 });

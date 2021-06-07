@@ -4,9 +4,10 @@ pragma solidity ^0.6.0;
 import "./PoolsData.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "poolz-helper/contracts/IPozBenefit.sol";
+import "./ILockedDeal.sol";
 
 contract Invest is PoolsData {
-    event NewInvestorEvent(uint256 Investor_ID, address Investor_Address);
+    event NewInvestorEvent(uint256 Investor_ID, address Investor_Address, uint256 LockedDeal_ID);
 
     modifier CheckTime(uint256 _Time) {
         require(now >= _Time, "Pool not open yet");
@@ -34,7 +35,6 @@ contract Invest is PoolsData {
         uint256 Poolid; //the id of the pool, he got the rate info and the token, check if looked pool
         address InvestorAddress; //
         uint256 MainCoin; //the amount of the main coin invested (eth/dai), calc with rate
-        uint256 TokensOwn; //the amount of Tokens the investor needto get from the contract
         uint256 InvestTime; //the time that investment made
     }
 
@@ -102,15 +102,18 @@ contract Invest is PoolsData {
     }
 
     function TokenAllocate(uint256 _PoolId, uint256 _ThisInvestor, uint256 _Tokens) internal {
+        uint256 lockedDealId;
         if (isPoolLocked(_PoolId)) {
-            Investors[_ThisInvestor].TokensOwn = SafeMath.add(
-                Investors[_ThisInvestor].TokensOwn,
-                _Tokens
-            );
+            require(isUsingLockedDeal(), "Cannot invest in TLP without LockedDeal");
+            (address tokenAddress,,,,,) = GetPoolBaseData(_PoolId);
+            (uint64 lockedUntil,,,,,) = GetPoolMoreData(_PoolId);
+            ApproveAllowanceERC20(tokenAddress, LockedDealAddress, _Tokens);
+            lockedDealId = ILockedDeal(LockedDealAddress).CreateNewPool(tokenAddress, lockedUntil, _Tokens, msg.sender);
         } else {
             // not locked, will transfer the tokens
             TransferToken(pools[_PoolId].BaseData.Token, Investors[_ThisInvestor].InvestorAddress, _Tokens);
         }
+        emit NewInvestorEvent(_ThisInvestor, Investors[_ThisInvestor].InvestorAddress, lockedDealId);
     }
 
     function RegisterInvest(uint256 _PoolId, uint256 _Tokens) internal {
@@ -131,11 +134,9 @@ contract Invest is PoolsData {
             _Pid,
             _Sender,
             _Amount,
-            0,
             block.timestamp
         );
         InvestorsMap[msg.sender].push(TotalInvestors);
-        emit NewInvestorEvent(TotalInvestors, _Sender);
         TotalInvestors = SafeMath.add(TotalInvestors, 1);
         return SafeMath.sub(TotalInvestors, 1);
     }
@@ -152,10 +153,18 @@ contract Invest is PoolsData {
             result = SafeMath.mul(msgValue, pools[_Pid].BaseData.POZRate);
         }
         if (GetPoolStatus(_Pid) == PoolStatus.Open) {
-            require(
-                msgValue >= MinETHInvest && msgValue <= MaxETHInvest,
-                "Investment amount not valid"
-            );
+            (,,address _mainCoin) = GetPoolExtraData(_Pid);
+            if(_mainCoin == address(0x0)){
+                require(
+                    msgValue >= MinETHInvest && msgValue <= MaxETHInvest,
+                    "Investment amount not valid"
+                );
+            } else {
+                require(
+                    msgValue >= MinERC20Invest && msgValue <= MaxERC20Invest,
+                    "Investment amount not valid"
+                );
+            }
             require(VerifyPozHolding(_Sender), "Only POZ holder can invest");
             LastRegisterWhitelist(_Sender, pools[_Pid].MoreData.WhiteListId);
             result = SafeMath.mul(msgValue, pools[_Pid].BaseData.Rate);

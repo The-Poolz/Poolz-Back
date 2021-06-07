@@ -10,7 +10,7 @@
     "ganache-time-traveler": "^1.0.15",
     "moonbeam-truffle-plugin": "^1.1.6",
     "node-fetch": ">=2.6.1",
-    "poolz-helper": "^1.0.4",
+    "poolz-helper": "^1.0.5",
     "truffle-assertions": "^0.9.2",
     "truffle-flattener": "^1.5.0",
     "truffle-privatekey-provider": "^1.5.0",
@@ -28,7 +28,7 @@
     "truffle-plugin-verify": "^0.5.7"
   },
   "name": "poolz-back",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "main": "truffle-config.js",
   "directories": {
     "test": "test"

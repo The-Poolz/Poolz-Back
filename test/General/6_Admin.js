@@ -34,6 +34,15 @@ contract("Thepoolz Admin",  accounts => {
     assert.equal(actual_min.toNumber(), min);
     assert.equal(actual_max.toNumber(), max);
   });
+  it("set/get MinMaxERC20Invest", async () => {
+    let min = 100000;
+    let max = 1000000000000;
+    await instance.SetMinMaxERC20Invest(min,max, { from: govAddress });
+    let actual_min = await instance.MinERC20Invest.call();
+    let actual_max = await instance.MaxERC20Invest.call();
+    assert.equal(actual_min.toNumber(), min);
+    assert.equal(actual_max.toNumber(), max);
+  });
   it("set/get MinMaxDuration", async () => {
     let min = 400;
     let max = 600;
@@ -94,6 +103,18 @@ contract("Thepoolz Admin",  accounts => {
     await instance.SetBenefit_Address(randomAddress, {from: ownerAddress})
     const result = await instance.Benefit_Address()
     assert.equal(result, randomAddress)
+  })
+  it('set/get Locked Deal contract Address', async () => {
+    const randomAddress = accounts[7]
+    await instance.SetLockedDealAddress(randomAddress, {from: ownerAddress})
+    const result = await instance.LockedDealAddress()
+    assert.equal(result, randomAddress)
+  })
+  it('should switch using LockedDeal for TLP', async () => {
+    const before = await instance.UseLockedDealForTlp()
+    await instance.SwitchLockedDealForTlp({from: ownerAddress})
+    const after = await instance.UseLockedDealForTlp()
+    assert.equal(before, !after)
   })
 
 }); 
