@@ -5,13 +5,7 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./Invest.sol";
 
 contract InvestorData is Invest {
-    function IsReadyWithdrawInvestment(uint256 _id) public view returns (bool) {
-        return
-            _id <= TotalInvestors &&
-            Investors[_id].TokensOwn > 0 &&
-            pools[Investors[_id].Poolid].MoreData.LockedUntil <= now;
-    }
-
+    
     //Give all the id's of the investment  by sender address
     function GetMyInvestmentIds() public view returns (uint256[] memory) {
         return InvestorsMap[msg.sender];
@@ -24,7 +18,6 @@ contract InvestorData is Invest {
             uint256,
             address,
             uint256,
-            uint256,
             uint256
         )
     {
@@ -32,7 +25,6 @@ contract InvestorData is Invest {
             Investors[_id].Poolid,
             Investors[_id].InvestorAddress,
             Investors[_id].MainCoin,
-            Investors[_id].TokensOwn,
             Investors[_id].InvestTime
         );
     }

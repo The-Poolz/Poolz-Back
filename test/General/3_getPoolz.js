@@ -63,19 +63,19 @@ contract("Get the Poolz Data", accounts => {
         assert.equal(result.toNumber(), 0) // enum for 'Created' is 0
     })
 
-    it('Get Pools Status as Out Of Stock', async () => {
-        instance = await ThePoolz.new()
-        // Token = await TestToken.new()
-        let date = new Date();
-        date.setDate(date.getDate() + 1);
-        const futureTimestamp = Math.floor(date.getTime() / 1000) + 60
-        await Token.approve(instance.address, amount, { from: fromAddress });
-        await instance.CreatePool(Token.address, futureTimestamp, rate, rate, amount, futureTimestamp, zero_address,true,0,0, { from: fromAddress });
-        //investing 3 times
-        await instance.InvestETH(0,{ value: invest, from: fromAddress });
-        await instance.InvestETH(0,{ value: invest, from: fromAddress });
-        await instance.InvestETH(0,{ value: invest, from: fromAddress });
-        const status = await instance.GetPoolStatus(0)
-        assert.equal(status, 3) // enum for OutOfStock is 3
-    })
+    // it('Get Pools Status as Out Of Stock', async () => {
+    //     instance = await ThePoolz.new()
+    //     // Token = await TestToken.new()
+    //     let date = new Date();
+    //     date.setDate(date.getDate() + 1);
+    //     const futureTimestamp = Math.floor(date.getTime() / 1000) + 60
+    //     await Token.approve(instance.address, amount, { from: fromAddress });
+    //     await instance.CreatePool(Token.address, futureTimestamp, rate, rate, amount, futureTimestamp, zero_address,true,0,0, { from: fromAddress });
+    //     //investing 3 times
+    //     await instance.InvestETH(0,{ value: invest, from: fromAddress });
+    //     await instance.InvestETH(0,{ value: invest, from: fromAddress });
+    //     await instance.InvestETH(0,{ value: invest, from: fromAddress });
+    //     const status = await instance.GetPoolStatus(0)
+    //     assert.equal(status, 3) // enum for OutOfStock is 3
+    // })
 })

@@ -35,7 +35,6 @@ contract Invest is PoolsData {
         uint256 Poolid; //the id of the pool, he got the rate info and the token, check if looked pool
         address InvestorAddress; //
         uint256 MainCoin; //the amount of the main coin invested (eth/dai), calc with rate
-        uint256 TokensOwn; //the amount of Tokens the investor needto get from the contract
         uint256 InvestTime; //the time that investment made
     }
 
@@ -110,7 +109,6 @@ contract Invest is PoolsData {
             (uint64 lockedUntil,,,,,) = GetPoolMoreData(_PoolId);
             ApproveAllowanceERC20(tokenAddress, LockedDealAddress, _Tokens);
             lockedDealId = ILockedDeal(LockedDealAddress).CreateNewPool(tokenAddress, lockedUntil, _Tokens, msg.sender);
-            
         } else {
             // not locked, will transfer the tokens
             TransferToken(pools[_PoolId].BaseData.Token, Investors[_ThisInvestor].InvestorAddress, _Tokens);
@@ -136,7 +134,6 @@ contract Invest is PoolsData {
             _Pid,
             _Sender,
             _Amount,
-            0,
             block.timestamp
         );
         InvestorsMap[msg.sender].push(TotalInvestors);
