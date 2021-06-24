@@ -125,5 +125,13 @@ contract Manageable is ETHHelper, ERC20Helper, PozBenefit, Pausable  {
     function isUsingLockedDeal() public view returns(bool) {
         return UseLockedDealForTlp && LockedDealAddress != address(0x0);
     }
+
+    function pause() public onlyOwnerOrGov {
+        _pause();
+    }
+
+    function unpause() public onlyOwnerOrGov {
+        _unpause();
+    }
     
 }
