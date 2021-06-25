@@ -1,6 +1,7 @@
 const ThePoolz = artifacts.require("ThePoolz");
 const { assert } = require('chai');
 const truffleAssert = require('truffle-assertions');
+const TestToken = artifacts.require("Token");
 //const timeMachine = require('ganache-time-traveler');
 const zero_address = "0x0000000000000000000000000000000000000000";
 
@@ -17,6 +18,7 @@ contract("Thepoolz Admin",  accounts => {
 
   beforeEach(async () => {
     instance = await ThePoolz.deployed();
+    Token = await TestToken.new('TestToken', 'TEST');
   })
 
   it('set/get the Governer Contract Address', async () => {
@@ -116,5 +118,14 @@ contract("Thepoolz Admin",  accounts => {
     const after = await instance.UseLockedDealForTlp()
     assert.equal(before, !after)
   })
-
+  it('should pause', async () => {
+    await instance.pause({from: ownerAddress})
+    const result = await instance.paused()
+    assert.equal(result, true)
+  })
+  it('should unpause', async () => {
+    await instance.unpause({from: ownerAddress})
+    const result = await instance.paused()
+    assert.equal(result, false)
+  })
 }); 

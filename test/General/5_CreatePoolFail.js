@@ -57,4 +57,12 @@ contract("Create Pool Fails", async accounts => {
 	it("fail get pool status", async () => {
 		await truffleAssert.reverts(instance.GetPoolStatus(99));
 	});
+	it('cannot create new pool when paused', async () => {
+		await instance.pause({from: accounts[0]})
+		await Token.approve(instance.address, amount, { from: accounts[0] });
+		let date = new Date();
+		date.setDate(date.getDate() + 1);   // add a day
+		const tx = instance.CreatePool(Token.address, Math.floor(date.getTime() / 1000) + 60, rate, rate, amount, 0, zero_address,true,0,0, { from: accounts[0] })
+		await truffleAssert.reverts(tx, 'Pausable: paused')
+	})
 });

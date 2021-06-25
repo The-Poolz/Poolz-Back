@@ -62,4 +62,8 @@ contract('Fail Invest', accounts => {
     it('Fail to invest when pool does not have enough tokens', async () => {
         await truffleAssert.reverts(instance.InvestETH(ethPoolId, {from: fromAddress, value: invest*50}), "Not enough tokens in the pool")
     })
+    it('Fail to invest when Paused', async () => {
+      await instance.pause({from: fromAddress})
+      await truffleAssert.reverts(instance.InvestETH(ethPoolId,{ value: invest, from: fromAddress }), 'Pausable: paused')
+    })
   })

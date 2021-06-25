@@ -4,7 +4,7 @@ pragma solidity ^0.6.0;
 import "./PoolsData.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "poolz-helper/contracts/IPozBenefit.sol";
-import "./ILockedDeal.sol";
+import "poolz-helper/contracts/ILockedDeal.sol";
 
 contract Invest is PoolsData {
     event NewInvestorEvent(uint256 Investor_ID, address Investor_Address, uint256 LockedDeal_ID);
