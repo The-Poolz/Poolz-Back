@@ -7,7 +7,6 @@ addons:
   apt:
     sources: deadsnakes
     packages: python3.8
-
 install: npm i && npm i -g truffle
 script: truffle run coverage
 after_script: bash <(curl -s https://codecov.io/bash)
