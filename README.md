@@ -9,6 +9,7 @@
 
 - [Installation](#installation)
 - [Contract relations](#uml)
+- [Create new IDO](#create-new-pool)
 - [Pool types](#pool-types)
 - [Pool statuses](#pool-statuses)
 - [License](#license)
@@ -36,6 +37,29 @@ truffle migrate --f 1 --to 1 --network dashboard
 ## UML
 
 ![classDiagram](https://user-images.githubusercontent.com/68740472/193278591-43301008-4720-4484-a313-e224d02c54b4.svg)
+
+## Create new Pool
+https://github.com/The-Poolz/Poolz-Back/blob/466fb0048c571f9a916f33a7b44687fd78fbde66/contracts/Pools.sol#L49-L60
+
+**_Token** - ERC20 token address for sale.
+
+**_FinishTime** - the pool has expired. PO can withdraw remaining tokens.
+
+**_Rate** - during the investment period, the rate will be multiplied by the investment amount. 
+
+**_POZRate** -  rate for whitelisted users. **_POZRate** must be greater than the regular rate.
+
+**_StartAmount** - total amount of the tokens to sell in the IDO. The contract will lock the tokens until the investment time.
+
+**_LockedUntil** - set to zero to use Direct Sales Pools, or enter a time in the future to use Time-Locked Pools.
+
+**_MainCoin** - trading token address. Investors will use this token/coin to purchase IDO tokens.
+
+**_Is21Decimal** - sale token has 21 decimal places?
+
+**_Now** - start pool time. Tokens can only be purchased after the start time.
+
+**_WhiteListId** - the whitelist ID we will be working with. The white list contains a list of users with primary access to sales.
 
 ## Pool types
 The main types are Direct Selling Pools (**DSP**) and Time Locked Pools (**TLP**).
