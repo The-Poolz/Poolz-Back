@@ -43,7 +43,7 @@ https://github.com/The-Poolz/Poolz-Back/blob/466fb0048c571f9a916f33a7b44687fd78f
 
 **_Token** - ERC20 token address for sale.
 
-**_FinishTime** - the pool has expired. PO can withdraw remaining tokens.
+**_FinishTime** - after the time finished the pool expired. PO can withdraw remaining tokens.
 
 **_Rate** - during the investment period, the rate will be multiplied by the investment amount. 
 
@@ -55,7 +55,7 @@ https://github.com/The-Poolz/Poolz-Back/blob/466fb0048c571f9a916f33a7b44687fd78f
 
 **_MainCoin** - trading token address. Investors will use this token/coin to purchase IDO tokens.
 
-**_Is21Decimal** - sale token has 21 decimal places?
+**_Is21Decimal** - If true, the rate will be rate*10^-21.
 
 **_Now** - start pool time. Tokens can only be purchased after the start time.
 
