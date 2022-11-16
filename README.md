@@ -1,5 +1,5 @@
 # Poolz-Back
-[![Build Status](https://travis-ci.com/The-Poolz/Poolz-Back.svg?branch=main)](https://travis-ci.com/The-Poolz/Poolz-Back)
+[![Build Status](https://api.travis-ci.com/The-Poolz/Poolz-Back.svg?branch=main)](https://app.travis-ci.com/github/The-Poolz/Poolz-Back)
 [![codecov](https://codecov.io/gh/The-Poolz/Poolz-Back/branch/master/graph/badge.svg)](https://codecov.io/gh/The-Poolz/Poolz-Back)
 [![CodeFactor](https://www.codefactor.io/repository/github/the-poolz/poolz-back/badge)](https://www.codefactor.io/repository/github/the-poolz/poolz-back)
 
